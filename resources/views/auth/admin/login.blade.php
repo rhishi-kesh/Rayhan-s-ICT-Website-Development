@@ -19,6 +19,7 @@
               <div class="text-center">
                 <img src="{{ asset('logo.png') }}" width="150" alt="rayhans_image">
               </div>
+              
               <form method="POST" action="">
                 <div class="mb-4">                  
                   <label for="email" class="form-label">Email</label>
