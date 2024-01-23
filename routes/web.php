@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -18,4 +20,12 @@ Route::get('/our-course/course-name',[FrontendController::class, 'singleCourse']
 
 
 //admin and users
-Route::get('/admin',[AuthController::class, 'login']);
+Route::get('/admin',[AuthController::class, 'login'])->name('login');
+Route::get('/register',[AuthController::class, 'register'])->name('register');
+
+
+// dashboard
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
+});
