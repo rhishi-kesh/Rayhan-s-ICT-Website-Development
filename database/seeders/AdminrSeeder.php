@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminrSeeder extends Seeder
 {
@@ -17,8 +18,9 @@ class AdminrSeeder extends Seeder
         $password = 'admin';
 
         DB::table('users')->insert([
+            'name'=> 'admin',
             'email'=> 'admin@gmail.com',
-            'password'=> Crypt::encryptString($password)
+            'password'=> Hash::make($password)
         ]);
     }
 }

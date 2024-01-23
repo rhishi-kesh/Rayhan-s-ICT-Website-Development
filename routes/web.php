@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\AuthController;
 
 
 //frontend
@@ -22,8 +22,9 @@ Route::get('/our-course/course-name',[FrontendController::class, 'singleCourse']
 
 //admin and users
 Route::get('/admin',[AuthController::class, 'login'])->name('login');
+Route::post('/admin-login',[AuthController::class, 'loginPost'])->name('loginPost');
 Route::get('/register',[AuthController::class, 'register'])->name('register');
-
+ 
 
 // dashboard
 Route::prefix('admin')->group(function () {
