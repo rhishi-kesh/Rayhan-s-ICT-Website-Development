@@ -43,16 +43,51 @@
         <!-- ============================= -->
         <li class="nav-small-cap">
           <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-          <span class="hide-menu">Apps</span>
+          <span class="hide-menu">Admin</span>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="page-user-profile.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-user-circle"></i>
-            </span>
-            <span class="hide-menu">About</span>
-          </a>
-        </li>
+            <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
+              <span class="d-flex">
+                <i class="ti ti-user-circle"></i>
+              </span>
+              <span class="hide-menu">About</span>
+            </a>
+            <ul aria-expanded="false" class="collapse first-level">
+              <li class="sidebar-item">
+                <a href="{{ route('adminAbout') }}" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">About</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="{{ route('companyInformation') }}" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">Company Information</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="{{ route('hero') }}" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">Hero</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a href="blog-detail.html" class="sidebar-link">
+                  <div class="round-16 d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle"></i>
+                  </div>
+                  <span class="hide-menu">Workspace</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
         <li class="sidebar-item">
           <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
             <span class="d-flex">

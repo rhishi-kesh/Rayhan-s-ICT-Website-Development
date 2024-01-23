@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\FrontendController;
@@ -30,5 +31,19 @@ Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
+
+    //about-us CRUD
+    Route::get('/about',[AboutController::class, 'adminAbout'])->name('adminAbout');
+    Route::get('/about-post',[AboutController::class, 'aboutPost'])->name('aboutPost');
+
+    Route::get('/hero',[AboutController::class, 'hero'])->name('hero');
+    Route::get('/hero-post',[AboutController::class, 'heroPost'])->name('heroPost');
+
+    //Company-Information
+    Route::get('/company-information',[AboutController::class, 'companyInformation'])->name('companyInformation');
+    Route::post('/company-information-post',[AboutController::class, 'companyInformationPost'])->name('companyInformationPost');
+
+
+    Route::get('/workspace',[AboutController::class, 'workspace'])->name('workspace');
 });
 // isLoggedIn
