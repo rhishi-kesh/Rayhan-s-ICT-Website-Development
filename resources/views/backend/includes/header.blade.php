@@ -67,20 +67,22 @@
                           </div>
                         </a>
                         <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="py-8 px-7 mt-10 d-flex align-items-center justify-content-center text-center bg-info text-white text-uppercase">
-                          <span class="d-flex align-items-center justify-content-center">
-                              <span>Logout</span>
-                          </span>
                           <div class="d-inline-block v-middle ps-3">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                  <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
-                                  <path d="M9 12h12l-3 -3"></path>
-                                  <path d="M18 15l3 -3"></path>
-                               </svg>
-                          </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                                <path d="M9 12h12l-3 -3"></path>
+                                <path d="M18 15l3 -3"></path>
+                             </svg>
+                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="post" class="d-flex align-items-center justify-content-center">
+                          @csrf
+                          <span>
+                            <span>Logout</span>
+                            </span>
+                        </form>
                         </a>
-                        <form id="logout-form" action="" method="POST" class="d-none">
-                          <input type="hidden" name="_token" value="MvjOht3PEARS2SHUOSAYIPIXgFb5tw8Gdfbk3Mw5">        </form>
+                        
                       </div>
                     </div>
                 </div>

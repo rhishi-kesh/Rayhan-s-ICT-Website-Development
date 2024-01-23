@@ -23,10 +23,12 @@ Route::get('/our-course/course-name',[FrontendController::class, 'singleCourse']
 Route::get('/admin',[AuthController::class, 'login'])->name('login');
 Route::post('/admin-login',[AuthController::class, 'loginPost'])->name('loginPost');
 Route::get('/register',[AuthController::class, 'register'])->name('register');
- 
+Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
+  
 
 // dashboard
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
 });
+// isLoggedIn

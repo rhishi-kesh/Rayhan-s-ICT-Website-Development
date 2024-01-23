@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Symfony\Contracts\Service\Attribute\Required;
 use  App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+
 
 class AuthController extends Controller
 {
@@ -24,6 +26,7 @@ class AuthController extends Controller
             $user = User::where('email', '=' , $request->email)->first();
             if($user){
                 if(Hash::check($request->password, $user->password)){
+                    $request->session()->put('loginId', $user->id);
                     return redirect()->route('dashboard');
                 }else{
                     return back()->with('error', 'password not match, try again!');
@@ -31,11 +34,16 @@ class AuthController extends Controller
             }else{
                 return back()->with('error', 'This Email is invalid!');
             }
-           
     }
 
+    public function logout(){
+        if(Session::has('loginId')){
+            Session::pull('loginId');
+            return redirect()->route('login');
+        }
+    }
+    
     public function register(){
         return view('auth.admin.register');
-
     }
 }
