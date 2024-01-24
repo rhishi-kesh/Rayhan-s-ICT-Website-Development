@@ -111,7 +111,8 @@ class AboutController extends Controller
         return back()->with('success','Hero Information Updated Successfull');
     }
     public function workspace(){
-        return view('backend.pages.about.workspace');
+        $workspace = WorkSpaceImage::paginate(10);
+        return view('backend.pages.about.workspace', compact('workspace'));
     }
     public function workspacePost(Request $request){
         $request->validate([
@@ -134,5 +135,41 @@ class AboutController extends Controller
             ]);
         }
         return back()->with('success','Image Add Successfull');
+    }
+    public function workspaceEdit(Request $request){
+        $request->validate([
+            'image' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048',
+            ],
+        ]);
+
+        $id = $request->id;
+        $getData = WorkSpaceImage::findOrFail($id);
+
+        $filename = '';
+        $imagePath = 'storage/WorkSpace/'.$getData->image;
+        if ($request->hasFile('image')) {
+            $filename = rand() . '.' . $request->image->extension();
+            unlink($imagePath);
+            $request->image->storeAs('public/WorkSpace', $filename);
+        } else {
+            $filename = $getData->image;
+        }
+
+        WorkSpaceImage::where('id',$id)->update([
+            'image' => $filename,
+            'created_at' => Carbon::now()
+        ]);
+
+        return back()->with('success','Image Update Successfull');
+    }
+    public function workspaceDelete($id){
+        $content = WorkSpaceImage::findOrFail($id);
+        unlink(public_path('storage/WorkSpace/').'/'.$content->image);
+        WorkSpaceImage::findOrFail($id)->delete();
+
+        return back()->with('delete','Gallery Image Deleted Successfull');
     }
 }

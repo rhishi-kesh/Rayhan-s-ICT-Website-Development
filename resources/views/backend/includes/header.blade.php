@@ -50,7 +50,7 @@
                     <div class="d-flex align-items-center py-9 mx-7 border-bottom">
                         <img src=" {{ asset('frontend/images/profile/user-1.jpg') }}" class="rounded-circle" width="80" height="80" alt="" />
                         <div class="ms-3">
-                        <h5 class="mb-1 fs-3">Mathew Anderson</h5>
+                        <h5 class="mb-1 fs-3">{{ auth()->user()->email }}</h5>
                         </div>
                     </div>
                     <div class="message-body">
@@ -82,7 +82,7 @@
                             </span>
                         </form>
                         </a>
-                        
+
                       </div>
                     </div>
                 </div>

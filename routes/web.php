@@ -36,7 +36,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
 
     //about-us CRUD
     Route::get('/about',[AboutController::class, 'adminAbout'])->name('adminAbout');
-    Route::get('/about-post',[AboutController::class, 'aboutPost'])->name('aboutPost');
+    Route::post('/about-post',[AboutController::class, 'aboutPost'])->name('aboutPost');
 
     // Success Story
     Route::get('/successStory', [SuccessStoryController::class, 'successStory'])->name('successStory');
@@ -52,5 +52,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     //Workspace-CRUD
     Route::get('/workspace',[AboutController::class, 'workspace'])->name('workspace');
     Route::post('/workspacePost',[AboutController::class, 'workspacePost'])->name('workspacePost');
+    Route::post('/workspaceEdit',[AboutController::class, 'workspaceEdit'])->name('workspaceEdit');
+    Route::get('/workspaceDelete/{id}',[AboutController::class, 'workspaceDelete'])->name('workspaceDelete');
 });
 
