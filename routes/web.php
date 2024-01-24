@@ -24,6 +24,7 @@ Route::get('/our-course/course-name',[FrontendController::class, 'singleCourse']
 Route::get('/admin',[AuthController::class, 'login'])->name('login');
 Route::post('/admin-login',[AuthController::class, 'loginPost'])->name('loginPost');
 Route::get('/register',[AuthController::class, 'register'])->name('register');
+Route::get('/registerPost',[AuthController::class, 'registerPost'])->name('registerPost');
 Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
   
 
@@ -46,4 +47,4 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/workspace',[AboutController::class, 'workspace'])->name('workspace');
 });
-// isLoggedIn
+// isLoggedIn    
