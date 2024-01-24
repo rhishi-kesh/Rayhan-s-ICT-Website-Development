@@ -24,7 +24,7 @@ Route::get('/our-course/course-name',[FrontendController::class, 'singleCourse']
 Route::get('/admin',[AuthController::class, 'login'])->name('login');
 Route::post('/admin-login',[AuthController::class, 'loginPost'])->name('loginPost');
 Route::get('/register',[AuthController::class, 'register'])->name('register');
-Route::get('/registerPost',[AuthController::class, 'registerPost'])->name('registerPost');
+Route::post('/register',[AuthController::class, 'registerPost'])->name('register');
 Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
 
 
