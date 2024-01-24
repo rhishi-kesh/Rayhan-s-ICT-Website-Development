@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CompanyInformation;
+use App\Models\HeroInformation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -38,16 +39,16 @@ class AboutController extends Controller
         ]);
 
         $id = $request->id;
-        $CompanyInformation = CompanyInformation::findOrFail($id);
+        $getData = CompanyInformation::findOrFail($id);
 
         $image = '';
-        $imagePath = 'storage/CompanyInformation/'.$CompanyInformation->logo;
+        $imagePath = 'storage/CompanyInformation/'.$getData->logo;
         if ($request->hasFile('logo')) {
             $image = rand() . '.' . $request->logo->extension();
             unlink($imagePath);
             $request->logo->storeAs('public/CompanyInformation', $image);
         } else {
-            $image = $CompanyInformation->logo;
+            $image = $getData->logo;
         }
 
         CompanyInformation::where('id',$id)->update([
@@ -70,7 +71,42 @@ class AboutController extends Controller
         return back()->with('success','Website Information Updated Successfull');
     }
     public function hero(){
-        $companyInformation = CompanyInformation::first();
-        return view('backend.pages.about.hero', compact('companyInformation'));
+        $heroInformation = HeroInformation::first();
+        return view('backend.pages.about.hero', compact('heroInformation'));
+    }
+    public function heroPost(Request $request){
+        $request->validate([
+            'thumbnail' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048'
+            ],
+            'title' => 'required',
+            'description' => 'required',
+            'video' => 'required'
+        ]);
+
+        $id = $request->id;
+        $getData = HeroInformation::findOrFail($id);
+
+        $image = '';
+        $imagePath = 'storage/heroInformation/'.$getData->thumbnail;
+        if ($request->hasFile('thumbnail')) {
+            $image = rand() . '.' . $request->thumbnail->extension();
+            unlink($imagePath);
+            $request->thumbnail->storeAs('public/HeroInformation', $image);
+        } else {
+            $image = $getData->thumbnail;
+        }
+
+        HeroInformation::where('id',$id)->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'video' => $request->video,
+            'thumbnail' => $image,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return back()->with('success','Hero Information Updated Successfull');
     }
 }
