@@ -29,7 +29,7 @@
                     <span class="text-nowrap logo-img text-center d-block py-4 w-100">
                         <img src="{{ asset('logo.png') }}" style="max-width: 24%" alt="">
                     </span>
-                  <form method="post" action="">
+                  <form method="post" action="{{ route('registerPost') }}">
                     @csrf
                     <div class="mb-3">
                       <label for="name" class="form-label">Name</label>

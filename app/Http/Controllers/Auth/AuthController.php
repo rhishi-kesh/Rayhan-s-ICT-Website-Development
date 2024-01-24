@@ -43,13 +43,13 @@ class AuthController extends Controller
             return redirect()->route('login');
         }
     }
-    
+
     public function register(){
         return view('auth.admin.register');
     }
 
     public function registerPost(Request $request){
-        
+
         $request->validate([
             'name'=> 'required|string|max:20',
             'email'=> 'required|email|max:200',
@@ -66,6 +66,6 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
-        return redirect()->route('dashboard')->withSuccess('You have successfully registered & logged in!');
+        return redirect()->route('dashboard')->withSuccess('You have successfully registered');
     }
 }
