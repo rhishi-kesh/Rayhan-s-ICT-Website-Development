@@ -9,7 +9,7 @@ class SuccessStory extends Model
 {
     use HasFactory;
 
-    protected $table = 'success_story';
+    protected $table = 'success_stories';
 
     // protected $fillable = [
     //     'thumbnail',

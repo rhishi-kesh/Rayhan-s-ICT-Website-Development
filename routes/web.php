@@ -38,9 +38,6 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::get('/about',[AboutController::class, 'adminAbout'])->name('adminAbout');
     Route::post('/about-post',[AboutController::class, 'aboutPost'])->name('aboutPost');
 
-    // Success Story
-    Route::get('/successStory', [SuccessStoryController::class, 'successStory'])->name('successStory');
-
     //hero-Information
     Route::get('/hero',[AboutController::class, 'hero'])->name('hero');
     Route::post('/hero-post',[AboutController::class, 'heroPost'])->name('heroPost');
@@ -51,8 +48,12 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
 
     //Workspace-CRUD
     Route::get('/workspace',[AboutController::class, 'workspace'])->name('workspace');
-    Route::post('/workspacePost',[AboutController::class, 'workspacePost'])->name('workspacePost');
-    Route::post('/workspaceEdit',[AboutController::class, 'workspaceEdit'])->name('workspaceEdit');
-    Route::get('/workspaceDelete/{id}',[AboutController::class, 'workspaceDelete'])->name('workspaceDelete');
+    Route::post('/workspace-post',[AboutController::class, 'workspacePost'])->name('workspacePost');
+    Route::post('/workspace-edit',[AboutController::class, 'workspaceEdit'])->name('workspaceEdit');
+    Route::get('/workspace-delete/{id}',[AboutController::class, 'workspaceDelete'])->name('workspaceDelete');
+
+    // Success Story
+    Route::get('/success-story', [SuccessStoryController::class, 'successStory'])->name('successStory');
+    Route::post('/success-story-post', [SuccessStoryController::class, 'successStoryPost'])->name('successStoryPost');
 });
 
