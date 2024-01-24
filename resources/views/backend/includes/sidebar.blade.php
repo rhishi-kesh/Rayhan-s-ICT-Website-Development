@@ -78,7 +78,7 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a href="blog-detail.html" class="sidebar-link">
+                <a href="{{ route('workspace') }}" class="sidebar-link">
                   <div class="round-16 d-flex align-items-center justify-content-center">
                     <i class="ti ti-circle"></i>
                   </div>

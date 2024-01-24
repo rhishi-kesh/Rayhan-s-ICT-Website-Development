@@ -36,6 +36,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::get('/about',[AboutController::class, 'adminAbout'])->name('adminAbout');
     Route::get('/about-post',[AboutController::class, 'aboutPost'])->name('aboutPost');
 
+    //hero-Information
     Route::get('/hero',[AboutController::class, 'hero'])->name('hero');
     Route::post('/hero-post',[AboutController::class, 'heroPost'])->name('heroPost');
 
@@ -43,7 +44,8 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::get('/company-information',[AboutController::class, 'companyInformation'])->name('companyInformation');
     Route::post('/company-information-post',[AboutController::class, 'companyInformationPost'])->name('companyInformationPost');
 
-
+    //Workspace-CRUD
     Route::get('/workspace',[AboutController::class, 'workspace'])->name('workspace');
+    Route::post('/workspacePost',[AboutController::class, 'workspacePost'])->name('workspacePost');
 });
 // isLoggedIn

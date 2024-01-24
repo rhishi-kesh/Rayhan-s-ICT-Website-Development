@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyInformation;
 use App\Models\HeroInformation;
+use App\Models\WorkSpaceImage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -41,20 +42,20 @@ class AboutController extends Controller
         $id = $request->id;
         $getData = CompanyInformation::findOrFail($id);
 
-        $image = '';
+        $filename = '';
         $imagePath = 'storage/CompanyInformation/'.$getData->logo;
         if ($request->hasFile('logo')) {
-            $image = rand() . '.' . $request->logo->extension();
+            $filename = rand() . '.' . $request->logo->extension();
             unlink($imagePath);
-            $request->logo->storeAs('public/CompanyInformation', $image);
+            $request->logo->storeAs('public/CompanyInformation', $filename);
         } else {
-            $image = $getData->logo;
+            $filename = $getData->logo;
         }
 
         CompanyInformation::where('id',$id)->update([
             'number' => $request->number,
             'gmail' => $request->email,
-            'logo' => $image,
+            'logo' => $filename,
             'facebook' => $request->facebook,
             'instragram' => $request->instragram,
             'linkedin' => $request->linkedin,
@@ -89,24 +90,49 @@ class AboutController extends Controller
         $id = $request->id;
         $getData = HeroInformation::findOrFail($id);
 
-        $image = '';
+        $filename = '';
         $imagePath = 'storage/heroInformation/'.$getData->thumbnail;
         if ($request->hasFile('thumbnail')) {
-            $image = rand() . '.' . $request->thumbnail->extension();
+            $filename = rand() . '.' . $request->thumbnail->extension();
             unlink($imagePath);
-            $request->thumbnail->storeAs('public/HeroInformation', $image);
+            $request->thumbnail->storeAs('public/HeroInformation', $filename);
         } else {
-            $image = $getData->thumbnail;
+            $filename = $getData->thumbnail;
         }
 
         HeroInformation::where('id',$id)->update([
             'title' => $request->title,
             'description' => $request->description,
             'video' => $request->video,
-            'thumbnail' => $image,
+            'thumbnail' => $filename,
             'updated_at' => Carbon::now()
         ]);
 
         return back()->with('success','Hero Information Updated Successfull');
+    }
+    public function workspace(){
+        return view('backend.pages.about.workspace');
+    }
+    public function workspacePost(Request $request){
+        $request->validate([
+            'image' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048',
+                'required'
+            ],
+        ]);
+
+        if($request->file('image')){
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->extension();
+            $request->image->storeAs('public/WorkSpace', $filename);
+
+            WorkSpaceImage::insert([
+                'image' => $filename,
+                'created_at' => Carbon::now()
+            ]);
+        }
+        return back()->with('success','Image Add Successfull');
     }
 }
