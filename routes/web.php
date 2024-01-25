@@ -55,5 +55,6 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     // Success Story
     Route::get('/success-story', [SuccessStoryController::class, 'successStory'])->name('successStory');
     Route::post('/success-story-post', [SuccessStoryController::class, 'successStoryPost'])->name('successStoryPost');
+    Route::post('/success-story-edit', [SuccessStoryController::class, 'successStoryEdit'])->name('successStoryEdit');
 });
 

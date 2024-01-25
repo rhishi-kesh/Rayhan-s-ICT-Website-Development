@@ -14,13 +14,13 @@
         </tr>
       </thead>
       <tbody>
-        {{-- @forelse ($workspace as $key => $item) --}}
+        @forelse ($successStory as $key => $item)
         <tr>
             <td>
-                <span>1</span>
+                <span>{{$successStory->firstItem()+$key}}</span>
             </td>
             <td class="text-center">
-                <img src="" alt="" width="60" height="60">
+                <img src="{{ asset('storage/SuccessStory/') }}/{{ $item->thumbnail }}" alt="" width="60" height="60">
             </td>
             <td class="text-end">
                 <div class="dropdown dropstart">
@@ -28,8 +28,8 @@
                     <i class="ti ti-dots fs-5"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
-                    <li>
-                    <a class="dropdown-item d-flex align-items-center gap-3" href="#editData" data-bs-toggle="modal"><i class="fs-4 ti ti-edit"></i>Edit</a>
+                    <li class="">
+                    <a class="dropdown-item d-flex align-items-center gap-3" href="#editData{{ $item->id }}" data-bs-toggle="modal"><i class="fs-4 ti ti-edit "></i>Edit</a>
                     </li>
                     <li>
                     <a class="dropdown-item d-flex align-items-center gap-3" href=""><i class="fs-4 ti ti-trash"></i>Delete</a>
@@ -38,47 +38,54 @@
                 </div>
             </td>
         </tr>
-        <div class="modal" id="editData">
+        <div class="modal" id="editData{{ $item->id }}">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content border-0">
                 <div class="modal-header bg-primary">
-                  <h6 class="modal-title text-white">Edit WorkSpace Image</h6>
+                  <h6 class="modal-title text-white">Edit Success story</h6>
                   <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="POST" id="addnotesmodalTitle" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="notes-box">
-                            <div class="notes-content">
-                                <div class="row">
-                                    <input type="hidden" id="id" name="id" value="">
-                                    <div class="col-md-12 mb-3">
-                                        <div class="note-title">
-                                        <label for="image">Image</label>
+                <form action="{{ route('successStoryEdit')}}" method="post" id="addnotesmodalTitle" enctype="multipart/form-data">
+                  @csrf
+                  <input type="hidden" name="id" value="{{ $item->id }}">
+                  <div class="modal-body">
+                      <div class="notes-box">
+                          <div class="notes-content">
+                              <div class="row">
+                                  <div class="col-md-12 mb-3">
+                                      <div class="note-title">
+                                        <label for="thumbnail">Thumbnail</label>
                                         <input type="file" id="image" class="form-control @error('image') is-invalid @enderror" name="image">
-                                        <img src="" alt="" width="60" height="60" class="mt-2">
+                                        <img src="{{ asset('storage/SuccessStory/') }}/{{ $item->thumbnail }}" alt="" width="60" height="60">
                                         @error('image')
-                                            <div class="alert alert-danger"></div>
+                                          <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="btn-n-add" type="submit" class="btn btn-primary">Update</button>
-                    </div>
-                </form>
+                                      </div>
+                                      <div class="note-title mt-3">
+                                        <label for="image">Video Link</label>
+                                        <input type="url" value="{{ $item->video_link }}" id="video_link" class="form-control @error('video_link') is-invalid @enderror" name="video_link">
+                                        @error('video_link')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button id="btn-n-add" type="submit" class="btn btn-primary">Update</button>
+                  </div>
+              </form>
               </div>
             </div>
           </div>
         </div>
-        {{-- @empty --}}
-        {{-- <tr>
+        @empty
+        <tr>
             <td class="text-center text-danger" colspan="20">NO Data Found</td>
-        </tr> --}}
-        {{-- @endforelse --}}
+        </tr>
+        @endforelse
       </tbody>
     </table>
     <div class="modal" id="addData">

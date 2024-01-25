@@ -11,8 +11,10 @@ class SuccessStoryController extends Controller
 {
     public function successStory(){
 
-        return view('backend.pages.successStory.successStory');
+        $successStory = SuccessStory::paginate(10);
+        return view('backend.pages.successStory.successStory', compact('successStory'));
     }
+    // insert data
     public function successStoryPost(Request $request){
         $request->validate([
             'image'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
@@ -31,7 +33,31 @@ class SuccessStoryController extends Controller
             return back()->with('success', 'Image add successfully');
 
         }
-
     }
-    
+    public function successStoryEdit(Request $request){
+        $request->validate([
+            'image'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
+            'video_link'=>'required'
+        ]);
+        $id = $request->id;
+        $getData = SuccessStory::findOrFail($id);
+
+        $filename = '';
+        $imagePath = 'storage/SuccessStory/'.$getData->thumbnail;
+        if($request->hasFile('image')){
+            $filename =  time().'.'.$request->image->extension();
+            unlink($imagePath);
+            $request->image->storeAs('public/SuccessStory', $filename);
+        }else{
+            $filename = $getData->thumbnail;
+        }
+
+        SuccessStory::where('id', $id)->update([
+            'thumbnail' =>$filename,
+            'video_link'=> $request->video_link,
+            'created_at' => Carbon::now()
+        ]);
+        return back()->with('success', 'Edit Update Successfully');
+    }
+
 }
