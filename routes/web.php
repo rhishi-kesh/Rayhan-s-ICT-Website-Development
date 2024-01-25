@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SuccessStoryController;
 use App\Http\Controllers\Admin\MeetOurMentorsController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -65,5 +66,10 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::post('/meet-our-mentors-edit', [MeetOurMentorsController::class, 'meetOurMentorsEdit'])->name('meetOurMentorsEdit');
     Route::get('/meet-our-mentors-delete/{id}', [MeetOurMentorsController::class, 'meetOurMentorsDelete'])->name('meetOurMentorsDelete');
 
+    // Review
+    Route::get('/review', [ReviewController::class, 'review'])->name('review');
+    Route::post('/review-post', [ReviewController::class, 'reviewPost'])->name('reviewPost');
+    Route::post('/review-edit', [ReviewController::class, 'reviewEdit'])->name('reviewEdit');
+    Route::get('/review-delete/{id}', [ReviewController::class, 'reviewDelete'])->name('reviewDelete');
 });
 
