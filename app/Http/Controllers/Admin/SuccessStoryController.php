@@ -59,5 +59,12 @@ class SuccessStoryController extends Controller
         ]);
         return back()->with('success', 'Edit Update Successfully');
     }
+    public function successStoryDelete($id){
+        $successDelete = SuccessStory::findOrFail($id);
+        unlink(public_path('storage/SuccessStory/').'/'.$successDelete->thumbnail);
+        SuccessStory::findOrFail($id)->delete();
+
+        return back()->with('error', 'Delete Successfully');
+    }
 
 }
