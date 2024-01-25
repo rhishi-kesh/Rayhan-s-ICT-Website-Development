@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SuccessStoryController;
+use App\Http\Controllers\Admin\MeetOurMentorsController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -47,8 +49,21 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
 
     //Workspace-CRUD
     Route::get('/workspace',[AboutController::class, 'workspace'])->name('workspace');
-    Route::post('/workspacePost',[AboutController::class, 'workspacePost'])->name('workspacePost');
-    Route::post('/workspaceEdit',[AboutController::class, 'workspaceEdit'])->name('workspaceEdit');
-    Route::get('/workspaceDelete/{id}',[AboutController::class, 'workspaceDelete'])->name('workspaceDelete');
+    Route::post('/workspace-post',[AboutController::class, 'workspacePost'])->name('workspacePost');
+    Route::post('/workspace-edit',[AboutController::class, 'workspaceEdit'])->name('workspaceEdit');
+    Route::get('/workspace-delete/{id}',[AboutController::class, 'workspaceDelete'])->name('workspaceDelete');
+
+    // Success Story
+    Route::get('/success-story', [SuccessStoryController::class, 'successStory'])->name('successStory');
+    Route::post('/success-story-post', [SuccessStoryController::class, 'successStoryPost'])->name('successStoryPost');
+    Route::post('/success-story-edit', [SuccessStoryController::class, 'successStoryEdit'])->name('successStoryEdit');
+    Route::get('/success-story-delete/{id}',[SuccessStoryController::class, 'successStoryDelete'])->name('successStoryDelete');
+
+    // Meet Our Mentors
+    Route::get('/meet-our-mentors', [MeetOurMentorsController::class, 'meetOurMentors'])->name('meetOurMentors');
+    Route::post('/meet-our-mentors-post', [MeetOurMentorsController::class, 'meetOurMentorsPost'])->name('meetOurMentorsPost');
+    Route::post('/meet-our-mentors-edit', [MeetOurMentorsController::class, 'meetOurMentorsEdit'])->name('meetOurMentorsEdit');
+    // Route::get('/meet-our-mentors-delete', [MeetOurMentorsController::class, 'meetOurMentorsDelete'])->name('meetOurMentorsDelete');
+
 });
 

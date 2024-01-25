@@ -151,7 +151,7 @@ class AboutController extends Controller
         $filename = '';
         $imagePath = 'storage/WorkSpace/'.$getData->image;
         if ($request->hasFile('image')) {
-            $filename = rand() . '.' . $request->image->extension();
+            $filename = time() . '.' . $request->image->extension();
             unlink($imagePath);
             $request->image->storeAs('public/WorkSpace', $filename);
         } else {
