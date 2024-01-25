@@ -69,7 +69,7 @@
                   <li><a href="{{ route('about') }}">About</a></li>
                   <li><a href="{{ route('course') }}">Course</a></li>
                   <li><a href="{{ route('success') }}" class="nav_success_btn">Success</a></li>
-                  <li><a href="{{ route('career') }}">Career</a></li>
+                  <li><a href="http://apply.rayhansict.com/" target="_blank">Career</a></li>
                   <li><a href="{{ route('contact') }}">Contact</a></li>
                   <li>
                     <a href="#admissionModal" data-bs-toggle="modal" class="admit_btn">

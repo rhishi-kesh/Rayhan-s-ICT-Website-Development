@@ -160,14 +160,14 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center section-head">
-                <h2 class="text-uppercase fs-1 mb-0">Our Course</h2>
+                <h2 class="text-uppercase fs-1 mb-0">Populer Course</h2>
                 <span></span>
                 <p class="mt-1 lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptas rerum veniam.</p>
             </div>
         </div>
         <div class="row">
             <div class="col-12 mt-4">
-                <ul class="nav nav-tabs justify-content-center owl-carousel owl-theme course-carosel" id="myTab" role="tablist">
+                <ul class="nav nav-tabs owl-carousel owl-theme course-carosel" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab">Computer Fundamental</button>
                     </li>

@@ -154,6 +154,11 @@ nav .nav-bar .logo a{
 }
 .nav-links li .admit_btn:hover{
 	color: var(--white);
+    background-color: var(--orange);
+}
+.nav-links li .admit_btn:active{
+	color: var(--white);
+    background-color: var(--orange);
 }
 /*Nav-end*/
 .hero{
@@ -202,6 +207,12 @@ nav .nav-bar .logo a{
     animation: hero-btn;
     animation-duration: 4s;
     animation-iteration-count: infinite;
+}
+.hero .btns a:hover{
+    background-color: var(--orange);
+}
+.hero .btns a:active{
+    background-color: var(--orange);
 }
 .hero .banner{
     border-radius: 10px;
@@ -295,7 +306,8 @@ nav .nav-bar .logo a{
   border: 2px solid var(--blue) !important;
   height: 40px;
   width: 40px;
-  background: var(--blue);
+  border-color: var(--orange) !important;
+  background: var(--orange);
   border-radius: 50%;
   color: var(--white) !important;
 }
@@ -309,10 +321,13 @@ nav .nav-bar .logo a{
 }
 .Course .course-carosel .nav-item button{
     color: var(--dark) !important;
-    border-radius: 0px;
+    border-radius: 20px;
+}
+.Course .course-carosel .nav-item button:hover{
+    border: 1px solid var(--orange);
 }
 .Course .course-carosel .nav-item .active{
-    background: var(--dark) !important;
+    background: var(--orange) !important;
     color: var(--white) !important;
 }
 .Course .course_items .card img{
@@ -393,6 +408,12 @@ nav .nav-bar .logo a{
     z-index: 1;
     display: block;
 }
+.Course .course_items .card .buy-btn:hover{
+    background-color: var(--orange);
+}
+.Course .course_items .card .buy-btn:active{
+    background-color: var(--orange);
+}
 .Course .course_items .card .buy-btn:hover::before{
     content: '';
     position: absolute;
@@ -412,11 +433,6 @@ nav .nav-bar .logo a{
     animation-duration: 4s;
     animation-iteration-count: infinite;
 }
-.Course .owl-nav{
-    position: absolute;
-    right: 0;
-    top: -19px;
-}
 
 .Course .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev{
   border: 2px solid var(--blue) !important;
@@ -428,29 +444,44 @@ nav .nav-bar .logo a{
 }
 .Course .owl-theme .owl-nav [class*="owl-"]:hover {
   border: 2px solid var(--blue) !important;
-  height: 40px;
-  width: 40px;
-  background: var(--blue);
-  border-radius: 50%;
+  border-color: var(--orange) !important;
+  background: var(--orange);
   color: var(--white) !important;
 }
+.Course .owl-theme .owl-nav [class*="owl-"]:active {
+    border-color: var(--orange) !important;
+    background: var(--orange);
+    color: var(--white) !important;
+  }
 .Course .owl-carousel .owl-nav.disabled {
   display: block;
 }
-.Course .owl-carousel .owl-nav.disabled {
-  display: none;
+.Course .owl-carousel .owl-nav .owl-prev{
+  position: absolute;
+  left: -52px;
+  top: -11%;
+}
+.Course .owl-carousel .owl-nav .owl-next{
+  position: absolute;
+  top: -12%;
+  right: -40px;
+}
+.Course .owl-carousel .owl-item{
+    justify-content: center;
+    display: flex;
+    margin-bottom: 2px;
+}
+.Course .course-carosel{
+    border: 0px;
+    margin-bottom: 3px;
 }
 /*Course-end*/
-.mentors{
-    /*background: var(--gray);*/
-}
 .mentors .card {
   background-color: var(--white);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   border-radius: 10px;
-  /*border: 1px;*/
 }
 .mentors .card .mentor-bg {
     background-position: center;
@@ -513,7 +544,8 @@ nav .nav-bar .logo a{
   border: 2px solid var(--blue) !important;
   height: 40px;
   width: 40px;
-  background: var(--blue);
+  border-color: var(--orange) !important;
+  background: var(--orange);
   border-radius: 50%;
   color: var(--white) !important;
 }
@@ -536,6 +568,12 @@ nav .nav-bar .logo a{
     position: relative;
     z-index: 1;
     display: block;
+}
+.success_story .seeMore:hover{
+    background-color: var(--orange);
+}
+.success_story .seeMore:active{
+    background-color: var(--orange);
 }
 .success_story .seeMore:hover::before{
     content: '';
@@ -693,7 +731,8 @@ nav .nav-bar .logo a{
   border: 2px solid var(--blue) !important;
   height: 40px;
   width: 40px;
-  background: var(--blue);
+  border-color: var(--orange) !important;
+  background: var(--orange);
   border-radius: 50%;
   color: var(--white) !important;
 }
@@ -764,9 +803,10 @@ nav .nav-bar .logo a{
     box-shadow: none;
 }
 .faq .accordion .card .card-header h5 button[aria-expanded="true"]:after {
+    border: 1px solid var(--orange);
     content: '\f068';
     color: var(--white);
-    background: var(--blue);
+    background: var(--orange);
 }
 .faq .accordion .card .card-body {
     -webkit-box-shadow: 0px 15px 140px 0px rgba(69, 81, 100, 0.1);
@@ -831,7 +871,7 @@ footer .top-footer a:after {
   top: 180%;
   width: 160%;
   height: 190%;
-  background-color: var(--blue);
+  background-color: var(--orange);
   border-radius: 50%;
   display: block;
   transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
@@ -845,7 +885,7 @@ footer .top-footer a:hover {
 
 footer .top-footer a:hover:before {
   top: -35%;
-  background-color: var(--blue);
+  background-color: var(--orange);
   transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
@@ -932,20 +972,44 @@ footer .top-footer .browse_course:hover:after {
   border-radius: 50%;
 }
 .facebook-bg{
-  background: #3B5998;
+  background: var(--blue);
+  transition: 0.5s;
 }
 .instagram-bg{
-    background: #f09433; 
-    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    background: var(--blue);
+    transition: 0.5s;
 }
 .linkedin-bg{
-  background: #0077b5 ;
+  background: var(--blue);
+  transition: 0.5s;
 }
 .youtube-bg{
-  background: #CD201F ;
+  background: var(--blue);
+  transition: 0.5s;
+}
+.facebook-bg:hover{
+    background: var(--orange);
+}
+.instagram-bg:hover{
+    background: var(--orange);
+}
+.linkedin-bg:hover{
+    background: var(--orange);
+}
+.youtube-bg:hover{
+    background: var(--orange);
+}
+.facebook-bg:active{
+    background: var(--orange);
+}
+.instagram-bg:active{
+    background: var(--orange);
+}
+.linkedin-bg:active{
+    background: var(--orange);
+}
+.youtube-bg:active{
+    background: var(--orange);
 }
 .footer-widget-heading h3 {
   color: var(--blue);
@@ -1012,6 +1076,20 @@ footer .contact i{
 .brands img{
     max-width: 100%;
 }
+.missionVision h1{
+    padding-left: 0px;
+    padding-right: 25px;
+}
+.missionVision h1::before{
+    content: '';
+    width: 5px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto !important;
+    background: var(--orange);
+}
 .about h1{
     font-weight: 600;
     position: relative;
@@ -1066,27 +1144,6 @@ footer .contact i{
 .workshop .wokspece_navs_item{
     padding: 0px 3px;
 }
-.mission_vision .card{
-    border: none;
-    padding: 25px;
-    border-radius: 0px;
-}
-.mission_vision .card h3{
-    color: var(--blue);
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-.mission_vision .Mission{
-    background: var(--light-blue);
-}
-.mission_vision .Vision{
-    background: var(--light-orange);
-}
-.mission_vision .History{
-    background: var(--light-blue);
-}
 .courses .card{
     text-align: center;
     padding: 22px;
@@ -1119,7 +1176,7 @@ footer .contact i{
   text-align: center;
   line-height: 40px;
   border-radius: 50%;
-  color: var(--orange);
+  color: var(--blue);
   font-size: 18px;
   font-weight: 600;
   -webkit-transition: all linear 0.3s;
@@ -1139,53 +1196,67 @@ footer .contact i{
   text-align: center;
   line-height: 40px;
   border-radius: 50%;
-  color: var(--orange);
+  color: var(--blue);
   font-size: 18px;
   font-weight: 600;
   -webkit-transition: all linear 0.3s;
   transition: all linear 0.3s;
   cursor: pointer;
 }
-.contact .socal-card{
-    background: var(--light-orange);
-    padding: 95px 55px;
-    text-align: center;
-    color: var(--dark);
-    border: none;
-    border-radius: 20px;/*
-    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1), 
-                -6px -6px 10px -1px rgba(0, 0, 0, 0.1);*/
-}
-.contact .socal-card:hover{
-    box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff !important;
-}
 .contact .socal-card img{
     width: 60px;
     height: auto;
 }
-.contact .contact-card{
-    background: var(--light-blue);
-    padding: 55px;
-    text-align: center;
-    color: var(--dark);
+.contact .card{
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+                -6px -6px 10px -1px rgba(0, 0, 0, 0.1);
     border: none;
-    border-radius: 20px;/*
-    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1), 
-                -6px -6px 10px -1px rgba(0, 0, 0, 0.1);*/
 }
-.contact .contact-card:hover{
-    box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff !important;
+.contact .card form input{
+    border: 1px solid rgba(0,0,0,0.3);
 }
-.contact .socal-card .mail a{
-    text-decoration: none !important;
-    color: var(--dark) !important;
+.contact .card form select{
+    border: 1px solid rgba(0,0,0,0.3);
 }
-.contact .socal-card .small-title{
+.contact .card form textarea{
+    border: 1px solid rgba(0,0,0,0.3);
+}
+.contact .card form input:focus{
+    border: 1px solid var(--blue);
+}
+.contact .card form select:focus{
+    border: 1px solid var(--blue);
+}
+.contact .card form textarea:focus{
+    border: 1px solid var(--blue);
+}
+.contact .card form button{
+    background-color: var(--blue) !important;
+    color: var(--white);
+    transition: 0.5s;
+}
+.contact .card form button:hover{
+    background-color: var(--orange) !important;
+}
+.contact .card form button:active{
+    background-color: var(--orange) !important;
+}
+.contact .mail a{
+    color: var(--blue) !important;
+}
+.contact .mail a:hover{
+    color: var(--orange) !important;
+}
+.contact .small-title{
     color: var(--dark) !important;
     font-weight: 500;
 }
-.contact .socal-card .socal-icon a{
-    color: var(--dark) !important;
+.contact  .socal-icon a{
+    color: var(--blue) !important;
+    transition: 0.5s;
+}
+.contact  .socal-icon a:hover{
+    color: var(--orange) !important;
 }
 .contact iframe{
     border-radius: 20px;
@@ -1402,7 +1473,8 @@ footer .contact i{
   border: 2px solid var(--blue) !important;
   height: 40px;
   width: 40px;
-  background: var(--blue);
+  border-color: var(--orange) !important;
+  background: var(--orange) !important;
   border-radius: 50%;
   color: var(--white) !important;
 }
@@ -1695,8 +1767,18 @@ footer .contact i{
     }
     .content #Course_Details .card ul{
         display: block;
-    }     
+    }
     .single_course_header .btns a{
         font-size: 13px;
+    }
+    .Course .owl-carousel .owl-nav .owl-next{
+        position: absolute;
+        right: -10px;
+        top: -8%;
+    }
+    .Course .owl-carousel .owl-nav .owl-prev{
+        position: absolute;
+        left: -10px;
+        top: -8%;
     }
 }
