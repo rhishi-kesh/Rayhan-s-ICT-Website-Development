@@ -42,7 +42,6 @@ class ReviewController extends Controller
     }
     public function ReviewDelete($id){
         $reviewDelete = Review::findOrFail($id);
-        // unlink($reviewDelete->review);
         Review::findOrFail($id)->delete();
 
         return back()->with('error', 'Delete Successfully');

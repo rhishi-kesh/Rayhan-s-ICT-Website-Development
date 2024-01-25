@@ -20,20 +20,21 @@
                 <span> {{$review->firstItem()+$key}} </span>
             </td>
             <td  class="text-center">
-                <textarea name="review" id="review" cols="30" rows="3">{{$item->review}}</textarea>
+                {!!$item->review!!}
+            </td>
             <td class="text-end">
                 <div class="dropdown dropstart">
-                <a href="#" class="text-muted pe-4" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="ti ti-dots fs-5"></i>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
-                    <li class="">
-                    <a class="dropdown-item d-flex align-items-center gap-3" href="#editData{{$item->id}}" data-bs-toggle="modal"><i class="fs-4 ti ti-edit "></i>Edit</a>
-                    </li>
-                    <li>
-                    <a class="dropdown-item d-flex align-items-center gap-3"  onclick="return confirm('Are you wnat to delete?')"  href="{{ route('reviewDelete', $item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
-                    </li>
-                </ul>
+                    <a href="#" class="text-muted pe-4" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="ti ti-dots fs-5"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
+                        <li class="">
+                            <a class="dropdown-item d-flex align-items-center gap-3" href="#editData{{$item->id}}" data-bs-toggle="modal"><i class="fs-4 ti ti-edit "></i>Edit</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-3"  onclick="return confirm('Are you wnat to delete?')"  href="{{ route('reviewDelete', $item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
+                        </li>
+                    </ul>
                 </div>
             </td>
         </tr>
@@ -54,7 +55,7 @@
                                 <div class="col-md-12 mb-3">
                                     <div class="note-title mt-3">
                                         <label for="name"> Review </label>
-                                        <textarea class="form-control @error('name') is-invalid @enderror" name="review" id="review" placeholder="Enter Review" cols="30" rows="10"  value="{{$item->review}}"></textarea>
+                                        <textarea class="form-control @error('name') is-invalid @enderror" name="review" id="review" placeholder="Enter Embed Review" cols="30" rows="10">{{$item->review}}</textarea>
                                         @error('review')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SuccessStoryController;
 use App\Http\Controllers\Admin\MeetOurMentorsController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\AuthorisedController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -71,5 +72,12 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::post('/review-post', [ReviewController::class, 'reviewPost'])->name('reviewPost');
     Route::post('/review-edit', [ReviewController::class, 'reviewEdit'])->name('reviewEdit');
     Route::get('/review-delete/{id}', [ReviewController::class, 'reviewDelete'])->name('reviewDelete');
+
+    // Authorised
+    Route::get('/authorised', [AuthorisedController::class, 'authorised'])->name('authorised');
+    Route::get('/authorised-post', [AuthorisedController::class, 'authorisedPost'])->name('authorisedPost');
+    Route::get('/authorised-edit', [AuthorisedController::class, 'authorisedEdit'])->name('authorisedEdit');
+    Route::get('/authorised-delete/{id}', [AuthorisedController::class, 'authorisedDelete'])->name('authorisedDelete');
+
 });
 
