@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SuccessStoryController;
+use App\Http\Controllers\Admin\MeetOurMentorsController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -57,6 +58,12 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::post('/success-story-post', [SuccessStoryController::class, 'successStoryPost'])->name('successStoryPost');
     Route::post('/success-story-edit', [SuccessStoryController::class, 'successStoryEdit'])->name('successStoryEdit');
     Route::get('/success-story-delete/{id}',[SuccessStoryController::class, 'successStoryDelete'])->name('successStoryDelete');
+
+    // Meet Our Mentors
+    Route::get('/meet-our-mentors', [MeetOurMentorsController::class, 'meetOurMentors'])->name('meetOurMentors');
+    Route::post('/meet-our-mentors-post', [MeetOurMentorsController::class, 'meetOurMentorsPost'])->name('meetOurMentorsPost');
+    Route::post('/meet-our-mentors-edit', [MeetOurMentorsController::class, 'meetOurMentorsEdit'])->name('meetOurMentorsEdit');
+    // Route::get('/meet-our-mentors-delete', [MeetOurMentorsController::class, 'meetOurMentorsDelete'])->name('meetOurMentorsDelete');
 
 });
 
