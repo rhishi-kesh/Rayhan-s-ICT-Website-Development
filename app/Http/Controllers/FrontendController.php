@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HeroInformation;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -22,7 +23,8 @@ class FrontendController extends Controller
         return view('frontend.pages.career.career');
     }
     public function contact(){
-        return view('frontend.pages.contact.contact');
+        $heroInformation = HeroInformation::first();
+        return view('frontend.pages.contact.contact', compact('heroInformation'));
     }
     public function seminer(){
         return view('frontend.pages.seminer.seminer');

@@ -26,12 +26,12 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-12 col-md-6 mb-50">
                     <div class="footer-widget">
-                        <div class="footer-logo">
+                        <div class="footer-logo d-none d-md-block">
                             <a href="{{ route('index') }}">
                                 <img src="{{ asset("frontend/img/logo.png") }}" alt="">
                             </a>
                         </div>
-                        <div class="footer-text">
+                        <div class="footer-text d-none d-md-block">
                             <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
                             elit,Lorem ipsum dolor sit amet.</p>
                         </div>
@@ -59,21 +59,39 @@
                         </div>
                         <ul>
                             <li>
-                                <a href="{{ route('index') }}">
-                                    <i class="ti-angle-double-right"></i>
-                                    Home
+                                <a href="{{ route('about') }}">
+                                    <i class="ti-angle-double-right d-none d-md-inline"></i>
+                                    About
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('about') }}">
-                                    <i class="ti-angle-double-right"></i>
-                                    About
+                                <a href="{{ route('contact') }}">
+                                    <i class="ti-angle-double-right d-none d-md-inline"></i>
+                                    Contact
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('success') }}">
+                                    <i class="ti-angle-double-right d-none d-md-inline"></i>
+                                    Success
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('career') }}">
+                                    <i class="ti-angle-double-right d-none d-md-inline"></i>
+                                    Career
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="ti-angle-double-right d-none d-md-inline"></i>
+                                    Privacy Policy
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 mt-3 mt-lg-0 col-12 col-md-6 mb-50">
+                <div class="col-xl-3 col-lg-3 mt-3 mt-lg-0 col-12 col-md-6 mb-50 d-none d-md-block">
                     <div class="footer-widget">
                         <div class="footer-widget-heading">
                             <h3>Popular Courses</h3>
@@ -108,19 +126,19 @@
                         <ul>
                             <li>
                                 <a href="">
-                                    <i class="fa-solid fa-phone me-2"></i>
+                                    <i class="fa-solid fa-phone me-2 d-none d-md-inline"></i>
                                     <span href="#" class="mt-1">01534-545945</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <i class="fa-solid fa-envelope me-2"></i>
+                                    <i class="fa-solid fa-envelope me-2 d-none d-md-inline"></i>
                                     <span href="#" class="mt-1">ictrayhans@gmail.com</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <i class="fa-solid fa-location-dot me-2"></i>
+                                    <i class="fa-solid fa-location-dot me-2 d-none d-md-inline"></i>
                                     <span href="#" class="mt-1">Fahad Plaza, 4thFloor,Mutual Trust Bank Building, Mirpur 10, Dhaka </span>
                                 </a>
                             </li>
@@ -128,7 +146,7 @@
                         <div class="footer-widget-heading">
                             <h3>Opening Hour</h3>
                             <p>
-                                <i class="fa-solid fa-clock me-2"></i>
+                                <i class="fa-solid fa-clock me-2 d-none d-md-inline"></i>
                                 <small>Sat - Friday : 09:00 am - 09:00 pm </small>
                             </p>
                         </div>
@@ -144,7 +162,7 @@
                     <div class="copyright-text text-center">
                         <p class="mb-0 text-uppercase">E-TIN No: 197682866359</p>
                         <p class="mb-0 text-uppercase">Trade Licence No: TRAD/DNCC/037245/2022</p>
-                        <p class="mb-0 text-uppercase"> Copyright © 2017 - 2024 DESIGN AND DEVELOPED BY CREATIVE SHEBA LIMITED</p>
+                        <p class="mb-0 text-uppercase mt-2"> Copyright © 2017 - 2024 DESIGN AND DEVELOPED BY CREATIVE SHEBA LIMITED</p>
                     </div>
                 </div>
             </div>

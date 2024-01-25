@@ -3,7 +3,7 @@ const body = document.querySelector("body"),
 	nav = document.querySelector("nav"),
 	sidebarOpen = document.querySelector(".sidebarOpen"),
 	siderbarClose = document.querySelector(".siderbarClose");
-		  
+
 	//   js code to toggle sidebar
 	sidebarOpen.addEventListener("click" , () =>{
 		nav.classList.add("active");
@@ -54,17 +54,17 @@ $('.courses-department').owlCarousel({
 $('.course-carosel').owlCarousel({
     margin:2,
     dots: false,
+    nav: true,
+    loop: true,
     navText: ['<i class="fa-solid fa-arrow-left"></i>','<i class="fa-solid fa-arrow-right"></i>'],
     responsive:{
         0:{
             items:1,
             center: true,
-            loop: true,
     		nav: true,
         },
         575:{
-            items: 3,
-            nav: false,
+            items: 3
         },
         768:{
             items:4,
@@ -107,7 +107,7 @@ $('.mentor-carosel').owlCarousel({
     }
 });
 
-// Course Slider
+// review Slider
 $('.review-carosel').owlCarousel({
     loop:true,
     margin:12,
@@ -214,3 +214,4 @@ $('.demo-carosel').owlCarousel({
     autoplayTimeout: 2000,
     autoplayHoverPause: true,
 });
+

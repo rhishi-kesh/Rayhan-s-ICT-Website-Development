@@ -3,10 +3,10 @@
     <section class="about py-5">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-lg-7">
+                <div class="col-12 col-lg-7 align-self-center">
                     <h1 class="text-uppercase fs-1">Why Choose Us</h1>
-                    <p class="mt-4">Interior Bangladesh has been doing attractive and quality interior work for more than 6 years.We believe that every client has some dreams and ensure maximum commitment and punctuality to fulfill those dreams. So put your trust and faith in Interior Bangladesh to make your dreams come true.</p>
-                    <div class="d-flex justify-content-start gap-1 gap-md-4 mt-4">
+                    <p class="mt-4 mb-0">Interior Bangladesh has been doing attractive and quality interior work for more than 6 years.We believe that every client has some dreams and ensure maximum commitment and punctuality to fulfill those dreams. So put your trust and faith in Interior Bangladesh to make your dreams come true.</p>
+                    <div class="d-flex justify-content-start gap-1 gap-md-5 mt-4">
                         <div class="project_complete">
                             <h2>
                                 <span class="ti ti-briefcase icon"></span>
@@ -34,37 +34,26 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-4 col-lg-5 text-center align-self-center d-none d-lg-block">
-                    <img src="{{ asset("frontend/img/about.gif") }}" alt="" class="img-fluid">
+                    <img src="{{ asset('frontend/img/about.gif') }}" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
     </section>
     <!-- about-section-end -->
-    <section class="mission_vision">
+    <section class="about missionVision py-2 py-md-5">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-lg-4">
-                    <div class="card Mission">
-                        <h3>Our Mission</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem aperiam eligendi dolorem minus accusamus aliquam ducimus repellendus dolores, iste aut ex consequatur aspernatur expedita ratione!</p>
-                    </div>
+                <div class="col-12 col-lg-7 order-2 text-end align-self-center">
+                    <h1 class="text-uppercase fs-1">Our Mission & Vision</h1>
+                    <p class="mt-4 mb-0">Interior Bangladesh has been doing attractive and quality interior work for more than 6 years.We believe that every client has some dreams and ensure maximum commitment and punctuality to fulfill those dreams. So put your trust and faith in Interior Bangladesh to make your dreams come true.</p>
                 </div>
-                <div class="col-12 col-lg-4">
-                    <div class="card Vision">
-                        <h3>Our Vision</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem aperiam eligendi dolorem minus accusamus aliquam ducimus repellendus dolores, iste aut ex consequatur aspernatur expedita ratione!</p>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="card History">
-                        <h3>History</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem aperiam eligendi dolorem minus accusamus aliquam ducimus repellendus dolores, iste aut ex consequatur aspernatur expedita ratione!</p>
-                    </div>
+                <div class="col-12 col-md-4 col-lg-5 text-center align-self-center d-none d-lg-block order-1 ">
+                    <img src="{{ asset('frontend/img/about.gif') }}" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
     </section>
-    <!-- mission_vision-section-end -->
+    {{-- missionVision-section-end --}}
     <section class="courses py-5">
         <div class="container">
             <div class="row justify-content-center">
