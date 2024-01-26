@@ -47,8 +47,8 @@ class MeetOurMentorsController extends Controller
         $request->validate([
             'name'=> 'required|min:4',
             'designation'=> 'required|min:5',
-            'image'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
-            'thumbnail'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
+            'image'=> ['image', 'mimes:jpg,png,jpeg'],
+            'thumbnail'=> ['image', 'mimes:jpg,png,jpeg'],
         ]);
         $id = $request->id;
         $getData = MeetOurMentors::findOrFail($id);
@@ -79,6 +79,14 @@ class MeetOurMentorsController extends Controller
             'created_at'  => Carbon::now()
         ]);
         return back()->with('success', 'Edit Update Successfully');
+    }
+    public function meetOurMentorsDelete($id){
+        $mentorsDelete = MeetOurMentors::findOrFail($id);
+        unlink(public_path('storage/mentors/image/').'/'.$mentorsDelete->image);
+        unlink(public_path('storage/mentors/thumbnail/').'/'.$mentorsDelete->thumbnail);
+        MeetOurMentors::findOrFail($id)->delete();
+
+        return back()->with('error', 'Delete Successfully');
     }
 
 }

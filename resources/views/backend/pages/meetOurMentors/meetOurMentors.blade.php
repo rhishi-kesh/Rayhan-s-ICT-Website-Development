@@ -45,7 +45,7 @@
                     <a class="dropdown-item d-flex align-items-center gap-3" href="#editData{{$item->id}}" data-bs-toggle="modal"><i class="fs-4 ti ti-edit "></i>Edit</a>
                     </li>
                     <li>
-                    <a class="dropdown-item d-flex align-items-center gap-3" href=""><i class="fs-4 ti ti-trash"></i>Delete</a>
+                    <a class="dropdown-item d-flex align-items-center gap-3"  onclick="return confirm('Are you wnat to delete?')"  href="{{ route('meetOurMentorsDelete', $item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
                     </li>
                 </ul>
                 </div>
