@@ -75,4 +75,8 @@ class CourseController extends Controller
 
         return back()->with('delete','Gallery Image Deleted Successfull');
     }
+    public function course(){
+        $courses = Department::paginate(10);
+        return view('backend.pages.course.course', compact('courses'));
+    }
 }

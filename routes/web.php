@@ -92,6 +92,11 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::post('/faq-post', [FAQController::class, 'faqPost'])->name('faqPost');
     Route::post('/faq-edit', [FAQController::class, 'faqEdit'])->name('faqEdit');
     Route::get('/faq-delete/{id}', [FAQController::class, 'faqDelete'])->name('faqDelete');
+    //Department
+    Route::get('/course', [CourseController::class, 'course'])->name('course');
+    Route::post('/course-post', [CourseController::class, 'coursePost'])->name('coursePost');
+    Route::post('/course-edit', [CourseController::class, 'courseEdit'])->name('courseEdit');
+    Route::get('/course-delete/{id}', [CourseController::class, 'courseDelete'])->name('courseDelete');
 
 });
 

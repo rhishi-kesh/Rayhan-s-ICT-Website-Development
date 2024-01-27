@@ -48,7 +48,11 @@
                         <a class="dropdown-item d-flex align-items-center gap-3" href="#editData{{ $item->id }}" data-bs-toggle="modal"><i class="fs-4 ti ti-edit"></i>Edit</a>
                         </li>
                         <li>
+<<<<<<< HEAD
                         <a class="dropdown-item d-flex align-items-center gap-3" onclick="return confirm('Are you want to delete?')" href="{{ route('departmentDelete',$item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
+=======
+                        <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('workspaceDelete',$item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
+>>>>>>> 8c72a93143804d04ba2e6ca107d77540370da451
                         </li>
                     </ul>
                 </div>
@@ -77,22 +81,20 @@
                                             @enderror
                                         </div>
                                         <div class="note-title">
-                                            <label for="departmentImage">Image</label>
-                                            <input type="file" id="departmentImage" class="form-control @error('image') is-invalid @enderror" name="image">
+                                            <label for="workshop_imageu{{ $item->id }}">Image</label>
+                                            <input type="file" id="workshop_imageu{{ $item->id }}" class="form-control @error('image') is-invalid @enderror" name="image">
                                             @error('image')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
-                                            <img src="{{ asset('storage/department/') }}/{{ $item->image }}" alt="" width="60" height="60" class="mt-2" id="departmentImage_p">
-                                            @section('jss')
-                                                <script>
-                                                    departmentImage.onchange = evt => {
-                                                    const [file] = departmentImage.files
-                                                    if (file) {
-                                                        departmentImage_p.src = URL.createObjectURL(file)
-                                                    }
+                                            <img src="{{ asset('storage/department/') }}/{{ $item->image }}" alt="" width="60" height="60" class="mt-2" id="image_demou{{ $item->id }}">
+                                            <script>
+                                                workshop_imageu{{ $item->id }}.onchange = evt => {
+                                                const [file] = workshop_imageu{{ $item->id }}.files
+                                                if (file) {
+                                                    image_demou{{ $item->id }}.src = URL.createObjectURL(file)
                                                 }
-                                                </script>
-                                            @endsection
+                                            }
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -137,22 +139,12 @@
                                         @enderror
                                     </div>
                                     <div class="note-title">
-                                        <label for="image_demo">Image</label>
-                                        <input type="file" id="workshop_image" class="form-control @error('image') is-invalid @enderror" name="image">
+                                        <label for="workshop_imagei">Image</label>
+                                        <input type="file" id="workshop_imagei" class="form-control @error('image') is-invalid @enderror" name="image">
                                         @error('image')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                        <img src="#" alt="Image Preview" width="180" id="image_demo">
-                                        @section('jss')
-                                            <script>
-                                                workshop_image.onchange = evt => {
-                                                const [file] = workshop_image.files
-                                                if (file) {
-                                                    image_demo.src = URL.createObjectURL(file)
-                                                }
-                                            }
-                                            </script>
-                                        @endsection
+                                        <img src="#" alt="Image Preview" width="180" id="image_demoi">
                                     </div>
                                 </div>
                             </div>
@@ -168,4 +160,14 @@
         </div>
       </div>
     </div>
+    @section('jss')
+        <script>
+            workshop_imagei.onchange = evt => {
+            const [file] = workshop_imagei.files
+            if (file) {
+                image_demoi.src = URL.createObjectURL(file)
+            }
+        }
+        </script>
+    @endsection
 @endsection
