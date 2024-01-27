@@ -37,6 +37,7 @@ class AboutController extends Controller
             'eTin' => 'required',
             'tradeLicence' => 'required',
             'footerAbout' => 'required',
+            'googlemap' => 'required',
         ]);
 
         $id = $request->id;
@@ -66,6 +67,7 @@ class AboutController extends Controller
             'eTinNo' => $request->eTin,
             'tradeLienceNo' => $request->tradeLicence,
             'footerAbout' => $request->footerAbout,
+            'googlemap' => $request->googlemap,
             'updated_at' => Carbon::now()
         ]);
 

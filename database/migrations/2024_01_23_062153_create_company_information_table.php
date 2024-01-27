@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('eTinNo');
             $table->string('tradeLienceNo');
             $table->text('footerAbout');
+            $table->text('googlemap');
             $table->timestamps();
         });
     }

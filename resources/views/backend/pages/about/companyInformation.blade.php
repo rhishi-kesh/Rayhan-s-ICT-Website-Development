@@ -77,25 +77,33 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="locationLink" class="form-label">Location Link</label>
                         <input type="url" value="{{ $companyInformation->locationLink }}" class="form-control form-control-lg rounded-1 @error('locationLink') is-invalid @enderror" name="locationLink" id="locationLink" placeholder="Location Link">
                         @error('locationLink')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="openClose" class="form-label">Open Close Time</label>
                         <input type="text" value="{{ $companyInformation->openClose }}" class="form-control form-control-lg rounded-1 @error('openClose') is-invalid @enderror" name="openClose" id="openClose" placeholder="Open Close Time">
                         @error('openClose')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-md-8 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="footerAbout" class="form-label">Footer About</label>
                         <textarea class="form-control form-control-lg rounded-1 @error('footerAbout') is-invalid @enderror" rows="6" name="footerAbout" id="footerAbout">{{ $companyInformation->footerAbout }}
                         </textarea>
                         @error('footerAbout')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="googlemap" class="form-label">Footer About</label>
+                        <textarea class="form-control form-control-lg rounded-1 @error('googlemap') is-invalid @enderror" rows="6" name="googlemap" id="googlemap">{{ $companyInformation->googlemap }}
+                        </textarea>
+                        @error('googlemap')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -105,7 +113,17 @@
                         @error('logo')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                        <img src="{{ asset('storage/companyInformation/'. $companyInformation->logo) }}" alt="" width="180">
+                        <img src="{{ asset('storage/companyInformation/'. $companyInformation->logo) }}" alt="" width="180" id="logo_img">
+                        @section('jss')
+                            <script>
+                                logo.onchange = evt => {
+                                const [file] = logo.files
+                                if (file) {
+                                    logo_img.src = URL.createObjectURL(file)
+                                }
+                            }
+                            </script>
+                        @endsection
                     </div>
                     <div class="col-12">
                         <div class="d-md-flex align-items-center mt-3">
