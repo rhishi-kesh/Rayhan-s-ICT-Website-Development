@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SuccessStoryController;
@@ -78,6 +79,12 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::get('/authorised-post', [AuthorisedController::class, 'authorisedPost'])->name('authorisedPost');
     Route::get('/authorised-edit', [AuthorisedController::class, 'authorisedEdit'])->name('authorisedEdit');
     Route::get('/authorised-delete/{id}', [AuthorisedController::class, 'authorisedDelete'])->name('authorisedDelete');
+
+    //Department
+    Route::get('/department', [CourseController::class, 'department'])->name('department');
+    Route::post('/department-post', [CourseController::class, 'departmentPost'])->name('departmentPost');
+    Route::post('/department-edit', [CourseController::class, 'departmentEdit'])->name('departmentEdit');
+    Route::get('/department-delete/{id}', [CourseController::class, 'departmentDelete'])->name('departmentDelete');
 
 });
 
