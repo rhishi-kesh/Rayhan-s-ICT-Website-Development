@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use App\Models\CompanyInformation;
 use App\Models\HeroInformation;
 use App\Models\WorkSpaceImage;
@@ -12,7 +13,63 @@ use Illuminate\Http\Request;
 class AboutController extends Controller
 {
     public function adminAbout(){
-        return view('backend.pages.about.about');
+        $about = About::first();
+        return view('backend.pages.about.about', compact('about'));
+    }
+    public function aboutPost(Request $request){
+        $request->validate([
+            'chooseUs' => 'required',
+            'chooseUsImage' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048'
+            ],
+            'missionVision' => 'required',
+            'missionVisionImage' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048'
+            ],
+            'successfullStudent' => 'required',
+            'courseComplete' => 'required',
+            'successRatio' => 'required',
+        ]);
+
+        $id = $request->id;
+        $getData = About::findOrFail($id);
+
+        $choose = '';
+        $imagePath = 'storage/about/choose/'.$getData->chooseUsImage;
+        if ($request->hasFile('chooseUsImage')) {
+            $choose = rand() . '.' . $request->chooseUsImage->extension();
+            unlink($imagePath);
+            $request->chooseUsImage->storeAs('public/about/choose/', $choose);
+        } else {
+            $choose = $getData->chooseUsImage;
+        }
+
+        $missionVision = '';
+        $imagePath = 'storage/about/missionVision/'.$getData->missionVisionImage;
+        if ($request->hasFile('missionVisionImage')) {
+            $missionVision = rand() . '.' . $request->missionVisionImage->extension();
+            unlink($imagePath);
+            $request->missionVisionImage->storeAs('public/about/missionVision', $missionVision);
+        } else {
+            $missionVision = $getData->missionVisionImage;
+        }
+
+        About::where('id',$id)->update([
+            'chooseUs' => $request->chooseUs,
+            'chooseUsImage' => $choose,
+            'missionVision' => $request->missionVision,
+            'missionVisionImage' => $missionVision,
+            'successfullStudent' => $request->successfullStudent,
+            'courseComplete' => $request->courseComplete,
+            'successRatio' => $request->successRatio,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return back()->with('success','Website Information Updated Successfull');
     }
     public function companyInformation(){
         $companyInformation = CompanyInformation::first();
@@ -37,6 +94,7 @@ class AboutController extends Controller
             'eTin' => 'required',
             'tradeLicence' => 'required',
             'footerAbout' => 'required',
+            'googlemap' => 'required',
         ]);
 
         $id = $request->id;
@@ -66,6 +124,7 @@ class AboutController extends Controller
             'eTinNo' => $request->eTin,
             'tradeLienceNo' => $request->tradeLicence,
             'footerAbout' => $request->footerAbout,
+            'googlemap' => $request->googlemap,
             'updated_at' => Carbon::now()
         ]);
 

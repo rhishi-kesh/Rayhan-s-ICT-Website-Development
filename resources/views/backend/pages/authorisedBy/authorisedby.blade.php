@@ -65,14 +65,25 @@
                           <div class="notes-content">
                               <div class="row">
                                   <div class="col-md-12 mb-3">
-                                      <div class="note-title">
-                                        <label for="image">Image</label>
-                                        <input type="file" id="image" class="form-control @error('image') is-invalid @enderror" name="image">
-                                        <img src="{{ asset('storage/authorisedby/') }}/{{ $item->image }}" alt="" width="60" height="60">
-                                        @error('image')
+
+                                    <div class="note-title">
+                                      <label for="authorisedImage">Image</label>
+                                      <input type="file" id="authorisedImage" class="form-control @error('image') is-invalid @enderror" name="image">
+                                      @error('image')
                                           <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                      </div>
+                                      @enderror
+                                      <img src="{{ asset('storage/authorisedby/') }}/{{ $item->image }}" alt="" width="60" height="60" class="mt-2" id="authorisedImage_p">
+                                      @section('jss')
+                                          <script>
+                                              authorisedImage.onchange = evt => {
+                                              const [file] = authorisedImage.files
+                                              if (file) {
+                                                authorisedImage_p.src = URL.createObjectURL(file)
+                                              }
+                                          }
+                                          </script>
+                                      @endsection
+                                  </div>
                                   </div>
                               </div>
                           </div>

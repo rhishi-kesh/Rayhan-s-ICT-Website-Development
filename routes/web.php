@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SuccessStoryController;
 use App\Http\Controllers\Admin\MeetOurMentorsController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\AuthorisedController;
+use App\Http\Controllers\Admin\FAQController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -78,6 +80,18 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::post('/authorised-post', [AuthorisedController::class, 'authorisedPost'])->name('authorisedPost');
     Route::post('/authorised-edit', [AuthorisedController::class, 'authorisedEdit'])->name('authorisedEdit');
     Route::get('/authorised-delete/{id}', [AuthorisedController::class, 'authorisedDelete'])->name('authorisedDelete');
+
+    //Department
+    Route::get('/department', [CourseController::class, 'department'])->name('department');
+    Route::post('/department-post', [CourseController::class, 'departmentPost'])->name('departmentPost');
+    Route::post('/department-edit', [CourseController::class, 'departmentEdit'])->name('departmentEdit');
+    Route::get('/department-delete/{id}', [CourseController::class, 'departmentDelete'])->name('departmentDelete');
+
+    // FAQ
+    Route::get('/faq', [FAQController::class, 'faq'])->name('faq');
+    Route::post('/faq-post', [FAQController::class, 'faqPost'])->name('faqPost');
+    Route::post('/faq-edit', [FAQController::class, 'faqEdit'])->name('faqEdit');
+    Route::get('/faq-delete/{id}', [FAQController::class, 'faqDelete'])->name('faqDelete');
 
 });
 

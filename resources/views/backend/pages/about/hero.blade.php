@@ -37,10 +37,20 @@
                     <div class="col-md-6">
                         <label for="thumbnail" class="form-label">Hero Thumbnail</label>
                         <input type="file" class="mt-2 form-control form-control-lg rounded-1 @error('thumbnail') is-invalid @enderror" name="thumbnail" id="thumbnail" placeholder="thumbnail url">
-                        <img src="{{ asset('storage/heroInformation/'. $heroInformation->thumbnail) }}" alt="" width="180">
                         @error('thumbnail')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+                        <img src="{{ asset('storage/heroInformation/'. $heroInformation->thumbnail) }}" alt="" width="180" id="thumbnail_image">
+                        @section('jss')
+                            <script>
+                                thumbnail.onchange = evt => {
+                                const [file] = thumbnail.files
+                                if (file) {
+                                    thumbnail_image.src = URL.createObjectURL(file)
+                                }
+                            }
+                            </script>
+                        @endsection
                     </div>
                     <div class="col-12">
                         <div class="d-md-flex align-items-center mt-3">
