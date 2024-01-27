@@ -75,8 +75,8 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
 
     // Authorised
     Route::get('/authorised', [AuthorisedController::class, 'authorised'])->name('authorised');
-    Route::get('/authorised-post', [AuthorisedController::class, 'authorisedPost'])->name('authorisedPost');
-    Route::get('/authorised-edit', [AuthorisedController::class, 'authorisedEdit'])->name('authorisedEdit');
+    Route::post('/authorised-post', [AuthorisedController::class, 'authorisedPost'])->name('authorisedPost');
+    Route::post('/authorised-edit', [AuthorisedController::class, 'authorisedEdit'])->name('authorisedEdit');
     Route::get('/authorised-delete/{id}', [AuthorisedController::class, 'authorisedDelete'])->name('authorisedDelete');
 
 });
