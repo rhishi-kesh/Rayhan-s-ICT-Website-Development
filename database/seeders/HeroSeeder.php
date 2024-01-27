@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,8 @@ class HeroSeeder extends Seeder
                 'title' => "Rayhan's ICT dolor amet consectetur adipisicing elit. Et?",
                 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptas rerum veniam consequuntur enim. Nemo nostrum, autem architecto consequuntur.',
                 'video' => 'https://youtu.be/olEj-7QEsj4?si=tUbrqMi3yhhws1YM',
-                'thumbnail' => 'banner.jpg'
+                'thumbnail' => 'banner.jpg',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]
         );
         File::copy(

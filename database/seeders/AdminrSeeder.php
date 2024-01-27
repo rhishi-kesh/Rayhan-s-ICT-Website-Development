@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Crypt;
@@ -21,7 +22,8 @@ class AdminrSeeder extends Seeder
             'name'=> 'admin',
             'email'=> 'admin@gmail.com',
             'password'=> Hash::make($password),
-            'position'=> 'user'
+            'position'=> 'user',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
     }
 }

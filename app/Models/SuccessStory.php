@@ -11,8 +11,8 @@ class SuccessStory extends Model
 
     protected $table = 'success_stories';
 
-    // protected $fillable = [
-    //     'thumbnail',
-    //     'video_link'
-    // ];
+    protected $fillable = [
+        'thumbnail',
+        'video_link'
+    ];
 }

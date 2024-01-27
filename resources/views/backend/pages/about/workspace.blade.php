@@ -103,8 +103,19 @@
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div class="note-title">
-                                    <label for="image">Image</label>
-                                    <input type="file" id="image" class="form-control @error('image') is-invalid @enderror" name="image">
+                                    <label for="image_demo">Image</label>
+                                    <input type="file" id="workshop_image" class="form-control @error('image') is-invalid @enderror" name="image">
+                                    <img src="#" alt="Image Preview" width="180" id="image_demo">
+                                    @section('jss')
+                                        <script>
+                                            workshop_image.onchange = evt => {
+                                            const [file] = workshop_image.files
+                                            if (file) {
+                                                image_demo.src = URL.createObjectURL(file)
+                                            }
+                                        }
+                                        </script>
+                                    @endsection
                                     @error('image')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
