@@ -3,7 +3,7 @@
 <div class="table-responsive rounded-2 mb-4">
     <a href="#addData" data-bs-toggle="modal" class="btn btn-secondary btn-lg mb-3">
         <i class="fs-4 ti ti-plus"></i>
-        Add new
+        Add new Course
     </a>
     <table class="table border text-nowrap customize-table mb-3 align-middle">
         @if(Session::has('success'))
@@ -112,7 +112,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content border-0">
                 <div class="modal-header bg-primary">
-                  <h6 class="modal-title text-white">Edit WorkSpace Image</h6>
+                  <h6 class="modal-title text-white">Edit Course</h6>
                   <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('courseEdit') }}" method="POST" id="addnotesmodalTitle" enctype="multipart/form-data">

@@ -174,7 +174,7 @@ class AboutController extends Controller
         return view('backend.pages.about.workspace', compact('workspace'));
     }
     public function workspacePost(Request $request){
-        $request->validate([
+        $request->validateWithBag('insert',[
             'image' => [
                 'image',
                 'mimes:jpg,png,jpeg',
@@ -196,7 +196,7 @@ class AboutController extends Controller
         return back()->with('success','Image Add Successfull');
     }
     public function workspaceEdit(Request $request){
-        $request->validate([
+        $request->validateWithBag('update',[
             'image' => [
                 'image',
                 'mimes:jpg,png,jpeg',

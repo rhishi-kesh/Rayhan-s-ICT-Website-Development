@@ -142,4 +142,14 @@
         </div>
       </div>
   </div>
+  @section('jss')
+      <script>
+          workshop_image.onchange = evt => {
+          const [file] = workshop_image.files
+          if (file) {
+              image_demo.src = URL.createObjectURL(file)
+          }
+      }
+      </script>
+  @endsection
 @endsection
