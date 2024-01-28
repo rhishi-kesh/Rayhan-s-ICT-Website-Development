@@ -32,7 +32,9 @@
                 <span> {{$review->firstItem()+$key}} </span>
             </td>
             <td  class="text-center">
-                {!!$item->review!!}
+                <div style="overflow: auto; height: 200px; width: 800px; margin: auto">
+                    {!!$item->review!!}
+                </div>
             </td>
             <td class="text-end">
                 <div class="dropdown dropstart">

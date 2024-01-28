@@ -138,123 +138,15 @@
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="{{ route('authorised') }}" aria-expanded="false">
-            <span class="fas fa-comment-dots"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-scan" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M4 8v-2a2 2 0 0 1 2 -2h2" /><path d="M4 16v2a2 2 0 0 0 2 2h2" /><path d="M16 4h2a2 2 0 0 1 2 2v2" /><path d="M16 20h2a2 2 0 0 0 2 -2v-2" /><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" /></svg>
             <span class="hide-menu"> Authorised By </span>
           </a>
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="{{ route('faq') }}" aria-expanded="false">
-            <span class="fas fa-comment-dots"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help-hexagon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z" /><path d="M12 16v.01" /><path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
             <span class="hide-menu"> FAQ </span>
           </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-            <span class="d-flex">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M12.684 3.27l.084 .09l4.7 5.64h3.532a1 1 0 0 1 .991 1.131l-.02 .112l-1.984 7.918c-.258 1.578 -1.41 2.781 -2.817 2.838l-.17 .001l-10.148 -.002c-1.37 -.053 -2.484 -1.157 -2.787 -2.57l-.035 -.185l-2 -8a1 1 0 0 1 .857 -1.237l.113 -.006h3.53l4.702 -5.64a1 1 0 0 1 1.452 -.09zm-.684 8.73a3 3 0 0 0 -2.98 2.65l-.015 .174l-.005 .176l.005 .176a3 3 0 1 0 2.995 -3.176zm0 -6.438l-2.865 3.438h5.73l-2.865 -3.438z" stroke-width="0" fill="currentColor"></path>
-                 </svg>
-            </span>
-            <span class="hide-menu">Course</span>
-          </a>
-          <ul aria-expanded="false" class="collapse first-level">
-            <li class="sidebar-item">
-              <a href="blog-posts.html" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Department</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a href="blog-detail.html" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Courses</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="sidebar-item">
-          <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-            <span class="d-flex">
-              <i class="ti ti-user-plus"></i>
-            </span>
-            <span class="hide-menu">Register</span>
-          </a>
-          <ul aria-expanded="false" class="collapse first-level">
-            <li class="sidebar-item">
-              <a href="authentication-register.html" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Side Register</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a href="authentication-register2.html" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Boxed Register</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-            <span class="d-flex">
-              <i class="ti ti-rotate"></i>
-            </span>
-            <span class="hide-menu">Forgot Password</span>
-          </a>
-          <ul aria-expanded="false" class="collapse first-level">
-            <li class="sidebar-item">
-              <a href="authentication-forgot-password.html" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Side Forgot Password</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a href="authentication-forgot-password2.html" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Boxed Forgot Password</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-            <span class="d-flex">
-              <i class="ti ti-zoom-code"></i>
-            </span>
-            <span class="hide-menu">Two Steps</span>
-          </a>
-          <ul aria-expanded="false" class="collapse first-level">
-            <li class="sidebar-item">
-              <a href="authentication-two-steps.html" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Side Two Steps</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a href="authentication-two-steps2.html" class="sidebar-link">
-                <div class="round-16 d-flex align-items-center justify-content-center">
-                  <i class="ti ti-circle"></i>
-                </div>
-                <span class="hide-menu">Boxed Two Steps</span>
-              </a>
-            </li>
-          </ul>
         </li>
       </ul>
     </nav>
