@@ -19,29 +19,28 @@ class AuthController extends Controller
         return view('auth.admin.login');
     }
     public function loginPost(Request $request){
-        $request->validate(
-            [
-                'email'=> 'required|email',
-                'password'=> 'required|min:4| max:15'
-            ] );
-            $user = User::where('email', '=' , $request->email)->first();
-            if($user){
-                if(Hash::check($request->password, $user->password)){
-                    $request->session()->put('loginId', $user->id);
-                    return redirect()->route('dashboard');
-                }else{
-                    return back()->with('error', 'password not match, try again!');
-                }
-            }else{
-                return back()->with('error', 'This Email is invalid!');
-            }
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+ 
+            return redirect()->route('dashboard');
+        }
+        return back()->withErrors([
+            'email' => 'Email/Password is invalid',
+        ]);
     }
 
-    public function logout(){
-        if(Session::has('loginId')){
-            Session::pull('loginId');
-            return redirect()->route('login');
-        }
+    public function logout(Request $request){
+        Auth::logout();
+ 
+        $request->session()->invalidate();
+     
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
     }
 
     public function register(){
@@ -51,10 +50,10 @@ class AuthController extends Controller
     public function registerPost(Request $request){
 
         $request->validate([
-            'name'=> 'required|string|max:20',
-            'email'=> 'required|email|max:200',
+            'name'=> 'required|string',
+            'email'=> 'required|email',
             'role' => 'required',
-            'password'=> 'required|min:4|confirmed'
+            'password'=> 'required|min:8|confirmed'
         ]);
 
         User::create([
@@ -63,9 +62,6 @@ class AuthController extends Controller
             'role'=> $request->role,
             'password' => Hash::make($request->password)
         ]);
-        $credentials = $request->only('email', 'password');
-        Auth::attempt($credentials);
-        $request->session()->regenerate();
         return redirect()->route('dashboard')->withSuccess('You have successfully registered');
     }
 }

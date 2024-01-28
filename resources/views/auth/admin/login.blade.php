@@ -22,29 +22,16 @@
               
               <form method="POST" action="{{ route('loginPost')}}">
                 @csrf
-                @if(Session::has('success'))
-                  <div class="alert alert-success"> {{ Session::get('success')}} </div>
-                @endif
-                @if(Session::has('error'))
-                  <div class="alert alert-danger"> {{ Session::get('error')}} </div>
-                @endif
+                @error('email')
+                  <div class="alert alert-danger">{{ ($message) }}</div>
+                @enderror
                 <div class="mb-4">                  
                   <label for="email" class="form-label">Email</label>
                   <input type="text" name="email" class="form-control" value="{{ old('email')}}" placeholder="Enter Your Email">
-                  <span class="text-danger">
-                    @error('email')
-                        {{ ($message) }}
-                    @enderror
-                  </span>
                 </div>
                 <div class="mb-4">
                   <label for="password" class="form-label">Password</label>
                   <input type="password" name="password" class="form-control" value="{{ old('password')}}"  placeholder="Enter Your Password">
-                  <span class="text-danger" >
-                    @error('password')
-                        {{ ($message) }}
-                    @enderror
-                  </span>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 rounded-2">Login</button>
               </form>

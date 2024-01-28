@@ -37,7 +37,7 @@
                 <span>{{ $item->name }}</span>
             </td>
             <td class="text-center">
-                <span>{{ $item->department->departmentName }}</span>
+                <span>{{ $item->department->departmentName ?? "N/A" }}</span>
             </td>
             <td class="switch-sm text-center">
                 <div class="form-check form-switch d-flex justify-content-center">
@@ -138,7 +138,7 @@
                                                     <option value="{{ $item_dep->id }}" @if($item_dep->id == $item->department_id) selected @endif>{{ $item_dep->departmentName }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('department_id','insert')
+                                            @error('department_id','update')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
