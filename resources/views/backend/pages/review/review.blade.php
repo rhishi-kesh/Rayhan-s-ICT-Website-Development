@@ -31,9 +31,15 @@
             <td>
                 <span> {{$review->firstItem()+$key}} </span>
             </td>
+<<<<<<< HEAD
             <td  class="text-center" >
                 <div style="width: 400px; height:100px;margin:auto; overflow: auto">
                 {!!$item->review!!}
+=======
+            <td  class="text-center">
+                <div style="overflow: auto; height: 200px; width: 800px; margin: auto">
+                    {!!$item->review!!}
+>>>>>>> bfc28b0205adc6ba882af2ac9ab1f9edb85c260e
                 </div>
             </td>
             <td class="text-end">

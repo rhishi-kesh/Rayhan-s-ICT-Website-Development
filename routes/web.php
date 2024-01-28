@@ -101,10 +101,12 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::post('/seminar-edit',[SeminarController::class, 'seminarEdit'])->name('seminarEdit');
     Route::get('/seminar-delete/{id}',[SeminarController::class, 'seminarDelete'])->name('seminarDelete');
     //Department
+    //Course
     Route::get('/courses', [CourseController::class, 'courses'])->name('courses');
     Route::post('/course-post', [CourseController::class, 'coursePost'])->name('coursePost');
     Route::post('/course-edit', [CourseController::class, 'courseEdit'])->name('courseEdit');
     Route::get('/course-delete/{id}', [CourseController::class, 'courseDelete'])->name('courseDelete');
+    Route::post('/staus', [CourseController::class, 'staus'])->name('staus');
 
     // Webinar
     Route::get('/webinar', [WebinarController::class, 'webinar'])->name('webinar');

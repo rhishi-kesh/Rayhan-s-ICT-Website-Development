@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Department;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class CourseController extends Controller
             Department::insert([
                 'departmentName' => $request->name,
                 'image' => $filename,
-                'created_at' => Carbon::now()
+                'updated_at' => Carbon::now()
             ]);
         }
         return back()->with('success','Image Update Successfull');
@@ -73,10 +74,62 @@ class CourseController extends Controller
         unlink(public_path('storage/department/').'/'.$content->image);
         Department::findOrFail($id)->delete();
 
-        return back()->with('delete','Gallery Image Deleted Successfull');
+        return back()->with('delete','Department Deleted Successfull');
     }
     public function courses(){
-        $courses = Department::paginate(10);
-        return view('backend.pages.course.course', compact('courses'));
+        $courses = Course::with(['department:id,departmentName'])->paginate(10);
+        $departments = Department::select('departmentName','id')->get();
+        return view('backend.pages.course.course', compact('courses', 'departments'));
+    }
+    public function coursePost(Request $request){
+        $request->validateWithBag('insert',[
+            'name' => 'required',
+            'department_id' => 'required',
+        ]);
+
+        Course::insert([
+            'department_id' => $request->department_id,
+            'name' => $request->name,
+            'created_at' => Carbon::now()
+        ]);
+
+        return back()->with('success','Image Insert Successfull');
+    }
+    public function courseEdit(Request $request){
+        $request->validateWithBag('insert',[
+            'name' => 'required',
+            'department_id' => 'required',
+        ]);
+
+        $id = $request->id;
+        Course::where('id', $id)->update([
+            'department_id' => $request->department_id,
+            'name' => $request->name,
+            'updated_at' => Carbon::now()
+        ]);
+        return back()->with('success','Image Update Successfull');
+    }
+    public function courseDelete($id){
+        Course::findOrFail($id)->delete();
+
+        return back()->with('error','Course Deleted Successfull');
+    }
+    public function staus(Request $request){
+        $id = $request->id;
+        $courses = Course::where('id',$id)->first();
+        if($courses->is_active == 0){
+            Course::where('id',$id)->update([
+                'is_active' => '1',
+                'updated_at' => Carbon::now()
+            ]);
+        }else{
+            Course::where('id',$id)->update([
+                'is_active' => '0',
+                'updated_at' => Carbon::now()
+            ]);
+        }
+        return response()->json([
+            'status' => "OK",
+        ]);
     }
 }

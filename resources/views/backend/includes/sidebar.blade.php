@@ -138,16 +138,17 @@
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="{{ route('authorised') }}" aria-expanded="false">
-            <span class="fas fa-comment-dots"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-scan" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M4 8v-2a2 2 0 0 1 2 -2h2" /><path d="M4 16v2a2 2 0 0 0 2 2h2" /><path d="M16 4h2a2 2 0 0 1 2 2v2" /><path d="M16 20h2a2 2 0 0 0 2 -2v-2" /><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" /></svg>
             <span class="hide-menu"> Authorised By </span>
           </a>
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="{{ route('faq') }}" aria-expanded="false">
-            <span class="fas fa-comment-dots"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help-hexagon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z" /><path d="M12 16v.01" /><path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
             <span class="hide-menu"> FAQ </span>
           </a>
         </li>
+<<<<<<< HEAD
         <li class="sidebar-item">
           <a class="sidebar-link" href="{{route('seminar')}}" aria-expanded="false">
             <span class="fas fa-comment-dots"></span>
@@ -268,6 +269,8 @@
             </li>
           </ul>
         </li>
+=======
+>>>>>>> bfc28b0205adc6ba882af2ac9ab1f9edb85c260e
       </ul>
     </nav>
     <!-- End Sidebar navigation -->
