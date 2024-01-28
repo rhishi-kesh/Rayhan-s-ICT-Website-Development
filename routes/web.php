@@ -87,7 +87,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::get('/department-delete/{id}', [CourseController::class, 'departmentDelete'])->name('departmentDelete');
 
     //Department
-    Route::get('/course', [CourseController::class, 'course'])->name('course');
+    Route::get('/courses', [CourseController::class, 'courses'])->name('courses');
     Route::post('/course-post', [CourseController::class, 'coursePost'])->name('coursePost');
     Route::post('/course-edit', [CourseController::class, 'courseEdit'])->name('courseEdit');
     Route::get('/course-delete/{id}', [CourseController::class, 'courseDelete'])->name('courseDelete');

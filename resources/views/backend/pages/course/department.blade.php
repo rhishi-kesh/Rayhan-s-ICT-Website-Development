@@ -12,6 +12,12 @@
                     {{ Session::get('success') }}
                 </div>
         @endif
+        @if(Session::has('delete'))
+                <div class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                    {{ Session::get('delete') }}
+                </div>
+        @endif
       <thead class="text-dark fs-4">
         <tr>
           <th><h6 class="fs-4 fw-semibold mb-0">SL</h6></th>
@@ -42,7 +48,7 @@
                         <a class="dropdown-item d-flex align-items-center gap-3" href="#editData{{ $item->id }}" data-bs-toggle="modal"><i class="fs-4 ti ti-edit"></i>Edit</a>
                         </li>
                         <li>
-                        <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('workspaceDelete',$item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
+                        <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('departmentDelete',$item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
                         </li>
                     </ul>
                 </div>
@@ -66,14 +72,14 @@
                                         <div class="note-title">
                                             <label for="name">Department Name</label>
                                             <input type="text" value="{{ $item->departmentName }}" id="name" class="form-control @error('name') is-invalid @enderror" name="name">
-                                            @error('name')
+                                            @error('name','update')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="note-title">
                                             <label for="workshop_imageu{{ $item->id }}">Image</label>
                                             <input type="file" id="workshop_imageu{{ $item->id }}" class="form-control @error('image') is-invalid @enderror" name="image">
-                                            @error('image')
+                                            @error('image','update')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                             <img src="{{ asset('storage/department/') }}/{{ $item->image }}" alt="" width="60" height="60" class="mt-2" id="image_demou{{ $item->id }}">
@@ -92,7 +98,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="btn-n-add" type="submit" class="btn btn-primary">Update</button>
+                        <button id="btn-n-add" name="sub" type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
               </div>
@@ -124,14 +130,14 @@
                                     <div class="note-title">
                                         <label for="name">Department Name</label>
                                         <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="Name">
-                                        @error('name')
+                                        @error('name','insert')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="note-title">
                                         <label for="workshop_imagei">Image</label>
                                         <input type="file" id="workshop_imagei" class="form-control @error('image') is-invalid @enderror" name="image">
-                                        @error('image')
+                                        @error('image','insert')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                         <img src="#" alt="Image Preview" width="180" id="image_demoi">
@@ -143,7 +149,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-danger" data-bs-dismiss="modal">Discard</button>
-                    <button id="btn-n-add" type="submit" class="btn btn-primary">Add</button>
+                    <button id="btn-n-add" name="name2" type="submit" class="btn btn-primary">Add</button>
                 </div>
             </form>
           </div>
