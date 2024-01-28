@@ -14,7 +14,7 @@ class CourseController extends Controller
         return view('backend.pages.course.department', compact('departments'));
     }
     public function departmentPost(Request $request){
-        $request->validate([
+        $request->validateWithBag('insert',[
             'name' => 'required',
             'image' => [
                 'image',
@@ -38,7 +38,7 @@ class CourseController extends Controller
         return back()->with('success','Image Update Successfull');
     }
     public function departmentEdit(Request $request){
-        $request->validate([
+        $request->validateWithBag('update',[
             'name' => 'required',
             'image' => [
                 'image',
@@ -75,7 +75,7 @@ class CourseController extends Controller
 
         return back()->with('delete','Gallery Image Deleted Successfull');
     }
-    public function course(){
+    public function courses(){
         $courses = Department::paginate(10);
         return view('backend.pages.course.course', compact('courses'));
     }

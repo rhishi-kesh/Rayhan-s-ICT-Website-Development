@@ -65,7 +65,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a href="blog-detail.html" class="sidebar-link">
+              <a href="{{ route('courses') }}" class="sidebar-link">
                 <div class="round-16 d-flex align-items-center justify-content-center">
                   <i class="ti ti-circle"></i>
                 </div>
@@ -152,6 +152,12 @@
           <a class="sidebar-link" href="{{route('seminar')}}" aria-expanded="false">
             <span class="fas fa-comment-dots"></span>
             <span class="hide-menu"> Seminar </span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{route('webinar')}}" aria-expanded="false">
+            <span class="fas fa-comment-dots"></span>
+            <span class="hide-menu"> Webinar </span>
           </a>
         </li>
         <li class="sidebar-item">

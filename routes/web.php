@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\AuthorisedController;
 use App\Http\Controllers\Admin\FAQController;
 use App\Http\Controllers\Admin\SeminarController;
+use App\Http\Controllers\Admin\WebinarController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -93,17 +94,23 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::post('/faq-post', [FAQController::class, 'faqPost'])->name('faqPost');
     Route::post('/faq-edit', [FAQController::class, 'faqEdit'])->name('faqEdit');
     Route::get('/faq-delete/{id}', [FAQController::class, 'faqDelete'])->name('faqDelete');
-    // //Department
-    // Route::get('/course', [CourseController::class, 'course'])->name('course');
-    // Route::post('/course-post', [CourseController::class, 'coursePost'])->name('coursePost');
-    // Route::post('/course-edit', [CourseController::class, 'courseEdit'])->name('courseEdit');
-    // Route::get('/course-delete/{id}', [CourseController::class, 'courseDelete'])->name('courseDelete');
-
+   
     //Seminar
     Route::get('/seminar',[SeminarController::class, 'seminar'])->name('seminar');
     Route::post('/seminar-post',[SeminarController::class, 'seminarPost'])->name('seminarPost');
     Route::post('/seminar-edit',[SeminarController::class, 'seminarEdit'])->name('seminarEdit');
     Route::get('/seminar-delete/{id}',[SeminarController::class, 'seminarDelete'])->name('seminarDelete');
+    //Department
+    Route::get('/courses', [CourseController::class, 'courses'])->name('courses');
+    Route::post('/course-post', [CourseController::class, 'coursePost'])->name('coursePost');
+    Route::post('/course-edit', [CourseController::class, 'courseEdit'])->name('courseEdit');
+    Route::get('/course-delete/{id}', [CourseController::class, 'courseDelete'])->name('courseDelete');
+
+    // Webinar
+    Route::get('/webinar', [WebinarController::class, 'webinar'])->name('webinar');
+    Route::post('/webinar-post', [WebinarController::class, 'webinarPost'])->name('webinarPost');
+    Route::post('/webinar-edit', [WebinarController::class, 'webinarEdit'])->name('webinarEdit');
+    Route::get('/webinar-delete/{id}', [WebinarController::class, 'webinarDelete'])->name('webinarDelete');
 
 });
 
