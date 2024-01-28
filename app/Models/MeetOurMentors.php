@@ -10,4 +10,5 @@ class MeetOurMentors extends Model
     use HasFactory;
 
     protected $table = 'meet_our_mentors';
+    // protected $fillable = ['name','designation','image','thumbnail'];
 }

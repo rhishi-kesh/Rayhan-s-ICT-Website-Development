@@ -6,6 +6,18 @@
         Add new
     </a>
     <table class="table border text-nowrap customize-table mb-0 align-middle">
+      @if(Session::has('success'))
+        <div class="alert bg-success text-white alert-dismissible border-0 fade show" role="alert">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ Session::get('success') }}
+        </div>
+      @endif
+      @if(Session::has('error'))
+        <div class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ Session::get('error') }}
+        </div>
+      @endif
       <thead class="text-dark fs-4">
         <tr>
           <th><h6 class="fs-4 fw-semibold mb-0">SL</h6></th>

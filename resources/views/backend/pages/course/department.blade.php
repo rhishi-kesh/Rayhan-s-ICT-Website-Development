@@ -12,12 +12,12 @@
                     {{ Session::get('success') }}
                 </div>
         @endif
-        @if(Session::has('delete'))
-                <div class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-                    {{ Session::get('delete') }}
-                </div>
-        @endif
+        @if(Session::has('error'))
+        <div class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ Session::get('error') }}
+        </div>
+       @endif
       <thead class="text-dark fs-4">
         <tr>
           <th><h6 class="fs-4 fw-semibold mb-0">SL</h6></th>
@@ -48,7 +48,7 @@
                         <a class="dropdown-item d-flex align-items-center gap-3" href="#editData{{ $item->id }}" data-bs-toggle="modal"><i class="fs-4 ti ti-edit"></i>Edit</a>
                         </li>
                         <li>
-                        <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('departmentDelete',$item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
+                        <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('workspaceDelete',$item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
                         </li>
                     </ul>
                 </div>

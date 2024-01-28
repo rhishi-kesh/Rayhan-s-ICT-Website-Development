@@ -6,6 +6,18 @@
         Add new Mentors
     </a>
     <table class="table border text-nowrap customize-table mb-0 align-middle">
+      @if(Session::has('success'))
+        <div class="alert bg-success text-white alert-dismissible border-0 fade show" role="alert">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ Session::get('success') }}
+        </div>
+      @endif
+      @if(Session::has('error'))
+        <div class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ Session::get('error') }}
+        </div>
+      @endif
       <thead class="text-dark fs-4">
         <tr>
           <th><h6 class="fs-4 fw-semibold mb-0">SL</h6></th>
@@ -66,7 +78,6 @@
                           <div class="notes-content">
                               <div class="row">
                                 <div class="col-md-12 mb-3">
-
                                     <div class="note-title mt-3">
                                         <label for="name"> Name </label>
                                         <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$item->name}}" placeholder="Enter Name">
@@ -83,7 +94,7 @@
                                     </div>
                                     <div class="note-title mt-3">
                                       <label for="image">Image</label>
-                                      <input type="file" id="image"  value="{{$item->image}}"  class="form-control @error('image') is-invalid @enderror" name="image">
+                                      <input type="file" id="image" class="form-control @error('image') is-invalid @enderror" name="image">
                                       <img src="{{ asset('storage/mentors/image/') }}/{{ $item->image }}" alt="" width="60" height="60">
 
                                       @error('image')
@@ -92,7 +103,7 @@
                                     </div>
                                     <div class="note-title mt-3">
                                       <label for="thumbnail">Thumbnail</label>
-                                      <input type="file" id="thumbnail"  value="{{$item->thumbnail}}"  class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
+                                      <input type="file" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
                                       <img src="{{ asset('storage/mentors/thumbnail/') }}/{{ $item->thumbnail }}" alt="" width="60" height="60">
                                       @error('thumbnail')
                                         <div class="alert alert-danger">{{ $message }}</div>

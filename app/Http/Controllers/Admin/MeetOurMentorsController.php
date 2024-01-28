@@ -18,8 +18,8 @@ class MeetOurMentorsController extends Controller
 
     public function meetOurMentorsPost(Request $request){
         $request->validate([
-            'name'=> 'required|min:4',
-            'designation'=> 'required|min:5',
+            'name'=> 'required',
+            'designation'=> 'required',
             'image'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
             'thumbnail'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
         ]);
@@ -45,8 +45,8 @@ class MeetOurMentorsController extends Controller
     }
     public function meetOurMentorsEdit(Request $request){
         $request->validate([
-            'name'=> 'required|min:4',
-            'designation'=> 'required|min:5',
+            'name'=> 'required',
+            'designation'=> 'required',
             'image'=> ['image', 'mimes:jpg,png,jpeg'],
             'thumbnail'=> ['image', 'mimes:jpg,png,jpeg'],
         ]);
@@ -55,28 +55,28 @@ class MeetOurMentorsController extends Controller
 
         $filename = '';
         if($request->hasFile('image') ){
-            $filename = rand().'.'.$request->image->getClientOriginalExtension();
-            unlink(public_path('storage/mentors/image').'/'. $getData->image);
-            $request->image->move(public_path('storage/mentors/image'),$filename);
+            $filename = time().'.'.$request->image->extension();
+            unlink('storage/mentors/image/'. $getData->image);
+            $request->image->storeAs('public/mentors/image', $filename);
         }else{
             $filename = $getData->image;
         }
 
         $thumbnailname = '';
         if($request->hasFile('thumbnail') ){
-            $thumbnailname = rand().'.'.$request->thumbnail->getClientOriginalExtension();
-            unlink(public_path('storage/mentors/thumbnail').'/'. $getData->thumbnail);
-            $request->thumbnail->move(public_path('storage/mentors/thumbnail'),$thumbnailname);
+            $thumbnailname = time().'.'.$request->thumbnail->extension();
+            unlink('storage/mentors/thumbnail/'. $getData->thumbnail);
+            $request->thumbnail->storeAs('public/mentors/thumbnail',$thumbnailname);
         }else{
             $thumbnailname = $getData->thumbnail;
         }
         
         MeetOurMentors::where('id', $id)->update([
-            'name'        => $request->name,
+            'name' => $request->name,
             'designation' => $request->designation,
-            'image'       =>$filename,
-            'thumbnail'   =>$thumbnailname,
-            'created_at'  => Carbon::now()
+            'image' => $filename,
+            'thumbnail' => $thumbnailname,
+            'created_at' => Carbon::now()
         ]);
         return back()->with('success', 'Edit Update Successfully');
     }
