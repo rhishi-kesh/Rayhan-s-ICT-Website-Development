@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\MeetOurMentorsController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\AuthorisedController;
 use App\Http\Controllers\Admin\FAQController;
+use App\Http\Controllers\Admin\SeminarController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -92,11 +93,17 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::post('/faq-post', [FAQController::class, 'faqPost'])->name('faqPost');
     Route::post('/faq-edit', [FAQController::class, 'faqEdit'])->name('faqEdit');
     Route::get('/faq-delete/{id}', [FAQController::class, 'faqDelete'])->name('faqDelete');
-    //Department
-    Route::get('/course', [CourseController::class, 'course'])->name('course');
-    Route::post('/course-post', [CourseController::class, 'coursePost'])->name('coursePost');
-    Route::post('/course-edit', [CourseController::class, 'courseEdit'])->name('courseEdit');
-    Route::get('/course-delete/{id}', [CourseController::class, 'courseDelete'])->name('courseDelete');
+    // //Department
+    // Route::get('/course', [CourseController::class, 'course'])->name('course');
+    // Route::post('/course-post', [CourseController::class, 'coursePost'])->name('coursePost');
+    // Route::post('/course-edit', [CourseController::class, 'courseEdit'])->name('courseEdit');
+    // Route::get('/course-delete/{id}', [CourseController::class, 'courseDelete'])->name('courseDelete');
+
+    //Seminar
+    Route::get('/seminar',[SeminarController::class, 'seminar'])->name('seminar');
+    Route::post('/seminar-post',[SeminarController::class, 'seminarPost'])->name('seminarPost');
+    Route::post('/seminar-edit',[SeminarController::class, 'seminarEdit'])->name('seminarEdit');
+    Route::get('/seminar-delete/{id}',[SeminarController::class, 'seminarDelete'])->name('seminarDelete');
 
 });
 
