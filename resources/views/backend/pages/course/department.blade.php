@@ -3,7 +3,7 @@
 <div class="table-responsive rounded-2 mb-4">
     <a href="#addData" data-bs-toggle="modal" class="btn btn-secondary btn-lg mb-3">
         <i class="fs-4 ti ti-plus"></i>
-        Add new Department
+        Add Department
     </a>
     <table class="table border text-nowrap customize-table mb-3 align-middle">
         @if(Session::has('success'))
@@ -48,7 +48,7 @@
                         <a class="dropdown-item d-flex align-items-center gap-3" href="#editData{{ $item->id }}" data-bs-toggle="modal"><i class="fs-4 ti ti-edit"></i>Edit</a>
                         </li>
                         <li>
-                        <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('workspaceDelete',$item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
+                        <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('departmentDelete',$item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
                         </li>
                     </ul>
                 </div>
@@ -82,7 +82,7 @@
                                             @error('image','update')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
-                                            <img src="{{ asset('storage/department/') }}/{{ $item->image }}" alt="" width="60" height="60" class="mt-2" id="image_demou{{ $item->id }}">
+                                            <img src="{{ asset('storage/department/') }}/{{ $item->image }}" alt="Preview image" width="60" height="60" class="mt-2" id="image_demou{{ $item->id }}">
                                             <script>
                                                 workshop_imageu{{ $item->id }}.onchange = evt => {
                                                 const [file] = workshop_imageu{{ $item->id }}.files
@@ -140,7 +140,7 @@
                                         @error('image','insert')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-                                        <img src="#" alt="Image Preview" width="180" id="image_demoi">
+                                        <img src="#" alt="Image Preview" width="120" id="image_demoi">
                                     </div>
                                 </div>
                             </div>

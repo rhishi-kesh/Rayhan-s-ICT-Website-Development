@@ -80,29 +80,37 @@
                                      <div class="note-title mt-3">
                                         <label for="title">Title</label>
                                         <input type="title"  placeholder="Enter title" value="{{ $item->title }}" id="title" class="form-control @error('title') is-invalid @enderror" name="title">
-                                        @error('title')
+                                        @error('title' , 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                       </div>
                                       <div class="note-title">
-                                        <label for="thumbnail">Thumbnail</label>
-                                        <input type="file" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
-                                        <img src="{{ asset('storage/seminar/') }}/{{ $item->thumbnail }}" alt="" id="thumbnail_p" width="60" height="60">
-                                        @error('thumbnail')
+                                        <label for="thumbnailImage{{ $item->id }}">Thumbnail</label>
+                                        <input type="file" id="thumbnailImage{{ $item->id }}" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
+                                        @error('thumbnail', 'update')
                                           <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+                                        <img id="thumbnailImage_p{{ $item->id }}" src="{{ asset('storage/seminar/') }}/{{ $item->thumbnail }}" alt="" id="thumbnail_p" width="60" height="60">
+                                        <script>
+                                            thumbnailImage{{ $item->id }}.onchange = evt => {
+                                            const[file] = thumbnailImage{{ $item->id }}.files
+                                            if(file){
+                                              thumbnailImage_p{{ $item->id }}.src = URL.createObjectURL(file)
+                                              }
+                                            }
+                                        </script>
                                       </div>
                                       <div class="note-title mt-3">
                                         <label for="date">Date</label>
                                         <input type="date" value="{{ $item->date }}" id="date" class="form-control @error('date') is-invalid @enderror" name="date">
-                                        @error('date')
+                                        @error('date', 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                       </div>
                                       <div class="note-title mt-3">
                                         <label for="time">Time</label>
                                         <input type="time" value="{{ $item->time }}" id="time" class="form-control @error('time') is-invalid @enderror" name="time">
-                                        @error('time')
+                                        @error('time', 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                       </div>

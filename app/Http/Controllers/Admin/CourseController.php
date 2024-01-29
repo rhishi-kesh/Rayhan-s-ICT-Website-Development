@@ -36,7 +36,7 @@ class CourseController extends Controller
                 'updated_at' => Carbon::now()
             ]);
         }
-        return back()->with('success','Image Update Successfull');
+        return back()->with('success','Department insert Successfull');
     }
     public function departmentEdit(Request $request){
         $request->validateWithBag('update',[
@@ -67,14 +67,14 @@ class CourseController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return back()->with('success','Image Update Successfull');
+        return back()->with('success','Department Update Successfull');
     }
     public function departmentDelete($id){
         $content = Department::findOrFail($id);
         unlink(public_path('storage/department/').'/'.$content->image);
         Department::findOrFail($id)->delete();
 
-        return back()->with('delete','Department Deleted Successfull');
+        return back()->with('error','Department Deleted Successfull');
     }
     public function courses(){
         $courses = Course::with(['department:id,departmentName'])->paginate(10);
@@ -93,7 +93,7 @@ class CourseController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return back()->with('success','Image Insert Successfull');
+        return back()->with('success','Course Insert Successfull');
     }
     public function courseEdit(Request $request){
         $request->validateWithBag('insert',[

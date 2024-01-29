@@ -3,7 +3,7 @@
 <div class="table-responsive rounded-2 mb-4">
     <a href="#addData" data-bs-toggle="modal" class="btn btn-secondary btn-lg mb-3">
         <i class="fs-4 ti ti-plus"></i>
-        Add new
+        Add WorkSpace
     </a>
     <table class="table border text-nowrap customize-table mb-3 align-middle">
         @if(Session::has('success'))
@@ -13,7 +13,7 @@
                 </div>
         @endif
         @if(Session::has('error'))
-                <div class="alert bg-success text-white alert-dismissible border-0 fade show" role="alert">
+                <div class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                     {{ Session::get('error') }}
                 </div>
@@ -66,12 +66,12 @@
                                     <input type="hidden" id="id" name="id" value="{{ $item->id }}">
                                     <div class="col-md-12 mb-3">
                                         <div class="note-title">
-                                        <label for="imageu">Image</label>
-                                        <input type="file" id="imageu" class="form-control @error('image') is-invalid @enderror" name="image">
-                                        <img src="{{ asset('storage/WorkSpace/') }}/{{ $item->image }}" alt="Preview imagae" id="image_u" width="60" height="60" class="mt-2">
+                                        <label for="imageu{{ $item->id }}">Image</label>
+                                        <input type="file" id="imageu{{ $item->id }}" class="form-control @error('image') is-invalid @enderror" name="image">
                                         @error('image', 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+                                        <img src="{{ asset('storage/WorkSpace/') }}/{{ $item->image }}" alt="Preview imagae" id="image_u{{ $item->id }}" width="60" height="60" class="mt-2">
                                             <script>
                                                 imageu{{ $item->id}}.onchange = evt => {
                                                     const [file] = imageu{{$item->id}}.files
@@ -119,7 +119,7 @@
                                     <div class="note-title">
                                     <label for="workshop_image">Image</label>
                                     <input type="file" id="workshop_image" class="form-control @error('image') is-invalid @enderror" name="image">
-                                    <img src="#" alt="Image Preview" width="180" id="image_demo">
+                                    <img src="#" alt="Image Preview" width="120px" id="image_demo">
                                     @section('jss')
                                         <script>
                                             workshop_image.onchange = evt => {

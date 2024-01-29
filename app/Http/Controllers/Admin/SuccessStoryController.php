@@ -16,7 +16,7 @@ class SuccessStoryController extends Controller
     }
     // insert data
     public function successStoryPost(Request $request){
-        $request->validate([
+        $request->validateWithBag('inser',[
             'image'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
             'video_link'=>'required'
         ]);
@@ -35,7 +35,7 @@ class SuccessStoryController extends Controller
         }
     }
     public function successStoryEdit(Request $request){
-        $request->validate([
+        $request->validateWithBag('update',[
             'image'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
             'video_link'=>'required'
         ]);

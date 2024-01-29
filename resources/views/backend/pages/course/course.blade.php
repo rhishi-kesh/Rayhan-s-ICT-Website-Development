@@ -3,7 +3,7 @@
 <div class="table-responsive rounded-2 mb-4">
     <a href="#addData" data-bs-toggle="modal" class="btn btn-secondary btn-lg mb-3">
         <i class="fs-4 ti ti-plus"></i>
-        Add new Course
+        Add Course
     </a>
     <table class="table border text-nowrap customize-table mb-3 align-middle">
         @if(Session::has('success'))

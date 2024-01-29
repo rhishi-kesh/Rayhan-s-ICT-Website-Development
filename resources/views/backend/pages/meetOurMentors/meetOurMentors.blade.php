@@ -81,35 +81,49 @@
                                     <div class="note-title mt-3">
                                         <label for="name"> Name </label>
                                         <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$item->name}}" placeholder="Enter Name">
-                                        @error('name')
+                                        @error('name', 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="note-title mt-3">
                                         <label for="designation"> Designation </label>
                                         <input type="text" id="designation" value="{{$item->designation}}"   class="form-control @error('designation') is-invalid @enderror" name="designation" placeholder="Enter Designation">
-                                        @error('designation')
+                                        @error('designation', 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="note-title mt-3">
-                                      <label for="image">Image</label>
-                                      <input type="file" id="image" class="form-control @error('image') is-invalid @enderror" name="image">
-                                      <img src="{{ asset('storage/mentors/image/') }}/{{ $item->image }}" alt="" width="60" height="60">
-
-                                      @error('image')
+                                      <label for="imageImage{{$item->id}}">Image</label>
+                                      <input type="file" id="imageImage{{$item->id}}" class="form-control @error('image') is-invalid @enderror" name="image">
+                                      @error('image', 'update')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                       @enderror
+                                      <img id="imageImage_p{{$item->id}}" src="{{ asset('storage/mentors/image/') }}/{{ $item->image }}" alt="Image preview" width="60" height="60">
+                                       <script>
+                                        imageImage{{ $item->id }}.onchange = evt => {
+                                        const [file] = imageImage{{ $item->id }}.files
+                                        if (file) {
+                                          imageImage_p{{ $item->id }}.src = URL.createObjectURL(file)
+                                        }
+                                    }
+                                    </script>
                                     </div>
                                     <div class="note-title mt-3">
-                                      <label for="thumbnail">Thumbnail</label>
-                                      <input type="file" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
-                                      <img src="{{ asset('storage/mentors/thumbnail/') }}/{{ $item->thumbnail }}" alt="" width="60" height="60">
-                                      @error('thumbnail')
+                                      <label for="thumbnailImage{{ $item->id }}">Thumbnail</label>
+                                      <input type="file" id="thumbnailImage{{ $item->id }}" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
+                                      @error('thumbnail', 'update')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                       @enderror
+                                      <img id="thumbnailImage_p{{ $item->id }}" src="{{ asset('storage/mentors/thumbnail/') }}/{{ $item->thumbnail }}" alt="Image preview" width="60" height="60">
+                                      <script>
+                                        thumbnailImage{{ $item->id }}.onchange = evt => {
+                                        const [file] = thumbnailImage{{ $item->id }}.files
+                                        if (file) {
+                                          thumbnailImage_p{{ $item->id }}.src = URL.createObjectURL(file)
+                                        }
+                                    }
+                                    </script>
                                     </div>
-                                    
                                 </div>
                               </div>
                           </div>
@@ -147,30 +161,32 @@
                                     <div class="note-title mt-3">
                                         <label for="name"> Name </label>
                                         <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Enter Name">
-                                        @error('name')
+                                        @error('name', 'insert')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="note-title mt-3">
                                         <label for="designation"> Designation </label>
                                         <input type="text" id="designation" class="form-control @error('designation') is-invalid @enderror" name="designation" placeholder="Enter Designation">
-                                        @error('designation')
+                                        @error('designation', 'insert')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="note-title mt-3">
-                                      <label for="image">Image</label>
-                                      <input type="file" id="image" class="form-control @error('image') is-invalid @enderror" name="image">
-                                      @error('image')
+                                      <label for="imagei">Image</label>
+                                      <input type="file" id="imagei" class="form-control @error('image') is-invalid @enderror" name="image">
+                                      <img src="#" id="image_p" width="60" height="60" alt="Image Preview">
+                                      @error('image', 'insert')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                       @enderror
                                     </div>
                                     <div class="note-title mt-3">
-                                      <label for="thumbnail">Thumbnail</label>
-                                      <input type="file" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
-                                      @error('thumbnail')
+                                      <label for="thumbnaili">Thumbnail</label>
+                                      <input type="file" id="thumbnaili" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
+                                      @error('thumbnail', 'insert')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                       @enderror
+                                      <img src="#" id="thumbnail_p" width="60" height="60" alt="Image Preview">
                                     </div>
                                     
                                 </div>
@@ -187,4 +203,21 @@
         </div>
       </div>
   </div>
+  @section('jss')
+  <script>
+      imagei.onchange = evt => {
+      const [file] = imagei.files
+      if (file) {
+        image_p.src = URL.createObjectURL(file)
+      }
+  }
+
+  thumbnaili.onchange = evt => {
+      const [file] = thumbnaili.files
+      if (file) {
+        thumbnail_p.src = URL.createObjectURL(file)
+      }
+  }
+  </script>
+@endsection
 @endsection
