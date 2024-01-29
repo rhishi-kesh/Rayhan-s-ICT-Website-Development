@@ -136,5 +136,12 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('/benefit-of-course-post/{id}', [CourseController::class, 'benefitsOfCoursePost'])->name('benefitsOfCoursePost');
     Route::post('/benefit-of-course-edit', [CourseController::class, 'benefitsOfCourseEdit'])->name('benefitsOfCourseEdit');
     Route::get('/benefit-of-course-delete/{id}', [CourseController::class, 'benefitsOfCourseDelete'])->name('benefitsOfCourseDelete');
+
+    // Creative Projetcs  
+    Route::get('creative-project/{id}', [CourseController::class, 'creativeProject'])->name('creativeProject');
+    Route::post('creative-project-post/{id}', [CourseController::class, 'creativeProjectPost'])->name('creativeProjectPost');
+    Route::post('creative-project-edit', [CourseController::class, 'creativeProjectEdit'])->name('creativeProjectEdit');
+    Route::get('creative-project-delete/{id}', [CourseController::class, 'creativeProjectDelete'])->name('creativeProjectDelete');
+
 });
 

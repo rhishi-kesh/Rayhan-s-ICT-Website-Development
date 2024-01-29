@@ -9,6 +9,7 @@ use App\Models\CourseLearnings;
 use App\Models\Department;
 use App\Models\CourseForThose;
 use App\Models\BenefitsOfCourse;
+use App\Models\CreativeProject;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -417,6 +418,72 @@ class CourseController extends Controller
         BenefitsOfCourse::findOrFail($id)->delete();
 
         return back()->with('error','BenefitsOfCourse Deleted Successfull');
+    }
+    //  Creative Products
+
+    public function creativeProject($id){
+        $creativeProject = CreativeProject::where('course_id',$id)->with(['course:id,name'])->paginate(7);
+        $courseid = $id;
+        return view('backend.pages.course.creativeProject', compact('creativeProject','courseid'));
+    }
+    public function creativeProjectPost($id, Request $request){
+        $request->validateWithBag('insert',[
+            'image' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048',
+                'required'
+            ],
+        ]);
+
+        if($request->file('image')){
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->extension();
+            $request->image->storeAs('public/creativeProject', $filename);
+
+            CreativeProject::insert([
+                'course_id' => $id,
+                'image' => $filename,
+                'created_at' => Carbon::now()
+            ]);
+        }
+        return back()->with('success','CreativeProject Add Successfull');
+    }
+    public function creativeProjectEdit(Request $request){
+        $request->validateWithBag('update',[
+            'image' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048'
+            ],
+        ]);
+
+        $id = $request->id;
+        $getData = CreativeProject::findOrFail($id);
+
+        $filename = '';
+        $imagePath = 'storage/creativeProject/'.$getData->image;
+        if ($request->hasFile('image')) {
+            $filename = time() . '.' . $request->image->extension();
+            unlink($imagePath);
+            $request->image->storeAs('public/creativeProject', $filename);
+        } else {
+            $filename = $getData->image;
+        }
+
+        CreativeProject::where('id',$id)->update([
+            'image' => $filename,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return back()->with('success','CreativeProject Update Successfull');
+    }
+    public function creativeProjectDelete($id){
+        $content = CreativeProject::findOrFail($id);
+        unlink(public_path('storage/creativeProject/').'/'.$content->image);
+        CreativeProject::findOrFail($id)->delete();
+
+        return back()->with('error','CreativeProject Deleted Successfull');
     }
 
 
