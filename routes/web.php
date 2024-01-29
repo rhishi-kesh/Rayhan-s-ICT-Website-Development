@@ -81,23 +81,28 @@ Route::group(['prefix' => 'admin','middleware'=> 'isLoggedIn'], function () {
     Route::post('/authorised-edit', [AuthorisedController::class, 'authorisedEdit'])->name('authorisedEdit');
     Route::get('/authorised-delete/{id}', [AuthorisedController::class, 'authorisedDelete'])->name('authorisedDelete');
 
+    // FAQ
+    Route::get('/faq', [FAQController::class, 'faq'])->name('faq');
+    Route::post('/faq-post', [FAQController::class, 'faqPost'])->name('faqPost');
+    Route::post('/faq-edit', [FAQController::class, 'faqEdit'])->name('faqEdit');
+    Route::get('/faq-delete/{id}', [FAQController::class, 'faqDelete'])->name('faqDelete');
+
     //Department
     Route::get('/department', [CourseController::class, 'department'])->name('department');
     Route::post('/department-post', [CourseController::class, 'departmentPost'])->name('departmentPost');
     Route::post('/department-edit', [CourseController::class, 'departmentEdit'])->name('departmentEdit');
     Route::get('/department-delete/{id}', [CourseController::class, 'departmentDelete'])->name('departmentDelete');
 
-    // FAQ
-    Route::get('/faq', [FAQController::class, 'faq'])->name('faq');
-    Route::post('/faq-post', [FAQController::class, 'faqPost'])->name('faqPost');
-    Route::post('/faq-edit', [FAQController::class, 'faqEdit'])->name('faqEdit');
-    Route::get('/faq-delete/{id}', [FAQController::class, 'faqDelete'])->name('faqDelete');
     //Course
     Route::get('/courses', [CourseController::class, 'courses'])->name('courses');
     Route::post('/course-post', [CourseController::class, 'coursePost'])->name('coursePost');
     Route::post('/course-edit', [CourseController::class, 'courseEdit'])->name('courseEdit');
     Route::get('/course-delete/{id}', [CourseController::class, 'courseDelete'])->name('courseDelete');
     Route::post('/staus', [CourseController::class, 'staus'])->name('staus');
+
+    //Course-Detailes
+    Route::get('/course-detailes/{id}', [CourseController::class, 'courseDetailes'])->name('courseDetailes');
+    Route::post('/course-detailes-edit/{id}', [CourseController::class, 'courseDetailesEdit'])->name('courseDetailesEdit');
 
 });
 

@@ -57,9 +57,9 @@
                             <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('courseDelete',$item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-3" href="">
+                            <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('courseDetailes',$item->id) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-details" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M13 5h8" /><path d="M13 9h5" /><path d="M13 15h8" /><path d="M13 19h5" /><path d="M3 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /><path d="M3 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" /></svg>
-                                Add Course Details
+                                Edit Course Details
                             </a>
                         </li>
                         <li>
@@ -164,7 +164,7 @@
     </table>
     {{ $courses->links() }}
     <div class="modal" id="addData">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
           <div class="modal-content border-0">
             <div class="modal-header bg-primary">
               <h6 class="modal-title text-white">Add Course</h6>
@@ -177,24 +177,82 @@
                         <div class="notes-content">
                             <div class="row">
                                 <div class="col-md-12 mb-3">
-                                    <div class="note-title">
-                                        <label for="name">Name</label>
-                                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="Name">
-                                        @error('name','insert')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                    <div class="row">
+                                        <h4>Course Name & Department</h4>
+                                        <div class="col-md-6">
+                                            <label for="name">Name</label>
+                                            <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="Name">
+                                            @error('name','insert')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6 mt-3 mt-md-0">
+                                            <label for="department">Select Department</label>
+                                            <select name="department_id" id="department_id" class="form-control @error('department_id') is-invalid @enderror">
+                                                <option value="">Select Department</option>
+                                                @foreach ($departments as $item_dep)
+                                                    <option value="{{ $item_dep->id }}">{{ $item_dep->departmentName }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('department_id','insert')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
-                                    <div class="note-title mt-3">
-                                        <label for="department">Select Department</label>
-                                        <select name="department_id" id="department_id" class="form-control @error('department_id') is-invalid @enderror">
-                                            <option value="">Select Department</option>
-                                            @foreach ($departments as $item_dep)
-                                                <option value="{{ $item_dep->id }}">{{ $item_dep->departmentName }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('department_id','insert')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <h4>Course Details</h4>
+                                    <div class="row">
+                                        <div class="col-md-4 mt-2">
+                                            <label for="price">Price</label>
+                                            <input type="number" id="price" class="form-control @error('price') is-invalid @enderror" name="price" placeholder="Price">
+                                            @error('price','insert')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4 mt-2">
+                                            <label for="project">Project</label>
+                                            <input type="number" id="project" class="form-control @error('project') is-invalid @enderror" name="project" placeholder="Number of Project">
+                                            @error('project','insert')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4 mt-2">
+                                            <label for="duration">Duration(month)</label>
+                                            <input type="number" id="duration" class="form-control @error('duration') is-invalid @enderror" name="duration" placeholder="Duration (month)">
+                                            @error('duration','insert')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4 mt-2">
+                                            <label for="lectur">Lecture</label>
+                                            <input type="number" id="lectur" class="form-control @error('lecture') is-invalid @enderror" name="lecture" placeholder="Lecture">
+                                            @error('lecture','insert')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-8 mt-2">
+                                            <label for="video">Video Link</label>
+                                            <input type="url" id="video" class="form-control @error('video') is-invalid @enderror" name="video" placeholder="Video Link">
+                                            @error('video','insert')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-8 mt-2">
+                                            <label for="description">Description</label>
+                                            <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Description"></textarea>
+                                            @error('description','insert')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4 mt-2">
+                                            <label for="thumbnail">Thumbnail</label>
+                                            <input type="file" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
+                                            @error('thumbnail','insert')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                            <img src="#" class="img-fluid rounded-top" id="thumbnail_preview" alt="image Preview" width="50" height="50" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +260,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger" data-bs-dismiss="modal">Discard</button>
+                    <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Discard</button>
                     <button id="btn-n-add" name="name2" type="submit" class="btn btn-primary">Add</button>
                 </div>
             </form>
@@ -228,6 +286,14 @@
                     }
                 });
             }
+        </script>
+        <script>
+            thumbnail.onchange = evt => {
+            const [file] = thumbnail.files
+            if (file) {
+                thumbnail_preview.src = URL.createObjectURL(file)
+            }
+        }
         </script>
     @endsection
 @endsection
