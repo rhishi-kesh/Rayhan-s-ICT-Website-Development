@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\CourseDetails;
+use App\Models\CourseLearnings;
 use App\Models\Department;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -203,5 +204,73 @@ class CourseController extends Controller
             'updated_at' => Carbon::now()
         ]);
         return back()->with('success', 'CourseDetails Update Successfully');
+    }
+    public function CourseLearnings($id){
+        $courseDetails = CourseLearnings::where('course_id',$id)->with(['course:id,name'])->paginate();
+        $courseid = $id;
+        return view('backend.pages.course.courseLearning', compact('courseDetails','courseid'));
+    }
+    public function CourseLearningsPost($id, Request $request){
+        $request->validateWithBag('insert',[
+            'content' => 'required',
+            'image' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048',
+                'required'
+            ],
+        ]);
+
+        if($request->file('image')){
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->extension();
+            $request->image->storeAs('public/Learnings', $filename);
+
+            CourseLearnings::insert([
+                'course_id' => $id,
+                'content' => $request->content,
+                'image' => $filename,
+                'created_at' => Carbon::now()
+            ]);
+        }
+        return back()->with('success','Learning Add Successfull');
+    }
+    public function CourseLearningsEdit(Request $request){
+        $request->validateWithBag('update',[
+            'content' => 'required',
+            'image' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048'
+            ],
+        ]);
+
+        $id = $request->id;
+        $getData = CourseLearnings::findOrFail($id);
+
+        $filename = '';
+        $imagePath = 'storage/Learnings/'.$getData->image;
+        if ($request->hasFile('image')) {
+            $filename = time() . '.' . $request->image->extension();
+            unlink($imagePath);
+            $request->image->storeAs('public/Learnings', $filename);
+        } else {
+            $filename = $getData->image;
+        }
+
+        CourseLearnings::where('id',$id)->update([
+            'content' => $request->content,
+            'image' => $filename,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return back()->with('success','Course Learning Update Successfull');
+    }
+    public function CourseLearningsDelete($id){
+        $content = CourseLearnings::findOrFail($id);
+        unlink(public_path('storage/Learnings/').'/'.$content->image);
+        CourseLearnings::findOrFail($id)->delete();
+
+        return back()->with('error','Course Learning Deleted Successfull');
     }
 }

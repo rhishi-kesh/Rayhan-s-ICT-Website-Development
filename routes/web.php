@@ -119,5 +119,11 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('/webinar-edit', [WebinarController::class, 'webinarEdit'])->name('webinarEdit');
     Route::get('/webinar-delete/{id}', [WebinarController::class, 'webinarDelete'])->name('webinarDelete');
 
+    //learning Form Course
+    Route::get('/course-learnings/{id}', [CourseController::class, 'CourseLearnings'])->name('CourseLearnings');
+    Route::post('/course-learnings-post/{id}', [CourseController::class, 'CourseLearningsPost'])->name('CourseLearningsPost');
+    Route::post('/course-learnings-edit', [CourseController::class, 'CourseLearningsEdit'])->name('CourseLearningsEdit');
+    Route::get('/course-learnings-delete/{id}', [CourseController::class, 'CourseLearningsDelete'])->name('CourseLearningsDelete');
+
 });
 
