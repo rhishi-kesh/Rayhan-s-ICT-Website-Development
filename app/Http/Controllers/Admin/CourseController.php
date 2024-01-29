@@ -7,6 +7,8 @@ use App\Models\Course;
 use App\Models\CourseDetails;
 use App\Models\CourseLearnings;
 use App\Models\Department;
+use App\Models\CourseForThose;
+use App\Models\BenefitsOfCourse;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -205,6 +207,8 @@ class CourseController extends Controller
         ]);
         return back()->with('success', 'CourseDetails Update Successfully');
     }
+    // Course Learning
+
     public function CourseLearnings($id){
         $courseDetails = CourseLearnings::where('course_id',$id)->with(['course:id,name'])->paginate();
         $courseid = $id;
@@ -273,4 +277,147 @@ class CourseController extends Controller
 
         return back()->with('error','Course Learning Deleted Successfull');
     }
+
+    // Course For Those
+
+    public function courseForThose($id){
+        $courseForThose = CourseForThose::where('course_id',$id)->with(['course:id,name'])->paginate();
+        $courseid = $id;
+        return view('backend.pages.course.courseForThose', compact('courseForThose','courseid'));
+    }
+    public function courseForThosePost($id, Request $request){
+        $request->validateWithBag('insert',[
+            'content' => 'required',
+            'image' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048',
+                'required'
+            ],
+        ]);
+
+        if($request->file('image')){
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->extension();
+            $request->image->storeAs('public/courseThose', $filename);
+
+            CourseForThose::insert([
+                'course_id' => $id,
+                'content' => $request->content,
+                'image' => $filename,
+                'created_at' => Carbon::now()
+            ]);
+        }
+        return back()->with('success','CourseForThose Add Successfull');
+    }
+    public function courseForThoseEdit(Request $request){
+        $request->validateWithBag('update',[
+            'content' => 'required',
+            'image' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048'
+            ],
+        ]);
+
+        $id = $request->id;
+        $getData = CourseForThose::findOrFail($id);
+
+        $filename = '';
+        $imagePath = 'storage/courseThose/'.$getData->image;
+        if ($request->hasFile('image')) {
+            $filename = time() . '.' . $request->image->extension();
+            unlink($imagePath);
+            $request->image->storeAs('public/courseThose', $filename);
+        } else {
+            $filename = $getData->image;
+        }
+
+        CourseForThose::where('id',$id)->update([
+            'content' => $request->content,
+            'image' => $filename,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return back()->with('success','CourseForThose Update Successfull');
+    }
+    public function courseForThoseDelete($id){
+        $content = CourseForThose::findOrFail($id);
+        unlink(public_path('storage/courseThose/').'/'.$content->image);
+        CourseForThose::findOrFail($id)->delete();
+
+        return back()->with('error','CourseForThose Deleted Successfull');
+    }
+    // Benefits Of Course
+
+     public function benefitsOfCourse($id){
+        $benefitsOfCourse = BenefitsOfCourse::where('course_id',$id)->with(['course:id,name'])->paginate();
+        $courseid = $id;
+        return view('backend.pages.course.benefitsOfCourse', compact('benefitsOfCourse','courseid'));
+    }
+    public function benefitsOfCoursePost($id, Request $request){
+        $request->validateWithBag('insert',[
+            'content' => 'required',
+            'image' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048',
+                'required'
+            ],
+        ]);
+
+        if($request->file('image')){
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->extension();
+            $request->image->storeAs('public/benefitsOfCourse', $filename);
+
+            BenefitsOfCourse::insert([
+                'course_id' => $id,
+                'content' => $request->content,
+                'image' => $filename,
+                'created_at' => Carbon::now()
+            ]);
+        }
+        return back()->with('success','BenefitsOfCourse Add Successfull');
+    }
+    public function benefitsOfCourseEdit(Request $request){
+        $request->validateWithBag('update',[
+            'content' => 'required',
+            'image' => [
+                'image',
+                'mimes:jpg,png,jpeg',
+                'max:2048'
+            ],
+        ]);
+
+        $id = $request->id;
+        $getData = BenefitsOfCourse::findOrFail($id);
+
+        $filename = '';
+        $imagePath = 'storage/benefitsOfCourse/'.$getData->image;
+        if ($request->hasFile('image')) {
+            $filename = time() . '.' . $request->image->extension();
+            unlink($imagePath);
+            $request->image->storeAs('public/benefitsOfCourse', $filename);
+        } else {
+            $filename = $getData->image;
+        }
+
+        BenefitsOfCourse::where('id',$id)->update([
+            'content' => $request->content,
+            'image' => $filename,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return back()->with('success','BenefitsOfCourse Update Successfull');
+    }
+    public function benefitsOfCourseDelete($id){
+        $content = BenefitsOfCourse::findOrFail($id);
+        unlink(public_path('storage/benefitsOfCourse/').'/'.$content->image);
+        BenefitsOfCourse::findOrFail($id)->delete();
+
+        return back()->with('error','BenefitsOfCourse Deleted Successfull');
+    }
+
+
 }

@@ -125,5 +125,16 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('/course-learnings-edit', [CourseController::class, 'CourseLearningsEdit'])->name('CourseLearningsEdit');
     Route::get('/course-learnings-delete/{id}', [CourseController::class, 'CourseLearningsDelete'])->name('CourseLearningsDelete');
 
+    // Course For Those
+    Route::get('/Course-for-those/{id}', [CourseController::class, 'courseForThose'])->name('courseForThose');
+    Route::post('/Course-for-those-post/{id}', [CourseController::class, 'courseForThosePost'])->name('courseForThosePost');
+    Route::post('/Course-for-those-edit', [CourseController::class, 'courseForThoseEdit'])->name('courseForThoseEdit');
+    Route::get('/Course-for-those-delete/{id}', [CourseController::class, 'courseForThoseDelete'])->name('courseForThoseDelete');
+
+    // Benefits of Course
+    Route::get('/benefit-of-course/{id}', [CourseController::class, 'benefitsOfCourse'])->name('benefitsOfCourse');
+    Route::post('/benefit-of-course-post/{id}', [CourseController::class, 'benefitsOfCoursePost'])->name('benefitsOfCoursePost');
+    Route::post('/benefit-of-course-edit', [CourseController::class, 'benefitsOfCourseEdit'])->name('benefitsOfCourseEdit');
+    Route::get('/benefit-of-course-delete/{id}', [CourseController::class, 'benefitsOfCourseDelete'])->name('benefitsOfCourseDelete');
 });
 
