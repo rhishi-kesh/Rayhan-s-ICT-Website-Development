@@ -12,6 +12,12 @@
                     {{ Session::get('success') }}
                 </div>
         @endif
+        @if(Session::has('error'))
+                <div class="alert bg-success text-white alert-dismissible border-0 fade show" role="alert">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                    {{ Session::get('error') }}
+                </div>
+        @endif
       <thead class="text-dark fs-4">
         <tr>
           <th><h6 class="fs-4 fw-semibold mb-0">SL</h6></th>
@@ -60,12 +66,20 @@
                                     <input type="hidden" id="id" name="id" value="{{ $item->id }}">
                                     <div class="col-md-12 mb-3">
                                         <div class="note-title">
-                                        <label for="image">Image</label>
-                                        <input type="file" id="image" class="form-control @error('image') is-invalid @enderror" name="image">
-                                        <img src="{{ asset('storage/WorkSpace/') }}/{{ $item->image }}" alt="" width="60" height="60" class="mt-2">
-                                        @error('image')
+                                        <label for="imageu">Image</label>
+                                        <input type="file" id="imageu" class="form-control @error('image') is-invalid @enderror" name="image">
+                                        <img src="{{ asset('storage/WorkSpace/') }}/{{ $item->image }}" alt="Preview imagae" id="image_u" width="60" height="60" class="mt-2">
+                                        @error('image', 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+                                            <script>
+                                                imageu{{ $item->id}}.onchange = evt => {
+                                                    const [file] = imageu{{$item->id}}.files
+                                                    if(file){
+                                                        image_u{{ $item->id }}.src = URL.createObjectURL(file)
+                                                    }
+                                                }
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +117,7 @@
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div class="note-title">
-                                    <label for="image_demo">Image</label>
+                                    <label for="workshop_image">Image</label>
                                     <input type="file" id="workshop_image" class="form-control @error('image') is-invalid @enderror" name="image">
                                     <img src="#" alt="Image Preview" width="180" id="image_demo">
                                     @section('jss')

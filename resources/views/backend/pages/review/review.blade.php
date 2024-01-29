@@ -31,9 +31,15 @@
             <td>
                 <span> {{$review->firstItem()+$key}} </span>
             </td>
+<<<<<<< HEAD
+            <td  class="text-center" >
+                <div style="width: 400px; height:100px;margin:auto; overflow: auto">
+                {!!$item->review!!}
+=======
             <td  class="text-center">
                 <div style="overflow: auto; height: 200px; width: 800px; margin: auto">
                     {!!$item->review!!}
+>>>>>>> bfc28b0205adc6ba882af2ac9ab1f9edb85c260e
                 </div>
             </td>
             <td class="text-end">
@@ -69,7 +75,9 @@
                                 <div class="col-md-12 mb-3">
                                     <div class="note-title mt-3">
                                         <label for="name"> Review </label>
-                                        <textarea class="form-control @error('name') is-invalid @enderror" name="review" id="review" placeholder="Enter Embed Review" cols="30" rows="10">{{$item->review}}</textarea>
+                                        <textarea class="form-control @error('name') is-invalid @enderror" name="review" id="review" placeholder="Enter Embed Review" cols="10" rows="5">
+                                        <div style="overflow: auto"> {{$item->review}} </div>
+                                        </textarea>
                                         @error('review')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -110,7 +118,7 @@
                                 <div class="col-md-12 mb-3">
                                     <div class="note-title mt-3">
                                         <label for="name"> Review </label>
-                                        <textarea class="form-control @error('review') is-invalid @enderror" name="review" placeholder="Enter Review" name="" id="" cols="30" rows="4"></textarea>
+                                        <textarea class="form-control @error('review') is-invalid @enderror" name="review" placeholder="Enter Review" cols="10" rows="5"></textarea>
                                         @error('review')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
