@@ -143,5 +143,23 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('creative-project-edit', [CourseController::class, 'creativeProjectEdit'])->name('creativeProjectEdit');
     Route::get('creative-project-delete/{id}', [CourseController::class, 'creativeProjectDelete'])->name('creativeProjectDelete');
 
+    // Course Module
+    Route::get('/course-module/{id}', [CourseController::class, 'courseModule'])->name('courseModule');
+    Route::post('/course-module-post/{id}', [CourseController::class, 'courseModulePost'])->name('courseModulePost');
+    Route::post('/course-module-edit', [CourseController::class, 'courseModuleEdit'])->name('courseModuleEdit');
+    Route::get('/course-module-delete/{id}', [CourseController::class, 'courseModuleDelete'])->name('courseModuleDelete');
+
+    // Course Instructor
+    // Route::get('/course-instructor/{id}', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
+    // Route::post('/course-instructor-post/{id}', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
+    // Route::post('/course-instructor-edit', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
+    // Route::get('/course-instructor/{id}', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
+
+    // Course FAQ
+    Route::get('/course-faq/{id}', [CourseController::class, 'courseFAQ'])->name('courseFAQ');
+    Route::post('/course-faq-post/{id}', [CourseController::class, 'courseFAQPost'])->name('courseFAQPost');
+    Route::post('/course-faq-edit', [CourseController::class, 'courseFAQEdit'])->name('courseFAQEdit');
+    Route::get('/course-faq-delete/{id}', [CourseController::class, 'courseFAQDelete'])->name('courseFAQDelete');
+
 });
 

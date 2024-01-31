@@ -10,6 +10,8 @@ use App\Models\Department;
 use App\Models\CourseForThose;
 use App\Models\BenefitsOfCourse;
 use App\Models\CreativeProject;
+use App\Models\CourseModule;
+use App\Models\CourseFAQ;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -352,7 +354,7 @@ class CourseController extends Controller
     // Benefits Of Course
 
      public function benefitsOfCourse($id){
-        $benefitsOfCourse = BenefitsOfCourse::where('course_id',$id)->with(['course:id,name'])->paginate();
+        $benefitsOfCourse = BenefitsOfCourse::where('course_id',$id)->with(['course:id,name'])->paginate(7);
         $courseid = $id;
         return view('backend.pages.course.benefitsOfCourse', compact('benefitsOfCourse','courseid'));
     }
@@ -485,6 +487,87 @@ class CourseController extends Controller
 
         return back()->with('error','CreativeProject Deleted Successfull');
     }
+    // Course Module
 
+    public function courseModule($id){
+        $courseModule = CourseModule::where('course_id',$id)->with(['course:id,name'])->paginate(7);
+        $courseid = $id;
+        return view('backend.pages.course.courseModule', compact('courseModule', 'courseid') );
+    }
+    public function courseModulePost($id, Request $request){
+        $request->validateWithBag('insert',[
+            'class_no' => 'required',
+            'class_topics' => 'required',
+        ]);
+
+        CourseModule::insert([
+            'course_id' => $id,
+            'class_no' => $request->class_no,
+            'class_topics' => $request->class_topics,
+            'created_at' => Carbon::now()
+        ]);
+        return back()->with('success','Course Module Add Successfull');
+    }
+    public function courseModuleEdit(Request $request){
+        $request->validateWithBag('insert',[
+            'class_no' => 'required',
+            'class_topics' => 'required',
+        ]);
+
+        $id = $request->id;
+        CourseModule::where('id',$id)->update([
+            'class_no' => $request->class_no,
+            'class_topics' => $request->class_topics,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return back()->with('success','Course Module Updated Successfully');
+    }
+    public function courseModuleDelete($id){
+        CourseModule::findOrFail($id)->delete();
+        
+        return back()->with('error', 'course Module Delete successfully');
+    }
+    // Course FAQ
+
+    public function courseFAQ($id){
+        $CourseFAQ = CourseFAQ::where('course_id',$id)->with(['course:id,name'])->paginate(7);
+        $courseid = $id;
+        return view('backend.pages.course.courseFAQ', compact('CourseFAQ', 'courseid') );
+    }
+    public function courseFAQPost($id, Request $request){
+        $request->validateWithBag('insert',[
+            'question' => 'required',
+            'answer' => 'required',
+        ]);
+
+        CourseFAQ::insert([
+            'course_id' => $id,
+            'question' => $request->question,
+            'answer' => $request->answer,
+            'created_at' => Carbon::now()
+        ]);
+        return back()->with('success','Course FAQ Add Successfull');
+    }
+    public function courseFAQEdit(Request $request){
+        $request->validateWithBag('insert',[
+            'question' => 'required',
+            'answer' => 'required',
+        ]);
+
+        $id = $request->id;
+        CourseFAQ::where('id',$id)->update([
+            'question' => $request->question,
+            'answer' => $request->answer,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return back()->with('success','Course FAQ Updated Successfully');
+    }
+    public function courseFAQDelete($id){
+        CourseFAQ::findOrFail($id)->delete();
+        
+        return back()->with('error', 'Course FAQ Delete successfully');
+    }
 
 }
