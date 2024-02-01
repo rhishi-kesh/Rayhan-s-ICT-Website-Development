@@ -41,7 +41,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                      <label for="email" class="form-label">Email</label>
+                      <label for="email" class="form-label"> Email </label>
                       <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Name" required id="email">
                         @error('email')
                             <span class="invalid-feedback" role="alert">

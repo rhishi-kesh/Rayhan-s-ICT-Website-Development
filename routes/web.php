@@ -35,11 +35,18 @@ Route::get('/register',[AuthController::class, 'register'])->name('register');
 Route::post('/register-post',[AuthController::class, 'registerPost'])->name('registerPost');
 Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
 
-
 // dashboard
 Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
+    Route::post('/profile-edit',[ProfileController::class, 'profileEdit'])->name('profileEdit');
+    Route::post('/profile-image',[ProfileController::class, 'profileImagae'])->name('profileImagae');
+
+    
+    // Changing Password 
+    Route::get('/change-password', [ProfileController::class, 'changePassword'])->name('changePassword');
+    Route::post('/change-update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
+
 
     //about-us CRUD
     Route::get('/about',[AboutController::class, 'adminAbout'])->name('adminAbout');
