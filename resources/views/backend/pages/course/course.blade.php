@@ -181,14 +181,14 @@
                                         <h4>Course Name & Department</h4>
                                         <div class="col-md-6">
                                             <label for="name">Name</label>
-                                            <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="Name">
+                                            <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name">
                                             @error('name','insert')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="col-md-6 mt-3 mt-md-0">
                                             <label for="department">Select Department</label>
-                                            <select name="department_id" id="department_id" class="form-control @error('department_id') is-invalid @enderror">
+                                            <select name="department_id" id="department_id" class="form-select @error('department_id') is-invalid @enderror">
                                                 <option value="">Select Department</option>
                                                 @foreach ($departments as $item_dep)
                                                     <option value="{{ $item_dep->id }}">{{ $item_dep->departmentName }}</option>
@@ -231,10 +231,22 @@
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="col-md-8 mt-2">
+                                        <div class="col-md-4 mt-2">
                                             <label for="video">Video Link</label>
                                             <input type="url" id="video" class="form-control @error('video') is-invalid @enderror" name="video" placeholder="Video Link">
                                             @error('video','insert')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4 mt-2">
+                                            <label for="mentor_id">Select Mentor</label>
+                                            <select name="mentor_id" id="mentor_id" class="form-select @error('mentor_id') is-invalid @enderror">
+                                                <option value="">Select Mentor</option>
+                                                @foreach ($mentors as $item_ment)
+                                                    <option value="{{ $item_ment->id }}">{{ $item_ment->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('mentor_id','insert')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -248,10 +260,10 @@
                                         <div class="col-md-4 mt-2">
                                             <label for="thumbnail">Thumbnail</label>
                                             <input type="file" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
+                                            <img src="#" class="img-fluid rounded-top" id="thumbnail_preview" alt="image Preview" width="50" height="50" />
                                             @error('thumbnail','insert')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
-                                            <img src="#" class="img-fluid rounded-top" id="thumbnail_preview" alt="image Preview" width="50" height="50" />
                                         </div>
                                     </div>
                                 </div>

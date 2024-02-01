@@ -13,4 +13,8 @@ class CourseDetails extends Model
     {
         return $this->belongsTo(Course::class);
     }
+    public function mentor(): BelongsTo
+    {
+        return $this->belongsTo(MeetOurMentors::class);
+    }
 }

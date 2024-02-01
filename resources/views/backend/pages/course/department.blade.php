@@ -48,7 +48,7 @@
                         <a class="dropdown-item d-flex align-items-center gap-3" href="#editData{{ $item->id }}" data-bs-toggle="modal"><i class="fs-4 ti ti-edit"></i>Edit</a>
                         </li>
                         <li>
-                        <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('workspaceDelete',$item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
+                        <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('departmentDelete',$item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
                         </li>
                     </ul>
                 </div>
@@ -70,9 +70,9 @@
                                     <input type="hidden" id="id" name="id" value="{{ $item->id }}">
                                     <div class="col-md-12 mb-3">
                                         <div class="note-title">
-                                            <label for="name">Department Name</label>
-                                            <input type="text" value="{{ $item->departmentName }}" id="name" class="form-control @error('name') is-invalid @enderror" name="name">
-                                            @error('name','update')
+                                            <label for="departmentName">Department Name</label>
+                                            <input type="text" value="{{ $item->departmentName }}" id="departmentName" class="form-control @error('departmentName') is-invalid @enderror" name="departmentName" placeholder="Name">
+                                            @error('departmentName','update')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -128,9 +128,9 @@
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div class="note-title">
-                                        <label for="name">Department Name</label>
-                                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="Name">
-                                        @error('name','insert')
+                                        <label for="departmentName">Department Name</label>
+                                        <input type="text" value="{{ old('departmentName') }}" id="departmentName" class="form-control @error('departmentName') is-invalid @enderror" name="departmentName"  placeholder="Name">
+                                        @error('departmentName','insert')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

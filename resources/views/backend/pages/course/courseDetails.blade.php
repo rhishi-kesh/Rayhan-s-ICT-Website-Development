@@ -46,10 +46,22 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-md-8 mt-4">
+                    <div class="col-md-4 mt-4">
                         <label for="video">Video Link</label>
                         <input type="url" value="{{ $courseDetails->video }}"  id="video" class="form-control @error('video') is-invalid @enderror" name="video" placeholder="Video Link">
                         @error('video','insert')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col-md-4 mt-4">
+                        <label for="mentor_id">Select Mentor</label>
+                        <select name="mentor_id" id="mentor_id" class="form-select @error('mentor_id') is-invalid @enderror">
+                            <option value="">Select Mentor</option>
+                            @foreach ($mentors as $item_ment)
+                                <option value="{{ $item_ment->id }}" @if($item_ment->id == $courseDetails->mentor_id) selected @endif>{{ $item_ment->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('mentor_id','insert')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -77,7 +89,10 @@
                                         Update
                                     </div>
                                 </button>
-                                <a href="{{ route('courses') }}" class="btn btn-dark font-medium rounded-pill px-4">Back</a>
+                                <a href="{{ route('courses') }}" class="btn btn-dark font-medium rounded-pill px-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+                                    Back
+                                </a>
                             </div>
                         </div>
                     </div>

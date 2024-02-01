@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <h2 class="text-uppercase fs-1 mb-0">Admission Is Going on</h2>
-                        <p class="mt-1 lead">Enroll to any online or offline course now, take one step ahead towards a competent career.</p>
+                        <p class="mt-1 lead">Enrollment is currently open, offering a professional pathway for individuals eager to embark on their educational journey.</p>
                     </div>
                 </div>
                 <div class="d-block d-md-flex justify-content-center mt-3 text-center">
@@ -28,25 +28,24 @@
                     <div class="footer-widget">
                         <div class="footer-logo d-none d-md-block">
                             <a href="{{ route('index') }}">
-                                <img src="{{ asset("frontend/img/logo.png") }}" alt="">
+                                <img src="{{ asset('storage/companyInformation/'. $companyInformation->logo) }}" alt="">
                             </a>
                         </div>
                         <div class="footer-text d-none d-md-block">
-                            <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
-                            elit,Lorem ipsum dolor sit amet.</p>
+                            <p>{{ $companyInformation->footerAbout }}</p>
                         </div>
                         <div class="footer-social-icon">
                             <span>Follow us</span>
-                            <a href="#">
+                            <a href="{{ $companyInformation->facebook }}" target="_blank">
                                 <i class="fab fa-facebook-f facebook-bg"></i>
                             </a>
-                            <a href="#">
+                            <a href="{{ $companyInformation->instragram }}" target="_blank">
                                 <i class="fa-brands fa-instagram instagram-bg"></i>
                             </a>
-                            <a href="#">
+                            <a href="{{ $companyInformation->linkedin }}" target="_blank">
                                 <i class="fa-brands fa-linkedin-in linkedin-bg"></i>
                             </a>
-                            <a href="#">
+                            <a href="{{ $companyInformation->youtube }}" target="_blank">
                                 <i class="fa-brands fa-youtube youtube-bg"></i>
                             </a>
                         </div>
@@ -83,7 +82,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="{{ route('privacyPolicy') }}">
                                     <i class="ti-angle-double-right d-none d-md-inline"></i>
                                     Privacy Policy
                                 </a>
@@ -97,24 +96,15 @@
                             <h3>Popular Courses</h3>
                         </div>
                         <ul>
-                            <li>
-                                <a href="single_course.html">
-                                    <i class="ti-angle-double-right"></i>
-                                    Graphics Design
-                                </a>
-                            </li>
-                            <li>
-                                <a href="single_course.html">
-                                    <i class="ti-angle-double-right"></i>
-                                    Computer Fundamental
-                                </a>
-                            </li>
-                            <li>
-                                <a href="single_course.html">
-                                    <i class="ti-angle-double-right"></i>
-                                    Web & Software Development
-                                </a
-                            ></li>
+                            @foreach ($course as $item)
+                                <li>
+                                    <a href="{{ route('singleCourse', $item->id) }}">
+                                        <i class="ti-angle-double-right"></i>
+                                        {{ $item->name }}
+                                    </a>
+                                </li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
@@ -125,21 +115,21 @@
                         </div>
                         <ul>
                             <li>
-                                <a href="">
+                                <a href="tel:{{ $companyInformation->number }}" target="_blank">
                                     <i class="fa-solid fa-phone me-2 d-none d-md-inline"></i>
-                                    <span href="#" class="mt-1">01534-545945</span>
+                                    <span class="mt-1">{{ $companyInformation->number }}</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="mailto:{{ $companyInformation->gmail }}" target="_blank">
                                     <i class="fa-solid fa-envelope me-2 d-none d-md-inline"></i>
-                                    <span href="#" class="mt-1">ictrayhans@gmail.com</span>
+                                    <span class="mt-1">{{ $companyInformation->gmail }}</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="{{ $companyInformation->locationLink }}" target="_blank">
                                     <i class="fa-solid fa-location-dot me-2 d-none d-md-inline"></i>
-                                    <span href="#" class="mt-1">Fahad Plaza, 4thFloor,Mutual Trust Bank Building, Mirpur 10, Dhaka </span>
+                                    <span class="mt-1">{{ $companyInformation->locationText }}</span>
                                 </a>
                             </li>
                         </ul>
@@ -147,7 +137,7 @@
                             <h3>Opening Hour</h3>
                             <p>
                                 <i class="fa-solid fa-clock me-2 d-none d-md-inline"></i>
-                                <small>Sat - Friday : 09:00 am - 09:00 pm </small>
+                                <small>{{ $companyInformation->openClose }}</small>
                             </p>
                         </div>
                     </div>
@@ -160,9 +150,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="copyright-text text-center">
-                        <p class="mb-0 text-uppercase">E-TIN No: 197682866359</p>
-                        <p class="mb-0 text-uppercase">Trade Licence No: TRAD/DNCC/037245/2022</p>
-                        <p class="mb-0 text-uppercase mt-2"> Copyright © 2017 - 2024 DESIGN AND DEVELOPED BY CREATIVE SHEBA LIMITED</p>
+                        <p class="mb-0 text-uppercase">E-TIN No: {{ $companyInformation->eTinNo }}</p>
+                        <p class="mb-0 text-uppercase">Trade Licence No: {{ $companyInformation->tradeLienceNo }}</p>
+                        <p class="mb-0 text-uppercase mt-2 mt-md-0"> Copyright © 2017 - {{ date('Y') }} DESIGN AND DEVELOPED BY <a href="http://www.creativesheba.com/" style="text-decoration: none; color: #fff;">CREATIVE SHEBA LIMITED</a></p>
                     </div>
                 </div>
             </div>

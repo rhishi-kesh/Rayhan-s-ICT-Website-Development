@@ -9,7 +9,7 @@ use Carbon\Carbon;
 
 class WebinarController extends Controller
 {
-    
+
     public function webinar(){
         $webinars = Webinar::paginate(5);
         return view('backend.pages.webinar.webinar', compact('webinars'));
@@ -40,7 +40,7 @@ class WebinarController extends Controller
     public function webinarEdit(Request $request){
         $request->validate([
             'title' =>'required',
-            'thumbnail'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
+            'thumbnail'=> ['image', 'mimes:jpg,png,jpeg'],
             'date'=> 'required',
             'time'=> 'required'
         ]);

@@ -35,13 +35,13 @@ $('.courses-department').owlCarousel({
             margin:12,
             autoplay:true,
             center: true,
+            nav:false
         },
         575:{
             items: 3
         },
         768:{
             items:4,
-            nav:false
         },
         992:{
             items:6,
