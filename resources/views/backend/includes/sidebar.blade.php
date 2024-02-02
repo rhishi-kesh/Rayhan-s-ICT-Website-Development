@@ -160,6 +160,14 @@
             <span class="hide-menu"> Webinar </span>
           </a>
         </li>
+        @if (auth()->user()->role == 0)
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="{{route('users')}}" aria-expanded="false">
+              <span class="fas fa-user"></span>
+              <span class="hide-menu"> Users </span>
+            </a>
+        </li>
+        @endif
       </ul>
     </nav>
     <!-- End Sidebar navigation -->

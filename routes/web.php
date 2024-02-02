@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\AuthorisedController;
 use App\Http\Controllers\Admin\FAQController;
 use App\Http\Controllers\Admin\SeminarController;
+use App\Http\Controllers\Admin\UsersControllser;
 use App\Http\Controllers\Admin\WebinarController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
@@ -125,5 +126,8 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('/course-learnings-edit', [CourseController::class, 'CourseLearningsEdit'])->name('CourseLearningsEdit');
     Route::get('/course-learnings-delete/{id}', [CourseController::class, 'CourseLearningsDelete'])->name('CourseLearningsDelete');
 
+    //Users
+    Route::get('/users', [UsersControllser::class, 'users'])->name('users');
+    Route::get('/users-delete/{id}', [UsersControllser::class, 'usersDelete'])->name('usersDelete');
 });
 

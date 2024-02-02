@@ -114,6 +114,9 @@ nav .nav-bar .logo a{
     text-transform: uppercase;
     transition: 0.6s;
 }
+.nav-links li a.active{
+    color: var(--orange);
+}
 .nav-links li a:hover{
     color: var(--orange);
 }
@@ -1792,7 +1795,8 @@ footer .contact i{
     }
     .single_course_header{
         padding: 40px 0 20px 0;
-        background: var(--light-orange);
+        background: url('../img/bgr3.jpg');
+        background-size: cover;
     }
     .Reviews .reviewSuccess{
         columns: 2;

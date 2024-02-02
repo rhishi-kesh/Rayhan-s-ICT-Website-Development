@@ -1,4 +1,5 @@
 @extends('layouts.frontendMaster')
+@section('title','Seminer')
 @section('content')
     <section class="seminer-header py-5" style="background: url('{{ asset('frontend/img/seminer.jpg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center;">
         <div class="container">

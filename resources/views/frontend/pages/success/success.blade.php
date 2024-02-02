@@ -1,4 +1,5 @@
 @extends('layouts.frontendMaster')
+@section('title','Success')
 @section('content')
     <section class="success_story py-5">
         <div class="container">

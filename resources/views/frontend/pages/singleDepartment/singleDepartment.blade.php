@@ -1,4 +1,5 @@
 @extends('layouts.frontendMaster')
+@section('title','{{ $departments->departmentName }}')
 @section('content')
     <section class="Course py-5">
         <div class="container">
@@ -19,9 +20,9 @@
                                <a href="{{ route('singleCourse',$item->slug) }}">{{ $item->name }}</a>
                            </h5>
                            <p class="mt-2">By: <span class="mentor">{{ $item->courseDetails->mentor->name }}</span></p>
-                           <div class="d-flex justify-content-between mt-5">
+                           <div class="d-flex justify-content-between align-items-center mt-5">
                                <p>
-                                   <a href="{{ route('singleCourse',$item->slug) }}" class="buy-btn">Details</a>
+                                   <a href="{{ route('singleCourse',$item->slug) }}" class="buy-btn">Learn More</a>
                                </p>
                                <p><b>৳{{ $item->courseDetails->price }}</b></p>
                            </div>

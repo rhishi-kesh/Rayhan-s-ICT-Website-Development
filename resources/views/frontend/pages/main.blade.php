@@ -1,4 +1,5 @@
 @extends('layouts.frontendMaster')
+@section('title','Professional IT Training Institute in Mirpur 10')
 @section('content')
 <section class="hero">
     <div class="container">
@@ -6,7 +7,7 @@
             <div class="col-12 col-lg-6 text-center text-lg-start">
                 <h1 class="display-5">{!! $heroInformations->title !!}</h1>
                 <p class="mt-3 lead">{{ $heroInformations->description }}</p>
-                <div class="btns mt-4">
+                <div class="btns mt-4 d-flex justify-content-start">
                     <a href="{{ route('about') }}">
                         <i class="fa-solid fa-users"></i>
                         About Us
@@ -102,328 +103,52 @@
         <div class="row">
             <div class="col-12 mt-4">
                 <ul class="nav nav-tabs owl-carousel owl-theme course-carosel" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab">Computer Fundamental</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#graphic" type="button" role="tab">Graphics Design</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#english" type="button" role="tab">English Language</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#marketing" type="button" role="tab">Digital Marketing</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#web" type="button" role="tab">Web & Software Development</button>
-                    </li>
+                    @forelse ($departments as $key => $item)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{ $key == '0' ? 'active' : '' }}" id="home-tab" data-bs-toggle="tab" data-bs-target="#basic{{ $item->id }}" type="button" role="tab">{{ $item->departmentName }}</button>
+                        </li>
+                    @empty
+                        <div class="col">
+                            <p class="text-danger">No Data Found</p>
+                        </div>
+                    @endforelse
                 </ul>
                 <div class="tab-content course_items" id="myTabContent">
-                    <div class="tab-pane fade show active" id="basic" role="tabpanel">
+                    @forelse ($departments as $key => $item)
+                    <div class="tab-pane fade show {{ $key == '0' ? 'active' : '' }}" id="basic{{ $item->id }}" role="tabpanel">
                        <div class="row">
-                           <div class="col-12 col-md-6 col-lg-4 mt-4">
+                        @forelse ($course->where('department_id', $item->id) as $data)
+                            <div class="col-12 col-md-6 col-lg-4 mt-4">
                                <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
+                                   <a href="{{ route('singleCourse',$data->slug) }}" class="img">
+                                       <img src="{{ asset('storage/CourseDetails/'. $data->courseDetails->thumbnail) }}" alt="">
                                    </a>
                                    <div class="card-body pb-2">
                                        <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
+                                           <a href="{{ route('singleCourse',$data->slug) }}">{{ $data->name }}</a>
                                        </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
+                                       <p class="mt-2">By: <span class="mentor">{{ $data->courseDetails->mentor->name }}</span></p>
+                                       <div class="d-flex justify-content-between align-items-center mt-5">
                                            <p>
-                                               <a href="single_course.html" class="buy-btn">Admit Now</a>
+                                               <a href="{{ route('singleCourse',$data->slug) }}" class="buy-btn">Learn More</a>
                                            </p>
-                                           <p><b>৳15000</b></p>
+                                           <p><b>৳{{ $data->courseDetails->price }}</b></p>
                                        </div>
                                    </div>
                                </div>
                            </div>
-                           <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Admit Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Admit Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
+                        @empty
+                        <div class="col">
+                            <p class="text-danger">No Data Found</p>
+                        </div>
+                        @endforelse
                        </div>
                     </div>
-                    <div class="tab-pane fade" id="graphic" role="tabpanel">
-                        <div class="row">
-                            <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Admit Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Admit Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Admit Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                        </div>
+                    @empty
+                    <div class="col">
+                        <p class="text-danger">No Data Found</p>
                     </div>
-                    <div class="tab-pane fade" id="english" role="tabpanel">
-                        <div class="row">
-                            <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Enroll Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Enroll Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Enroll Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="marketing" role="tabpanel">
-                        <div class="row">
-                            <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Enroll Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Enroll Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Enroll Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="web" role="tabpanel">
-                        <div class="row">
-                            <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Enroll Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Enroll Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="single_course.html" class="img">
-                                       <img src="https://www.creativeitinstitute.com/images/course/course_1665409737.jpg" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="single_course.html">Microsoft Office</a>
-                                       </h5>
-                                       <p class="mt-2">By: <a href="" class="mentor">Rayhanul islam</a></p>
-                                       <div class="d-flex justify-content-between mt-5">
-                                           <p>
-                                               <a href="single_course.html" class="buy-btn">Enroll Now</a>
-                                           </p>
-                                           <p><b>৳15000</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                        </div>
-                    </div>
+                @endforelse
                 </div>
             </div>
         </div>

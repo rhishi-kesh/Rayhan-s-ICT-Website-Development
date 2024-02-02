@@ -1,11 +1,12 @@
 @extends('layouts.frontendMaster')
+@section('title','{{ $courses->name }}')
 @section('content')
     <div class="single_course_header">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-6 text-center text-md-start">
-                    <span class="category mb-1">Web design</span>
-                    <h3 class="fs-2 mb-3">Web design and development</h3>
+                    <span class="category mb-1">{{ $courses->department->departmentName }}</span>
+                    <h3 class="fs-2 mb-3">{{ $courses->name }}</h3>
                     <div class="banner d-block d-md-none">
                         <img src="assets/img/banner.jpg" alt="" class="img-fluid">
                         <a href="https://youtu.be/GogcDtMpgMc" data-autoplay="true" data-vbtype="video" class="RICT_Videos">
@@ -17,31 +18,31 @@
                         </a>
                     </div>
                     <div class="d-flex justify-content-between my-3 pe-0 pe-md-4 pe-lg-5">
-                        <h5 class="fw-bold">Course Fee:</h5>
-                        <h5 class="fw-bold">৳15000</h5>
+                        <h5 class="fw-bold d-none d-md-block">Course Fee:</h5>
+                        <h5 class="fw-bold">৳{{ $courses->courseDetails->price }}</h5>
                     </div>
-                    <p class="pe-0 pe-md-4 lead course_des">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatem odio voluptatum ipsa, blanditiis tempore sunt aliquam amet doloremque omnis iste vel quis perferendis quibusdam ratione fuga porro.</p>
-                    <div class="row text-center text-md-start d-flex d-md-none d-xxl-flex">
+                    <p class="pe-0 pe-md-4 lead course_des">{{ $courses->courseDetails->description }}</p>
+                    <div class="row text-start d-block d-md-none d-xxl-flex">
                         <div class="col-7 col-md-4">
-                            <p class="fw-bold text-start"><i class="ti-time me-2 mt-1"></i> Duration: 7 Month</p>
+                            <p class="fw-bold text-start"><i class="ti-time me-2 mt-1"></i> Duration: {{ $courses->courseDetails->duration }} Month</p>
                         </div>
                         <div class="col-5 col-md-3">
-                            <p class="fw-bold text-start"><i class="ti-book me-2 mt-1"></i> Lectures: 48</p>
+                            <p class="fw-bold text-start"><i class="ti-book me-2 mt-1"></i> Lectures: {{ $courses->courseDetails->lecture }}</p>
                         </div>
                         <div class="col-12 col-md-3">
-                            <p class="fw-bold text-center"><i class="ti-target me-2 mt-1"></i> Projects: 30+</p>
+                            <p class="fw-bold text-srart"><i class="ti-target me-2 mt-1"></i> Projects: {{ $courses->courseDetails->project }}+</p>
                         </div>
                     </div>
                     <div class="row text-center text-md-start d-none d-md-flex d-xxl-none">
                         <div class="d-flex justify-content-start gap-3">
                             <div>
-                                <p class="fw-bold"><i class="ti-time me-2 mt-1"></i> Duration: 7 Month</p>
+                                <p class="fw-bold"><i class="ti-time me-2 mt-1"></i> Duration: {{ $courses->courseDetails->duration }} Month</p>
                             </div>
                             <div>
-                                <p class="fw-bold"><i class="ti-book me-2 mt-1"></i> Lectures: 48</p>
+                                <p class="fw-bold"><i class="ti-book me-2 mt-1"></i> Lectures: {{ $courses->courseDetails->lecture }}</p>
                             </div>
                             <div>
-                                <p class="fw-bold"><i class="ti-target me-2 mt-1"></i> Projects: 30+</p>
+                                <p class="fw-bold"><i class="ti-target me-2 mt-1"></i> Projects: {{ $courses->courseDetails->project }}+</p>
                             </div>
                         </div>
                     </div>
@@ -57,8 +58,8 @@
                 </div>
                 <div class="col-12 col-lg-6 align-self-center mt-4 mt-lg-0">
                     <div class="banner d-none d-md-block">
-                        <img src="assets/img/banner.jpg" alt="" class="img-fluid">
-                        <a href="https://youtu.be/GogcDtMpgMc" data-autoplay="true" data-vbtype="video" class="RICT_Videos">
+                        <img src="{{ asset('storage/CourseDetails/'. $courses->CourseDetails->thumbnail) }}" alt="" class="img-fluid">
+                        <a href="{{ $courses->courseDetails->video }}" data-autoplay="true" data-vbtype="video" class="RICT-Videos">
                             <svg width="100" height="100" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="32.5" cy="32.5" r="32.5" fill="white" fill-opacity="0.5"/>
                                 <ellipse cx="32.4991" cy="32.5011" rx="20.546" ry="20.546" fill="white"/>

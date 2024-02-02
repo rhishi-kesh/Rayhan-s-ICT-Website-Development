@@ -23,6 +23,7 @@
         </a>
         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
             <li>
+                @if (auth()->user()->role == 0)
                 <a href="{{ route('register') }}" class="btn btn-info mt-2 me-3 d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -33,12 +34,13 @@
                     </svg>
                     <span class="ms-2">Add New User</span>
                 </a>
+                @endif
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="d-flex align-items-center">
                     <div class="user-profile-img">
-                        <img src=" {{ asset('frontend/images/profile/user-1.jpg') }}" class="rounded-circle" width="35" height="35" alt="" />
+                        <img src="{{ asset('frontend/images/profile/user-1.jpg') }}" class="rounded-circle" width="35" height="35" alt="" />
                     </div>
                     </div>
                 </a>

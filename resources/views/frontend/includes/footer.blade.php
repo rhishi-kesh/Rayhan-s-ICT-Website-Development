@@ -76,7 +76,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('career') }}">
+                                <a href="http://apply.rayhansict.com/">
                                     <i class="ti-angle-double-right d-none d-md-inline"></i>
                                     Career
                                 </a>
@@ -98,7 +98,7 @@
                         <ul>
                             @foreach ($course as $item)
                                 <li>
-                                    <a href="{{ route('singleCourse', $item->id) }}">
+                                    <a href="{{ route('singleCourse', $item->slug) }}">
                                         <i class="ti-angle-double-right"></i>
                                         {{ $item->name }}
                                     </a>

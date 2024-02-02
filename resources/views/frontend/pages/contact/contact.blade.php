@@ -1,4 +1,5 @@
 @extends('layouts.frontendMaster')
+@section('title','Contact')
 @section('content')
     <div class="contact py-5">
         <div class="container">

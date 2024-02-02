@@ -1,4 +1,5 @@
 @extends('layouts.frontendMaster')
+@section('title','About Us')
 @section('content')
     <section class="about pt-5 pb-3">
         <div class="container">

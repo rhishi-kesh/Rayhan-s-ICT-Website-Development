@@ -65,12 +65,12 @@
                 </div>
 
                 <ul class="nav-links mb-0">
-                  <li><a href="{{ route('index') }}">Home</a></li>
-                  <li><a href="{{ route('about') }}">About</a></li>
-                  <li><a href="{{ route('course') }}">Course</a></li>
-                  <li><a href="{{ route('success') }}" class="nav_success_btn">Success</a></li>
+                  <li><a href="{{ route('index') }}" class="{{ Request::routeIs('index') ? 'active' : '' }}">Home</a></li>
+                  <li><a href="{{ route('about') }}" class="{{ Request::routeIs('about') ? 'active' : '' }}">About</a></li>
+                  <li><a href="{{ route('course') }}" class="@if (Request::routeIs('course')) active @elseif(Request::routeIs('singleDepartment')) active @elseif(Request::routeIs('singleCourse')) active @endif">Course</a></li>
+                  <li><a href="{{ route('success') }}" class="nav_success_btn" class="{{ Request::routeIs('success') ? 'active' : '' }}">Success</a></li>
                   <li><a href="http://apply.rayhansict.com/" target="_blank">Career</a></li>
-                  <li><a href="{{ route('contact') }}">Contact</a></li>
+                  <li><a href="{{ route('contact') }}" class="{{ Request::routeIs('contact') ? 'active' : '' }}">Contact</a></li>
                   <li>
                     <a href="#admissionModal" data-bs-toggle="modal" class="admit_btn">
                         <i class="ti-crown fw-bold"></i>

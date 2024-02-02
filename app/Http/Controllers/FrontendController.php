@@ -27,7 +27,10 @@ class FrontendController extends Controller
         $mentor = MeetOurMentors::get();
         $auth_logo = Authorised::get();
         $faq = FAQ::get();
-        return view('frontend.pages.main', compact('heroInformations','departments','successStorys','reviews','mentor','auth_logo','faq'));
+        $course = [];
+        $course = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])->where('is_active', '0')->get();
+
+        return view('frontend.pages.main', compact('heroInformations','departments','successStorys','reviews','mentor','auth_logo','faq','course'));
     }
     public function about(){
         $about = About::first();
@@ -37,7 +40,9 @@ class FrontendController extends Controller
         return view('frontend.pages.about.about', compact('about','mentor','departments','workSpaceImage'));
     }
     public function course(){
-        return view('frontend.pages.course.course');
+        $courses = Course::with(['department','courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])->where('is_active', '0')->get();
+        $reviews = Review::get();
+        return view('frontend.pages.course.course', compact('courses','reviews'));
     }
     public function success(){
         $successStorys = SuccessStory::get();
@@ -57,8 +62,9 @@ class FrontendController extends Controller
         $courses = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])->where('department_id',$departments->id)->get();
         return view('frontend.pages.singleDepartment.singleDepartment', compact('departments','courses'));
     }
-    public function singleCourse(){
-        return view('frontend.pages.singleCourse.singleCourse');
+    public function singleCourse($slug){
+        $courses = Course::with(['department','courseDetails','courseDetails.mentor'])->where('slug',$slug)->first();
+        return view('frontend.pages.singleCourse.singleCourse', compact('courses'));
     }
     public function privacyPolicy(){
         return view('frontend.pages.privacyPolicy.privacyPolicy');
