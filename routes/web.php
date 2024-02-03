@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\AuthorisedController;
 use App\Http\Controllers\Admin\FAQController;
 use App\Http\Controllers\Admin\SeminarController;
 use App\Http\Controllers\Admin\WebinarController;
+use App\Http\Controllers\Admin\PopUpController;
+use App\Http\Controllers\Admin\TopAdvertisingController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -167,6 +169,21 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('/course-faq-post/{id}', [CourseController::class, 'courseFAQPost'])->name('courseFAQPost');
     Route::post('/course-faq-edit', [CourseController::class, 'courseFAQEdit'])->name('courseFAQEdit');
     Route::get('/course-faq-delete/{id}', [CourseController::class, 'courseFAQDelete'])->name('courseFAQDelete');
+
+    // pop_up
+    Route::get('/popUp', [PopUpController::class, 'popUp'])->name('popUp');
+    Route::post('/popUp-post', [PopUpController::class, 'popUpPost'])->name('popUpPost');
+    Route::post('/popUp-edit', [PopUpController::class, 'popUpEdit'])->name('popUpEdit');
+    Route::get('/popUp-delete/{id}', [PopUpController::class, 'popUpDelete'])->name('popUpDelete');
+    Route::post('/status', [PopUpController::class, 'status'])->name('status');
+
+    // Top Advertising
+    Route::get('/top-Advertising', [TopAdvertisingController::class, 'topAdvertising'])->name('topAdvertising');
+    Route::post('/top-Advertising-post', [TopAdvertisingController::class, 'topAdvertisingPost'])->name('topAdvertisingPost');
+    Route::post('/top-Advertising-edit', [TopAdvertisingController::class, 'topAdvertisingEdit'])->name('topAdvertisingEdit');
+    Route::get('/top-Advertising-delete/{id}', [TopAdvertisingController::class, 'topAdvertisingDelete'])->name('topAdvertisingDelete');
+    Route::post('/topstatus', [TopAdvertisingController::class, 'topstatus'])->name('topstatus');
+
 
 });
 

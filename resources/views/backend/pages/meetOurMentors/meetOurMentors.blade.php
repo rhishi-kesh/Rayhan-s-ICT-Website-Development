@@ -7,13 +7,13 @@
     </a>
     <table class="table border text-nowrap customize-table mb-0 align-middle">
       @if(Session::has('success'))
-        <div class="alert bg-success text-white alert-dismissible border-0 fade show" role="alert">
+        <div id="successMessage" class="alert bg-success text-white alert-dismissible border-0 fade show" role="alert">
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
             {{ Session::get('success') }}
         </div>
       @endif
       @if(Session::has('error'))
-        <div class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
+        <div id="errorMessage" class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
             {{ Session::get('error') }}
         </div>
@@ -23,6 +23,7 @@
           <th><h6 class="fs-4 fw-semibold mb-0">SL</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-center">Name</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-center">Designation</h6></th>
+          <th><h6 class="fs-4 fw-semibold mb-0 text-center">Description</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-center">Image</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-center">Thumbnail</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-end pe-3">Action</h6></th>
@@ -40,6 +41,9 @@
             </td>
             <td   class="text-center">
                 <span>{{$item->designation}}</span>
+            </td>
+            <td   class="text-center">
+                <span>{{$item->description}}</span>
             </td>
             <td class="text-center">
                 <img src="{{asset('storage/mentors/image/')}}/{{ $item->image}}" alt="" width="60" height="60">
@@ -92,6 +96,13 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    <div class="note-title mt-3">
+                                      <label for="description"> Description </label>
+                                      <input type="text" id="description"  value="{{$item->description}}"  class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Enter Description">
+                                      @error('description', 'insert')
+                                          <div class="alert alert-danger">{{ $message }}</div>
+                                      @enderror
+                                  </div>
                                     <div class="note-title mt-3">
                                       <label for="imageImage{{$item->id}}">Image</label>
                                       <input type="file" id="imageImage{{$item->id}}" class="form-control @error('image') is-invalid @enderror" name="image">
@@ -173,6 +184,13 @@
                                         @enderror
                                     </div>
                                     <div class="note-title mt-3">
+                                        <label for="description"> Description </label>
+                                        <input type="text" id="description"  value="{{$item->description}}"  class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Enter Description">
+                                        @error('description', 'insert')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="note-title mt-3">
                                       <label for="imagei">Image</label>
                                       <input type="file" id="imagei" class="form-control @error('image') is-invalid @enderror" name="image">
                                       <img src="#" id="image_p" width="60" height="60" alt="Image Preview">
@@ -220,4 +238,8 @@
   }
   </script>
 @endsection
+<script type="text/javascript">
+  window.setTimeout("document.getElementById('successMessage').style.display='none';", 2000);
+  window.setTimeout("document.getElementById('errorMessage').style.display='none';", 2000);
+</script>
 @endsection

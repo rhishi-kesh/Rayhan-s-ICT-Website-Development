@@ -43,7 +43,7 @@
                 <div class="form-check form-switch d-flex justify-content-center">
                     <input class="form-check-input" type="checkbox" onclick="is_active({{ $item->id }})" id="flexSwitchCheckChecked" @if($item->is_active == 0) checked @endif>
                 </div>
-            </td>
+            </td> 
             <td class="text-end">
                 <div class="dropdown dropstart">
                     <a href="#" class="text-muted pe-4" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">

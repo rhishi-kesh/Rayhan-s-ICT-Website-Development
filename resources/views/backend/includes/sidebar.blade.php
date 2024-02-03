@@ -160,6 +160,18 @@
             <span class="hide-menu"> Webinar </span>
           </a>
         </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{route('popUp')}}" aria-expanded="false">
+            <span class="fas fa-comment-dots"></span>
+            <span class="hide-menu"> Pop-up </span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{route('topAdvertising')}}" aria-expanded="false">
+            <span class="fas fa-comment-dots"></span>
+            <span class="hide-menu"> Top Advertising </span>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- End Sidebar navigation -->

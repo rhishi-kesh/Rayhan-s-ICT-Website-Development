@@ -47,7 +47,7 @@ class ProfileController extends Controller
                     unlink(public_path('storage/profile/').'/'.Auth::user()->profile);
                 }
                 $request->profile_image->storeAs('public/profile', $filename);
-        }else{
+        }else{   
             $filename = Auth::user()->profile;
         }
 
