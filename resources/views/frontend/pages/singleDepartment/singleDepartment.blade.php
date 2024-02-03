@@ -1,5 +1,5 @@
 @extends('layouts.frontendMaster')
-@section('title','{{ $departments->departmentName }}')
+@section('title',"$title")
 @section('content')
     <section class="Course py-5">
         <div class="container">

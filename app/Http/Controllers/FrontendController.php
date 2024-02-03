@@ -60,11 +60,13 @@ class FrontendController extends Controller
     public function singleDepartment($slug){
         $departments = Department::select('id','departmentName')->where('slug',$slug)->first();
         $courses = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])->where('department_id',$departments->id)->get();
-        return view('frontend.pages.singleDepartment.singleDepartment', compact('departments','courses'));
+        $title = $departments->departmentName;
+        return view('frontend.pages.singleDepartment.singleDepartment', compact('departments','courses','title'));
     }
     public function singleCourse($slug){
         $courses = Course::with(['department','courseDetails','courseDetails.mentor'])->where('slug',$slug)->first();
-        return view('frontend.pages.singleCourse.singleCourse', compact('courses'));
+        $title = $courses->name;
+        return view('frontend.pages.singleCourse.singleCourse', compact('courses','title'));
     }
     public function privacyPolicy(){
         return view('frontend.pages.privacyPolicy.privacyPolicy');
