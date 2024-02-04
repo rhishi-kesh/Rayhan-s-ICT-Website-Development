@@ -16,7 +16,7 @@ class AuthorisedController extends Controller
     }
     // insert data
     public function authorisedPost(Request $request){
-        $request->validate([
+        $request->validateWithBag('insert',[
             'image'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
         ]);
         if($request->file('image')){
@@ -32,7 +32,7 @@ class AuthorisedController extends Controller
         }
     }
     public function authorisedEdit(Request $request){
-        $request->validate([
+        $request->validateWithBag('update',[
             'image'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
         ]);
         $id = $request->id;

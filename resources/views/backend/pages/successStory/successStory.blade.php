@@ -3,7 +3,7 @@
 <div class="table-responsive rounded-2 mb-4">
     <a href="#addData" data-bs-toggle="modal" class="btn btn-secondary btn-lg mb-3">
         <i class="fs-4 ti ti-plus"></i>
-        Add new
+        Add Success Story
     </a>
     <table class="table border text-nowrap customize-table mb-0 align-middle">
       @if(Session::has('success'))
@@ -22,6 +22,7 @@
         <tr>
           <th><h6 class="fs-4 fw-semibold mb-0">SL</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-center">Thumbnail</h6></th>
+          {{-- <th><h6 class="fs-4 fw-semibold mb-0 text-center">Video Link</h6></th> --}}
           <th><h6 class="fs-4 fw-semibold mb-0 text-end pe-3">Action</h6></th>
         </tr>
       </thead>
@@ -66,17 +67,25 @@
                               <div class="row">
                                   <div class="col-md-12 mb-3">
                                       <div class="note-title">
-                                        <label for="thumbnail">Thumbnail</label>
-                                        <input type="file" id="image" class="form-control @error('image') is-invalid @enderror" name="image">
-                                        <img src="{{ asset('storage/SuccessStory/') }}/{{ $item->thumbnail }}" alt="" width="60" height="60">
-                                        @error('image')
+                                        <label for="thumbnailu{{ $item->id }}">Thumbnail</label>
+                                        <input type="file" id="thumbnailu{{ $item->id }}" class="form-control @error('image') is-invalid @enderror" name="image">
+                                        @error('image', 'update')
                                           <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+                                        <img src="{{ asset('storage/SuccessStory/') }}/{{ $item->thumbnail }}" alt="Preview Image" width="60" height="60" id="thumbnail_u{{ $item->id }}">
+                                        <script>
+                                          thumbnailu{{$item->id}}.onchange = evt => {
+                                            const[file] = thumbnailu{{$item->id}}.files
+                                            if(file){
+                                              thumbnail_u{{$item->id}}.src = URL.createObjectURL(file)
+                                            }
+                                          }
+                                        </script>
                                       </div>
                                       <div class="note-title mt-3">
                                         <label for="image">Video Link</label>
-                                        <input type="url" value="{{ $item->video_link }}" id="video_link" class="form-control @error('video_link') is-invalid @enderror" name="video_link">
-                                        @error('video_link')
+                                        <input type="url" value="{{ $item->video_link }}" id="video_link" class="form-control @error('video_link') is-invalid @enderror" name="video_link" placeholder="Enter video link">
+                                        @error('video_link', 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                       </div>
@@ -115,16 +124,18 @@
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div class="note-title">
-                                      <label for="thumbnail">Thumbnail</label>
-                                      <input type="file" id="image" class="form-control @error('image') is-invalid @enderror" name="image">
-                                      @error('image')
+                                      <label for="thumbnaili">Thumbnail</label>
+                                      @error('image','insert')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                       @enderror
+                                      <input type="file" id="thumbnaili" class="form-control @error('image') is-invalid @enderror" name="image">
+                                      <img src="#" alt="Image Preview" width="180" id="thumbnail_i">
+
                                     </div>
                                     <div class="note-title mt-3">
                                       <label for="image">Video Link</label>
-                                      <input type="url" id="video_link" class="form-control @error('video_link') is-invalid @enderror" name="video_link">
-                                      @error('video_link')
+                                      <input type="url" id="video_link" placeholder="Enter Video Link" class="form-control @error('video_link') is-invalid @enderror" name="video_link">
+                                      @error('video_link','insert')
                                           <div class="alert alert-danger">{{ $message }}</div>
                                       @enderror
                                     </div>
@@ -144,10 +155,10 @@
   </div>
   @section('jss')
       <script>
-          workshop_image.onchange = evt => {
-          const [file] = workshop_image.files
+          thumbnaili.onchange = evt => {
+          const [file] = thumbnaili.files
           if (file) {
-              image_demo.src = URL.createObjectURL(file)
+            thumbnail_i.src = URL.createObjectURL(file)
           }
       }
       </script>

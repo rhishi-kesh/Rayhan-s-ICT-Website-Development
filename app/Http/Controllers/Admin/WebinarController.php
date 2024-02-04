@@ -11,11 +11,11 @@ class WebinarController extends Controller
 {
 
     public function webinar(){
-        $webinars = Webinar::paginate(5);
+        $webinars = Webinar::paginate(7);
         return view('backend.pages.webinar.webinar', compact('webinars'));
     }
     public function webinarPost(Request $request){
-        $request->validate([
+        $request->validateWithBag('insert',[
             'title' =>'required',
             'thumbnail'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
             'date'=> 'required',
@@ -38,7 +38,7 @@ class WebinarController extends Controller
         }
     }
     public function webinarEdit(Request $request){
-        $request->validate([
+        $request->validateWithBag('update',[
             'title' =>'required',
             'thumbnail'=> ['image', 'mimes:jpg,png,jpeg'],
             'date'=> 'required',
@@ -66,9 +66,9 @@ class WebinarController extends Controller
         ]);
         return back()->with('success', 'Edit Update Successfully');
     }
-    public function seminarDelete($id){
+    public function webinarDelete($id){
         $seminarDelete = Webinar::findOrFail($id);
-        unlink(public_path('storage/seminar/').'/'.$seminarDelete->thumbnail);
+        unlink(public_path('storage/webinar/').'/'.$seminarDelete->thumbnail);
         Webinar::findOrFail($id)->delete();
 
         return back()->with('error', 'Delete Successfully');

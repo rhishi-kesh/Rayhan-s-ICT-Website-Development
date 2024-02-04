@@ -170,7 +170,7 @@ class AboutController extends Controller
         return back()->with('success','Hero Information Updated Successfull');
     }
     public function workspace(){
-        $workspace = WorkSpaceImage::paginate(10);
+        $workspace = WorkSpaceImage::paginate(7);
         return view('backend.pages.about.workspace', compact('workspace'));
     }
     public function workspacePost(Request $request){
@@ -229,6 +229,6 @@ class AboutController extends Controller
         unlink(public_path('storage/WorkSpace/').'/'.$content->image);
         WorkSpaceImage::findOrFail($id)->delete();
 
-        return back()->with('delete','Gallery Image Deleted Successfull');
+        return back()->with('error','Gallery Image Deleted Successfull');
     }
 }

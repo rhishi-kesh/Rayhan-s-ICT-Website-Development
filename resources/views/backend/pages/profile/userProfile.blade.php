@@ -86,26 +86,39 @@
                                 <div class="border border-4 border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
                                     style="width: 100px; height: 100px;" ;="">
                                     <img style="object-fit: cover"
-                                        src="{{ empty(Auth::user()->profile) ? url('images/profile/new/profile.jpg') : url('images/profile/') . '/' . Auth::user()->profile }}"
+                                        src="{{ empty(Auth::user()->profile) ? url('profile.jpeg') : url('storage/profile/') . '/' . Auth::user()->profile }}"
                                         alt="" class="w-100 h-100">
                                 </div>
                             </div>
                         </div>
                         <div class="text-center">
-                            <h5 class="fs-5 fw-semibold">Rhishi Kesh</h5>
-                            <p class="mb-0 mb-4 fs-4">Web Developer</p>
+                            <h5 class="fs-5 fw-semibold">{{ $adminData->name}}</h5>
+                            <h5 class="fs-5 fw-semibold">{{ $adminData->email}}</h5>
+                            <h5 class="fs-5 fw-semibold">{{ $adminData->position }}</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @if(Session::has('success'))
+    <div id="successMessage" class="alert bg-success text-white alert-dismissible border-0 fade show" role="alert">
+     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+     {{ Session::get('success') }}
+    </div>
+  @endif
+  @if(Session::has('error'))
+    <div id="errorMessage" class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
+     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+     {{ Session::get('error') }}
+    </div>
+   @endif
     <div class="row">
         <div class="col-lg-4">
             <div class="card shadow-none border">
                 <div class="card-body">
                     <h5 class="mb-3">Update Image</h5>
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('profileImagae') }}" method="POST"  enctype="multipart/form-data">
                         @csrf
                         <div class="avatar-upload text-center">
                             <input type="hidden" name="id" value="">
@@ -121,7 +134,7 @@
                                 </label>
                             </div>
                             <div class="avatar-preview">
-                                {{-- <div id="imagePreview" style="background-image: url('{{ empty(Auth::user()->profile) ? url('images/profile/new/profile.jpg') : url('images/profile/'). '/' .Auth::user()->profile }}');"> --}}
+                                <div id="imagePreview" style="background-image: url({{ empty(Auth::user()->profile) ? url('profile.jpeg') : url('storage/profile/') . '/' . Auth::user()->profile }});"></div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
@@ -162,13 +175,13 @@
         <div class="col-lg-8">
             <div class="card shadow-none border">
                 <div class="card-body">
-                    <h5 class="mb-3">Update Information</h5>
-                    <form action="" method="POST">
+                    <h5 class="mb-3">Update Profile Information</h5>
+                    <form action="{{ route('profileEdit')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="name" value=""
+                                    <input type="text" name="name" value="{{ $adminData->name }}"
                                         class="form-control @error('name') is-invalid @enderror" id="tb-fname"
                                         placeholder="Enter Your Name">
                                     @error('name')
@@ -179,7 +192,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="email" name="email" value=""
+                                    <input type="email" name="email" value="{{ $adminData->email }}"
                                         class="form-control @error('email') is-invalid @enderror" id="tb-email"
                                         placeholder="Enter Your Email">
                                     @error('email')
@@ -190,7 +203,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="position" value=""
+                                    <input type="text" name="position" value="{{ $adminData->position }}"
                                         class="form-control @error('position') is-invalid @enderror" id="position"
                                         placeholder="Enter Your Position">
                                     @error('position')
@@ -228,29 +241,29 @@
             <div class="card shadow-none border">
                 <div class="card-body">
                     <h5 class="mb-3">Change Password</h5>
-                    <form action="" method="POST">
+                    <form action="{{ route('updatePassword')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mt-3">
-                                    <input value="{{ old('old_Password') }}" name="old_Password" type="password"
-                                        class="form-control @error('old_Password') is-invalid @enderror @if (Session::has('old')) is-invalid @endif"
+                                    <input value="{{ old('current_password') }}" name="current_password" type="password"
+                                        class="form-control @error('current_password') is-invalid @enderror @if (Session::has('old')) is-invalid @endif"
                                         id="tb-cpwd" placeholder="Old Password">
-                                    @error('old_Password')
+                                    @error('current_password')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                     @if (Session::has('old'))
                                         <div class="alert alert-danger">{{ Session::get('old') }}</div>
                                     @endif
-                                    <label for="tb-cpwd">Old Password</label>
+                                    <label for="tb-cpwd">Current Password</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mt-3">
-                                    <input value="{{ old('new_password') }}" name="new_password" type="password"
-                                        class="form-control @error('new_password') is-invalid @enderror" id="tb-cpwd"
+                                    <input value="{{ old('password') }}" name="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" id="tb-cpwd"
                                         placeholder="New Password">
-                                    @error('new_password')
+                                    @error('password')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                     <label for="tb-cpwd">New Password</label>
@@ -258,10 +271,10 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mt-3">
-                                    <input value="{{ old('C_password') }}" name="C_password" type="password"
-                                        class="form-control @error('C_password') is-invalid @enderror" id="tb-cpwd"
+                                    <input value="{{ old('password_confirmation') }}" name="password_confirmation" type="password"
+                                        class="form-control @error('password_confirmation') is-invalid @enderror" id="tb-cpwd"
                                         placeholder="Confirm Password">
-                                    @error('C_password')
+                                    @error('password_confirmation')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                     <label for="tb-cpwd">Confirm Password</label>
@@ -295,4 +308,8 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        window.setTimeout("document.getElementById('successMessage').style.display='none';", 2000);
+        window.setTimeout("document.getElementById('errorMessage').style.display='none';", 2000);
+    </script>
 @endsection

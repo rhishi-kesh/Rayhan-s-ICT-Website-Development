@@ -31,7 +31,7 @@
                 <span>{{$users->firstItem()+$key}}</span>
             </td>
             <td class="text-center">
-                <img src="{{ empty(Auth::user()->profile) ? url('profile.jpg') : url('images/profile/'). '/' .Auth::user()->profile }}" alt="" width="60" height="60">
+                <img src="{{ empty(Auth::user()->profile) ? url('profile.jpeg') : asset('storage/profile/'). '/'. Auth::user()->profile }}" alt="" width="60" height="60">
             </td>
             <td style="text-align: center">
                 <p class="mb-0">{{ auth()->user()->name }}</p>

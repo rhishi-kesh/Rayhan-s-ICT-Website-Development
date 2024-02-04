@@ -13,10 +13,10 @@ class SeminarController extends Controller
     public function seminar(){
         $seminars = Seminar::paginate(10);
         return view('backend.pages.seminars.seminar', compact('seminars'));
-    }
+    } 
     // insert datasaminar
     public function seminarPost(Request $request){
-        $request->validate([
+        $request->validateWithBag('insert',[
             'title' =>'required',
             'thumbnail'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
             'date'=> 'required',
@@ -39,7 +39,7 @@ class SeminarController extends Controller
         }
     }
     public function seminarEdit(Request $request){
-        $request->validate([
+        $request->validateWithBag('update',[
             'title' =>'required',
             'thumbnail'=> ['image', 'mimes:jpg,png,jpeg'],
             'date'=> 'required',

@@ -45,7 +45,6 @@ class FAQController extends Controller
     
     }
     public function faqDelete($id){
-        $faqDelete = FAQ::findOrFail($id);
         FAQ::findOrFail($id)->delete();
 
         return back()->with('error', 'FAQ Delete Successfully');

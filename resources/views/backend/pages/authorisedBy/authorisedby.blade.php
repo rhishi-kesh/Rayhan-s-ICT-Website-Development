@@ -67,22 +67,20 @@
                                   <div class="col-md-12 mb-3">
 
                                     <div class="note-title">
-                                      <label for="authorisedImage">Image</label>
-                                      <input type="file" id="authorisedImage" class="form-control @error('image') is-invalid @enderror" name="image">
-                                      @error('image')
+                                      <label for="authorisedImage{{ $item->id }}">Image</label>
+                                      <input type="file" id="authorisedImage{{ $item->id }}" class="form-control @error('image') is-invalid @enderror" name="image">
+                                      @error('image','update')
                                           <div class="alert alert-danger">{{ $message }}</div>
                                       @enderror
-                                      <img src="{{ asset('storage/authorisedby/') }}/{{ $item->image }}" alt="" width="60" height="60" class="mt-2" id="authorisedImage_p">
-                                      @section('jss')
-                                          <script>
-                                              authorisedImage.onchange = evt => {
-                                              const [file] = authorisedImage.files
-                                              if (file) {
-                                                authorisedImage_p.src = URL.createObjectURL(file)
-                                              }
+                                      <img src="{{ asset('storage/authorisedby/') }}/{{ $item->image }}" alt="" width="60" height="60" class="mt-2" id="authorisedImage_p{{ $item->id }}">
+                                      <script>
+                                          authorisedImage{{ $item->id }}.onchange = evt => {
+                                          const [file] = authorisedImage{{ $item->id }}.files
+                                          if (file) {
+                                            authorisedImage_p{{ $item->id }}.src = URL.createObjectURL(file)
                                           }
-                                          </script>
-                                      @endsection
+                                      }
+                                      </script>
                                   </div>
                                   </div>
                               </div>
@@ -119,11 +117,12 @@
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div class="note-title">
-                                      <label for="image">image</label>
-                                      <input type="file" id="image" class="form-control @error('image') is-invalid @enderror" name="image">
-                                      @error('image')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                      <label for="authoriseImage">image</label>
+                                      <input type="file" id="authoriseImage" class="form-control @error('image') is-invalid @enderror" name="image">
+                                      @error('image', 'insert')
+                                      <div class="alert alert-danger">{{ $message }}</div>
                                       @enderror
+                                      <img src="#" width="120px" id="authorisedImage_p" alt="Image preview">
                                     </div>
                                 </div>
                             </div>
@@ -139,4 +138,14 @@
         </div>
       </div>
   </div>
+  @section('jss')
+    <script>
+      authoriseImage.onchange = evt =>{
+        const [file] = authoriseImage.files
+        if(file){
+          authorisedImage_p.src = URL.createObjectURL(file)
+        }
+      }
+    </script>
+@endsection
 @endsection

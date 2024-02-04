@@ -3,17 +3,17 @@
 <div class="table-responsive rounded-2 mb-4">
     <a href="#addData" data-bs-toggle="modal" class="btn btn-secondary btn-lg mb-3">
         <i class="fs-4 ti ti-plus"></i>
-        Add new Course
+        Add Course
     </a>
     <table class="table border text-nowrap customize-table mb-3 align-middle">
         @if(Session::has('success'))
-                <div class="alert bg-success text-white alert-dismissible border-0 fade show" role="alert">
+                <div id="successMessage" class="alert bg-success text-white alert-dismissible border-0 fade show" role="alert">
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                     {{ Session::get('success') }}
                 </div>
         @endif
         @if(Session::has('error'))
-        <div class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
+        <div id="errorMessage" class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
             {{ Session::get('error') }}
         </div>
@@ -69,25 +69,25 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-3" href="">
+                            <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('courseForThose', $item->id )}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-affiliate" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5.931 6.936l1.275 4.249m5.607 5.609l4.251 1.275" /><path d="M11.683 12.317l5.759 -5.759" /><path d="M5.5 5.5m-1.5 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0" /><path d="M18.5 5.5m-1.5 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0" /><path d="M18.5 18.5m-1.5 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0" /><path d="M8.5 15.5m-4.5 0a4.5 4.5 0 1 0 9 0a4.5 4.5 0 1 0 -9 0" /></svg>
                                 Add Course For Those
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-3" href="">
+                            <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('benefitsOfCourse', $item->id  ) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-puzzled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.986 3.51a9 9 0 1 0 1.514 16.284c2.489 -1.437 4.181 -3.978 4.5 -6.794" /><path d="M10 10h.01" /><path d="M14 8h.01" /><path d="M12 15c1 -1.333 2 -2 3 -2" /><path d="M20 9v.01" /><path d="M20 6a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
                                 Add Benefits of the Course
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-3" href="">
+                            <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('creativeProject',  $item->id ) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-radioactive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M13.5 14.6l3 5.19a9 9 0 0 0 4.5 -7.79h-6a3 3 0 0 1 -1.5 2.6" /><path d="M13.5 9.4l3 -5.19a9 9 0 0 0 -9 0l3 5.19a3 3 0 0 1 3 0" /><path d="M10.5 14.6l-3 5.19a9 9 0 0 1 -4.5 -7.79h6a3 3 0 0 0 1.5 2.6" /></svg>
                                 Add Creative Projects
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-3" href="">
+                            <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('courseModule',  $item->id )}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-carousel-vertical" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 8v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1z" /><path d="M7 22v-1a1 1 0 0 1 1 -1h8a1 1 0 0 1 1 1v1" /><path d="M17 2v1a1 1 0 0 1 -1 1h-8a1 1 0 0 1 -1 -1v-1" /></svg>
                                 Add Course Module
                             </a>
@@ -99,7 +99,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-3" href="">
+                            <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('courseFAQ', $item->id ) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help-hexagon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z" /><path d="M12 16v.01" /><path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
                                 Add Course Faq
                             </a>
@@ -308,4 +308,8 @@
         }
         </script>
     @endsection
+    <script type="text/javascript">
+        window.setTimeout("document.getElementById('successMessage').style.display='none';", 2000);
+        window.setTimeout("document.getElementById('errorMessage').style.display='none';", 2000);
+    </script>
 @endsection

@@ -80,29 +80,37 @@
                                      <div class="note-title mt-3">
                                         <label for="title">Title</label>
                                         <input type="title"  placeholder="Enter title" value="{{ $item->title }}" id="title" class="form-control @error('title') is-invalid @enderror" name="title">
-                                        @error('title')
+                                        @error('title', 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                       </div>
                                       <div class="note-title">
-                                        <label for="thumbnail">Thumbnail</label>
-                                        <input type="file" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
-                                        <img src="{{ asset('storage/webinar/') }}/{{ $item->thumbnail }}" alt="preview image" id="thumbnail_p" width="60" height="60">
-                                        @error('thumbnail')
+                                        <label for="thumbnau{{ $item->id }}">Thumbnail</label>
+                                        <input type="file" id="thumbnau{{ $item->id }}" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
+                                        @error('thumbnail', 'update')
                                           <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+                                        <img src="{{ asset('storage/webinar/') }}/{{ $item->thumbnail }}" alt="preview image" id="thumbnau_p{{ $item->id }}" width="60" height="60">
+                                        <script>
+                                          thumbnau{{ $item->id }}.onchange = evt => {
+                                          const [file] = thumbnau{{ $item->id }}.files
+                                          if(file){
+                                            thumbnau_p{{ $item->id }}.src = URL.createObjectURL(file)
+                                            }
+                                          }
+                                      </script>
                                       </div>
                                       <div class="note-title mt-3">
                                         <label for="date">Date</label>
                                         <input type="date" value="{{ $item->date }}" id="date" class="form-control @error('date') is-invalid @enderror" name="date">
-                                        @error('date')
+                                        @error('date', 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                       </div>
                                       <div class="note-title mt-3">
                                         <label for="time">Time</label>
                                         <input type="time" value="{{ $item->time }}" id="time" class="form-control @error('time') is-invalid @enderror" name="time">
-                                        @error('time')
+                                        @error('time', 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                       </div>
@@ -143,7 +151,7 @@
                                     <div class="note-title mt-3">
                                        <label for="image" >Title</label>
                                        <input type="title" placeholder="Enter title" id="title" class="form-control @error('title') is-invalid @enderror" name="title">
-                                       @error('title')
+                                       @error('title' , 'insert')
                                            <div class="alert alert-danger">{{ $message }}</div>
                                        @enderror
                                      </div>
@@ -151,21 +159,21 @@
                                        <label for="thumbnail">Thumbnail</label>
                                        <input type="file" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
                                        <img src="#" id="thumbnail_p" alt="preview image" width="60" height="60">
-                                       @error('thumbnail')
+                                       @error('thumbnail', 'insert')
                                          <div class="alert alert-danger">{{ $message }}</div>
                                        @enderror
                                      </div>
                                      <div class="note-title mt-3">
                                        <label for="date">Date</label>
                                        <input type="date"  id="date" class="form-control @error('date') is-invalid @enderror" name="date">
-                                       @error('date')
+                                       @error('date', 'insert')
                                            <div class="alert alert-danger">{{ $message }}</div>
                                        @enderror
                                      </div>
                                      <div class="note-title mt-3">
                                        <label for="time">Time</label>
                                        <input type="time"  id="time" class="form-control @error('time') is-invalid @enderror" name="time">
-                                       @error('time')
+                                       @error('time', 'insert')
                                            <div class="alert alert-danger">{{ $message }}</div>
                                        @enderror
                                      </div>

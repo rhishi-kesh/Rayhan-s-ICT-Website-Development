@@ -12,12 +12,12 @@ class MeetOurMentorsController extends Controller
 {
     
     public function meetOurMentors(){
-        $MeetOurMentors = MeetOurMentors::paginate(10);
+        $MeetOurMentors = MeetOurMentors::paginate(7);
         return view('backend.pages.meetOurMentors.meetOurMentors', compact('MeetOurMentors'));
     }
 
     public function meetOurMentorsPost(Request $request){
-        $request->validate([
+        $request->validateWithBag('insert',[
             'name'=> 'required',
             'designation'=> 'required',
             'image'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
@@ -44,7 +44,7 @@ class MeetOurMentorsController extends Controller
         }
     }
     public function meetOurMentorsEdit(Request $request){
-        $request->validate([
+        $request->validateWithBag('update',[
             'name'=> 'required',
             'designation'=> 'required',
             'image'=> ['image', 'mimes:jpg,png,jpeg'],
@@ -78,7 +78,7 @@ class MeetOurMentorsController extends Controller
             'thumbnail' => $thumbnailname,
             'created_at' => Carbon::now()
         ]);
-        return back()->with('success', 'Edit Update Successfully');
+        return back()->with('success', 'Mentor Updated Successfully');
     }
     public function meetOurMentorsDelete($id){
         $mentorsDelete = MeetOurMentors::findOrFail($id);
@@ -86,7 +86,7 @@ class MeetOurMentorsController extends Controller
         unlink(public_path('storage/mentors/thumbnail/').'/'.$mentorsDelete->thumbnail);
         MeetOurMentors::findOrFail($id)->delete();
 
-        return back()->with('error', 'Delete Successfully');
+        return back()->with('error', 'Mentor Deleted Successfully');
     }
 
 }

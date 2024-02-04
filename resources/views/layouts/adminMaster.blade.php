@@ -17,6 +17,12 @@
 
     <!-- Core Css -->
     <link  id="themeColors"  rel="stylesheet" href="{{ asset('backend/css/style.min.css') }}" />
+    <style>
+      .ck-editor__editable_inline {
+          min-height: 140px;
+      }
+      </style>
+      
   </head>
   <body>
     <!--  Body Wrapper -->
@@ -55,6 +61,8 @@
     <script src=" {{ asset('backend/libs/owl.carousel/dist/owl.carousel.min.js') }}"></script>
     <script src=" {{ asset('backend/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src=" {{ asset('backend/js/dashboard.js') }}"></script>
+    <script src=" {{ asset('backend/js/ckeditor (1).js') }}"></script>
+
     @yield('jss')
   </body>
 </html>
