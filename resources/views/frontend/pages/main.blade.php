@@ -4,10 +4,10 @@
 <section class="hero">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-6 text-center text-lg-start">
+            <div class="col-12 col-lg-6 text-center text-lg-start align-self-center">
                 <h1 class="display-5">{!! $heroInformations->title !!}</h1>
                 <p class="mt-3 lead">{{ $heroInformations->description }}</p>
-                <div class="btns mt-4 d-flex justify-content-start">
+                <div class="btns mt-4 d-flex justify-content-center justify-content-md-start">
                     <a href="{{ route('about') }}">
                         <i class="fa-solid fa-users"></i>
                         About Us

@@ -294,6 +294,7 @@ nav .nav-bar .logo a{
 .hero .owl-carousel img{
     width: 60px;
     display: inline-block;
+    border-radius: 50%;
 }
 .hero .owl-carousel a{
     color: var(--dark);

@@ -20,6 +20,7 @@ class MeetOurMentorsController extends Controller
         $request->validateWithBag('insert',[
             'name'=> 'required',
             'designation'=> 'required',
+            'description'=> 'required',
             'image'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
             'thumbnail'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
         ]);
@@ -35,6 +36,7 @@ class MeetOurMentorsController extends Controller
             MeetOurMentors::insert([
                 'name'        => $request->name,
                 'designation' => $request->designation,
+                'description' => $request->description,
                 'image'       =>$filename,
                 'thumbnail'   =>$thumbnailname,
                 'created_at'  => Carbon::now()
@@ -47,6 +49,7 @@ class MeetOurMentorsController extends Controller
         $request->validateWithBag('update',[
             'name'=> 'required',
             'designation'=> 'required',
+            'description'=> 'required',
             'image'=> ['image', 'mimes:jpg,png,jpeg'],
             'thumbnail'=> ['image', 'mimes:jpg,png,jpeg'],
         ]);
@@ -74,6 +77,7 @@ class MeetOurMentorsController extends Controller
         MeetOurMentors::where('id', $id)->update([
             'name' => $request->name,
             'designation' => $request->designation,
+            'description' => $request->description,
             'image' => $filename,
             'thumbnail' => $thumbnailname,
             'created_at' => Carbon::now()

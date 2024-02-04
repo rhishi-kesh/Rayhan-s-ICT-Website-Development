@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('meet_our_mentors', function (Blueprint $table) {
+        Schema::create('top_advertisings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('designation');
-            $table->string('description');
             $table->string('image');
-            $table->string('thumbnail');
+            $table->string('is_active')->default('1')->comment("1 = deactive, 0 = active");
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('meet_our_mentors');
+        Schema::dropIfExists('top_advertisings');
     }
 };

@@ -12,23 +12,18 @@ use Illuminate\Support\Facades\Hash;
 class ProfileController extends Controller
 {
     public function profile(){
-        $id = Auth::user()->id;
-        $adminData = User::find($id);
-        return view('backend.pages.profile.userProfile', compact('adminData'));
-
-        $id = Auth::user()->id;
-        $adminData = User::find($id);
-        return view('backend.pages.profile.userProfile', compact('adminData'));
+        return view('backend.pages.profile.userProfile');
     }
 
     public function profileEdit(Request $request)
     {
-        $id = Auth::user()->id;
-        $data = User::find($id);
-        $data-> name = $request->name;
-         $data-> email = $request->email;
-         $data-> position = $request->position;
-         $data->save();
+        $id = $request->id;
+        User::where('id',$id)->update([
+            "name" => $request->name,
+            "email" => $request->email,
+            "position" => $request->position,
+            'updated_at' => Carbon::now()
+        ]);
 
      return redirect()->route('profile');
     }
@@ -58,7 +53,7 @@ class ProfileController extends Controller
 
         return back()->with('success', 'profile updated successfully');
     }
-   
+
     //  Changing Password
 
     public function changePassword(){

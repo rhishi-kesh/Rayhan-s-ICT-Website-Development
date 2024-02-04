@@ -92,9 +92,9 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <h5 class="fs-5 fw-semibold">{{ $adminData->name}}</h5>
-                            <h5 class="fs-5 fw-semibold">{{ $adminData->email}}</h5>
-                            <h5 class="fs-5 fw-semibold">{{ $adminData->position }}</h5>
+                            <h5 class="fs-5 fw-semibold">{{ Auth::user()->name }}</h5>
+                            <h5 class="fs-5 fw-semibold">{{ Auth::user()->email }}</h5>
+                            <h5 class="fs-5 fw-semibold">{{ Auth::user()->position  }}</h5>
                         </div>
                     </div>
                 </div>
@@ -179,9 +179,10 @@
                     <form action="{{ route('profileEdit')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
+                            <input type="hidden" value="{{ Auth::user()->id }}" name="id">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="name" value="{{ $adminData->name }}"
+                                    <input type="text" name="name" value="{{ Auth::user()->name }}"
                                         class="form-control @error('name') is-invalid @enderror" id="tb-fname"
                                         placeholder="Enter Your Name">
                                     @error('name')
@@ -192,7 +193,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="email" name="email" value="{{ $adminData->email }}"
+                                    <input type="email" name="email" value="{{ Auth::user()->email }}"
                                         class="form-control @error('email') is-invalid @enderror" id="tb-email"
                                         placeholder="Enter Your Email">
                                     @error('email')
@@ -203,7 +204,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="position" value="{{ $adminData->position }}"
+                                    <input type="text" name="position" value="{{ Auth::user()->position }}"
                                         class="form-control @error('position') is-invalid @enderror" id="position"
                                         placeholder="Enter Your Position">
                                     @error('position')
