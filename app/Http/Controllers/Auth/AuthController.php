@@ -51,15 +51,15 @@ class AuthController extends Controller
 
         $request->validate([
             'name'=> 'required|string',
-            'email'=> 'required|email',
-            'role' => 'required',
+            'email'=> 'required|unique:users,email',
+            'role' => 'required|in:0,1',
             'password'=> 'required|min:8|confirmed'
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'role'=> $request->role,
+            'role'=> (bool)$request->input('role'),
             'password' => Hash::make($request->password)
         ]);
         return redirect()->route('dashboard')->withSuccess('You have successfully registered');
