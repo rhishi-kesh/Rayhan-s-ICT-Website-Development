@@ -102,53 +102,50 @@
         </div>
         <div class="row">
             <div class="col-12 mt-4">
-                <ul class="nav nav-tabs owl-carousel owl-theme course-carosel" id="myTab" role="tablist">
-                    @forelse ($departments as $key => $item)
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $key == '0' ? 'active' : '' }}" id="home-tab" data-bs-toggle="tab" data-bs-target="#basic{{ $item->id }}" type="button" role="tab">{{ $item->departmentName }}</button>
+                <ul class="nav d-flex justify-content-center align-items-center courseDepartment">
+                    @forelse ($departments as $item)
+                        <li class="nav-item d-flex justify-content-center" role="presentation">
+                            <button class="nav-link" type="button">{{ $item->departmentName }}</button>
                         </li>
                     @empty
                         <div class="col">
-                            <p class="text-danger">No Data Found</p>
+                            <p class="text-danger">No Department Found</p>
                         </div>
                     @endforelse
+
                 </ul>
-                <div class="tab-content course_items" id="myTabContent">
-                    @forelse ($departments as $key => $item)
-                    <div class="tab-pane fade show {{ $key == '0' ? 'active' : '' }}" id="basic{{ $item->id }}" role="tabpanel">
-                       <div class="row">
-                        @forelse ($course->where('department_id', $item->id) as $data)
-                            <div class="col-12 col-md-6 col-lg-4 mt-4">
-                               <div class="card">
-                                   <a href="{{ route('singleCourse',$data->slug) }}" class="img">
-                                       <img src="{{ asset('storage/CourseDetails/'. $data->courseDetails->thumbnail) }}" alt="">
-                                   </a>
-                                   <div class="card-body pb-2">
-                                       <h5>
-                                           <a href="{{ route('singleCourse',$data->slug) }}">{{ $data->name }}</a>
-                                       </h5>
-                                       <p class="mt-2">By: <span class="mentor">{{ $data->courseDetails->mentor->name }}</span></p>
-                                       <div class="d-flex justify-content-between align-items-center mt-5">
-                                           <p>
-                                               <a href="{{ route('singleCourse',$data->slug) }}" class="buy-btn">Learn More</a>
-                                           </p>
-                                           <p><b>৳{{ $data->courseDetails->price }}</b></p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                        @empty
-                        <div class="col">
-                            <p class="text-danger">No Data Found</p>
+                <div class="course_items CoursesUnderDepartment">
+                    @forelse ($departments as $data)
+                        <div class="row">
+                            <div class="course_category_slider">
+                                @foreach ($course->where('department_id',$data->id) as $item)
+                                    <div class="col mt-4 mx-2">
+                                        <div class="card">
+                                            <a href="{{ route('singleCourse',$item->slug) }}" class="img">
+                                                <img src="{{ asset('storage/CourseDetails/'. $item->courseDetails->thumbnail) }}" alt="">
+                                            </a>
+                                            <div class="card-body pb-2">
+                                                <h5>
+                                                    <a href="{{ route('singleCourse',$item->slug) }}">{{ $item->name }}</a>
+                                                </h5>
+                                                <p class="mt-2">By: <span class="mentor">{{ $item->courseDetails->mentor->name }}</span></p>
+                                                <div class="d-flex justify-content-between mt-5 align-items-center">
+                                                    <p>
+                                                        <a href="{{ route('singleCourse',$item->slug) }}" class="buy-btn">Learn More</a>
+                                                    </p>
+                                                    <p><b>৳{{ $item->courseDetails->price }}</b></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-                        @endforelse
-                       </div>
-                    </div>
                     @empty
-                    <div class="col">
-                        <p class="text-danger">No Data Found</p>
-                    </div>
-                @endforelse
+                        <div class="col">
+                            <p class="text-danger">No Department Found</p>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
