@@ -114,6 +114,9 @@ nav .nav-bar .logo a{
     text-transform: uppercase;
     transition: 0.6s;
 }
+.nav-links li a.active{
+    color: var(--orange);
+}
 .nav-links li a:hover{
     color: var(--orange);
 }
@@ -165,11 +168,32 @@ nav .nav-bar .logo a{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../img/hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
+    animation: heroanimations;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
     height: auto;
     padding-top: 80px;
+    background: url('../img/bgr2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+@keyframes heroanimations{
+    0%{
+        background: url('../img/bgr2.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    33%{
+        background: url('../img/bgr3.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    66%{
+        background: url('../img/bgr4.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
 }
 .hero h1{
     font-weight: 500;
@@ -265,14 +289,12 @@ nav .nav-bar .logo a{
     padding: 22px;
     background: var(--white);
     height: 170px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 10px;
 }
 .hero .owl-carousel img{
     width: 60px;
     display: inline-block;
+    border-radius: 50%;
 }
 .hero .owl-carousel a{
     color: var(--dark);
@@ -324,10 +346,10 @@ nav .nav-bar .logo a{
     border-radius: 20px;
 }
 .Course .course-carosel .nav-item button:hover{
-    border: 1px solid var(--orange);
+    border: 1px solid var(--blue);
 }
 .Course .course-carosel .nav-item .active{
-    background: var(--orange) !important;
+    background: var(--blue) !important;
     color: var(--white) !important;
 }
 .Course .course_items .card img{
@@ -701,22 +723,18 @@ nav .nav-bar .logo a{
     visibility: visible;
     opacity: 1;
 }
-.Reviews .owl-carousel.owl-drag .owl-item{
-    opacity: 0.2;
-    pointer-events: none;
-}
 .Reviews .owl-carousel.owl-drag .owl-item.center{
     opacity: 1;
     pointer-events: inherit;
 }
 .Reviews .owl-prev {
   position: absolute;
-  left: 27%;
+  left: -60px;
   top: 40%;
 }
 .Reviews .owl-next {
   position: absolute;
-  right: 27%;
+  right: -60px;
   top: 40%;
 }
 .Reviews .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev{
@@ -735,6 +753,16 @@ nav .nav-bar .logo a{
   background: var(--orange);
   border-radius: 50%;
   color: var(--white) !important;
+}
+.Reviews .reviewSuccess{
+    width: 100%;
+    margin: 20px auto;
+    columns: 3;
+}
+.Reviews .reviewSuccess .reviewSuccessItem{
+    width: 100%;
+    margin-bottom: 10px;
+    break-inside: avoid;
 }
 .faq {
     background: var(--white);
@@ -1077,7 +1105,7 @@ footer .contact i{
     max-width: 100%;
 }
 .missionVision h1{
-    padding-left: 0px;
+    padding-left: 0px !important;
     padding-right: 25px;
 }
 .missionVision h1::before{
@@ -1090,6 +1118,49 @@ footer .contact i{
     left: auto !important;
     background: var(--orange);
 }
+.courses .owl-carousel .col{
+    text-align: center;
+    padding: 22px;
+    background: var(--light-blue);
+    height: 170px;
+    border-radius: 10px;
+}
+.courses .owl-carousel img{
+    width: 60px;
+    display: inline-block;
+}
+.courses .owl-carousel a{
+    color: var(--dark);
+    text-decoration: none;
+}
+.courses .owl-carousel h6{
+    margin-top: 10px;
+}
+.courses .courses{
+    margin: 50px 0;
+}
+.courses .owl-prev {
+  position: absolute;
+  left: -50px;
+  top: 40%;
+}
+.courses .owl-next {
+  position: absolute;
+  right:-60px;
+  top: 40%;
+}
+.courses .owl-theme .owl-nav [class*="owl-"]:hover {
+  border: 2px solid var(--blue) !important;
+  height: 40px;
+  width: 40px;
+  border-color: var(--orange) !important;
+  background: var(--orange);
+  border-radius: 50%;
+  color: var(--white) !important;
+}
+.courses .owl-carousel .owl-nav.disabled {
+  display: none;
+}
 .about h1{
     font-weight: 600;
     position: relative;
@@ -1097,6 +1168,20 @@ footer .contact i{
     color: var(--blue);
 }
 .about .about_btn{
+    background: var(--blue);
+    color: var(--white);
+    text-decoration: none;
+    padding: 12px 18px;
+    display: inline-block;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.6s;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+.seminerBtn{
     background: var(--blue);
     color: var(--white);
     text-decoration: none;
@@ -1522,12 +1607,6 @@ footer .contact i{
     right: 30px !important;
     left: auto;
 }
-.faq_single_course h2{
-    color: var(--blue);
-}
-.seminer-header{
-    background: var(--light-orange);
-}
 .seminer .card h5 a{
     text-decoration: none;
     color: var(--dark);
@@ -1717,7 +1796,11 @@ footer .contact i{
     }
     .single_course_header{
         padding: 40px 0 20px 0;
-        background: var(--light-orange);
+        background: url('../img/bgr3.jpg');
+        background-size: cover;
+    }
+    .Reviews .reviewSuccess{
+        columns: 2;
     }
 }
 @media screen and (max-width: 768px){
@@ -1759,6 +1842,9 @@ footer .contact i{
     .course_detailes .content .top{
         padding-top: 3.7rem;
     }
+    .Reviews .reviewSuccess{
+        columns: 2;
+    }
 }
 @media screen and (max-width: 575px){
     .course_detailes .navtabs li a {
@@ -1780,5 +1866,8 @@ footer .contact i{
         position: absolute;
         left: -10px;
         top: -8%;
+    }
+    .Reviews .reviewSuccess{
+        columns: 1;
     }
 }

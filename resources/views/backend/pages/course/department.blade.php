@@ -70,9 +70,9 @@
                                     <input type="hidden" id="id" name="id" value="{{ $item->id }}">
                                     <div class="col-md-12 mb-3">
                                         <div class="note-title">
-                                            <label for="name">Department Name</label>
-                                            <input type="text" value="{{ $item->departmentName }}" id="name" class="form-control @error('name') is-invalid @enderror" name="name">
-                                            @error('name','update')
+                                            <label for="departmentName">Department Name</label>
+                                            <input type="text" value="{{ $item->departmentName }}" id="departmentName" class="form-control @error('departmentName') is-invalid @enderror" name="departmentName" placeholder="Name">
+                                            @error('departmentName','update')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -128,9 +128,9 @@
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div class="note-title">
-                                        <label for="name">Department Name</label>
-                                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="Name">
-                                        @error('name','insert')
+                                        <label for="departmentName">Department Name</label>
+                                        <input type="text" value="{{ old('departmentName') }}" id="departmentName" class="form-control @error('departmentName') is-invalid @enderror" name="departmentName"  placeholder="Name">
+                                        @error('departmentName','insert')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

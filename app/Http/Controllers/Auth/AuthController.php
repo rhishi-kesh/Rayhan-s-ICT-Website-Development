@@ -25,7 +25,7 @@ class AuthController extends Controller
         ]);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
- 
+
             return redirect()->route('dashboard');
         }
         return back()->withErrors([
@@ -35,9 +35,9 @@ class AuthController extends Controller
 
     public function logout(Request $request){
         Auth::logout();
- 
+
         $request->session()->invalidate();
-     
+
         $request->session()->regenerateToken();
 
         return redirect()->route('login');
@@ -51,15 +51,15 @@ class AuthController extends Controller
 
         $request->validate([
             'name'=> 'required|string',
-            'email'=> 'required|email',
-            'role' => 'required',
+            'email'=> 'required|unique:users,email',
+            'role' => 'required|in:0,1',
             'password'=> 'required|min:8|confirmed'
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'role'=> $request->role,
+            'role'=> (bool)$request->input('role'),
             'password' => Hash::make($request->password)
         ]);
         return redirect()->route('dashboard')->withSuccess('You have successfully registered');

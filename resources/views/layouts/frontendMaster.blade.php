@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Professional IT Training Institute in Mirpur 10</title>
+	<title>@yield('title')</title>
 	<link rel="icon" href="{{ asset('frontend/img/fav.jpg') }}">
 
 	<!-- Google font -->
@@ -32,7 +32,7 @@
     @yield('content')
     @include('frontend/includes/footer')
     <!-- Footer End -->
-    <div class="modal fade" id="admissionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" style="z-index: 1111" id="admissionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
           <div class="modal-header">

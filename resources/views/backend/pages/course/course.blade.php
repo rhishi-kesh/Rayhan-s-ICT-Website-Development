@@ -43,7 +43,7 @@
                 <div class="form-check form-switch d-flex justify-content-center">
                     <input class="form-check-input" type="checkbox" onclick="is_active({{ $item->id }})" id="flexSwitchCheckChecked" @if($item->is_active == 0) checked @endif>
                 </div>
-            </td>
+            </td> 
             <td class="text-end">
                 <div class="dropdown dropstart">
                     <a href="#" class="text-muted pe-4" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -90,12 +90,6 @@
                             <a class="dropdown-item d-flex align-items-center gap-3" href="{{ route('courseModule',  $item->id )}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-carousel-vertical" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 8v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1z" /><path d="M7 22v-1a1 1 0 0 1 1 -1h8a1 1 0 0 1 1 1v1" /><path d="M17 2v1a1 1 0 0 1 -1 1h-8a1 1 0 0 1 -1 -1v-1" /></svg>
                                 Add Course Module
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center gap-3" href="">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-guitar-pick" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 18.5c2 -2.5 4 -6.5 4 -10.5c0 -2.946 -2.084 -4.157 -4.204 -4.654c-.864 -.23 -2.13 -.346 -3.796 -.346c-1.667 0 -2.932 .115 -3.796 .346c-2.12 .497 -4.204 1.708 -4.204 4.654c0 3.312 2 8 4 10.5c.297 .37 .618 .731 .963 1.081l.354 .347a3.9 3.9 0 0 0 5.364 0a14.05 14.05 0 0 0 1.319 -1.428z" /></svg>
-                                Add Course Instructor
                             </a>
                         </li>
                         <li>
@@ -181,14 +175,14 @@
                                         <h4>Course Name & Department</h4>
                                         <div class="col-md-6">
                                             <label for="name">Name</label>
-                                            <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name"  placeholder="Name">
+                                            <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name">
                                             @error('name','insert')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="col-md-6 mt-3 mt-md-0">
                                             <label for="department">Select Department</label>
-                                            <select name="department_id" id="department_id" class="form-control @error('department_id') is-invalid @enderror">
+                                            <select name="department_id" id="department_id" class="form-select @error('department_id') is-invalid @enderror">
                                                 <option value="">Select Department</option>
                                                 @foreach ($departments as $item_dep)
                                                     <option value="{{ $item_dep->id }}">{{ $item_dep->departmentName }}</option>
@@ -213,9 +207,9 @@
                                         <div class="col-md-4 mt-2">
                                             <label for="project">Project</label>
                                             <input type="number" id="project" class="form-control @error('project') is-invalid @enderror" name="project" placeholder="Number of Project">
-                                            @error('project','insert')
+                                            {{-- @error('project','insert')
                                                 <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
+                                            @enderror --}}
                                         </div>
                                         <div class="col-md-4 mt-2">
                                             <label for="duration">Duration(month)</label>
@@ -231,10 +225,22 @@
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="col-md-8 mt-2">
+                                        <div class="col-md-4 mt-2">
                                             <label for="video">Video Link</label>
                                             <input type="url" id="video" class="form-control @error('video') is-invalid @enderror" name="video" placeholder="Video Link">
                                             @error('video','insert')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4 mt-2">
+                                            <label for="mentor_id">Select Mentor</label>
+                                            <select name="mentor_id" id="mentor_id" class="form-select @error('mentor_id') is-invalid @enderror">
+                                                <option value="">Select Mentor</option>
+                                                @foreach ($mentors as $item_ment)
+                                                    <option value="{{ $item_ment->id }}">{{ $item_ment->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('mentor_id','insert')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -248,10 +254,10 @@
                                         <div class="col-md-4 mt-2">
                                             <label for="thumbnail">Thumbnail</label>
                                             <input type="file" id="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail">
+                                            <img src="#" class="img-fluid rounded-top" id="thumbnail_preview" alt="image Preview" width="50" height="50" />
                                             @error('thumbnail','insert')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
-                                            <img src="#" class="img-fluid rounded-top" id="thumbnail_preview" alt="image Preview" width="50" height="50" />
                                         </div>
                                     </div>
                                 </div>

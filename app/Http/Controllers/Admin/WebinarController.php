@@ -9,7 +9,7 @@ use Carbon\Carbon;
 
 class WebinarController extends Controller
 {
-    
+
     public function webinar(){
         $webinars = Webinar::paginate(7);
         return view('backend.pages.webinar.webinar', compact('webinars'));

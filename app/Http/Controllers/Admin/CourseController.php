@@ -12,9 +12,11 @@ use App\Models\BenefitsOfCourse;
 use App\Models\CreativeProject;
 use App\Models\CourseModule;
 use App\Models\CourseFAQ;
+use App\Models\MeetOurMentors;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
@@ -24,7 +26,7 @@ class CourseController extends Controller
     }
     public function departmentPost(Request $request){
         $request->validateWithBag('insert',[
-            'name' => 'required',
+            'departmentName' => 'required|unique:departments',
             'image' => [
                 'image',
                 'mimes:jpg,png,jpeg',
@@ -38,9 +40,12 @@ class CourseController extends Controller
             $filename = time() . '.' . $image->extension();
             $request->image->storeAs('public/department', $filename);
 
+            $slug = Str::slug($request->departmentName);
+
             Department::insert([
-                'departmentName' => $request->name,
+                'departmentName' => $request->departmentName,
                 'image' => $filename,
+                'slug' => $slug,
                 'created_at' => Carbon::now()
             ]);
         }
@@ -48,7 +53,7 @@ class CourseController extends Controller
     }
     public function departmentEdit(Request $request){
         $request->validateWithBag('update',[
-            'name' => 'required',
+            'departmentName' => 'required',
             'image' => [
                 'image',
                 'mimes:jpg,png,jpeg',
@@ -69,9 +74,12 @@ class CourseController extends Controller
             $filename = $getData->image;
         }
 
+        $slug = Str::slug($request->departmentName);
+
         Department::where('id',$id)->update([
-            'departmentName' => $request->name,
+            'departmentName' => $request->departmentName,
             'image' => $filename,
+            'slug' => $slug,
             'updated_at' => Carbon::now()
         ]);
 
@@ -87,17 +95,18 @@ class CourseController extends Controller
     public function courses(){
         $courses = Course::with(['department:id,departmentName'])->paginate(10);
         $departments = Department::select('departmentName','id')->get();
-        return view('backend.pages.course.course', compact('courses', 'departments'));
+        $mentors = MeetOurMentors::select('name','id')->get();
+        return view('backend.pages.course.course', compact('courses', 'departments', 'mentors'));
     }
     public function coursePost(Request $request){
         $request->validateWithBag('insert',[
-            'name' => 'required',
+            'name' => 'required|unique:courses',
             'department_id' => 'required',
             'price' => 'required',
             'description' => 'required',
             'duration' => 'required',
             'lecture' => 'required',
-            'project' => 'required',
+            'mentor_id' => 'required',
             'thumbnail' => ['image', 'mimes:jpg,png,jpeg', 'required'],
             'video' => 'required',
         ]);
@@ -108,15 +117,18 @@ class CourseController extends Controller
                 $image = $request->file('thumbnail');
                 $filename = time().'.'.$image->extension();
                 $request->thumbnail->storeAs('public/CourseDetails', $filename);
+                $slug = Str::slug($request->name);
 
                 $course = new Course();
                 $course->department_id = $request->department_id;
                 $course->name = $request->name;
+                $course->slug = $slug;
                 $course->created_at = Carbon::now();
                 $course->save();
 
                 $course_detlils = new CourseDetails();
                 $course_detlils->course_id = $course->id;
+                $course_detlils->mentor_id = $request->mentor_id;
                 $course_detlils->price = $request->price;
                 $course_detlils->description = $request->description;
                 $course_detlils->duration = $request->duration;
@@ -139,11 +151,12 @@ class CourseController extends Controller
             'name' => 'required',
             'department_id' => 'required',
         ]);
-
+        $slug = Str::slug($request->name);
         $id = $request->id;
         Course::where('id', $id)->update([
             'department_id' => $request->department_id,
             'name' => $request->name,
+            'slug' => $slug,
             'updated_at' => Carbon::now()
         ]);
         return back()->with('success','Course Update Successfull');
@@ -173,7 +186,8 @@ class CourseController extends Controller
     }
     public function courseDetailes($id){
         $courseDetails = CourseDetails::where('course_id',$id)->with(['course:id,name'])->first();
-        return view('backend.pages.course.courseDetails', compact('courseDetails'));
+        $mentors = MeetOurMentors::select('name','id')->get();
+        return view('backend.pages.course.courseDetails', compact('courseDetails','mentors'));
     }
     public function courseDetailesEdit($id, Request $request){
         $request->validateWithBag('insert',[
@@ -181,7 +195,7 @@ class CourseController extends Controller
             'description' => 'required',
             'duration' => 'required',
             'lecture' => 'required',
-            'project' => 'required',
+            'mentor_id' => 'required',
             'thumbnail' => ['image', 'mimes:jpg,png,jpeg'],
             'video' => 'required',
         ]);
@@ -204,6 +218,7 @@ class CourseController extends Controller
             'duration' => $request->duration,
             'lecture' => $request->lecture,
             'project' => $request->project,
+            'mentor_id' => $request->mentor_id,
             'thumbnail' => $filename,
             'video' => $request->video,
             'updated_at' => Carbon::now()
@@ -525,7 +540,7 @@ class CourseController extends Controller
     }
     public function courseModuleDelete($id){
         CourseModule::findOrFail($id)->delete();
-        
+
         return back()->with('error', 'course Module Delete successfully');
     }
     // Course FAQ
@@ -566,7 +581,7 @@ class CourseController extends Controller
     }
     public function courseFAQDelete($id){
         CourseFAQ::findOrFail($id)->delete();
-        
+
         return back()->with('error', 'Course FAQ Delete successfully');
     }
 

@@ -10,7 +10,10 @@ use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\AuthorisedController;
 use App\Http\Controllers\Admin\FAQController;
 use App\Http\Controllers\Admin\SeminarController;
+use App\Http\Controllers\Admin\UsersControllser;
 use App\Http\Controllers\Admin\WebinarController;
+use App\Http\Controllers\Admin\PopUpController;
+use App\Http\Controllers\Admin\TopAdvertisingController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -24,22 +27,28 @@ Route::get('/our-success',[FrontendController::class, 'success'])->name('success
 Route::get('/career',[FrontendController::class, 'career'])->name('career');
 Route::get('/contact-us',[FrontendController::class, 'contact'])->name('contact');
 Route::get('/free-seminer',[FrontendController::class, 'seminer'])->name('seminer');
-Route::get('/our-course/department',[FrontendController::class, 'singleDepartment'])->name('singleDepartment');
-Route::get('/our-course/course-name',[FrontendController::class, 'singleCourse'])->name('singleCourse');
+Route::get('/our-department/{slug}',[FrontendController::class, 'singleDepartment'])->name('singleDepartment');
+Route::get('/our-course/{slug}',[FrontendController::class, 'singleCourse'])->name('singleCourse');
+Route::get('/privacy-policy',[FrontendController::class, 'privacyPolicy'])->name('privacyPolicy');
 
 
 //admin and users
 Route::get('/admin',[AuthController::class, 'login'])->name('login');
 Route::post('/admin-login',[AuthController::class, 'loginPost'])->name('loginPost');
-Route::get('/register',[AuthController::class, 'register'])->name('register');
-Route::post('/register-post',[AuthController::class, 'registerPost'])->name('registerPost');
-Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
-
 
 // dashboard
 Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
+    Route::post('/profile-edit',[ProfileController::class, 'profileEdit'])->name('profileEdit');
+    Route::post('/profile-image',[ProfileController::class, 'profileImagae'])->name('profileImagae');
+
+    // admin and user
+    Route::get('/register',[AuthController::class, 'register'])->name('register')->middleware('profile');
+    Route::post('/register-post',[AuthController::class, 'registerPost'])->name('registerPost')->middleware('profile');
+    Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
+    Route::get('/change-password', [ProfileController::class, 'changePassword'])->name('changePassword');
+    Route::post('/change-update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
 
     //about-us CRUD
     Route::get('/about',[AboutController::class, 'adminAbout'])->name('adminAbout');
@@ -95,7 +104,6 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('/department-edit', [CourseController::class, 'departmentEdit'])->name('departmentEdit');
     Route::get('/department-delete/{id}', [CourseController::class, 'departmentDelete'])->name('departmentDelete');
 
-
     //Seminar
     Route::get('/seminar',[SeminarController::class, 'seminar'])->name('seminar');
     Route::post('/seminar-post',[SeminarController::class, 'seminarPost'])->name('seminarPost');
@@ -137,7 +145,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('/benefit-of-course-edit', [CourseController::class, 'benefitsOfCourseEdit'])->name('benefitsOfCourseEdit');
     Route::get('/benefit-of-course-delete/{id}', [CourseController::class, 'benefitsOfCourseDelete'])->name('benefitsOfCourseDelete');
 
-    // Creative Projetcs  
+    // Creative Projetcs
     Route::get('creative-project/{id}', [CourseController::class, 'creativeProject'])->name('creativeProject');
     Route::post('creative-project-post/{id}', [CourseController::class, 'creativeProjectPost'])->name('creativeProjectPost');
     Route::post('creative-project-edit', [CourseController::class, 'creativeProjectEdit'])->name('creativeProjectEdit');
@@ -149,17 +157,29 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('/course-module-edit', [CourseController::class, 'courseModuleEdit'])->name('courseModuleEdit');
     Route::get('/course-module-delete/{id}', [CourseController::class, 'courseModuleDelete'])->name('courseModuleDelete');
 
-    // Course Instructor
-    // Route::get('/course-instructor/{id}', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
-    // Route::post('/course-instructor-post/{id}', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
-    // Route::post('/course-instructor-edit', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
-    // Route::get('/course-instructor/{id}', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
-
     // Course FAQ
     Route::get('/course-faq/{id}', [CourseController::class, 'courseFAQ'])->name('courseFAQ');
     Route::post('/course-faq-post/{id}', [CourseController::class, 'courseFAQPost'])->name('courseFAQPost');
     Route::post('/course-faq-edit', [CourseController::class, 'courseFAQEdit'])->name('courseFAQEdit');
     Route::get('/course-faq-delete/{id}', [CourseController::class, 'courseFAQDelete'])->name('courseFAQDelete');
 
+    // pop_up
+    Route::get('/popUp', [PopUpController::class, 'popUp'])->name('popUp');
+    Route::post('/popUp-post', [PopUpController::class, 'popUpPost'])->name('popUpPost');
+    Route::post('/popUp-edit', [PopUpController::class, 'popUpEdit'])->name('popUpEdit');
+    Route::get('/popUp-delete/{id}', [PopUpController::class, 'popUpDelete'])->name('popUpDelete');
+    Route::post('/status', [PopUpController::class, 'status'])->name('status');
+
+    // Top Advertising
+    Route::get('/top-Advertising', [TopAdvertisingController::class, 'topAdvertising'])->name('topAdvertising');
+    Route::post('/top-Advertising-post', [TopAdvertisingController::class, 'topAdvertisingPost'])->name('topAdvertisingPost');
+    Route::post('/top-Advertising-edit', [TopAdvertisingController::class, 'topAdvertisingEdit'])->name('topAdvertisingEdit');
+    Route::get('/top-Advertising-delete/{id}', [TopAdvertisingController::class, 'topAdvertisingDelete'])->name('topAdvertisingDelete');
+    Route::post('/topstatus', [TopAdvertisingController::class, 'topstatus'])->name('topstatus');
+
+
+    //user
+    Route::get('/users', [UsersControllser::class, 'users'])->name('users')->middleware('profile');
+    Route::get('/users-delete/{id}', [UsersControllser::class, 'usersDelete'])->name('usersDelete')->middleware('profile');
 });
 

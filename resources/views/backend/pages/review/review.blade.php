@@ -32,7 +32,7 @@
                 <span> {{$review->firstItem()+$key}} </span>
             </td>
             <td  class="text-center">
-                <div style="overflow: auto; height: 200px; width: 800px; margin: auto">
+                <div style="overflow: auto; height: 200px; width: 600px; margin: auto">
                     {!!$item->review!!}
                 </div>
             </td>

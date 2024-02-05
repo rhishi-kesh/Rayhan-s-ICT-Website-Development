@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('department_id');
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('is_active')->default('1')->comment("1 = deactive, 0 = active");
             $table->timestamps();
         });

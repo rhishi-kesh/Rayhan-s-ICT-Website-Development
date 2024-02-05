@@ -8,8 +8,8 @@
       </li>
     </ul>
     <div class="d-block d-lg-none">
-      <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/dark-logo.svg" class="dark-logo" width="180" alt="" />
-      <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/light-logo.svg" class="light-logo"  width="180" alt="" />
+      <img src="{{ asset('storage/companyInformation/'. $companyInformation->logo) }}" class="dark-logo" width="180" alt="" />
+      <img src="{{ asset('storage/companyInformation/'. $companyInformation->logo) }}" class="light-logo"  width="180" alt="" />
     </div>
     <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="p-2">
@@ -23,6 +23,7 @@
         </a>
         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
             <li>
+                @if (auth()->user()->role == 0)
                 <a href="{{ route('register') }}" class="btn btn-info mt-2 me-3 d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -33,12 +34,13 @@
                     </svg>
                     <span class="ms-2">Add New User</span>
                 </a>
+                @endif
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="d-flex align-items-center">
                     <div class="user-profile-img">
-                        <img src=" {{ asset('frontend/images/profile/user-1.jpg') }}" class="rounded-circle" width="35" height="35" alt="" />
+                        <img src="{{ empty(Auth::user()->profile) ? url('profile.jpeg') : url('storage/profile/') . '/' . Auth::user()->profile }}" class="rounded-circle" width="35" height="35" alt="" />
                     </div>
                     </div>
                 </a>
@@ -48,7 +50,7 @@
                         <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                     </div>
                     <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                        <img src=" {{ asset('frontend/images/profile/user-1.jpg') }}" class="rounded-circle" width="80" height="80" alt="" />
+                        <img src="{{ empty(Auth::user()->profile) ? url('profile.jpeg') : url('storage/profile/') . '/' . Auth::user()->profile }}" class="rounded-circle" width="80" height="80" alt="" />
                         <div class="ms-3">
                         <h5 class="mb-1 fs-3">{{ auth()->user()->name }}</h5>
                         </div>

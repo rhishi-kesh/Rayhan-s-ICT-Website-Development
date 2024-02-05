@@ -1,4 +1,5 @@
 @extends('layouts.frontendMaster')
+@section('title','Contact')
 @section('content')
     <div class="contact py-5">
         <div class="container">
@@ -12,28 +13,28 @@
                     <div class="card py-5 px-5 text-center text-md-start">
                         <h3 class="text-uppercase h2 fw-bold">You Can Contact us directly at :</h3>
                         <p class="lead my-2 mail">
-                            <a href="mailto:ictrayhans@gmail.com">contact@rayhansict.com</a>
+                            <a href="mailto:{{ $companyInformation->gmail }}">{{ $companyInformation->gmail }}</a>
                         </p>
                         <p class="lead mb-3 small-title">Or You write us via the contact form. We will answer as quick as possible</p>
                         <div class="d-flex justify-content-center justify-content-md-start mt-1">
                             <div class="d-flex justify-content-around w-50 socal-icon">
                                 <p class="lead">
-                                    <a href="">
+                                    <a href="{{ $companyInformation->facebook }}">
                                         <i class="fa-brands fa-facebook"></i>
                                     </a>
                                 </p>
                                 <p class="lead">
-                                    <a href="">
+                                    <a href="{{ $companyInformation->instragram }}">
                                         <i class="fa-brands fa-instagram"></i>
                                     </a>
                                 </p>
                                 <p class="lead">
-                                    <a href="">
+                                    <a href="{{ $companyInformation->linkedin }}">
                                         <i class="fa-brands fa-linkedin-in"></i>
                                     </a>
                                 </p>
                                 <p class="lead">
-                                    <a href="">
+                                    <a href="{{ $companyInformation->youtube }}">
                                         <i class="fa-brands fa-youtube"></i>
                                     </a>
                                 </p>
@@ -72,7 +73,7 @@
             </div>
             <div class="row">
                 <div class="col-12 mt-5">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.3263834967843!2d90.36703137417396!3d23.806990286603614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c1f95d0e1503%3A0x5882b8ecae1a5a0c!2sRayhan&#39;s%20ICT!5e0!3m2!1sen!2sbd!4v1705235099844!5m2!1sen!2sbd" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    {!! $companyInformation->googlemap !!}
                 </div>
             </div>
         </div>
