@@ -31,16 +31,16 @@
                 <span>{{$users->firstItem()+$key}}</span>
             </td>
             <td class="text-center">
-                <img src="{{ empty(Auth::user()->profile) ? url('profile.jpeg') : asset('storage/profile/'). '/'. Auth::user()->profile }}" alt="" width="60" height="60">
+                <img src="{{ empty( $item->profile) ? asset('image.jpeg') : asset('storage/profile/'). '/'.$item->profile }}" alt="" width="60" height="60">
             </td>
             <td style="text-align: center">
-                <p class="mb-0">{{ auth()->user()->name }}</p>
+                <p class="mb-0">{{ $item->name }}</p>
             </td>
             <td style="text-align: center">
-                <p class="mb-0">{{ auth()->user()->email }}</p>
+                <p class="mb-0">{{ $item->email }}</p>
             </td>
             <td style="text-align: center">
-                <p class="mb-0">{{ auth()->user()->position }}</p>
+                <p class="mb-0">{{ $item->position }}</p>
             </td>
             <td class="text-end">
                 <div class="dropdown dropstart">
@@ -49,7 +49,8 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
                     <li>
-                        <a class="dropdown-item d-flex align-items-center gap-3" onclick="return confirm('Are you want to delete?')"  href="{{ route('usersDelete', auth()->user()->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
+                        <a class="dropdown-item d-flex align-items-center gap-3" onclick="return confirm('Are you want to delete?')"  href=""><i class="fs-4 ti ti-trash"></i>Delete</a>
+                        {{-- {{ route('usersDelete', $item->id) }} --}}
                     </li>
                 </ul>
                 </div>

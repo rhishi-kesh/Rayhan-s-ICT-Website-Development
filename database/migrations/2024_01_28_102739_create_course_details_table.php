@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('duration');
             $table->string('lecture');
-            $table->string('project');
+            $table->string('project')->nullable();
             $table->string('thumbnail');
             $table->string('video');
             $table->timestamps();

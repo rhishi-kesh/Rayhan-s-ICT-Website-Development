@@ -44,8 +44,8 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('/profile-image',[ProfileController::class, 'profileImagae'])->name('profileImagae');
 
     // admin and user
-    Route::get('/register',[AuthController::class, 'register'])->name('register');
-    Route::post('/register-post',[AuthController::class, 'registerPost'])->name('registerPost');
+    Route::get('/register',[AuthController::class, 'register'])->name('register')->middleware('profile');
+    Route::post('/register-post',[AuthController::class, 'registerPost'])->name('registerPost')->middleware('profile');
     Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
     Route::get('/change-password', [ProfileController::class, 'changePassword'])->name('changePassword');
     Route::post('/change-update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
@@ -157,12 +157,6 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('/course-module-edit', [CourseController::class, 'courseModuleEdit'])->name('courseModuleEdit');
     Route::get('/course-module-delete/{id}', [CourseController::class, 'courseModuleDelete'])->name('courseModuleDelete');
 
-    // Course Instructor
-    // Route::get('/course-instructor/{id}', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
-    // Route::post('/course-instructor-post/{id}', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
-    // Route::post('/course-instructor-edit', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
-    // Route::get('/course-instructor/{id}', [CourseController::class, 'courseInstructor'])->name('courseInstructor');
-
     // Course FAQ
     Route::get('/course-faq/{id}', [CourseController::class, 'courseFAQ'])->name('courseFAQ');
     Route::post('/course-faq-post/{id}', [CourseController::class, 'courseFAQPost'])->name('courseFAQPost');
@@ -185,7 +179,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
 
 
     //user
-    Route::get('/users', [UsersControllser::class, 'users'])->name('users');
-    Route::get('/users-post', [UsersControllser::class, 'usersDelete'])->name('usersDelete');
+    Route::get('/users', [UsersControllser::class, 'users'])->name('users')->middleware('profile');
+    Route::get('/users-delete/{id}', [UsersControllser::class, 'usersDelete'])->name('usersDelete')->middleware('profile');
 });
 
