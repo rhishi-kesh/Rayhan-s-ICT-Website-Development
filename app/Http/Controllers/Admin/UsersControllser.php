@@ -12,7 +12,11 @@ class UsersControllser extends Controller
         $users = User::paginate();
         return view('backend/pages/users/users', compact('users'));
     }
-    public function usersDelete($id){
+    // public function usersDelete($id){
+    //     $usersDelete = User::findOrFail($id);
+    //     unlink(public_path('storage/profile/').'/'.$usersDelete->profile_image);
+    //     User::findOrFail($id)->delete();
 
-    }
+    //     return back()->with('error', 'Profile deleted successfully');
+    // }
 }

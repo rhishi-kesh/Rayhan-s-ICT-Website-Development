@@ -106,7 +106,6 @@ class CourseController extends Controller
             'description' => 'required',
             'duration' => 'required',
             'lecture' => 'required',
-            'project' => 'required',
             'mentor_id' => 'required',
             'thumbnail' => ['image', 'mimes:jpg,png,jpeg', 'required'],
             'video' => 'required',
@@ -197,7 +196,6 @@ class CourseController extends Controller
             'duration' => 'required',
             'lecture' => 'required',
             'mentor_id' => 'required',
-            'project' => 'required',
             'thumbnail' => ['image', 'mimes:jpg,png,jpeg'],
             'video' => 'required',
         ]);
