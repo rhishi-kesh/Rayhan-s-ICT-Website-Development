@@ -10,13 +10,13 @@
                 </div>
                 <div class="d-block d-md-flex justify-content-center mt-3 text-center">
                     <div class="mt-2 mt-md-0">
-                        <a class="btn demo_class btn-lg" href="#">Apply For Demo Class</a>
+                        <a class="btn demo_class btn-lg" href="#democlassMOdel" data-bs-toggle="modal"><i class="fa-solid fa-photo-film"></i> Apply For Demo Class</a>
                     </div>
-                    <div class="ms-0 ms-md-3 mt-2 mt-md-0">
-                        <a class="btn browse_course btn-lg" href="{{ route('course') }}">Browse Courses</a>
+                    <div class="ms-0 ms-md-3 mt-3 mt-md-0">
+                        <a class="btn browse_course btn-lg" href="{{ route('course') }}"><i class="fa-solid fa-magnifying-glass"></i> Browse Courses</a>
                     </div>
-                    <div class="ms-0 ms-md-3 mt-2 mt-md-0">
-                        <a class="btn free_seminer btn-lg" href="{{ route('seminer') }}">Join Free Seminar</a>
+                    <div class="ms-0 ms-md-3 mt-3 mt-md-0">
+                        <a class="btn free_seminer btn-lg" href="{{ route('seminer') }}"><i class="fa-solid fa-microphone-lines"></i> Join Free Seminar</a>
                     </div>
                 </div>
             </div>

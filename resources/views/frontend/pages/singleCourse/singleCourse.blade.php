@@ -8,8 +8,8 @@
                     <span class="category mb-1">{{ $courses->department->departmentName }}</span>
                     <h3 class="fs-2 mb-3">{{ $courses->name }}</h3>
                     <div class="banner d-block d-md-none">
-                        <img src="assets/img/banner.jpg" alt="" class="img-fluid">
-                        <a href="https://youtu.be/GogcDtMpgMc" data-autoplay="true" data-vbtype="video" class="RICT_Videos">
+                        <img src="{{ asset('storage/CourseDetails/'. $courses->CourseDetails->thumbnail) }}" alt="" class="img-fluid">
+                        <a href="{{ $courses->courseDetails->video }}" data-autoplay="true" data-vbtype="video" class="RICT-Videos">
                             <svg width="100" height="100" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="32.5" cy="32.5" r="32.5" fill="white" fill-opacity="0.5"/>
                                 <ellipse cx="32.4991" cy="32.5011" rx="20.546" ry="20.546" fill="white"/>
@@ -51,7 +51,7 @@
                             <i class="ti-crown fw-bold"></i>
                             Admission
                         </a>
-                        <a href="#admissionModal" data-bs-toggle="modal" class="free_seminer mt-1 mt-md-3 ms-0 ms-md-3">
+                        <a href="#democlassMOdel" data-bs-toggle="modal" class="free_seminer mt-1 mt-md-3 ms-0 ms-md-3"> <i class="fa-solid fa-photo-film"></i>
                             Apply For Demo Class
                         </a>
                     </div>

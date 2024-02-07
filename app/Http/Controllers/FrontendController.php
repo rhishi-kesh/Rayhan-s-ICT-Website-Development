@@ -40,7 +40,14 @@ class FrontendController extends Controller
         return view('frontend.pages.about.about', compact('about','mentor','departments','workSpaceImage'));
     }
     public function course(){
-        $courses = Course::with(['department','courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])->where('is_active', '0')->get();
+        // $departments = Department::get();
+        $courses = Course::with(['department','courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
+        ->where('is_active', '0')
+        ->get()
+        ->groupBy('department_id');
+
+        // return $courses;
+
         $reviews = Review::get();
         return view('frontend.pages.course.course', compact('courses','reviews'));
     }
@@ -58,8 +65,13 @@ class FrontendController extends Controller
         return view('frontend.pages.seminer.seminer', compact('seminer','wabinars'));
     }
     public function singleDepartment($slug){
-        $departments = Department::select('id','departmentName')->where('slug',$slug)->first();
-        $courses = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])->where('department_id',$departments->id)->get();
+        $departments = Department::select('id','departmentName')
+        ->where('slug',$slug)->first();
+
+        $courses = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
+        ->where('department_id',$departments->id)
+        ->get();
+
         $title = $departments->departmentName;
         return view('frontend.pages.singleDepartment.singleDepartment', compact('departments','courses','title'));
     }

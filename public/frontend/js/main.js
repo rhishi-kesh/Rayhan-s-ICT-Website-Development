@@ -214,4 +214,104 @@ $('.demo-carosel').owlCarousel({
     autoplayTimeout: 2000,
     autoplayHoverPause: true,
 });
+// Slick Slider Workshop image section
+$(".CoursesUnderDepartment").slick({
+    centerMode:false,
+    centerPadding:"0",
+    draggable: false,
+    fade: true,
+    cssEase: 'linear',
+    autoplay:false,
+    focusOnSelect: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots:false,
+    arrows:false,
+    asNavFor:".courseDepartment"
+  })
+  $(".courseDepartment").slick({
+    autoplay:false,
+    focusOnSelect: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots:false,
+    arrows:true,
+    prevArrow:'<i class="fa fa-angle-left prevarrow"></i>',
+    nextArrow:'<i class="fa fa-angle-right nextarrow"></i>',
 
+    asNavFor:".CoursesUnderDepartment",
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: true,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          centerPadding: '50px',
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: true,
+          centerMode: true,
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          centerMode: true,
+        }
+      },
+      {
+        breakpoint: 414,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          centerMode: true,
+        }
+      }
+    ]
+  });
+  $(".course_category_slider").slick({
+    centerMode: false,
+    autoplay:false,
+    focusOnSelect:true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots:false,
+    arrows:true,
+    prevArrow:'<i class="fa fa-angle-left prevarrow"></i>',
+    nextArrow:'<i class="fa fa-angle-right nextarrow"></i>',
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: true,
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          arrows: true,
+          slidesToShow: 2
+        }
+      },
+
+      {
+        breakpoint: 576,
+        settings: {
+          arrows: true,
+          slidesToShow: 1
+        }
+      },
+    ]
+  });

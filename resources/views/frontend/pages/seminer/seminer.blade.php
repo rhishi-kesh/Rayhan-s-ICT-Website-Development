@@ -47,27 +47,28 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              <form action="" method="" class="text-start">
-                                  <div class="form-floating">
-                                      <input type="text" class="form-control" id="name" placeholder="Enter Name">
-                                      <label for="name">Enter Name</label>
-                                  </div>
-                                  <div class="form-floating mt-3">
-                                      <input type="email" class="form-control" id="email" placeholder="Enter E-mail">
-                                      <label for="email">Enter Email</label>
-                                  </div>
-                                  <div class="form-floating mt-3">
-                                      <input type="number" class="form-control" id="number" placeholder="Enter Number">
-                                      <label for="number">Enter Number</label>
-                                  </div>
-                                  <div class="form-floating mt-3">
-                                    <input type="text" class="form-control" id="text" placeholder="Enter Address">
-                                    <label for="text">Enter Address</label>
-                                </div>
-                                  <div class="mt-3">
-                                      <input type="submit" class="form-control form-control-lg seminerBtn" value="SUBMIT" name="submit">
-                                  </div>
-                              </form>
+                                <form action="" method="" class="text-start">
+                                    <input type="hidden" value="{{ $item->id }}" name="seminer_id">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                                        <label for="name">Enter Name</label>
+                                    </div>
+                                    <div class="form-floating mt-3">
+                                        <input type="email" class="form-control" id="email" placeholder="Enter E-mail">
+                                        <label for="email">Enter Email</label>
+                                    </div>
+                                    <div class="form-floating mt-3">
+                                        <input type="number" class="form-control" id="number" placeholder="Enter Number">
+                                        <label for="number">Enter Number</label>
+                                    </div>
+                                    <div class="form-floating mt-3">
+                                        <input type="text" class="form-control" id="text" placeholder="Enter Address">
+                                        <label for="text">Enter Address</label>
+                                    </div>
+                                    <div class="mt-3">
+                                        <input type="submit" class="form-control form-control-lg seminerBtn" value="SUBMIT" name="submit">
+                                    </div>
+                                </form>
                             </div>
                           </div>
                         </div>

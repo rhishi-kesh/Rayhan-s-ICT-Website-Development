@@ -341,16 +341,15 @@ nav .nav-bar .logo a{
     font-weight: bold;
     font-size: 15px;
 }
-.Course .course-carosel .nav-item button{
+.Course .courseDepartment .nav-item button{
     color: var(--dark) !important;
     border-radius: 20px;
 }
-.Course .course-carosel .nav-item button:hover{
-    border: 1px solid var(--blue);
+.Course .courseDepartment .slick-active button{
+    color: var(--dark) !important;
 }
-.Course .course-carosel .nav-item .active{
-    background: var(--blue) !important;
-    color: var(--white) !important;
+.Course .courseDepartment .slick-current button{
+    color: var(--orange) !important;
 }
 .Course .course_items .card img{
     width: 100%;
@@ -455,47 +454,88 @@ nav .nav-bar .logo a{
     animation-duration: 4s;
     animation-iteration-count: infinite;
 }
-
-.Course .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev{
-  border: 2px solid var(--blue) !important;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  color: var(--blue);
-  transition: .4s ease-out;
+.Course .prevarrow{
+    width: 39px;
+    height: 39px;
+    background: var(--blue);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transition: all linear 0.3s;
+    -webkit-transition: all linear 0.3s;
+    -moz-transition: all linear 0.3s;
+    -ms-transition: all linear 0.3s;
+    -o-transition: all linear 0.3s;
+    top: 50%;
+    -webkit-box-shadow: 5px 5px 60px rgba(0, 0, 0, 0.06);
+    box-shadow: 5px 5px 60px rgba(0, 0, 0, 0.06);
+    z-index: 99;
+    color: var(--white);
 }
-.Course .owl-theme .owl-nav [class*="owl-"]:hover {
-  border: 2px solid var(--blue) !important;
-  border-color: var(--orange) !important;
-  background: var(--orange);
-  color: var(--white) !important;
+.Course .nextarrow{
+    width: 39px;
+    height: 39px;
+    background: var(--blue);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transition: all linear 0.3s;
+    -webkit-transition: all linear 0.3s;
+    -moz-transition: all linear 0.3s;
+    -ms-transition: all linear 0.3s;
+    -o-transition: all linear 0.3s;
+    top: 50%;
+    -webkit-box-shadow: 5px 5px 60px rgba(0, 0, 0, 0.06);
+    box-shadow: 5px 5px 60px rgba(0, 0, 0, 0.06);
+    z-index: 99;
+    color: var(--white);
 }
-.Course .owl-theme .owl-nav [class*="owl-"]:active {
-    border-color: var(--orange) !important;
+.courseDepartment .nextarrow{
+    top: 50%;
+}
+.courseDepartment .prevarrow{
+    top: 50%;
+}
+.Course .prevarrow:hover{
     background: var(--orange);
-    color: var(--white) !important;
-  }
-.Course .owl-carousel .owl-nav.disabled {
-  display: block;
 }
-.Course .owl-carousel .owl-nav .owl-prev{
-  position: absolute;
-  left: -52px;
-  top: -11%;
+.Course .nextarrow:hover{
+    background: var(--orange);
 }
-.Course .owl-carousel .owl-nav .owl-next{
-  position: absolute;
-  top: -12%;
-  right: -40px;
+.slick-arrow{
+  cursor: pointer;
 }
-.Course .owl-carousel .owl-item{
-    justify-content: center;
-    display: flex;
-    margin-bottom: 2px;
+.course_category_slider{
+  overflow: hidden;
+  padding: 0 50px;
 }
-.Course .course-carosel{
-    border: 0px;
-    margin-bottom: 3px;
+.courseDepartment{
+  overflow: hidden;
+  padding: 0 60px;
 }
 /*Course-end*/
 .mentors .card {
@@ -1358,7 +1398,21 @@ footer .contact i{
 #admissionModal form select{
     font-size: 1.1rem !important;
 }
-#admissionModal form input[type='submit']{
+#admissionModal form button{
+    background: var(--blue);
+    color: var(--white);
+    text-decoration: none;
+    padding: 12px 18px;
+    display: inline-block;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.6s;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+#democlassMOdel form button{
     background: var(--blue);
     color: var(--white);
     text-decoration: none;
