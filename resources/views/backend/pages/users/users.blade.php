@@ -49,8 +49,8 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
                     <li>
-                        <a class="dropdown-item d-flex align-items-center gap-3" onclick="return confirm('Are you want to delete?')"  href=""><i class="fs-4 ti ti-trash"></i>Delete</a>
-                        {{-- {{ route('usersDelete', $item->id) }} --}}
+                        <a class="dropdown-item d-flex align-items-center gap-3" onclick="return confirm('Are you want to delete?')"  href="{{ route('usersDelete', $item->id) }}"><i class="fs-4 ti ti-trash"></i>Delete</a>
+                        
                     </li>
                 </ul>
                 </div>
