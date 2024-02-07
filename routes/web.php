@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\WebinarController;
 use App\Http\Controllers\Admin\PopUpController;
 use App\Http\Controllers\Admin\TopAdvertisingController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Mail\MailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 
@@ -30,6 +31,9 @@ Route::get('/free-seminer',[FrontendController::class, 'seminer'])->name('semine
 Route::get('/our-department/{slug}',[FrontendController::class, 'singleDepartment'])->name('singleDepartment');
 Route::get('/our-course/{slug}',[FrontendController::class, 'singleCourse'])->name('singleCourse');
 Route::get('/privacy-policy',[FrontendController::class, 'privacyPolicy'])->name('privacyPolicy');
+
+//send mail
+Route::post('/admission-post',[MailController::class, 'admissionPost'])->name('admissionPost');
 
 
 //admin and users
@@ -183,9 +187,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::get('/top-Advertising-delete/{id}', [TopAdvertisingController::class, 'topAdvertisingDelete'])->name('topAdvertisingDelete');
     Route::post('/topstatus', [TopAdvertisingController::class, 'topstatus'])->name('topstatus');
 
-
     //user
     Route::get('/users', [UsersControllser::class, 'users'])->name('users');
     Route::get('/users-post', [UsersControllser::class, 'usersDelete'])->name('usersDelete');
 });
-
