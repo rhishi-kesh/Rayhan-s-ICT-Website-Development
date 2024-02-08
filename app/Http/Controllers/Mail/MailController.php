@@ -83,7 +83,7 @@ class MailController extends Controller
             'profession'=> 'required',
         ]);
 
-        if(!validator->passes()){
+        if(!$validator->passes()){
             return response()->json(['status'=>0, 'error'=>$validator->errors()->toArray()]);
         }
         else
@@ -108,10 +108,10 @@ class MailController extends Controller
                 'created_at'=> Carbon::now()
             ]);
 
-            
+
         }
 
-     
+
     }
 
 }
