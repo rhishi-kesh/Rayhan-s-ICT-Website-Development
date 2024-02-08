@@ -46,8 +46,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admissionPost') }}" method="post" class="text-start"
-                        id="admissionForm">
+                    <form action="{{ route('admissionPost') }}" method="post" enctype="multipart/form-data" class="text-start" id="admissionForm">
                         @csrf
                         <div class="form-floating">
                             <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
@@ -98,23 +97,22 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('applyForDemoClassPost') }}" method="post" class="text-start"
-                        id="DemoclassForm">
+                    <form action="{{ route('applyForDemoClassPost') }}" method="post" enctype="multipart/form-data" class="text-start" id="DemoclassForm">
                         @csrf
                         <div class="form-floating">
                             <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
                             <label for="name">Name</label>
-                            <span class="text-danger error-text name_error"></span>
+                            <span class="text-danger error-text name_errorD"></span>
                         </div>
                         <div class="form-floating mt-3">
                             <input type="email" class="form-control" name="email" id="email" placeholder="Enter E-mail">
                             <label for="email">Email</label>
-                            <span class="text-danger error-text email_error"></span> 
+                            <span class="text-danger error-text email_errorD"></span> 
                         </div>
                         <div class="form-floating mt-3">
                             <input type="number" class="form-control" name="number" id="number" placeholder="Enter Number">
                             <label for="number">Number</label>
-                            <span class="text-danger error-text number_error"></span>
+                            <span class="text-danger error-text number_errorD"></span>
                         </div>
                         <div class="mt-3">
                             <select id="subject" name="course" class="form-select form-select-lg">
@@ -123,17 +121,17 @@
                                     <option value="{{ $item->name }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                            <span class="text-danger error-text course_error"></span>
+                            <span class="text-danger error-text course_errorD"></span>
                         </div>
                         <div class="form-floating mt-3">
                             <input type="text" class="form-control" name="address" id="address" placeholder="Enter Address">
                             <label for="address">Address</label>
-                            <span class="text-danger error-text address_error"></span>
+                            <span class="text-danger error-text address_errorD"></span>
                         </div>
                         <div class="form-floating mt-3">
                             <input type="text" class="form-control" name="profession" id="profession" placeholder="Enter Current Profession">
                             <label for="profession">Current Profession</label>
-                            <span class="text-danger error-text profession_error"></span>
+                            <span class="text-danger error-text profession_errorD"></span>
                         </div>
                         <div class="mt-3">
                             <button type="submit" class="form-control text-uppercase form-control-lg" name="submit">
@@ -156,6 +154,7 @@
     <script src="{{ asset('frontend/js/venobox.min.js') }}"></script>
     <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+    @stack('jss')
     <script>
         new VenoBox({
             selector: '.RICT_Videos',
@@ -208,24 +207,22 @@
 
             });
         });
+    </script>
+    <script>
+        $(function() {
 
-        // Apply for Demo class
-
-        $(function()
-        {
-       
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $("#DemoclassForm").on('submit', function(e){
+            $("#DemoclassForm").on('submit', function(e) {
                 e.preventDefault();
 
                 $.ajax({
                     url:$(this).attr('action'),
                     method:$(this).attr('method'),
-                    data.new FormData(this),
+                    data:new FormData(this),
                     processData:false,
                     dataType:'json',
                     contentType:false,
@@ -234,11 +231,10 @@
                         $('.loader').addClass('spinner-border');
                         $('.submit_btn').hide('spinner-border');
                     },
-                    success:function(data)
-                    {
+                    success:function(data){
                         if(data.status == 0){
                             $.each(data.error, function(prefix, val){
-                                $('span.'+prefix+'_error').text(val[0]);
+                                $('span.'+prefix+'_errorD').text(val[0]);
                             });
                             $('.loader').removeClass('spinner-border');
                             $('.submit_btn').show('spinner-border');
@@ -246,21 +242,19 @@
                             $('#DemoclassForm')[0].reset();
                             Swal.fire({
                                 icon: "success",
-                                title: "Apply for Demo Class Successful",
+                                title: "Admission Successful",
                                 showConfirmButton: false,
                                 timer: 2500
                             })
-                            $('#DemoclassForm').modal('hide');
+                            $('#democlassMOdel').modal('hide');
                             $('.loader').removeClass('spinner-border');
                             $('.submit_btn').show('spinner-border');
                         }
                     }
                 });
-            });
 
+            });
         });
-        
     </script>
 </body>
-
 </html>
