@@ -9,7 +9,7 @@
                     <h3 class="fs-2 mb-3">{{ $courses->name }}</h3>
                     <div class="banner d-block d-md-none">
                         <img src="{{ asset('storage/CourseDetails/'. $courses->CourseDetails->thumbnail) }}" alt="" class="img-fluid">
-                        <a href="{{ $courses->courseDetails->video }}" data-autoplay="true" data-vbtype="video" class="RICT-Videos">
+                        <a href="{{ $courses->courseDetails->video }}" data-autoplay="true" data-vbtype="video" class="RICT_Videos">
                             <svg width="100" height="100" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="32.5" cy="32.5" r="32.5" fill="white" fill-opacity="0.5"/>
                                 <ellipse cx="32.4991" cy="32.5011" rx="20.546" ry="20.546" fill="white"/>
@@ -23,15 +23,17 @@
                     </div>
                     <p class="pe-0 pe-md-4 lead course_des">{{ $courses->courseDetails->description }}</p>
                     <div class="row text-start d-block d-md-none d-xxl-flex">
-                        <div class="col-7 col-md-4">
+                        <div class="col-12 col-md-4">
                             <p class="fw-bold text-start"><i class="ti-time me-2 mt-1"></i> Duration: {{ $courses->courseDetails->duration }} Month</p>
                         </div>
-                        <div class="col-5 col-md-3">
+                        <div class="col-12 col-md-3">
                             <p class="fw-bold text-start"><i class="ti-book me-2 mt-1"></i> Lectures: {{ $courses->courseDetails->lecture }}</p>
                         </div>
-                        <div class="col-12 col-md-3">
-                            <p class="fw-bold text-srart"><i class="ti-target me-2 mt-1"></i> Projects: {{ $courses->courseDetails->project }}+</p>
-                        </div>
+                        @if(!empty($courses->courseDetails->project))
+                            <div class="col-12 col-md-3">
+                                <p class="fw-bold text-srart"><i class="ti-target me-2 mt-1"></i> Projects: {{ $courses->courseDetails->project }}+</p>
+                            </div>
+                        @endif
                     </div>
                     <div class="row text-center text-md-start d-none d-md-flex d-xxl-none">
                         <div class="d-flex justify-content-start gap-3">
@@ -41,9 +43,11 @@
                             <div>
                                 <p class="fw-bold"><i class="ti-book me-2 mt-1"></i> Lectures: {{ $courses->courseDetails->lecture }}</p>
                             </div>
+                            @if(!empty($courses->courseDetails->project))
                             <div>
                                 <p class="fw-bold"><i class="ti-target me-2 mt-1"></i> Projects: {{ $courses->courseDetails->project }}+</p>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="d-block d-md-flex btns">
@@ -59,7 +63,7 @@
                 <div class="col-12 col-lg-6 align-self-center mt-4 mt-lg-0">
                     <div class="banner d-none d-md-block">
                         <img src="{{ asset('storage/CourseDetails/'. $courses->CourseDetails->thumbnail) }}" alt="" class="img-fluid">
-                        <a href="{{ $courses->courseDetails->video }}" data-autoplay="true" data-vbtype="video" class="RICT-Videos">
+                        <a href="{{ $courses->courseDetails->video }}" data-autoplay="true" data-vbtype="video" class="RICT_Videos">
                             <svg width="100" height="100" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="32.5" cy="32.5" r="32.5" fill="white" fill-opacity="0.5"/>
                                 <ellipse cx="32.4991" cy="32.5011" rx="20.546" ry="20.546" fill="white"/>
@@ -79,13 +83,22 @@
                     <ul class="nav navtabs d-inline">
                         <div class="bg-white py-2 py-md-4">
                             <li class="nav-item d-inline-block">
-                                <a class="nav-link active" href="#Course_Details">Course Details</a>
+                                <a class="nav-link active" href="#Course_Details">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    Course Details
+                                </a>
                             </li>
                             <li class="nav-item d-inline-block">
-                                <a class="nav-link" href="#Modules">Class Modules</a>
+                                <a class="nav-link" href="#Modules">
+                                    <i class="fa-solid fa-cubes"></i>
+                                    Class Modules
+                                </a>
                             </li>
                             <li class="nav-item d-inline-block mt-2 mt-md-0">
-                                <a class="nav-link" href="#Instructor">Instructor</a>
+                                <a class="nav-link" href="#Instructor">
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                    Instructor
+                                </a>
                             </li>
                         </div>
                     </ul>
@@ -93,184 +106,87 @@
                         <div id="Course_Details" class="sec">
                             <h2 class="top text-center">What will you learn from this course?</h2>
                             <div class="card text-start">
-                                <ul class="ps-0 mb-0">
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">HTML5, CSS3, Bootstrap 4</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">Modern JavaScript Programming</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">React with Redux</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">React Native</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">Python</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">SQL</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">AWS</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">Docker</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">Django</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">REST API</p>
-                                    </li>
+                                <ul class="ps-0 mb-0 learning">
+                                    @forelse ($courses->courseLearnings as $item)
+                                        <li class="d-flex justify-content-start align-items-start">
+                                            <img src="{{ asset('storage/Learnings/'. $item->image) }}" alt="" style="width: 30px; object-fit: cover;">
+                                            <p class="ms-3">{{ $item->content }}</p>
+                                        </li>
+                                    @empty
+                                        <div class="col">
+                                            <p class="text-danger">No Data Found</p>
+                                        </div>
+                                    @endforelse
                                 </ul>
                             </div>
                             <h2 class="mt-3 text-center">The course is for those</h2>
                             <div class="card text-start">
                                 <ul class="ps-0 mb-0">
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">Any background student or graduate</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">Interested in freelancing</p>
-                                    </li>
+                                    @forelse ($courses->courseForThoose as $item)
+                                        <li class="d-flex justify-content-start align-items-start">
+                                            <img src="{{ asset('storage/courseThose/'. $item->image) }}" alt="" style="width: 30px; object-fit: cover;">
+                                            <p class="ms-3">{{ $item->content }}</p>
+                                        </li>
+                                    @empty
+                                        <div class="col">
+                                            <p class="text-danger">No Data Found</p>
+                                        </div>
+                                    @endforelse
                                 </ul>
                             </div>
                             <h2 class="mt-3 text-center">You will get all the benefits</h2>
                             <div class="card text-start">
                                 <ul class="ps-0 mb-0">
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">Career support</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">Freelancing support</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">Project and portfolio support</p>
-                                    </li>
-                                    <li class="d-flex justify-content-start align-items-start">
-                                        <img src="assets/img/check.png" alt="" style="width: 25px; object-fit: contain;">
-                                        <p class="mb-0 ms-1">Content created by industry experts</p>
-                                    </li>
+                                    @forelse ($courses->courseBenifits as $item)
+                                        <li class="d-flex justify-content-start align-items-start">
+                                            <img src="{{ asset('storage/benefitsOfCourse/'. $item->image) }}" alt="" style="width: 30px; object-fit: cover;">
+                                            <p class="ms-3">{{ $item->content }}</p>
+                                        </li>
+                                    @empty
+                                        <div class="col">
+                                            <p class="text-danger">No Data Found</p>
+                                        </div>
+                                    @endforelse
                                 </ul>
                             </div>
+                            @if(!$courses->coursestudentprojects->isEmpty())
                             <h2 class="mt-3 creative_project text-center">Some of the Creative Projects Done by Our Students</h2>
                             <div class="card text-start" id="demo-carosel">
                                 <div class="owl-carousel owl-theme demo-carosel">
+                                    @forelse ($courses->coursestudentprojects as $item)
                                     <div class="demo-item">
-                                        <img src="assets/img/img-1.png" alt="" class="img-fluid">
+                                        <img src="{{ asset('storage/creativeProject/'. $item->image) }}" alt="" class="img-fluid">
                                     </div>
-                                    <div class="demo-item">
-                                        <img src="assets/img/img-2.png" alt="" class="img-fluid">
-                                    </div>
-                                    <div class="demo-item">
-                                        <img src="assets/img/img-3.png" alt="" class="img-fluid">
-                                    </div>
+                                    @empty
+                                        <div class="col">
+                                            <p class="text-danger">No Data Found</p>
+                                        </div>
+                                    @endforelse
                                 </div>
                             </div>
-                            <!-- <h2 class="mt-3">Our Facebook Review</h2>
-                            <div class="card text-start" id="demo-carosel">
-                                <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid021xsrNTKkawuFqfDtPfV9wZsgm83YD96K5uYjNAUEHgSviJhXxP7BeBeFKhExyxC9l%26id%3D61550744917164&show_text=true&width=500" width="500" height="342" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                            </div>
-                            <h2 class="mt-3">Our Google Review</h2>
-                            <div class="card text-start" id="demo-carosel">
-                                <div id="reviews-container"></div>
-                            </div> -->
+                            @endif
                         </div>
                         <div id="Modules" class="sec">
                             <h2 class="top mb-4 text-center">Class Modules</h2>
                             <div class="accordion text-start" id="accordionExample">
-                              <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                  <button class="accordion-button collapsed shadow-none fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                                    Class-1
-                                  </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                  <div class="accordion-body">
-                                    <ul class="ps-0">
-                                       <li class="d-flex justify-content-start align-items-start">
-                                            <img src="assets/img/check.png" alt="" style="width: 15px; margin-top: 5px; object-fit: contain;">
-                                            <p class="mb-0 ms-1">HTML5, CSS3, Bootstrap 4</p>
-                                        </li>
-                                        <li class="d-flex justify-content-start align-items-start">
-                                            <img src="assets/img/check.png" alt="" style="width: 15px; margin-top: 5px; object-fit: contain;">
-                                            <p class="mb-0 ms-1">Modern JavaScript Programming</p>
-                                        </li>
-                                        <li class="d-flex justify-content-start align-items-start">
-                                            <img src="assets/img/check.png" alt="" style="width: 15px; margin-top: 5px; object-fit: contain;">
-                                            <p class="mb-0 ms-1">Modern JavaScript Programming</p>
-                                        </li>
-                                    </ul>
+                                @forelse ($courses->courseModuls as $item)
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                      <button class="accordion-button collapsed shadow-none fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $item->id }}">
+                                        {{ $item->class_no }}
+                                      </button>
+                                    </h2>
+                                    <div id="collapse{{ $item->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                      <div class="accordion-body">
+                                        {!! $item->class_topics !!}
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
-                              </div>
-                              <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                  <button class="accordion-button collapsed shadow-none fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" >
-                                    Class-2
-                                  </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                  <div class="accordion-body">
-                                    <ul class="ps-0">
-                                       <li class="d-flex justify-content-start align-items-start">
-                                            <img src="assets/img/check.png" alt="" style="width: 15px; margin-top: 5px; object-fit: contain;">
-                                            <p class="mb-0 ms-1">HTML5, CSS3, Bootstrap 4</p>
-                                        </li>
-                                        <li class="d-flex justify-content-start align-items-start">
-                                            <img src="assets/img/check.png" alt="" style="width: 15px; margin-top: 5px; object-fit: contain;">
-                                            <p class="mb-0 ms-1">Modern JavaScript Programming</p>
-                                        </li>
-                                        <li class="d-flex justify-content-start align-items-start">
-                                            <img src="assets/img/check.png" alt="" style="width: 15px; margin-top: 5px; object-fit: contain;">
-                                            <p class="mb-0 ms-1">Modern JavaScript Programming</p>
-                                        </li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                  <button class="accordion-button collapsed shadow-none fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                    Class-3
-                                  </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse"data-bs-parent="#accordionExample">
-                                  <div class="accordion-body">
-                                    <ul class="ps-0">
-                                       <li class="d-flex justify-content-start align-items-start">
-                                            <img src="assets/img/check.png" alt="" style="width: 15px; margin-top: 5px; object-fit: contain;">
-                                            <p class="mb-0 ms-1">HTML5, CSS3, Bootstrap 4</p>
-                                        </li>
-                                        <li class="d-flex justify-content-start align-items-start">
-                                            <img src="assets/img/check.png" alt="" style="width: 15px; margin-top: 5px; object-fit: contain;">
-                                            <p class="mb-0 ms-1">Modern JavaScript Programming</p>
-                                        </li>
-                                        <li class="d-flex justify-content-start align-items-start">
-                                            <img src="assets/img/check.png" alt="" style="width: 15px; margin-top: 5px; object-fit: contain;">
-                                            <p class="mb-0 ms-1">Modern JavaScript Programming</p>
-                                        </li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
+                                @empty
+                                    <div class="col">
+                                        <p class="text-danger">No Data Found</p>
+                                    </div>
+                                @endforelse
                             </div>
                         </div>
                         <div id="Instructor" class="sec">
@@ -278,15 +194,15 @@
                             <div class="card border-0">
                                 <div class="d-flex justify-content-start gap-4 px-3 px-md-4 mb-0 pt-3">
                                     <div class="img-part">
-                                        <img src="assets/img/rhishi.jpeg" alt="">
+                                        <img src="{{ asset('storage/mentors/image/'. $courses->courseDetails->mentor->image) }}" alt="">
                                     </div>
                                     <div class="text-start align-self-center">
-                                        <h3 class="mb-0">Rhishi kesh</h3>
-                                        <p class="mb-0">Web developer at Rayhan's ICT</p>
+                                        <h3 class="mb-0">{{ $courses->courseDetails->mentor->name }}</h3>
+                                        <p class="mb-0">{{ $courses->courseDetails->mentor->designation }}</p>
                                     </div>
                                 </div>
                                 <hr>
-                                <p class="px-3 px-md-4 pb-3 m-0 text-start">Lorem ipsum dolor, sit, amet consectetur adipisicing elit. Voluptates accusantium nemo tempora nobis nisi dolores doloremque ea doloribus labore omnis sed error, quis, explicabo maxime est quam quasi ipsa odit, ut veritatis inventore facilis atque! Optio vero facilis corporis ipsa repellat aut velit beatae laborum dolorem corrupti blanditiis reiciendis, sit.</p>
+                                <p class="px-3 px-md-4 pb-3 m-0 text-start">{{ $courses->courseDetails->mentor->description }}</p>
                             </div>
                         </div>
                     </div>
@@ -297,66 +213,27 @@
                         <div class="accordion" id="accordionExample">
                             <div class="row">
                                 <div class="col-12">
+                                    @forelse ($courses->courseFaq as $item)
                                     <div class="card">
                                         <div class="card-header">
                                             <h5 class="mb-0">
                                                 <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseOne" aria-bs-expanded="false" aria-bs-controls="collapseOne">
-                                                    What is Lorem Ipsum?
+                                                    data-bs-target="#collapseOne{{ $item->id }}" aria-bs-expanded="false" aria-bs-controls="collapseOne">
+                                                    {{ $item->question }}
                                                 </button>
                                             </h5>
                                         </div>
-                                        <div id="collapseOne" class="collapse" data-bs-parent="#accordionExample">
+                                        <div id="collapseOne{{ $item->id }}" class="collapse" data-bs-parent="#accordionExample">
                                             <div class="card-body">
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.
+                                                {{ $item->answer }}
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseTwo" aria-bs-expanded="false" aria-bs-controls="collapseTwo">
-                                                    Where does it come from?
-                                                </button>
-                                            </h5>
+                                    @empty
+                                        <div class="col">
+                                            <p class="text-danger">No Data Found</p>
                                         </div>
-                                        <div id="collapseTwo" class="collapse" data-bs-parent="#accordionExample">
-                                            <div class="card-body">
-                                                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseThree" aria-bs-expanded="false" aria-bs-controls="collapseThree">
-                                                   Why do we use it?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseThree" class="collapse" data-bs-parent="#accordionExample">
-                                            <div class="card-body">
-                                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapse4" aria-bs-expanded="false" aria-bs-controls="collapseThree">
-                                                    Where can I get some?
-                                                </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapse4" class="collapse" data-bs-parent="#accordionExample">
-                                            <div class="card-body">
-                                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforelse
                                 </div>
                             </div>
                         </div>

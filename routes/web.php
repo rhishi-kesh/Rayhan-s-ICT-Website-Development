@@ -34,6 +34,8 @@ Route::get('/privacy-policy',[FrontendController::class, 'privacyPolicy'])->name
 
 //send mail
 Route::post('/admission-post',[MailController::class, 'admissionPost'])->name('admissionPost');
+Route::post('/seminer-registation-post',[MailController::class, 'seminerRegistationPost'])->name('seminerRegistationPost');
+Route::post('/webiner-registation-post',[MailController::class, 'webinerRegistationPost'])->name('webinerRegistationPost');
 
 
 //admin and users

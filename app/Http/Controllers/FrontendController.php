@@ -28,8 +28,9 @@ class FrontendController extends Controller
         $auth_logo = Authorised::get();
         $faq = FAQ::get();
         $course = [];
-        $course = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])->where('is_active', '0')->get();
-
+        $course = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
+        ->where('is_active', '0')
+        ->get();
         return view('frontend.pages.main', compact('heroInformations','departments','successStorys','reviews','mentor','auth_logo','faq','course'));
     }
     public function about(){
@@ -70,13 +71,17 @@ class FrontendController extends Controller
 
         $courses = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
         ->where('department_id',$departments->id)
+        ->where('is_active', '0')
         ->get();
 
         $title = $departments->departmentName;
         return view('frontend.pages.singleDepartment.singleDepartment', compact('departments','courses','title'));
     }
     public function singleCourse($slug){
-        $courses = Course::with(['department','courseDetails','courseDetails.mentor'])->where('slug',$slug)->first();
+        $courses = Course::with(['department','courseDetails','courseDetails.mentor','courseLearnings','courseForThoose','courseBenifits','coursestudentprojects','courseModuls','courseFaq'])
+        ->where('slug',$slug)
+        ->where('is_active', '0')
+        ->first();
         $title = $courses->name;
         return view('frontend.pages.singleCourse.singleCourse', compact('courses','title'));
     }

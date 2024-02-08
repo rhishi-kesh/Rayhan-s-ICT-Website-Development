@@ -79,9 +79,9 @@
                             <span class="text-danger error-text massage_error"></span>
                         </div>
                         <div class="mt-3">
-                            <button type="submit" class="form-control text-uppercase form-control-lg" name="submit">
+                            <button type="submit" class="submit_btn form-control text-uppercase form-control-lg" name="submit">
                                 <span class="loader"></span>
-                                <span class="submit_btn">Submit</span>
+                                <span class="submit_btn_text">Submit</span>
                             </button>
                         </div>
                     </form>
@@ -156,6 +156,7 @@
     <script src="{{ asset('frontend/js/venobox.min.js') }}"></script>
     <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+    @stack('jss')
     <script>
         new VenoBox({
             selector: '.RICT_Videos',
@@ -182,7 +183,8 @@
                     beforeSend:function(){
                         $(document).find('span.error-text').text('');
                         $('.loader').addClass('spinner-border');
-                        $('.submit_btn').hide('spinner-border');
+                        $('.submit_btn_text').hide('spinner-border');
+                        $('.submit_btn').attr('disabled', true);
                     },
                     success:function(data){
                         if(data.status == 0){
@@ -190,7 +192,8 @@
                                 $('span.'+prefix+'_error').text(val[0]);
                             });
                             $('.loader').removeClass('spinner-border');
-                            $('.submit_btn').show('spinner-border');
+                            $('.submit_btn_text').show('spinner-border');
+                            $('.submit_btn').removeAttr('disabled');
                         }else{
                             $('#admissionForm')[0].reset();
                             Swal.fire({
@@ -201,7 +204,8 @@
                             })
                             $('#admissionModal').modal('hide');
                             $('.loader').removeClass('spinner-border');
-                            $('.submit_btn').show('spinner-border');
+                            $('.submit_btn_text').show('spinner-border');
+                            $('.submit_btn').removeAttr('disabled');
                         }
                     }
                 });
@@ -210,5 +214,4 @@
         });
     </script>
 </body>
-
 </html>
