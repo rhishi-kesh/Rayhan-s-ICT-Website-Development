@@ -98,7 +98,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="applyForDemoClassPost" method="post" class="text-start"
+                    <form action="{{ route('applyForDemoClassPost') }}" method="post" class="text-start"
                         id="DemoclassForm">
                         @csrf
                         <div class="form-floating">
@@ -109,7 +109,7 @@
                         <div class="form-floating mt-3">
                             <input type="email" class="form-control" name="email" id="email" placeholder="Enter E-mail">
                             <label for="email">Email</label>
-                            <span class="text-danger error-text email_error"></span>
+                            <span class="text-danger error-text email_error"></span> 
                         </div>
                         <div class="form-floating mt-3">
                             <input type="number" class="form-control" name="number" id="number" placeholder="Enter Number">
@@ -208,6 +208,58 @@
 
             });
         });
+
+        // Apply for Demo class
+
+        $(function()
+        {
+       
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $("#DemoclassForm").on('submit', function(e){
+                e.preventDefault();
+
+                $.ajax({
+                    url:$(this).attr('action'),
+                    method:$(this).attr('method'),
+                    data.new FormData(this),
+                    processData:false,
+                    dataType:'json',
+                    contentType:false,
+                    beforeSend:function(){
+                        $(document).find('span.error-text').text('');
+                        $('.loader').addClass('spinner-border');
+                        $('.submit_btn').hide('spinner-border');
+                    },
+                    success:function(data)
+                    {
+                        if(data.status == 0){
+                            $.each(data.error, function(prefix, val){
+                                $('span.'+prefix+'_error').text(val[0]);
+                            });
+                            $('.loader').removeClass('spinner-border');
+                            $('.submit_btn').show('spinner-border');
+                        }else{
+                            $('#DemoclassForm')[0].reset();
+                            Swal.fire({
+                                icon: "success",
+                                title: "Apply for Demo Class Successful",
+                                showConfirmButton: false,
+                                timer: 2500
+                            })
+                            $('#DemoclassForm').modal('hide');
+                            $('.loader').removeClass('spinner-border');
+                            $('.submit_btn').show('spinner-border');
+                        }
+                    }
+                });
+            });
+
+        });
+        
     </script>
 </body>
 

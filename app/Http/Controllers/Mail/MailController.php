@@ -77,13 +77,11 @@ class MailController extends Controller
             'name'=> 'required',
             'email'=> 'required|email',
             'number'=> 'required|min:11|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
-            'subject'=> 'required',
-            'massage'=> 'required',
             'address'=> 'required',
             'profession'=> 'required',
         ]);
 
-        if(!validator->passes()){
+        if(!$validator->passes()){
             return response()->json(['status'=>0, 'error'=>$validator->errors()->toArray()]);
         }
         else
@@ -93,7 +91,6 @@ class MailController extends Controller
                 'email'=> $request->email,
                 'number'=> $request->number,
                 'subject'=> $request->course,
-                'massage'=> $request->massage,
                 'address'=> $request->address,
                 'profession'=> $request->profession,
             ];
@@ -102,16 +99,40 @@ class MailController extends Controller
                 'email'=> $request->email,
                 'number' => $request->number,
                 'subject'=> $request->course,
-                'message'=> $request->message,
                 'address'=> $request->address,
                 'profession'=> $request->profession,
                 'created_at'=> Carbon::now()
             ]);
 
-            
+            if( $done )
+            {
+                //send mail
+                Mail::to($request->email)->send(new applyForDemoClassMail($details));
+                //send message
+                $smsNumber = '88'.$request->number;
+                $url = "https://880sms.com/smsapi";
+                $data = [
+                    "api_key" => "C20070576581b892abb538.40220352",
+                    "type" => "text",
+                    "contacts" => "$smsNumber",
+                    "senderid" => "RAYHANS ICT",
+                    "msg" => "Congratulations $request->name . You have Registation Complete.",
+                ];
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                $response = curl_exec($ch);
+                curl_close($ch);
+                return response()->json(['status'=>1, 'msg'=>'Apply Demo Class Successfully Done']);
+
+            }
         }
 
-     
     }
+
+    
 
 }

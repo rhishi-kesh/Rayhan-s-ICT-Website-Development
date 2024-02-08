@@ -27,7 +27,7 @@ class applyForDemoClassMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Apply For Demo Class Mail',
+            subject: 'Demo Class apply successfull',
         );
     }
 
@@ -37,7 +37,7 @@ class applyForDemoClassMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.course',
         );
     }
 
