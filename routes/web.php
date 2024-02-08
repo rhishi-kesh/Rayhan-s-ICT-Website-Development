@@ -34,7 +34,8 @@ Route::get('/privacy-policy',[FrontendController::class, 'privacyPolicy'])->name
 
 //send mail
 Route::post('/admission-post',[MailController::class, 'admissionPost'])->name('admissionPost');
-Route::post('/apply-for-demo-class-post',[MailController::class, 'applyForDemoClassPost'])->name('applyForDemoClassPost');
+Route::post('/demo-class-post',[MailController::class, 'applyForDemoClassPost'])->name('applyForDemoClassPost');
+Route::post('/contact-us-post',[MailController::class, 'ContactPost'])->name('ContactPost');
 
 
 //admin and users

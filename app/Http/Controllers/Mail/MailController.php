@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Mail;
 use App\Http\Controllers\Controller;
 use App\Mail\AdmissionMail;
 use App\Mail\applyForDemoClassMail;
+use App\Mail\ContactUsMail;
 use App\Models\Admission;
 use App\Models\ApplyForDemoClass;
+use App\Models\ContactUs;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -77,23 +79,18 @@ class MailController extends Controller
             'name'=> 'required',
             'email'=> 'required|email',
             'number'=> 'required|min:11|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
-            'subject'=> 'required',
-            'massage'=> 'required',
             'address'=> 'required',
             'profession'=> 'required',
         ]);
 
         if(!$validator->passes()){
             return response()->json(['status'=>0, 'error'=>$validator->errors()->toArray()]);
-        }
-        else
-        {
+        }else {
             $details =[
                 'name'=> $request->name,
                 'email'=> $request->email,
                 'number'=> $request->number,
                 'subject'=> $request->course,
-                'massage'=> $request->massage,
                 'address'=> $request->address,
                 'profession'=> $request->profession,
             ];
@@ -102,7 +99,6 @@ class MailController extends Controller
                 'email'=> $request->email,
                 'number' => $request->number,
                 'subject'=> $request->course,
-                'message'=> $request->message,
                 'address'=> $request->address,
                 'profession'=> $request->profession,
                 'created_at'=> Carbon::now()
