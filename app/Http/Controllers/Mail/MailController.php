@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Mail;
 
 use App\Http\Controllers\Controller;
 use App\Mail\AdmissionMail;
-use App\Mail\applyForDemoClassMail;
-use App\Mail\ContactUsMail;
 use App\Models\Admission;
 use App\Models\ApplyForDemoClass;
-use App\Models\ContactUs;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -16,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class MailController extends Controller
 {
+    // Admission
     public function admissionPost(Request $request){
         $validator = Validator::make($request->all(),[
             'name'=>'required',
@@ -103,11 +101,8 @@ class MailController extends Controller
                 'profession'=> $request->profession,
                 'created_at'=> Carbon::now()
             ]);
-
-
         }
-
-
     }
+
 
 }
