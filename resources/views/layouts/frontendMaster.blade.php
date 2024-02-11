@@ -46,7 +46,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admissionPost') }}" method="post" class="text-start"
+                    <form action="{{ route('admissionPost') }}" method="post" class="text-start admissionForm"
                         id="admissionForm">
                         @csrf
                         <div class="form-floating">
@@ -80,7 +80,7 @@
                         </div>
                         <div class="mt-3">
                             <button type="submit" class="submit_btn form-control text-uppercase form-control-lg" name="submit">
-                                <span class="loader"></span>
+                                <span class="loader text-dark"></span>
                                 <span class="submit_btn_text">Submit</span>
                             </button>
                         </div>
@@ -98,23 +98,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post" class="text-start"
+                    <form action="{{ route('applyForDemoClassPost') }}" method="post" class="DemoclassForm text-start"
                         id="DemoclassForm">
                         @csrf
                         <div class="form-floating">
                             <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
                             <label for="name">Name</label>
-                            <span class="text-danger error-text name_error"></span>
+                            <span class="text-danger error-text name_errorD"></span>
                         </div>
                         <div class="form-floating mt-3">
                             <input type="email" class="form-control" name="email" id="email" placeholder="Enter E-mail">
                             <label for="email">Email</label>
-                            <span class="text-danger error-text email_error"></span>
+                            <span class="text-danger error-text email_errorD"></span>
                         </div>
                         <div class="form-floating mt-3">
                             <input type="number" class="form-control" name="number" id="number" placeholder="Enter Number">
                             <label for="number">Number</label>
-                            <span class="text-danger error-text number_error"></span>
+                            <span class="text-danger error-text number_errorD"></span>
                         </div>
                         <div class="mt-3">
                             <select id="subject" name="course" class="form-select form-select-lg">
@@ -123,22 +123,22 @@
                                     <option value="{{ $item->name }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                            <span class="text-danger error-text course_error"></span>
+                            <span class="text-danger error-text course_errorD"></span>
                         </div>
                         <div class="form-floating mt-3">
                             <input type="text" class="form-control" name="address" id="address" placeholder="Enter Address">
                             <label for="address">Address</label>
-                            <span class="text-danger error-text address_error"></span>
+                            <span class="text-danger error-text address_errorD"></span>
                         </div>
                         <div class="form-floating mt-3">
                             <input type="text" class="form-control" name="profession" id="profession" placeholder="Enter Current Profession">
                             <label for="profession">Current Profession</label>
-                            <span class="text-danger error-text profession_error"></span>
+                            <span class="text-danger error-text profession_errorD"></span>
                         </div>
                         <div class="mt-3">
-                            <button type="submit" class="form-control text-uppercase form-control-lg" name="submit">
-                                <span class="loader"></span>
-                                <span class="submit_btn">Submit</span>
+                            <button type="submit" class="submit_btn form-control text-uppercase form-control-lg" name="submit">
+                                <span class="loader text-dark"></span>
+                                <span class="submit_btn_text">Submit</span>
                             </button>
                         </div>
                     </form>
@@ -163,55 +163,14 @@
         });
     </script>
     <script>
-        $(function() {
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $("#admissionForm").on('submit', function(e) {
-                e.preventDefault();
-
-                $.ajax({
-                    url:$(this).attr('action'),
-                    method:$(this).attr('method'),
-                    data:new FormData(this),
-                    processData:false,
-                    dataType:'json',
-                    contentType:false,
-                    beforeSend:function(){
-                        $(document).find('span.error-text').text('');
-                        $('.loader').addClass('spinner-border');
-                        $('.submit_btn_text').hide('spinner-border');
-                        $('.submit_btn').attr('disabled', true);
-                    },
-                    success:function(data){
-                        if(data.status == 0){
-                            $.each(data.error, function(prefix, val){
-                                $('span.'+prefix+'_error').text(val[0]);
-                            });
-                            $('.loader').removeClass('spinner-border');
-                            $('.submit_btn_text').show('spinner-border');
-                            $('.submit_btn').removeAttr('disabled');
-                        }else{
-                            $('#admissionForm')[0].reset();
-                            Swal.fire({
-                                icon: "success",
-                                title: "Admission Successful",
-                                showConfirmButton: false,
-                                timer: 2500
-                            })
-                            $('#admissionModal').modal('hide');
-                            $('.loader').removeClass('spinner-border');
-                            $('.submit_btn_text').show('spinner-border');
-                            $('.submit_btn').removeAttr('disabled');
-                        }
-                    }
-                });
-
-            });
-        });
+        var topbannerbtn = document.getElementById("topbannerbtn");
+        var top_advirtised = document.getElementById("top_advirtised");
+        var display = document.getElementById("display");
+        // console.log(topbannerbtn);
+        topbannerbtn.onclick = function(){
+            top_advirtised.style.display = "none";
+            display.classList.add("d-md-block");
+        }
     </script>
 </body>
 </html>

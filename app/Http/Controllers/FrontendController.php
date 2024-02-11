@@ -10,6 +10,7 @@ use App\Models\Department;
 use App\Models\FAQ;
 use App\Models\HeroInformation;
 use App\Models\MeetOurMentors;
+use App\Models\PopUp;
 use App\Models\Review;
 use App\Models\Seminar;
 use App\Models\SuccessStory;
@@ -31,7 +32,8 @@ class FrontendController extends Controller
         $course = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
         ->where('is_active', '0')
         ->get();
-        return view('frontend.pages.main', compact('heroInformations','departments','successStorys','reviews','mentor','auth_logo','faq','course'));
+        $popup = PopUp::where('is_active','0')->first();
+        return view('frontend.pages.main', compact('heroInformations','departments','successStorys','reviews','mentor','auth_logo','faq','course','popup'));
     }
     public function about(){
         $about = About::first();

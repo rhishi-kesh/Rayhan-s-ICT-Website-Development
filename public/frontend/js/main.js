@@ -315,3 +315,112 @@ $(".CoursesUnderDepartment").slick({
       },
     ]
   });
+
+  //Ajax democlass form submit
+  $(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $("#DemoclassForm").on('submit', function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url:$(this).attr('action'),
+            method:$(this).attr('method'),
+            data:new FormData(this),
+            processData:false,
+            dataType:'json',
+            contentType:false,
+            beforeSend:function(){
+                $(document).find('span.error-text').text('');
+                $('.loader').addClass('spinner-border');
+                $('.submit_btn_text').hide('spinner-border');
+                $('.submit_btn').attr('disabled', true);
+            },
+            success:function(data){
+                if(data.status == 0){
+                    $.each(data.error, function(prefix, val){
+                        $('span.'+prefix+'_errorD').text(val[0]);
+                    });
+                    $('.loader').removeClass('spinner-border');
+                    $('.submit_btn_text').show('spinner-border');
+                    $('.submit_btn').removeAttr('disabled');
+                }else{
+                    $('#DemoclassForm')[0].reset();
+                    Swal.fire({
+                        icon: "success",
+                        title: "Apply Successfull For Demo Class",
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                    $('#democlassMOdel').modal('hide');
+                    $('.loader').removeClass('spinner-border');
+                    $('.submit_btn_text').show('spinner-border');
+                    $('.submit_btn').removeAttr('disabled');
+                }
+            }
+        });
+
+    });
+});
+
+
+//ajax admission form submit
+$(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $("#admissionForm").on('submit', function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url:$(this).attr('action'),
+            method:$(this).attr('method'),
+            data:new FormData(this),
+            processData:false,
+            dataType:'json',
+            contentType:false,
+            beforeSend:function(){
+                $(document).find('span.error-text').text('');
+                $('.loader').addClass('spinner-border');
+                $('.submit_btn_text').hide('spinner-border');
+                $('.submit_btn').attr('disabled', true);
+            },
+            success:function(data){
+                if(data.status == 0){
+                    $.each(data.error, function(prefix, val){
+                        $('span.'+prefix+'_error').text(val[0]);
+                    });
+                    $('.loader').removeClass('spinner-border');
+                    $('.submit_btn_text').show('spinner-border');
+                    $('.submit_btn').removeAttr('disabled');
+                }else{
+                    $('#admissionForm')[0].reset();
+                    Swal.fire({
+                        icon: "success",
+                        title: "Admission Successful",
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                    $('#admissionModal').modal('hide');
+                    $('.loader').removeClass('spinner-border');
+                    $('.submit_btn_text').show('spinner-border');
+                    $('.submit_btn').removeAttr('disabled');
+                }
+            }
+        });
+
+    });
+});
+
+//pop up modal
+var myModal = new bootstrap.Modal(document.getElementById("popupadvirtise"));
+window.setTimeout(function(){
+    myModal.show()
+}, 5000);
+
+

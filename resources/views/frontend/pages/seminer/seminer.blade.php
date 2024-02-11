@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="mt-3">
                                         <button type="submit" class="submit_btn form-control text-uppercase form-control-lg" name="submit">
-                                            <span class="loader"></span>
+                                            <span class="loader text-dark"></span>
                                             <span class="submit_btn_text">Submit</span>
                                         </button>
                                     </div>
@@ -198,7 +198,7 @@
                                     </div>
                                     <div class="mt-3">
                                         <button type="submit" class="submit_btn form-control text-uppercase form-control-lg" name="submit">
-                                            <span class="loader"></span>
+                                            <span class="loader text-dark"></span>
                                             <span class="submit_btn_text">Submit</span>
                                         </button>
                                     </div>

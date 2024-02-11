@@ -1398,7 +1398,7 @@ footer .contact i{
 #admissionModal form select{
     font-size: 1.1rem !important;
 }
-#admissionModal form button{
+.admissionForm button{
     background: var(--blue);
     color: var(--white);
     text-decoration: none;
@@ -1412,7 +1412,7 @@ footer .contact i{
     position: relative;
     z-index: 1;
 }
-#democlassMOdel form button{
+.DemoclassForm button{
     background: var(--blue);
     color: var(--white);
     text-decoration: none;
@@ -1753,6 +1753,19 @@ footer .contact i{
   to {left: 100%;}
 }
 @keyframes floating{0%,to{transform:translate(0,0)}65%{transform:translate(0,15px)}}
+#popupadvirtise .btn-close{
+    position: absolute;
+    top: -25px;
+    right: -25px;
+}
+.top_advirtised{
+    position: relative;
+}
+.top_advirtised button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
 @media (max-width: 991px) {
     nav .nav-bar .sidebarOpen{
         display: block;
