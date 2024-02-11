@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class applyForDemoClassMail extends Mailable
+class ContactUsMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,9 +17,9 @@ class applyForDemoClassMail extends Mailable
      * Create a new message instance.
      */
     public $details;
-    public function __construct($bodydetails)
+    public function __construct($bodyDetails)
     {
-        $this->details = $bodydetails;
+        $this->details = $bodyDetails;
     }
 
     /**
@@ -28,7 +28,7 @@ class applyForDemoClassMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Apply Successfull For Demo Class',
+            subject: 'Thanks For Contact Us',
         );
     }
 
@@ -38,7 +38,7 @@ class applyForDemoClassMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.democlass',
+            view: 'mail.contactus',
         );
     }
 

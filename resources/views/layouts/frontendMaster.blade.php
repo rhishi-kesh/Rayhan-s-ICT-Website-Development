@@ -46,8 +46,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admissionPost') }}" method="post" class="text-start admissionForm"
-                        id="admissionForm">
+                    <form action="{{ route('admissionPost') }}" method="post" enctype="multipart/form-data" class="text-start" id="admissionForm">
                         @csrf
                         <div class="form-floating">
                             <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
@@ -98,8 +97,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('applyForDemoClassPost') }}" method="post" class="DemoclassForm text-start"
-                        id="DemoclassForm">
+                    <form action="{{ route('applyForDemoClassPost') }}" method="post" enctype="multipart/form-data" class="text-start" id="DemoclassForm">
                         @csrf
                         <div class="form-floating">
                             <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
@@ -160,6 +158,102 @@
     <script>
         new VenoBox({
             selector: '.RICT_Videos',
+        });
+    </script>
+    <script>
+        $(function() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $("#admissionForm").on('submit', function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url:$(this).attr('action'),
+                    method:$(this).attr('method'),
+                    data:new FormData(this),
+                    processData:false,
+                    dataType:'json',
+                    contentType:false,
+                    beforeSend:function(){
+                        $(document).find('span.error-text').text('');
+                        $('.loader').addClass('spinner-border');
+                        $('.submit_btn').hide('spinner-border');
+                    },
+                    success:function(data){
+                        if(data.status == 0){
+                            $.each(data.error, function(prefix, val){
+                                $('span.'+prefix+'_error').text(val[0]);
+                            });
+                            $('.loader').removeClass('spinner-border');
+                            $('.submit_btn').show('spinner-border');
+                        }else{
+                            $('#admissionForm')[0].reset();
+                            Swal.fire({
+                                icon: "success",
+                                title: "Admission Successful",
+                                showConfirmButton: false,
+                                timer: 2500
+                            })
+                            $('#admissionModal').modal('hide');
+                            $('.loader').removeClass('spinner-border');
+                            $('.submit_btn').show('spinner-border');
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+    <script>
+        $(function() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $("#DemoclassForm").on('submit', function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url:$(this).attr('action'),
+                    method:$(this).attr('method'),
+                    data:new FormData(this),
+                    processData:false,
+                    dataType:'json',
+                    contentType:false,
+                    beforeSend:function(){
+                        $(document).find('span.error-text').text('');
+                        $('.loader').addClass('spinner-border');
+                        $('.submit_btn').hide('spinner-border');
+                    },
+                    success:function(data){
+                        if(data.status == 0){
+                            $.each(data.error, function(prefix, val){
+                                $('span.'+prefix+'_errorD').text(val[0]);
+                            });
+                            $('.loader').removeClass('spinner-border');
+                            $('.submit_btn').show('spinner-border');
+                        }else{
+                            $('#DemoclassForm')[0].reset();
+                            Swal.fire({
+                                icon: "success",
+                                title: "Admission Successful",
+                                showConfirmButton: false,
+                                timer: 2500
+                            })
+                            $('#democlassMOdel').modal('hide');
+                            $('.loader').removeClass('spinner-border');
+                            $('.submit_btn').show('spinner-border');
+                        }
+                    }
+                });
+
+            });
         });
     </script>
     <script>
