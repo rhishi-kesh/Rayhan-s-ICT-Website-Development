@@ -1398,7 +1398,7 @@ footer .contact i{
 #admissionModal form select{
     font-size: 1.1rem !important;
 }
-#admissionModal form button{
+.admissionForm button{
     background: var(--blue);
     color: var(--white);
     text-decoration: none;
@@ -1412,7 +1412,21 @@ footer .contact i{
     position: relative;
     z-index: 1;
 }
-#democlassMOdel form button{
+.DemoclassForm button{
+    background: var(--blue);
+    color: var(--white);
+    text-decoration: none;
+    padding: 12px 18px;
+    display: inline-block;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.6s;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+.SeminerForm button{
     background: var(--blue);
     color: var(--white);
     text-decoration: none;
@@ -1575,6 +1589,11 @@ footer .contact i{
 .course_detailes .content h2{
     color: var(--blue);
 }
+.content #Course_Details .card ul.learning{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: .3em;
+}
 .content #Course_Details .card ul{
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -1596,9 +1615,10 @@ footer .contact i{
 }
 .content .demo-carosel img{
     max-width: 100% !important;
-    min-height: 350px !important;
-    object-fit: cover;
-    border-radius: 10px;
+}
+.content .demo-carosel{
+    height: 500px;
+    overflow:auto;
 }
 .content .demo-carosel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev{
   border: 2px solid var(--blue) !important;
@@ -1733,6 +1753,19 @@ footer .contact i{
   to {left: 100%;}
 }
 @keyframes floating{0%,to{transform:translate(0,0)}65%{transform:translate(0,15px)}}
+#popupadvirtise .btn-close{
+    position: absolute;
+    top: -25px;
+    right: -25px;
+}
+.top_advirtised{
+    position: relative;
+}
+.top_advirtised button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
 @media (max-width: 991px) {
     nav .nav-bar .sidebarOpen{
         display: block;
@@ -1909,7 +1942,8 @@ footer .contact i{
         display: block;
     }
     .single_course_header .btns a{
-        font-size: 13px;
+        font-size: 14px;
+        display: block;
     }
     .Course .owl-carousel .owl-nav .owl-next{
         position: absolute;
@@ -1923,5 +1957,24 @@ footer .contact i{
     }
     .Reviews .reviewSuccess{
         columns: 1;
+    }
+    .content #Course_Details .card ul.learning{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: .3em;
+    }
+    .content .demo-carosel{
+        height: 300px;
+        overflow:auto;
+    }
+}
+@media screen and (max-width: 400px){
+    .course_detailes .navtabs li a {
+      font-size: 11px;
+    }
+}
+@media screen and (max-width: 360px){
+    .course_detailes .navtabs li a {
+      font-size: 9px;
     }
 }

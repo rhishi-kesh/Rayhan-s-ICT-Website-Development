@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal fade" id="seminerJoin{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="seminerJoin{{ $item->id }}" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -47,32 +47,91 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="" class="text-start">
-                                    <input type="hidden" value="{{ $item->id }}" name="seminer_id">
+                                <form action="{{ route('seminerRegistationPost') }}" method="post" class="text-start SeminerForm" id="SeminerForm{{ $item->id }}">
+                                    @csrf
+                                    <input type="hidden" value="{{ $item->title }}" name="seminer_id">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
                                         <label for="name">Enter Name</label>
+                                        <span class="text-danger error-text name_error"></span>
                                     </div>
                                     <div class="form-floating mt-3">
-                                        <input type="email" class="form-control" id="email" placeholder="Enter E-mail">
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter E-mail">
                                         <label for="email">Enter Email</label>
+                                        <span class="text-danger error-text email_error"></span>
                                     </div>
                                     <div class="form-floating mt-3">
-                                        <input type="number" class="form-control" id="number" placeholder="Enter Number">
+                                        <input type="number" name="number" class="form-control" id="number" placeholder="Enter Number">
                                         <label for="number">Enter Number</label>
+                                        <span class="text-danger error-text number_error"></span>
                                     </div>
                                     <div class="form-floating mt-3">
-                                        <input type="text" class="form-control" id="text" placeholder="Enter Address">
+                                        <input type="text" name="address" class="form-control" id="text" placeholder="Enter Address">
                                         <label for="text">Enter Address</label>
+                                        <span class="text-danger error-text address_error"></span>
                                     </div>
                                     <div class="mt-3">
-                                        <input type="submit" class="form-control form-control-lg seminerBtn" value="SUBMIT" name="submit">
+                                        <button type="submit" class="submit_btn form-control text-uppercase form-control-lg" name="submit">
+                                            <span class="loader text-dark"></span>
+                                            <span class="submit_btn_text">Submit</span>
+                                        </button>
                                     </div>
                                 </form>
                             </div>
                           </div>
                         </div>
                       </div>
+                    @push('jss')
+                        <script>
+                            $(function() {
+
+                                $.ajaxSetup({
+                                    headers: {
+                                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                                    }
+                                });
+                                $("#SeminerForm{{ $item->id }}").on('submit', function(e) {
+                                    e.preventDefault();
+                                    $.ajax({
+                                        url:$(this).attr('action'),
+                                        method:$(this).attr('method'),
+                                        data:new FormData(this),
+                                        processData:false,
+                                        dataType:'json',
+                                        contentType:false,
+                                        beforeSend:function(){
+                                            $(document).find('span.error-text').text('');
+                                            $('.loader').addClass('spinner-border');
+                                            $('.submit_btn').attr('disabled', true);
+                                            $('.submit_btn_text').hide('spinner-border');
+                                        },
+                                        success:function(data){
+                                            if(data.status == 0){
+                                                $.each(data.error, function(prefix, val){
+                                                    $('span.'+prefix+'_error').text(val[0]);
+                                                });
+                                                $('.loader').removeClass('spinner-border');
+                                                $('.submit_btn').removeAttr('disabled');
+                                                $('.submit_btn_text').show('spinner-border');
+                                            }else{
+                                                $("#SeminerForm{{ $item->id }}")[0].reset();
+                                                Swal.fire({
+                                                    icon: "success",
+                                                    title: "Seminer Registation Successful",
+                                                    showConfirmButton: false,
+                                                    timer: 2500
+                                                })
+                                                $('#seminerJoin{{ $item->id }}').modal('hide');
+                                                $('.loader').removeClass('spinner-border');
+                                                $('.submit_btn_text').show('spinner-border');
+                                                $('.submit_btn').removeAttr('disabled');
+                                            }
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                    @endpush
                 @empty
                     <div class="col">
                         <p class="text-danger">Seminers Not Available</p>
@@ -114,31 +173,91 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              <form action="" method="" class="text-start">
-                                  <div class="form-floating">
-                                      <input type="text" class="form-control" id="name" placeholder="Enter Name">
-                                      <label for="name">Enter Name</label>
-                                  </div>
-                                  <div class="form-floating mt-3">
-                                      <input type="email" class="form-control" id="email" placeholder="Enter E-mail">
-                                      <label for="email">Enter Email</label>
-                                  </div>
-                                  <div class="form-floating mt-3">
-                                      <input type="number" class="form-control" id="number" placeholder="Enter Number">
-                                      <label for="number">Enter Number</label>
-                                  </div>
-                                  <div class="form-floating mt-3">
-                                    <input type="text" class="form-control" id="text" placeholder="Enter Address">
-                                    <label for="text">Enter Address</label>
-                                </div>
-                                  <div class="mt-3">
-                                      <input type="submit" class="form-control form-control-lg seminerBtn" value="SUBMIT" name="submit">
-                                  </div>
-                              </form>
+                                <form action="{{ route('webinerRegistationPost') }}" method="post" class="text-start SeminerForm" id="WabinerForm{{ $item->id }}">
+                                    @csrf
+                                    <input type="hidden" value="{{ $item->title }}" name="webiner_id">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
+                                        <label for="name">Enter Name</label>
+                                        <span class="text-danger error-text name_errorW"></span>
+                                    </div>
+                                    <div class="form-floating mt-3">
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter E-mail">
+                                        <label for="email">Enter Email</label>
+                                        <span class="text-danger error-text email_errorW"></span>
+                                    </div>
+                                    <div class="form-floating mt-3">
+                                        <input type="number" name="number" class="form-control" id="number" placeholder="Enter Number">
+                                        <label for="number">Enter Number</label>
+                                        <span class="text-danger error-text number_errorW"></span>
+                                    </div>
+                                    <div class="form-floating mt-3">
+                                        <input type="text" name="address" class="form-control" id="text" placeholder="Enter Address">
+                                        <label for="text">Enter Address</label>
+                                        <span class="text-danger error-text address_errorW"></span>
+                                    </div>
+                                    <div class="mt-3">
+                                        <button type="submit" class="submit_btn form-control text-uppercase form-control-lg" name="submit">
+                                            <span class="loader text-dark"></span>
+                                            <span class="submit_btn_text">Submit</span>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                           </div>
                         </div>
                       </div>
+                      @push('jss')
+                        <script>
+                            $(function() {
+
+                                $.ajaxSetup({
+                                    headers: {
+                                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                                    }
+                                });
+                                $("#WabinerForm{{ $item->id }}").on('submit', function(e) {
+                                    e.preventDefault();
+                                    $.ajax({
+                                        url:$(this).attr('action'),
+                                        method:$(this).attr('method'),
+                                        data:new FormData(this),
+                                        processData:false,
+                                        dataType:'json',
+                                        contentType:false,
+                                        beforeSend:function(){
+                                            $(document).find('span.error-text').text('');
+                                            $('.loader').addClass('spinner-border');
+                                            $('.submit_btn').attr('disabled', true);
+                                            $('.submit_btn_text').hide('spinner-border');
+                                        },
+                                        success:function(data){
+                                            if(data.status == 0){
+                                                $.each(data.error, function(prefix, val){
+                                                    $('span.'+prefix+'_errorW').text(val[0]);
+                                                });
+                                                $('.loader').removeClass('spinner-border');
+                                                $('.submit_btn').removeAttr('disabled');
+                                                $('.submit_btn_text').show('spinner-border');
+                                            }else{
+                                                $("#WabinerForm{{ $item->id }}")[0].reset();
+                                                Swal.fire({
+                                                    icon: "success",
+                                                    title: "Webiner Registation Successful",
+                                                    showConfirmButton: false,
+                                                    timer: 2500
+                                                })
+                                                $('#wabinars{{ $item->id }}').modal('hide');
+                                                $('.loader').removeClass('spinner-border');
+                                                $('.submit_btn_text').show('spinner-border');
+                                                $('.submit_btn').removeAttr('disabled');
+                                            }
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                    @endpush
                 @empty
                     <div class="col">
                         <p class="text-danger">Webinars Not Available</p>

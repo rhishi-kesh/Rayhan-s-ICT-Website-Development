@@ -10,6 +10,7 @@ use App\Models\Department;
 use App\Models\FAQ;
 use App\Models\HeroInformation;
 use App\Models\MeetOurMentors;
+use App\Models\PopUp;
 use App\Models\Review;
 use App\Models\Seminar;
 use App\Models\SuccessStory;
@@ -28,9 +29,11 @@ class FrontendController extends Controller
         $auth_logo = Authorised::get();
         $faq = FAQ::get();
         $course = [];
-        $course = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])->where('is_active', '0')->get();
-
-        return view('frontend.pages.main', compact('heroInformations','departments','successStorys','reviews','mentor','auth_logo','faq','course'));
+        $course = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
+        ->where('is_active', '0')
+        ->get();
+        $popup = PopUp::where('is_active','0')->first();
+        return view('frontend.pages.main', compact('heroInformations','departments','successStorys','reviews','mentor','auth_logo','faq','course','popup'));
     }
     public function about(){
         $about = About::first();
@@ -70,13 +73,17 @@ class FrontendController extends Controller
 
         $courses = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
         ->where('department_id',$departments->id)
+        ->where('is_active', '0')
         ->get();
 
         $title = $departments->departmentName;
         return view('frontend.pages.singleDepartment.singleDepartment', compact('departments','courses','title'));
     }
     public function singleCourse($slug){
-        $courses = Course::with(['department','courseDetails','courseDetails.mentor'])->where('slug',$slug)->first();
+        $courses = Course::with(['department','courseDetails','courseDetails.mentor','courseLearnings','courseForThoose','courseBenifits','coursestudentprojects','courseModuls','courseFaq'])
+        ->where('slug',$slug)
+        ->where('is_active', '0')
+        ->first();
         $title = $courses->name;
         return view('frontend.pages.singleCourse.singleCourse', compact('courses','title'));
     }

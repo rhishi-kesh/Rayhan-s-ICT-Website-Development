@@ -78,9 +78,9 @@
                             <span class="text-danger error-text massage_error"></span>
                         </div>
                         <div class="mt-3">
-                            <button type="submit" class="form-control text-uppercase form-control-lg" name="submit">
-                                <span class="loader"></span>
-                                <span class="submit_btn">Submit</span>
+                            <button type="submit" class="submit_btn form-control text-uppercase form-control-lg" name="submit">
+                                <span class="loader text-dark"></span>
+                                <span class="submit_btn_text">Submit</span>
                             </button>
                         </div>
                     </form>
@@ -107,7 +107,7 @@
                         <div class="form-floating mt-3">
                             <input type="email" class="form-control" name="email" id="email" placeholder="Enter E-mail">
                             <label for="email">Email</label>
-                            <span class="text-danger error-text email_errorD"></span> 
+                            <span class="text-danger error-text email_errorD"></span>
                         </div>
                         <div class="form-floating mt-3">
                             <input type="number" class="form-control" name="number" id="number" placeholder="Enter Number">
@@ -134,9 +134,9 @@
                             <span class="text-danger error-text profession_errorD"></span>
                         </div>
                         <div class="mt-3">
-                            <button type="submit" class="form-control text-uppercase form-control-lg" name="submit">
-                                <span class="loader"></span>
-                                <span class="submit_btn">Submit</span>
+                            <button type="submit" class="submit_btn form-control text-uppercase form-control-lg" name="submit">
+                                <span class="loader text-dark"></span>
+                                <span class="submit_btn_text">Submit</span>
                             </button>
                         </div>
                     </form>
@@ -255,6 +255,16 @@
 
             });
         });
+    </script>
+    <script>
+        var topbannerbtn = document.getElementById("topbannerbtn");
+        var top_advirtised = document.getElementById("top_advirtised");
+        var display = document.getElementById("display");
+        // console.log(topbannerbtn);
+        topbannerbtn.onclick = function(){
+            top_advirtised.style.display = "none";
+            display.classList.add("d-md-block");
+        }
     </script>
 </body>
 </html>

@@ -16,9 +16,10 @@ class ContactUsMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $details;
+    public function __construct($bodyDetails)
     {
-        //
+        $this->details = $bodyDetails;
     }
 
     /**
@@ -27,7 +28,7 @@ class ContactUsMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Us Mail',
+            subject: 'Thanks For Contact Us',
         );
     }
 

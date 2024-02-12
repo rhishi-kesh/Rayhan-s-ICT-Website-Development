@@ -19,4 +19,28 @@ class Course extends Model
     {
         return $this->hasOne(CourseDetails::class,'course_id','id');
     }
+    public function courseLearnings(): HasMany
+    {
+        return $this->hasMany(CourseLearnings::class,'course_id','id');
+    }
+    public function courseForThoose(): HasMany
+    {
+        return $this->hasMany(CourseForThose::class,'course_id','id');
+    }
+    public function courseBenifits(): HasMany
+    {
+        return $this->hasMany(BenefitsOfCourse::class,'course_id','id');
+    }
+    public function coursestudentprojects(): HasMany
+    {
+        return $this->hasMany(CreativeProject::class,'course_id','id');
+    }
+    public function courseModuls(): HasMany
+    {
+        return $this->hasMany(CourseModule::class,'course_id','id');
+    }
+    public function courseFaq(): HasMany
+    {
+        return $this->hasMany(CourseFAQ::class,'course_id','id');
+    }
 }

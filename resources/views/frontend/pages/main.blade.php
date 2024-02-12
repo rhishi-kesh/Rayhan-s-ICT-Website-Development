@@ -104,7 +104,7 @@
             <div class="col-12 mt-4">
                 <ul class="nav d-flex justify-content-center align-items-center courseDepartment">
                     @forelse ($departments as $item)
-                        <li class="nav-item d-flex justify-content-center" role="presentation">
+                        <li class="nav-item d-flex justify-content-center" role="presentation" width="294">
                             <button class="nav-link" type="button">{{ $item->departmentName }}</button>
                         </li>
                     @empty
@@ -285,4 +285,17 @@
     </div>
 </section>
 <!-- Faq-End -->
+<!-- pop up Modal -->
+@if(!empty($popup->id))
+<div class="modal fade" id="popupadvirtise" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="top: 50%; transform: translateY(-50%) !important;">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <img src="{{ asset("storage/PopUp/". $popup->image) }}" alt="" class="w-100">
+        </div>
+      </div>
+    </div>
+  </div>
+@endif
 @endsection
