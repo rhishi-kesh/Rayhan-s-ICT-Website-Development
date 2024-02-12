@@ -56,7 +56,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::get('/demo-class-delete/{id}',[DashboardController::class, 'demoClassDelete'])->name('demoClassDelete');
     Route::get('/demo-class-search', [DashboardController::class, 'DemoClsSearch'])->name('DemoClsSearch');
     // Contact Us for Dashboard
-    Route::get('/contact',[DashboardController::class, 'ContactUs'])->name('ContactUs');
+    Route::get('/contact-dashboard',[DashboardController::class, 'ContactUs'])->name('ContactUs');
     Route::get('/contact-us-delete/{id}',[DashboardController::class, 'ContactUsDelete'])->name('ContactUsDelete');
     Route::get('/contact-search',[DashboardController::class, 'ContactSearch'])->name('ContactSearch');
 
