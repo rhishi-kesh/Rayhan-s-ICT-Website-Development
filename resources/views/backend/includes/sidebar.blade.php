@@ -38,6 +38,22 @@
             <span class="hide-menu">Visit Site</span>
           </a>
         </li>
+        <li class="sidebar-item">
+          <a href="{{ route('applyDemoClass') }}" class="sidebar-link">
+            <div class="round-16 d-flex align-items-center justify-content-center">
+              <i class="fa fa-film" aria-hidden="true"></i>
+            </div>
+            <span class="hide-menu">Demo Class</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="{{ route('ContactUs') }}" class="sidebar-link">
+            <div class="round-16 d-flex align-items-center justify-content-center">
+              <i class="fa fa-address-book" aria-hidden="true"></i>
+            </div>
+            <span class="hide-menu">Contact Us</span>
+          </a>
+        </li>
         <!-- ============================= -->
         <!-- Apps -->
         <!-- ============================= -->

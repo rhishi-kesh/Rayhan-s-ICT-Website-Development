@@ -4,15 +4,14 @@ namespace App\Http\Controllers\Mail;
 
 use App\Http\Controllers\Controller;
 use App\Mail\AdmissionMail;
+use App\Mail\applyForDemoClassMail;
+use App\Mail\ContactUsMail;
 use App\Mail\SeminerMail;
 use App\Mail\WebinerMail;
 use App\Models\Admission;
 use App\Models\ApplyForDemoClass;
-use App\Models\SeminerRegister;
-use App\Models\WebinarRegister;
-use App\Mail\applyForDemoClassMail;
-use App\Mail\ContactUsMail;
 use App\Models\ContactUs;
+use App\Models\WebinarRegister;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -20,6 +19,7 @@ use Illuminate\Support\Facades\Validator;
 
 class MailController extends Controller
 {
+    // Apply For Demo Class-Post
     public function admissionPost(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -93,13 +93,6 @@ class MailController extends Controller
                 'address'=> $request->address,
                 'profession'=> $request->profession,
             ];
-            $done = ApplyForDemoClass::insert([
-                'name'=> $request->name,
-                'email'=> $request->email,
-                'number' => $request->number,
-                'address' => $request->address,
-                'webiner_id' => $request->webiner_id,
-            ]);
             $done = WebinarRegister::insert([
                 'webiner_id' => $request->webiner_id,
                 'name' => $request->name,
@@ -133,8 +126,7 @@ class MailController extends Controller
             }
         }
     }
-    public function applyForDemoClassPost(Request $request)
-    {
+    public function applyForDemoClassPost(Request $request){
         $validator = validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email',
@@ -207,7 +199,7 @@ class MailController extends Controller
                 'address' => $request->address,
                 'seminer_id' => $request->seminer_id,
             ];
-            $done = SeminerRegister::insert([
+            $done = SeminerMail::insert([
                 'seminer_id' => $request->seminer_id,
                 'name' => $request->name,
                 'email' => $request->email,
@@ -241,10 +233,7 @@ class MailController extends Controller
             }
         }
     }
-    // Contact Us
-
-    public function ContactPost(Request $request)
-    {
+    public function ContactPost(Request $request){
         $validator = Validator::make($request->all(),[
             'name'=>'required',
             'email'=>'required|email',

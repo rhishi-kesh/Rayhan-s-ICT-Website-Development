@@ -74,7 +74,13 @@
 
 <div class="container">
 <div class="table-responsive rounded-2 mb-4">
- <h4 class="text-success">Admission List</h4>
+<h4 class="text-uppercase mb-3">Admission&nbsp; List</h4>
+<div class="d-flex justify-content-between align-items-center mb-9">
+    <form class="position-relative" action="{{ route('AdmisionSearch') }}" method="GET">
+          <input type="search" name="searchA" class="form-control search-chat py-2 ps-5" id="text-srh" placeholder="Search Massage">
+          <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
+    </form>
+</div>
 <table class="table border text-nowrap customize-table mb-0 align-middle">
   @if(Session::has('success'))
    <div class="alert bg-success text-white alert-dismissible border-0 fade show" role="alert">
@@ -88,20 +94,19 @@
     {{ Session::get('error') }}
    </div>
   @endif
-<thead class="text-dark fs-4">
+ <thead class="text-dark fs-4">
   <tr>
     <th><h6 class="fs-4 fw-semibold mb-0">Id</h6></th>
     <th><h6 class="fs-4 fw-semibold mb-0 text-center">Name</h6></th>
     <th><h6 class="fs-4 fw-semibold mb-0 text-center">Email</h6></th>
-    <th><h6 class="fs-4 fw-semibold mb-0 text-end pe-3">Number</h6></th>
-    <th><h6 class="fs-4 fw-semibold mb-0 text-end pe-3">Subject</h6></th>
-    <th><h6 class="fs-4 fw-semibold mb-0 text-end pe-3">Message</h6></th>
+    <th><h6 class="fs-4 fw-semibold mb-0 text-center pe-3">Number</h6></th>
     <th><h6 class="fs-4 fw-semibold mb-0 text-end pe-3">Action</h6></th>
   </tr>
-</thead>
-<tbody>
+ </thead>
+ <tbody>
   @forelse ($admission as $key => $item)
-      
+  
+   {{--Admission Eye modal --}}
   <tr >
       <td >
           <span> {{ $item->id}} </span>
@@ -115,28 +120,21 @@
       <td  class="text-center">
         <p> <span> {{$item->number}} </p>
       </td>
-      <td  class="text-center">
-        <p> <span> {{$item->subject}} </p>
-      </td>
-      <td  class="text-center">
-          <p> <span> {{$item->massage}} </p>
-      </td>
       <td class="text-end">
           <div class="dropdown dropstart">
             <a href="#addData{{$item->id}}" data-bs-toggle="modal" class="text-muted pe-2" aria-expanded="false">
-              <i class="fas fa-eye" style="color:green"></i>
+              <i class="fas fa-eye text-success"></i>
             </a>
             <a href="mailto:{{$item->email}}" class="text-muted pe-2" aria-expanded="false">
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-envelope text-info"></i>
             </a>
             
             <a href="{{ route('admissionDelete', $item->id ) }}" class="text-muted pe-2" aria-expanded="false">
-              <i class="fas fa-trash-alt"></i>
+              <i class="fas fa-trash-alt text-danger"></i>
             </a>
           </div>
       </td>
   </tr>
-   {{--Admission Eye modal --}}
    <div class="modal" id="addData{{$item->id}}">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content border-0">
@@ -169,7 +167,9 @@
         <td class="text-center text-danger" colspan="20">NO Data Found</td>
       </tr>
   @endforelse
- 
-</div>
-</div>
+
+ </div>
+ </div>
+ </tbody>
+</table>
 @endsection

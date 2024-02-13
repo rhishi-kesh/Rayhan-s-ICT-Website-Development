@@ -37,6 +37,7 @@ Route::post('/admission-post',[MailController::class, 'admissionPost'])->name('a
 Route::post('/seminer-registation-post',[MailController::class, 'seminerRegistationPost'])->name('seminerRegistationPost');
 Route::post('/webiner-registation-post',[MailController::class, 'webinerRegistationPost'])->name('webinerRegistationPost');
 Route::post('/demo-class-post',[MailController::class, 'applyForDemoClassPost'])->name('applyForDemoClassPost');
+Route::post('/demo-class-post',[MailController::class, 'applyForDemoClassPost'])->name('applyForDemoClassPost');
 Route::post('/contact-us-post',[MailController::class, 'ContactPost'])->name('ContactPost');
 
 
@@ -48,9 +49,18 @@ Route::post('/admin-login',[AuthController::class, 'loginPost'])->name('loginPos
 Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/dashboard-admissionDelete/{id}',[DashboardController::class, 'admissionDelete'])->name('admissionDelete');
+    Route::get('/dashboard-search', [DashboardController::class, 'AdmisionSearch'])->name('AdmisionSearch');
     Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
     Route::post('/profile-edit',[ProfileController::class, 'profileEdit'])->name('profileEdit');
     Route::post('/profile-image',[ProfileController::class, 'profileImagae'])->name('profileImagae');
+    // Demo Class for Dashboard
+    Route::get('/demo-class',[DashboardController::class, 'applyDemoClass'])->name('applyDemoClass');
+    Route::get('/demo-class-delete/{id}',[DashboardController::class, 'demoClassDelete'])->name('demoClassDelete');
+    Route::get('/demo-class-search', [DashboardController::class, 'DemoClsSearch'])->name('DemoClsSearch');
+    // Contact Us for Dashboard
+    Route::get('/contact-dashboard',[DashboardController::class, 'ContactUs'])->name('ContactUs');
+    Route::get('/contact-us-delete/{id}',[DashboardController::class, 'ContactUsDelete'])->name('ContactUsDelete');
+    Route::get('/contact-search',[DashboardController::class, 'ContactSearch'])->name('ContactSearch');
 
     // admin and user
     Route::get('/register',[AuthController::class, 'register'])->name('register')->middleware('profile');
