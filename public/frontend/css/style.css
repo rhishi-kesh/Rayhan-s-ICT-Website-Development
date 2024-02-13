@@ -9,7 +9,8 @@
     --light-orange: #FFF1E4;
 }
 *{
-	font-family: 'Poppins', sans-serif;
+	font-family: "Noto Sans Bengali", sans-serif;
+    font-optical-sizing: auto;
 }
 p{
     color: var(--dark);
@@ -196,8 +197,13 @@ nav .nav-bar .logo a{
 
 }
 .hero h1{
-    font-weight: 500;
+    font-weight: 600;
     color: var(--blue);
+    font-family: "Noto Sans Bengali", sans-serif !important;
+    font-optical-sizing: auto;
+}
+.hero p{
+    /* font-weight: 500; */
 }
 .hero .btns a{
     background: var(--blue);
@@ -1120,7 +1126,7 @@ footer .contact i{
 }
 .copyright-area{
   background: var(--blue);
-  padding: 25px 0;
+  padding: 15px 0;
 }
 .copyright-text p {
   margin: 0;

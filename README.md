@@ -20,6 +20,24 @@ To Install & Run This Project You Have To Follow Thoose Following Steps:
 git clone git@github.com:Rayhans-ICT/Rayhan-s-ICT-Website.git
 ```
 
-```php
+```sh
+composer install
+```
+
+Open your `.env` file and change the database name (`DB_DATABASE`) to whatever you have, username (`DB_USERNAME`) and password (`DB_PASSWORD`) field correspond to your configuration
+
+```sh
+php artisan key:generate
+```
+
+```sh
+php artisan migrate
+```
+
+```sh
 php artisan db:seed
+```
+
+```sh
+php artisan serve
 ```

@@ -1,7 +1,7 @@
 @if(!empty($topbanner->id))
 <div class="top_advirtised" id="top_advirtised" style="height: 100px; width: 100%">
     <button class="topbannerbtn" id="topbannerbtn"><i class="fa-solid fa-xmark"></i></button>
-    <img src="{{ asset('frontend/img/success-story1.jpg') }}" alt="" style="width: 100%; height: 100%">
+    <img src="{{ asset("storage/topAdvertising/". $topbanner->image) }}" alt="" style="width: 100%; height: 100%">
 </div>
 @else
 <div class="py-2 top-nav d-none d-md-block">

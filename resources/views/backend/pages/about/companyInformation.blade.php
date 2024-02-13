@@ -100,7 +100,7 @@
                         @enderror
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="googlemap" class="form-label">Footer About</label>
+                        <label for="googlemap" class="form-label">Google Map</label>
                         <textarea class="form-control form-control-lg rounded-1 @error('googlemap') is-invalid @enderror" rows="6" name="googlemap" id="googlemap">{{ $companyInformation->googlemap }}
                         </textarea>
                         @error('googlemap')

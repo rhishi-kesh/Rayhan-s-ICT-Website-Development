@@ -149,8 +149,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="copyright-text text-center">
-                        <p class="mb-0 text-uppercase">E-TIN No: {{ $companyInformation->eTinNo }}</p>
-                        <p class="mb-0 text-uppercase">Trade Licence No: {{ $companyInformation->tradeLienceNo }}</p>
+                        {{-- <p class="mb-0 text-uppercase">E-TIN No: {{ $companyInformation->eTinNo }}</p> --}}
+                        {{-- <p class="mb-0 text-uppercase">Trade Licence No: {{ $companyInformation->tradeLienceNo }}</p> --}}
                         <p class="mb-0 text-uppercase mt-2 mt-md-0"> Copyright © 2017 - {{ date('Y') }} DESIGN AND DEVELOPED BY <a href="http://www.creativesheba.com/" style="text-decoration: none; color: #fff;">CREATIVE SHEBA LIMITED</a></p>
                     </div>
                 </div>
