@@ -35,8 +35,18 @@ php artisan migrate
 ```
 
 ```sh
+php artisan storage:link
+```
+
+```sh
 php artisan db:seed
 ```
+Open `app/Providers/AppServiceProvider.php` file and uncomment the following text
+<p>
+// view()->share('companyInformation', CompanyInformation::first()); <br>
+// view()->share('course', Course::where('is_active', '0')->where('is_footer','0')->get()); <br>
+// view()->share('topbanner', TopAdvertising::where('is_active', '0')->first()); <br>
+</p>
 
 ```sh
 php artisan serve
