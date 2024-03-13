@@ -17,6 +17,11 @@ class ProfileController extends Controller
 
     public function profileEdit(Request $request)
     {
+        $validate = $request->validate([
+            'name' => ['required'],
+            'email' => ['required'],
+            'position' => ['required'],
+        ]);
         $id = $request->id;
         User::where('id',$id)->update([
             "name" => $request->name,

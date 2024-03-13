@@ -93,8 +93,7 @@
                         </div>
                         <div class="text-center">
                             <h5 class="fs-5 fw-semibold">{{ Auth::user()->name }}</h5>
-                            <h5 class="fs-5 fw-semibold">{{ Auth::user()->email }}</h5>
-                            <h5 class="fs-5 fw-semibold">{{ Auth::user()->position  }}</h5>
+                            <p class="lead mb-3">{{ Auth::user()->position  }}</p>
                         </div>
                     </div>
                 </div>

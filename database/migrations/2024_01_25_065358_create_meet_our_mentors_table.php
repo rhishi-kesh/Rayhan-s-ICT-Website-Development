@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('meet_our_mentors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('department_id');
             $table->string('name');
             $table->string('designation');
-            $table->string('description');
+            $table->text('description');
             $table->string('image');
             $table->string('thumbnail');
             $table->timestamps();

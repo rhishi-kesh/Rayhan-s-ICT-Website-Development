@@ -34,7 +34,7 @@
         @forelse ($demoClass as $key=> $item)
         <tr >
             <td >
-                <span> {{ $item->id}} </span>
+                <span> {{ $demoClass->firstItem()+$key}} </span>
             </td>
             <td  class="text-center ">
               <p> <span> {{$item->name}} </p>
@@ -53,7 +53,7 @@
                   <a href="mailto:{{$item->email}}" class="text-muted pe-2" aria-expanded="false">
                     <i class="fas fa-envelope text-info"></i>
                   </a>
-                  
+
                   <a href="{{ route('demoClassDelete', $item->id ) }}" class="text-muted pe-2" aria-expanded="false">
                     <i class="fas fa-trash-alt text-danger"></i>
                   </a>
@@ -71,9 +71,16 @@
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
                                         <div class="note-title mt-3">
-                                          <h2>{{$item->name}}</h2>
-                                          <span>{{$item->email}} | {{$item->number}} | {{$item->address}} </span> <br>
-                                          <span>{{$item->subject}} | {{$item->profession}}</span>
+                                            <h2><b>Name: </b>{{$item->name}}</h2>
+                                            <span>
+                                                <b>Email: </b>{{$item->email}} <br>
+                                                <b>Number: </b>{{$item->number}} <br>
+                                                <b>Address: </b>{{$item->address}} <br>
+                                                <b>Profession:</b>{{$item->profession}}
+                                            </span> <br>
+                                            <span>
+                                                <b>Course: </b>{{$item->subject}}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -94,6 +101,7 @@
           @endforelse
       </tbody>
     </table>
+    {{ $demoClass->withQueryString()->links() }}
     <script type="text/javascript">
         window.setTimeout("document.getElementById('successMessage').style.display='none';", 2000);
         window.setTimeout("document.getElementById('errorMessage').style.display='none';", 2000);

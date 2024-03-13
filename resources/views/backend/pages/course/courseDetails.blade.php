@@ -30,7 +30,7 @@
                         <input type="number" id="project" value="{{ $courseDetails->project }}"  class="form-control @error('project') is-invalid @enderror" name="project" placeholder="Number of Project">
                         @error('project','insert')
                             <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror  
+                        @enderror
                     </div>
                     <div class="col-md-4 mt-4">
                         <label for="duration">Duration(month)</label>

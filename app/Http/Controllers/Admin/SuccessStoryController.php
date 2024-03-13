@@ -30,7 +30,7 @@ class SuccessStoryController extends Controller
                 'video_link'=> $request->video_link,
                 'created_at' => Carbon::now()
             ]);
-            return back()->with('success', 'Image add successfully');
+            return back()->with('success', 'Success Story add successfully');
 
         }
     }
@@ -57,14 +57,14 @@ class SuccessStoryController extends Controller
             'video_link'=> $request->video_link,
             'created_at' => Carbon::now()
         ]);
-        return back()->with('success', 'Edit Update Successfully');
+        return back()->with('success', 'Success Story Update Successfully');
     }
     public function successStoryDelete($id){
         $successDelete = SuccessStory::findOrFail($id);
         unlink(public_path('storage/SuccessStory/').'/'.$successDelete->thumbnail);
         SuccessStory::findOrFail($id)->delete();
 
-        return back()->with('error', 'Delete Successfully');
+        return back()->with('error', 'Success Story Delete Successfully');
     }
 
 }

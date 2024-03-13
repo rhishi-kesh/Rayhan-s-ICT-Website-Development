@@ -38,7 +38,7 @@
                 <span  >{{$item->title}}</span>
             </td>
             <td class="text-center">
-                <img src="{{ asset('storage/webinar/') }}/{{ $item->thumbnail }}" alt="" width="60" height="60">
+                <img src="{{ asset('storage/webinar/') }}/{{ $item->thumbnail }}" alt="" width="100" height="60">
             </td>
             <td  class="text-center">
                 <span >{{$item->date}}</span>
@@ -109,7 +109,7 @@
                                       </div>
                                       <div class="note-title mt-3">
                                         <label for="time">Time</label>
-                                        <input type="time" value="{{ $item->time }}" id="time" class="form-control @error('time') is-invalid @enderror" name="time">
+                                        <input type="text" placeholder="Enter Time" value="{{ $item->time }}" id="time" class="form-control @error('time') is-invalid @enderror" name="time">
                                         @error('time', 'update')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -172,7 +172,7 @@
                                      </div>
                                      <div class="note-title mt-3">
                                        <label for="time">Time</label>
-                                       <input type="time"  id="time" class="form-control @error('time') is-invalid @enderror" name="time">
+                                       <input type="text" placeholder="Enter Time"  id="time" class="form-control @error('time') is-invalid @enderror" name="time">
                                        @error('time', 'insert')
                                            <div class="alert alert-danger">{{ $message }}</div>
                                        @enderror

@@ -17,6 +17,6 @@ class UsersControllser extends Controller
             unlink(public_path('storage/profile/').'/'.$usersDelete->profile_image);
             User::findOrFail($id)->delete();
 
-        return back()->with('error', 'Profile deleted successfully');
+        return back()->with('error', 'User deleted successfully');
     }
 }

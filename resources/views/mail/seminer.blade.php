@@ -17,24 +17,28 @@
                     <table cellpadding='0' cellspacing='0' class='es-content' align='center'>
                         <tr>
                             <td align='center' style='padding:0;Margin:0'>
-                                <table bgcolor='#efefef' class='es-content-body' align='center'
-                                    style='border-collapse:collapse;border-spacing:0px;background-color:#EFEFEF;border-radius:20px 20px 0 0;width:600px'>
+                                <table bgcolor='#efefef' class='es-content-body' align='center' style='border-collapse:collapse;border-spacing:0px;background-color:#EFEFEF;border-radius:20px 20px 0 0;width:600px'>
                                     <tr>
                                         <td align='left'
-                                            style='padding:0;Margin:0;padding-top:20px;padding-left:40px;padding-right:40px'>
+                                            style='padding:0;Margin:0;'>
                                             <table cellpadding='0' cellspacing='0' width='100%'>
                                                 <tr>
                                                     <td align='center' valign='top'
                                                         style='padding:0;Margin:0;width:520px'>
-                                                        <table cellpadding='0' cellspacing='0' width='100%'
-                                                            bgcolor='#fafafa'>
+                                                        <img src='http://interiorbangladesh.com/congress.gif' style='width: 100%;'>
+                                                        <table cellpadding='0' cellspacing='0' width='100%'>
                                                             <tr>
                                                                 <td align='left' style='padding:20px;Margin:0'>
-                                                                    <h3 style='Margin:0;line-height:34px;font-family:Imprima, Arial, sans-serif;font-size:28px;font-style:normal;font-weight:bold;color:#2D3142'>
-                                                                        Congratulations!&nbsp;Edgar seminer,
-                                                                    </h3>
+                                                                    <p style='Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;font-family:Imprima, Arial, sans-serif;line-height:27px;color:#2D3142;font-size:18px; '>
+                                                                        Dear {{ $details['name'] }},
+                                                                    </p> <br>
+                                                                    <h3 style='Margin:0;line-height:34px;font-family:Imprima, Arial, sans-serif;font-size:28px;font-style:normal;font-weight:bold; color: #2D3142'>Congratulations!</h3> <br>
                                                                     <p style='Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;font-family:Imprima, Arial, sans-serif;line-height:27px;color:#2D3142;font-size:18px'>
-                                                                        Content
+                                                                        We're thrilled to inform you that we've successfully received your request for the upcoming seminar. The seminar is scheduled to take place on {{ $details['date'] }} at {{ $details['time'] }}. If this timing doesn't suit your schedule, one of our executives will reach out to you shortly to explore alternative options. <br> <br>
+                                                                        Thank you for your interest in participating, and we look forward to your attendance. <br> <br>
+                                                                        Mashrafi Islam Turzo <br>
+                                                                        Head Of Communication <br>
+                                                                        Rayhans’s ICT Ltd
                                                                     </p>
                                                                 </td>
                                                             </tr>
@@ -66,7 +70,7 @@
                             <tr>
                                 <td align='center' class='es-m-txt-c' style='padding:0;Margin:0;padding-bottom:20px;font-size:0px'>
                                     <a href='https://rayhansict.com/'>
-                                        <img src='{{ asset('logo.png') }}' alt='Logo' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px' title='Logo' height='60'>
+                                        <img src='https://rayhansict.com/wp-content/uploads/2020/08/logo.png' alt='Logo' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px' title='Logo' height='60'>
                                     </a>
                                 </td>
                             </tr>
@@ -78,7 +82,7 @@
                                         <tr>
                                             <td align='center' valign='top'
                                                 style='padding:0;Margin:0;padding-right:5px'>
-                                                <a target='_blank' href='https://www.facebook.com/Rayhansict' style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
+                                                <a target='_blank' href='https://www.facebook.com/RayhansICTInstitute' style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
                                                     <img src='https://ebyhigd.stripocdn.email/content/assets/img/social-icons/logo-black/facebook-logo-black.png' alt='Fb' title='Facebook' height='24' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic'>
                                                 </a>
                                             </td>
@@ -105,7 +109,7 @@
                                             style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
                                             Rayhan's ICT Limited
                                         </a>
-                                        <br type='_moz'>
+                                        <br>
                                     </p>
                                 </td>
                             </tr>

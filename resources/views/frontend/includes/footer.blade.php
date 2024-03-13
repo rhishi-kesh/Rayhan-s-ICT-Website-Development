@@ -3,17 +3,17 @@
         <div class="row justify-content-center pb-3 pb-lg-5 top-footer">
             <div class="col-12 col-lg-9">
                 <div class="row">
-                    <div class="col-12 text-center">
-                        <h2 class="text-uppercase fs-1 mb-0">Admission Is Going on</h2>
+                    <div class="col-12 text-center section-head">
+                        <h2 class="text-uppercase fs-1 mb-3">Admission Is Going on</h2>
                         <p class="mt-1 lead">Enrollment is currently open, offering a professional pathway for individuals eager to embark on their educational journey.</p>
                     </div>
                 </div>
                 <div class="d-block d-md-flex justify-content-center mt-3 text-center">
                     <div class="mt-2 mt-md-0">
-                        <a class="btn demo_class btn-lg" href="#democlassMOdel" data-bs-toggle="modal"><i class="fa-solid fa-photo-film"></i> Apply For Demo Class</a>
+                        <a class="btn demo_class btn-lg" href="{{ route('demoClass') }}"><i class="fa-solid fa-photo-film"></i> Apply For Demo Class</a>
                     </div>
                     <div class="ms-0 ms-md-3 mt-3 mt-md-0">
-                        <a class="btn browse_course btn-lg" href="{{ route('course') }}"><i class="fa-solid fa-magnifying-glass"></i> Browse Courses</a>
+                        <a class="btn browse_course btn-lg" href="{{ route('course') }}"><i class="fa-solid fa-magnifying-glass"></i> Our Courses</a>
                     </div>
                     <div class="ms-0 ms-md-3 mt-3 mt-md-0">
                         <a class="btn free_seminer btn-lg" href="{{ route('seminer') }}"><i class="fa-solid fa-microphone-lines"></i> Join Free Seminar</a>
@@ -24,7 +24,7 @@
         <hr>
         <div class="footer-mid pt-3 pt-lg-5 pb-3 pb-lg-5 text-center text-lg-start">
             <div class="row">
-                <div class="col-xl-4 col-lg-4 col-12 col-md-6 mb-50">
+                <div class="col-xl-4 col-lg-4 col-12 col-md-6 text-center text-sm-start mb-50">
                     <div class="footer-widget">
                         <div class="footer-logo d-none d-md-block">
                             <a href="{{ route('index') }}">
@@ -32,7 +32,7 @@
                             </a>
                         </div>
                         <div class="footer-text d-none d-md-block">
-                            <p>{{ $companyInformation->footerAbout }}</p>
+                            <p class="font-paragraph">{{ $companyInformation->footerAbout }}</p>
                         </div>
                         <div class="footer-social-icon">
                             <span>Follow us</span>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-2 mt-4 mt-lg-0 col-12 col-md-6 mb-30">
+                <div class="col-xl-2 col-lg-2 mt-4 mt-lg-0 col-6 col-md-6 mb-30 text-start">
                     <div class="footer-widget">
                         <div class="footer-widget-heading">
                             <h3>Useful Links</h3>
@@ -59,38 +59,38 @@
                         <ul>
                             <li>
                                 <a href="{{ route('about') }}">
-                                    <i class="ti-angle-double-right d-none d-md-inline"></i>
+                                    <i class="ti-angle-double-right"></i>
                                     About
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('contact') }}">
-                                    <i class="ti-angle-double-right d-none d-md-inline"></i>
+                                    <i class="ti-angle-double-right"></i>
                                     Contact
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('success') }}">
-                                    <i class="ti-angle-double-right d-none d-md-inline"></i>
+                                    <i class="ti-angle-double-right"></i>
                                     Success
                                 </a>
                             </li>
                             <li>
                                 <a href="http://apply.rayhansict.com/">
-                                    <i class="ti-angle-double-right d-none d-md-inline"></i>
+                                    <i class="ti-angle-double-right"></i>
                                     Career
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('privacyPolicy') }}">
-                                    <i class="ti-angle-double-right d-none d-md-inline"></i>
+                                    <i class="ti-angle-double-right"></i>
                                     Privacy Policy
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 mt-3 mt-lg-0 col-12 col-md-6 mb-50 d-none d-md-block">
+                <div class="col-xl-3 col-lg-3 mt-3 mt-lg-0 col-12 col-md-6 mb-50 text-start d-none d-md-block">
                     <div class="footer-widget">
                         <div class="footer-widget-heading">
                             <h3>Popular Courses</h3>
@@ -107,7 +107,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 mt-3 mt-lg-0 col-12 col-md-6 mb-50 contact">
+                <div class="col-xl-3 col-lg-3 mt-4 mt-lg-0 col-6 col-md-6 mb-50 text-start contact">
                     <div class="footer-widget">
                         <div class="footer-widget-heading">
                             <h3>Contact us</h3>
@@ -115,24 +115,24 @@
                         <ul>
                             <li>
                                 <a href="tel:{{ $companyInformation->number }}" target="_blank">
-                                    <i class="fa-solid fa-phone me-2 d-none d-md-inline"></i>
+                                    <i class="fa-solid fa-phone me-2"></i>
                                     <span class="mt-1">{{ $companyInformation->number }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="mailto:{{ $companyInformation->gmail }}" target="_blank">
-                                    <i class="fa-solid fa-envelope me-2 d-none d-md-inline"></i>
+                                    <i class="fa-solid fa-envelope me-2"></i>
                                     <span class="mt-1">{{ $companyInformation->gmail }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ $companyInformation->locationLink }}" target="_blank">
-                                    <i class="fa-solid fa-location-dot me-2 d-none d-md-inline"></i>
+                                    <i class="fa-solid fa-location-dot me-2"></i>
                                     <span class="mt-1">{{ $companyInformation->locationText }}</span>
                                 </a>
                             </li>
                         </ul>
-                        <div class="footer-widget-heading">
+                        <div class="footer-widget-heading d-none d-md-block">
                             <h3>Opening Hour</h3>
                             <p>
                                 <i class="fa-solid fa-clock me-2 d-none d-md-inline"></i>

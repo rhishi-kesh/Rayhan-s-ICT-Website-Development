@@ -2,6 +2,20 @@
 @section('content')
     <div class="card">
         <div class="card-body">
+            @if (Session::has('success'))
+                <div class="alert bg-success text-white alert-dismissible border-0 fade show" role="alert">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+                    {{ Session::get('success') }}
+                </div>
+            @endif
+            @if (Session::has('error'))
+                <div class="alert bg-danger text-white alert-dismissible border-0 fade show" role="alert">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+                    {{ Session::get('error') }}
+                </div>
+            @endif
             <h4 class="mb-3 text-uppercase">About us</h4>
             <form action="{{ route('aboutPost') }}" method="post" enctype="multipart/form-data">
                 @csrf

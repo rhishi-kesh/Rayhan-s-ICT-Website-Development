@@ -28,7 +28,7 @@ class AdmissionMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Admission Successfull',
+            subject: "Enrollment Confirmation for" . ' ' . $this->details['subject'],
         );
     }
 

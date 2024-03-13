@@ -33,7 +33,7 @@
                 <span>{{ $popUp->firstItem()+$key }}</span>
             </td>
             <td class="text-center">
-                <img src="{{ asset('storage/PopUp/') }}/{{ $item->image }}" alt="" width="60" height="60">
+                <img src="{{ asset('storage/PopUp/') }}/{{ $item->image }}" alt="" width="100" height="60">
             </td>
             <td class="switch-sm text-center">
                 <div class="form-check form-switch d-flex justify-content-center">
@@ -182,5 +182,5 @@
         window.setTimeout("document.getElementById('successMessage').style.display='none';", 2000);
         window.setTimeout("document.getElementById('errorMessage').style.display='none';", 2000);
     </script>
-    
+
 @endsection

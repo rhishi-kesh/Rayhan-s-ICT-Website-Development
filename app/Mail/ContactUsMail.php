@@ -28,7 +28,7 @@ class ContactUsMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Thanks For Contact Us',
+            subject: 'Customer Support Request'
         );
     }
 

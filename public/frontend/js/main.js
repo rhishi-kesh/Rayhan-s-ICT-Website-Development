@@ -257,7 +257,7 @@ $(".CoursesUnderDepartment").slick({
           slidesToShow: 2,
           slidesToScroll: 1,
           arrows: true,
-          centerMode: true,
+          centerMode: false,
         }
       },
       {
@@ -266,7 +266,7 @@ $(".CoursesUnderDepartment").slick({
           slidesToShow: 1,
           slidesToScroll: 1,
           arrows: true,
-          centerMode: true,
+          centerMode: false,
         }
       },
       {
@@ -275,7 +275,7 @@ $(".CoursesUnderDepartment").slick({
           slidesToShow: 1,
           slidesToScroll: 1,
           arrows: true,
-          centerMode: true,
+          centerMode: false,
         }
       }
     ]

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Seminar;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class SeminarController extends Controller
 {
@@ -13,7 +14,7 @@ class SeminarController extends Controller
     public function seminar(){
         $seminars = Seminar::paginate(10);
         return view('backend.pages.seminars.seminar', compact('seminars'));
-    } 
+    }
     // insert datasaminar
     public function seminarPost(Request $request){
         $request->validateWithBag('insert',[
@@ -27,14 +28,17 @@ class SeminarController extends Controller
             $filename = time().'.'.$image->extension();
             $request->thumbnail->storeAs('public/seminar', $filename);
 
+            $slug = Str::slug($request->title);
+
             Seminar::insert([
                 'title' => $request->title,
+                'slug' => $slug,
                 'thumbnail' => $filename,
                 'date' => $request->date,
                 'time' => $request->time,
                 'created_at' => Carbon::now()
             ]);
-            return back()->with('success', 'Thumbnail add successfully');
+            return back()->with('success', 'Seminer add successfully');
 
         }
     }
@@ -58,20 +62,23 @@ class SeminarController extends Controller
             $filename = $getData->thumbnail;
         }
 
+        $slug = Str::slug($request->title);
+
         Seminar::where('id', $id)->update([
             'title' => $request->title,
+            'slug' => $slug,
             'thumbnail' => $filename,
             'date' => $request->date,
             'time' => $request->time,
             'created_at' => Carbon::now()
         ]);
-        return back()->with('success', 'Edit Update Successfully');
+        return back()->with('success', 'Seminer Update Successfully');
     }
     public function seminarDelete($id){
         $seminarDelete = Seminar::findOrFail($id);
         unlink(public_path('storage/seminar/').'/'.$seminarDelete->thumbnail);
         Seminar::findOrFail($id)->delete();
 
-        return back()->with('error', 'Delete Successfully');
+        return back()->with('error', 'Seminer Delete Successfully');
     }
 }

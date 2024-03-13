@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PopUpController;
 use App\Http\Controllers\Admin\TopAdvertisingController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Mail\MailController;
+use App\Models\Seminar;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 
@@ -27,16 +28,19 @@ Route::get('/our-courses',[FrontendController::class, 'course'])->name('course')
 Route::get('/our-success',[FrontendController::class, 'success'])->name('success');
 Route::get('/career',[FrontendController::class, 'career'])->name('career');
 Route::get('/contact-us',[FrontendController::class, 'contact'])->name('contact');
-Route::get('/free-seminer',[FrontendController::class, 'seminer'])->name('seminer');
+Route::get('/seminer',[FrontendController::class, 'seminer'])->name('seminer');
 Route::get('/our-department/{slug}',[FrontendController::class, 'singleDepartment'])->name('singleDepartment');
 Route::get('/our-course/{slug}',[FrontendController::class, 'singleCourse'])->name('singleCourse');
 Route::get('/privacy-policy',[FrontendController::class, 'privacyPolicy'])->name('privacyPolicy');
+Route::get('/admission',[FrontendController::class, 'admission'])->name('admission');
+Route::get('/demo-class',[FrontendController::class, 'demoClass'])->name('demoClass');
+Route::get('/seminar/{slug}',[FrontendController::class, 'singleSeminer'])->name('singleSeminer');
+Route::get('/webinar/{slug}',[FrontendController::class, 'singleWebiner'])->name('singleWebiner');
 
 //send mail
 Route::post('/admission-post',[MailController::class, 'admissionPost'])->name('admissionPost');
 Route::post('/seminer-registation-post',[MailController::class, 'seminerRegistationPost'])->name('seminerRegistationPost');
 Route::post('/webiner-registation-post',[MailController::class, 'webinerRegistationPost'])->name('webinerRegistationPost');
-Route::post('/demo-class-post',[MailController::class, 'applyForDemoClassPost'])->name('applyForDemoClassPost');
 Route::post('/demo-class-post',[MailController::class, 'applyForDemoClassPost'])->name('applyForDemoClassPost');
 Route::post('/contact-us-post',[MailController::class, 'ContactPost'])->name('ContactPost');
 
@@ -53,14 +57,24 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
     Route::post('/profile-edit',[ProfileController::class, 'profileEdit'])->name('profileEdit');
     Route::post('/profile-image',[ProfileController::class, 'profileImagae'])->name('profileImagae');
-    // Demo Class for Dashboard
+
+    // Demo Class data Dashboard
     Route::get('/demo-class',[DashboardController::class, 'applyDemoClass'])->name('applyDemoClass');
     Route::get('/demo-class-delete/{id}',[DashboardController::class, 'demoClassDelete'])->name('demoClassDelete');
     Route::get('/demo-class-search', [DashboardController::class, 'DemoClsSearch'])->name('DemoClsSearch');
-    // Contact Us for Dashboard
+
+    // Contact Us data Dashboard
     Route::get('/contact-dashboard',[DashboardController::class, 'ContactUs'])->name('ContactUs');
     Route::get('/contact-us-delete/{id}',[DashboardController::class, 'ContactUsDelete'])->name('ContactUsDelete');
     Route::get('/contact-search',[DashboardController::class, 'ContactSearch'])->name('ContactSearch');
+
+    //Seminer data Dashboard
+    Route::get('/seminer-data',[DashboardController::class, 'seminerData'])->name('seminerData');
+    Route::get('/seminer-data-delete/{id}',[DashboardController::class, 'seminarDataDelete'])->name('seminarDataDelete');
+
+    //Seminer data Dashboard
+    Route::get('/webinar-data',[DashboardController::class, 'webinarData'])->name('webinarData');
+    Route::get('/webinar-data-delete/{id}',[DashboardController::class, 'webinarDataDelete'])->name('webinarDataDelete');
 
     // admin and user
     Route::get('/register',[AuthController::class, 'register'])->name('register')->middleware('profile');
@@ -69,19 +83,19 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::get('/change-password', [ProfileController::class, 'changePassword'])->name('changePassword');
     Route::post('/change-update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
 
-    //about-us CRUD
+    // about-us CRUD
     Route::get('/about',[AboutController::class, 'adminAbout'])->name('adminAbout');
     Route::post('/about-post',[AboutController::class, 'aboutPost'])->name('aboutPost');
 
-    //hero-Information
+    // hero-Information
     Route::get('/hero',[AboutController::class, 'hero'])->name('hero');
     Route::post('/hero-post',[AboutController::class, 'heroPost'])->name('heroPost');
 
-    //Company-Information
+    // Company-Information
     Route::get('/company-information',[AboutController::class, 'companyInformation'])->name('companyInformation');
     Route::post('/company-information-post',[AboutController::class, 'companyInformationPost'])->name('companyInformationPost');
 
-    //Workspace-CRUD
+    // Workspace-CRUD
     Route::get('/workspace',[AboutController::class, 'workspace'])->name('workspace');
     Route::post('/workspace-post',[AboutController::class, 'workspacePost'])->name('workspacePost');
     Route::post('/workspace-edit',[AboutController::class, 'workspaceEdit'])->name('workspaceEdit');
@@ -135,6 +149,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::post('/course-edit', [CourseController::class, 'courseEdit'])->name('courseEdit');
     Route::get('/course-delete/{id}', [CourseController::class, 'courseDelete'])->name('courseDelete');
     Route::post('/staus', [CourseController::class, 'staus'])->name('staus');
+    Route::post('/is-footer', [CourseController::class, 'is_footer'])->name('is_footer');
 
     //Course-Detailes
     Route::get('/course-detailes/{id}', [CourseController::class, 'courseDetailes'])->name('courseDetailes');

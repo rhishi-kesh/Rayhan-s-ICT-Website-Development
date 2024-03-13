@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('admissions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('user_id');
+            $table->string('password');
             $table->string('email');
             $table->string('number');
             $table->string('subject');

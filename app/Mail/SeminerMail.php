@@ -28,7 +28,7 @@ class SeminerMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Seminer Registation Successfull',
+            subject: 'Seminar Enrollment Confirmation',
         );
     }
 

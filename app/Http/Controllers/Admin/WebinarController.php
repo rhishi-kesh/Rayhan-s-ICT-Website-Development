@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Webinar;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class WebinarController extends Controller
 {
@@ -26,14 +27,17 @@ class WebinarController extends Controller
             $filename = time().'.'.$image->extension();
             $request->thumbnail->storeAs('public/webinar', $filename);
 
+            $slug = Str::slug($request->title);
+
             Webinar::insert([
                 'title' => $request->title,
+                'slug' => $slug,
                 'thumbnail' => $filename,
                 'date' => $request->date,
                 'time' => $request->time,
                 'created_at' => Carbon::now()
             ]);
-            return back()->with('success', 'Thumbnail add successfully');
+            return back()->with('success', 'Webiner add successfully');
 
         }
     }
@@ -57,21 +61,24 @@ class WebinarController extends Controller
             $filename = $getData->thumbnail;
         }
 
+        $slug = Str::slug($request->title);
+
         Webinar::where('id', $id)->update([
             'title' => $request->title,
+            'slug' => $slug,
             'thumbnail' => $filename,
             'date' => $request->date,
             'time' => $request->time,
             'created_at' => Carbon::now()
         ]);
-        return back()->with('success', 'Edit Update Successfully');
+        return back()->with('success', 'Webiner Update Successfully');
     }
     public function webinarDelete($id){
         $seminarDelete = Webinar::findOrFail($id);
         unlink(public_path('storage/webinar/').'/'.$seminarDelete->thumbnail);
         Webinar::findOrFail($id)->delete();
 
-        return back()->with('error', 'Delete Successfully');
+        return back()->with('error', 'Webiner Delete Successfully');
     }
 
 }

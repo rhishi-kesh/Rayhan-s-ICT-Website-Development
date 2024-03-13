@@ -9,7 +9,7 @@ use Carbon\Carbon;
 
 class ReviewController extends Controller
 {
-    
+
     public function review(){
         $review = Review::paginate(10);
         return view('backend.pages.review.review', compact('review'));
@@ -24,9 +24,9 @@ class ReviewController extends Controller
             'review'=> $request->review,
             'created_at' => Carbon::now()
         ]);
-        return back()->with('success', 'Image add successfully');
+        return back()->with('success', 'Review add successfully');
     }
-       
+
     public function reviewEdit(Request $request){
         $request->validate([
             'review'=>'required'
@@ -37,8 +37,8 @@ class ReviewController extends Controller
             'review'=> $request->review,
             'created_at' => Carbon::now()
         ]);
-        return back()->with('success', 'Edit Update Successfully');
-    
+        return back()->with('success', 'Review Update Successfully');
+
     }
     public function ReviewDelete($id){
         $reviewDelete = Review::findOrFail($id);

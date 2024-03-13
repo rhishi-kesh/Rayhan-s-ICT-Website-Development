@@ -3,22 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\MeetOurMentors;
 use Carbon\Carbon;
 
-
 class MeetOurMentorsController extends Controller
 {
-    
+
     public function meetOurMentors(){
         $MeetOurMentors = MeetOurMentors::paginate(7);
-        return view('backend.pages.meetOurMentors.meetOurMentors', compact('MeetOurMentors'));
+        $departments = Department::get();
+        return view('backend.pages.meetOurMentors.meetOurMentors', compact('MeetOurMentors','departments'));
     }
-
     public function meetOurMentorsPost(Request $request){
         $request->validateWithBag('insert',[
             'name'=> 'required',
+            'department_id'=> 'required',
             'designation'=> 'required',
             'description'=> 'required',
             'image'=> ['image', 'mimes:jpg,png,jpeg', 'required'],
@@ -34,19 +35,21 @@ class MeetOurMentorsController extends Controller
             $request->thumbnail->storeAs('public/mentors/thumbnail', $thumbnailname);
 
             MeetOurMentors::insert([
-                'name'        => $request->name,
+                'department_id' => $request->department_id,
+                'name' => $request->name,
                 'designation' => $request->designation,
                 'description' => $request->description,
-                'image'       =>$filename,
-                'thumbnail'   =>$thumbnailname,
-                'created_at'  => Carbon::now()
+                'image' =>$filename,
+                'thumbnail' =>$thumbnailname,
+                'created_at' => Carbon::now()
             ]);
-            return back()->with('success', 'Image add successfully');
+            return back()->with('success', 'Mentor add successfully');
 
         }
     }
     public function meetOurMentorsEdit(Request $request){
         $request->validateWithBag('update',[
+            'department_id'=> 'required',
             'name'=> 'required',
             'designation'=> 'required',
             'description'=> 'required',
@@ -73,8 +76,9 @@ class MeetOurMentorsController extends Controller
         }else{
             $thumbnailname = $getData->thumbnail;
         }
-        
+
         MeetOurMentors::where('id', $id)->update([
+            'department_id' => $request->department_id,
             'name' => $request->name,
             'designation' => $request->designation,
             'description' => $request->description,

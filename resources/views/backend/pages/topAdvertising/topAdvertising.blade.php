@@ -33,7 +33,7 @@
                 <span>{{$topAdvertising->firstItem()+$key}}</span>
             </td>
             <td class="text-center">
-                <img src="{{ asset('storage/topAdvertising/') }}/{{ $item->image }}" alt="" width="60" height="60">
+                <img src="{{ asset('storage/topAdvertising/') }}/{{ $item->image }}" alt="" width="100" height="60">
             </td>
             <td class="switch-sm text-center">
                 <div class="form-check form-switch d-flex justify-content-center">

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('seminer_id');
             $table->string('name');
+            $table->string('slug');
             $table->string('email');
             $table->string('number');
             $table->string('address');

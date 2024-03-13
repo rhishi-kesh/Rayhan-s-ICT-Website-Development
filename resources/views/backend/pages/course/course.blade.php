@@ -22,8 +22,9 @@
         <tr>
           <th><h6 class="fs-4 fw-semibold mb-0">SL</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-center">Name</h6></th>
-          <th><h6 class="fs-4 fw-semibold mb-0 text-center">Department</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-center">Status</h6></th>
+          <th><h6 class="fs-4 fw-semibold mb-0 text-center">Department</h6></th>
+          <th><h6 class="fs-4 fw-semibold mb-0 text-center">Is Footer</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-end pe-3">Action</h6></th>
         </tr>
       </thead>
@@ -36,14 +37,19 @@
             <td class="text-center">
                 <span>{{ $item->name }}</span>
             </td>
+            <td class="switch-sm text-center">
+                <div class="form-check form-switch d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox" onclick="is_active({{ $item->id }})" id="flexSwitchCheckChecked" @if($item->is_active == 0) checked @endif>
+                </div>
+            </td>
             <td class="text-center">
                 <span>{{ $item->department->departmentName ?? "N/A" }}</span>
             </td>
             <td class="switch-sm text-center">
                 <div class="form-check form-switch d-flex justify-content-center">
-                    <input class="form-check-input" type="checkbox" onclick="is_active({{ $item->id }})" id="flexSwitchCheckChecked" @if($item->is_active == 0) checked @endif>
+                    <input class="form-check-input" type="checkbox" onclick="is_footer({{ $item->id }})" id="flexSwitchCheckChecked" @if($item->is_footer == 0) checked @endif>
                 </div>
-            </td> 
+            </td>
             <td class="text-end">
                 <div class="dropdown dropstart">
                     <a href="#" class="text-muted pe-4" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -286,6 +292,24 @@
                 $.ajax({
                     type:'POST',
                     url:'/admin/staus',
+                    data: {id:id},
+                    success:function(res) {
+                        console.log(res.status);
+                    }
+                });
+            }
+        </script>
+        <script>
+            function is_footer(id){
+                var id = id;
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type:'POST',
+                    url:'/admin/is-footer',
                     data: {id:id},
                     success:function(res) {
                         console.log(res.status);

@@ -17,45 +17,45 @@
                             </svg>
                         </a>
                     </div>
-                    <div class="d-flex justify-content-between my-3 pe-0 pe-md-4 pe-lg-5">
-                        <h5 class="fw-bold d-none d-md-block">Course Fee:</h5>
+                    <div class="d-flex justify-content-between my-3 pe-0 pe-md-4 pe-lg-5 fee">
+                        <h5 class="fw-bold d-none d-md-block fee-text font-paragraph">কোর্স ফিঃ</h5>
                         <h5 class="fw-bold">৳{{ $courses->courseDetails->price }}</h5>
                     </div>
-                    <p class="pe-0 pe-md-4 lead course_des">{{ $courses->courseDetails->description }}</p>
-                    <div class="row text-start d-block d-md-none d-xxl-flex">
+                    <p class="pe-0 pe-md-4 lead course_des font-paragraph">{{ $courses->courseDetails->description }}</p>
+                    <div class="row text-start d-block d-md-none d-xxl-flex other_detailes">
                         <div class="col-12 col-md-4">
-                            <p class="fw-bold text-start"><i class="ti-time me-2 mt-1"></i> Duration: {{ $courses->courseDetails->duration }} Month</p>
+                            <p class="fw-bold text-start"><i class="ti-time me-2 mt-1"></i> <span class="font-paragraph">সময়কাল:</span> {{ $courses->courseDetails->duration }} <span>মাস</span></p>
                         </div>
                         <div class="col-12 col-md-3">
-                            <p class="fw-bold text-start"><i class="ti-book me-2 mt-1"></i> Lectures: {{ $courses->courseDetails->lecture }}</p>
+                            <p class="fw-bold text-start"><i class="ti-book me-2 mt-1"></i> <span class="font-paragraph">ক্লাস:</span> {{ $courses->courseDetails->lecture }}</p>
                         </div>
                         @if(!empty($courses->courseDetails->project))
                             <div class="col-12 col-md-3">
-                                <p class="fw-bold text-srart"><i class="ti-target me-2 mt-1"></i> Projects: {{ $courses->courseDetails->project }}+</p>
+                                <p class="fw-bold text-srart"><i class="ti-target me-2 mt-1"></i> <span class="font-paragraph">প্রজেক্ট:</span> {{ $courses->courseDetails->project }}+</p>
                             </div>
                         @endif
                     </div>
                     <div class="row text-center text-md-start d-none d-md-flex d-xxl-none">
-                        <div class="d-flex justify-content-start gap-3">
+                        <div class="d-flex justify-content-start gap-3 other_detailes">
                             <div>
-                                <p class="fw-bold"><i class="ti-time me-2 mt-1"></i> Duration: {{ $courses->courseDetails->duration }} Month</p>
+                                <p class="fw-bold"><i class="ti-time me-2 mt-1"></i> <span class="font-paragraph">সময়কাল:</span> {{ $courses->courseDetails->duration }} <span class="font-paragraph">মাস</span></p>
                             </div>
                             <div>
-                                <p class="fw-bold"><i class="ti-book me-2 mt-1"></i> Lectures: {{ $courses->courseDetails->lecture }}</p>
+                                <p class="fw-bold"><i class="ti-book me-2 mt-1"></i> <span class="font-paragraph">ক্লাস:</span> {{ $courses->courseDetails->lecture }}</p>
                             </div>
                             @if(!empty($courses->courseDetails->project))
                             <div>
-                                <p class="fw-bold"><i class="ti-target me-2 mt-1"></i> Projects: {{ $courses->courseDetails->project }}+</p>
+                                <p class="fw-bold"><i class="ti-target me-2 mt-1"></i> <span class="font-paragraph">প্রজেক্ট:</span> {{ $courses->courseDetails->project }}+</p>
                             </div>
                             @endif
                         </div>
                     </div>
                     <div class="d-block d-md-flex btns">
-                        <a href="#admissionModal" data-bs-toggle="modal" class="admit_btn mt-2 mt-md-3">
+                        <a href="{{ route('admission') }}" class="admit_btn mt-2 mt-md-3">
                             <i class="ti-crown fw-bold"></i>
                             Admission
                         </a>
-                        <a href="#democlassMOdel" data-bs-toggle="modal" class="free_seminer mt-1 mt-md-3 ms-0 ms-md-3"> <i class="fa-solid fa-photo-film"></i>
+                        <a href="{{ route('demoClass') }}" class="free_seminer mt-1 mt-md-3 ms-0 ms-md-3"> <i class="fa-solid fa-photo-film"></i>
                             Apply For Demo Class
                         </a>
                     </div>
@@ -104,7 +104,7 @@
                     </ul>
                     <div class="content text-start text-md-center">
                         <div id="Course_Details" class="sec">
-                            <h2 class="top text-center">What will you learn from this course?</h2>
+                            <h2 class="top text-center font-heding">এই কোর্স থেকে কি কি শিখবেন?</h2>
                             <div class="card text-start">
                                 <ul class="ps-0 mb-0 learning">
                                     @forelse ($courses->courseLearnings as $item)
@@ -119,13 +119,13 @@
                                     @endforelse
                                 </ul>
                             </div>
-                            <h2 class="mt-3 text-center">The course is for those</h2>
+                            <h2 class="mt-3 text-center font-heding">কোর্সটি কাদের জন্য?</h2>
                             <div class="card text-start">
                                 <ul class="ps-0 mb-0">
                                     @forelse ($courses->courseForThoose as $item)
                                         <li class="d-flex justify-content-start align-items-start">
                                             <img src="{{ asset('storage/courseThose/'. $item->image) }}" alt="" style="width: 30px; object-fit: cover;">
-                                            <p class="ms-3">{{ $item->content }}</p>
+                                            <p class="ms-3 font-paragraph">{{ $item->content }}</p>
                                         </li>
                                     @empty
                                         <div class="col">
@@ -134,13 +134,13 @@
                                     @endforelse
                                 </ul>
                             </div>
-                            <h2 class="mt-3 text-center">You will get all the benefits</h2>
+                            <h2 class="mt-3 text-center font-heding">আপনি যে সুবিধা গুলো পাবেন?</h2>
                             <div class="card text-start">
                                 <ul class="ps-0 mb-0">
                                     @forelse ($courses->courseBenifits as $item)
                                         <li class="d-flex justify-content-start align-items-start">
                                             <img src="{{ asset('storage/benefitsOfCourse/'. $item->image) }}" alt="" style="width: 30px; object-fit: cover;">
-                                            <p class="ms-3">{{ $item->content }}</p>
+                                            <p class="ms-3 font-paragraph">{{ $item->content }}</p>
                                         </li>
                                     @empty
                                         <div class="col">
@@ -150,7 +150,7 @@
                                 </ul>
                             </div>
                             @if(!$courses->coursestudentprojects->isEmpty())
-                            <h2 class="mt-3 creative_project text-center">Some of the Creative Projects Done by Our Students</h2>
+                            <h2 class="mt-3 creative_project text-center font-heding">আমাদের স্টুডেন্টদের করা কিছু ক্রিয়েটিভ প্রজেক্ট সমূহ</h2>
                             <div class="card text-start" id="demo-carosel">
                                 <div class="owl-carousel owl-theme demo-carosel">
                                     @forelse ($courses->coursestudentprojects as $item)
@@ -167,7 +167,7 @@
                             @endif
                         </div>
                         <div id="Modules" class="sec">
-                            <h2 class="top mb-4 text-center">Class Modules</h2>
+                            <h2 class="top mb-4 text-center font-heding">কোর্স মডিউল</h2>
                             <div class="accordion text-start" id="accordionExample">
                                 @forelse ($courses->courseModuls as $item)
                                 <div class="accordion-item">
@@ -190,7 +190,7 @@
                             </div>
                         </div>
                         <div id="Instructor" class="sec">
-                            <h2 class="top mb-4 text-center">Course Instructor</h2>
+                            <h2 class="top mb-4 text-center font-heding">কোর্স ইন্সট্রাকটর</h2>
                             <div class="card border-0">
                                 <div class="d-flex justify-content-start gap-4 px-3 px-md-4 mb-0 pt-3">
                                     <div class="img-part">
@@ -202,14 +202,14 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <p class="px-3 px-md-4 pb-3 m-0 text-start">{{ $courses->courseDetails->mentor->description }}</p>
+                                <p class="px-3 px-md-4 pb-3 m-0 text-start mentor_description">{{ $courses->courseDetails->mentor->description }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="faq faq_single_course mt-4">
-                        <h2 class="top text-center">FAQ</h2>
+                        <h2 class="top text-center font-heding">কোর্স সম্পর্কিত সাধারণ প্রশ্নসমূহ</h2>
                         <div class="accordion" id="accordionExample">
                             <div class="row">
                                 <div class="col-12">
@@ -217,14 +217,14 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                                <button class="btn btn-link collapsed font-paragraph" type="button" data-bs-toggle="collapse"
                                                     data-bs-target="#collapseOne{{ $item->id }}" aria-bs-expanded="false" aria-bs-controls="collapseOne">
                                                     {{ $item->question }}
                                                 </button>
                                             </h5>
                                         </div>
                                         <div id="collapseOne{{ $item->id }}" class="collapse" data-bs-parent="#accordionExample">
-                                            <div class="card-body">
+                                            <div class="card-body font-paragraph">
                                                 {{ $item->answer }}
                                             </div>
                                         </div>

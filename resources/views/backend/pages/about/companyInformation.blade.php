@@ -125,6 +125,13 @@
                             </script>
                         @endsection
                     </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="fontdesk" class="form-label">Frontdesk Number</label>
+                        <input type="fontdesk" value="{{ $companyInformation->fontdesk }}" class="form-control form-control-lg rounded-1 @error('fontdesk') is-invalid @enderror" name="fontdesk" id="fontdesk" placeholder="Frontdesk">
+                        @error('fontdesk')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <div class="col-12">
                         <div class="d-md-flex align-items-center mt-3">
                             <div class="ms-auto mt-3 mt-md-0">

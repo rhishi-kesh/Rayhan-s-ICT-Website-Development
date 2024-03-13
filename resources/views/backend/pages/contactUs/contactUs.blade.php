@@ -5,7 +5,7 @@
         <h4 class="text-uppercase mb-3">contact&nbsp; List</h4>
         <div class="d-flex justify-content-between align-items-center mb-9">
           <form class="position-relative" action="{{ route('ContactSearch') }}" method="GET">
-                <input type="search" name="search" class="form-control search-chat py-2 ps-5" id="text-srh" placeholder="Search Massage">
+                <input type="search" name="search" class="form-control search-chat py-2 ps-5" id="text-srh" placeholder="Search Name Or Email">
                 <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
           </form>
         </div>
@@ -35,7 +35,7 @@
             @forelse ($contactUs as $key=> $item)
             <tr >
                 <td >
-                    <span> {{ $item->id}} </span>
+                    <span> {{ $contactUs->firstItem()+$key}} </span>
                 </td>
                 <td  class="text-center">
                   <p> <span> {{$item->name}} </p>
@@ -54,7 +54,7 @@
                       <a href="mailto:{{$item->email}}" class="text-muted pe-2" aria-expanded="false">
                         <i class="fas fa-envelope text-info"></i>
                       </a>
-                      
+
                       <a href="{{ route('ContactUsDelete', $item->id ) }}" class="text-muted pe-2" aria-expanded="false">
                         <i class="fas fa-trash-alt text-danger"></i>
                       </a>
@@ -72,9 +72,15 @@
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
                                             <div class="note-title mt-3">
-                                              <h2>{{$item->name}}</h2>
-                                              <span>{{$item->email}} | {{$item->number}} </span> <br>
-                                              <span>{{$item->subject}} | {{$item->massage}}</span>
+                                                <h2><b>Name:</b> {{$item->name}}</h2>
+                                                <span>
+                                                    <b>Email:</b> {{$item->email}} <br>
+                                                    <b>Number:</b> {{$item->number}}
+                                                </span> <br>
+                                                <span>
+                                                    <b>Course:</b> {{$item->subject}} <br>
+                                                    <b>Message:</b> {{$item->massage}}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -95,10 +101,11 @@
               @endforelse
           </tbody>
         </table>
+        {{ $contactUs->withQueryString()->links() }}
         <script type="text/javascript">
             window.setTimeout("document.getElementById('successMessage').style.display='none';", 2000);
             window.setTimeout("document.getElementById('errorMessage').style.display='none';", 2000);
         </script>
-    
+
 </div>
 @endsection

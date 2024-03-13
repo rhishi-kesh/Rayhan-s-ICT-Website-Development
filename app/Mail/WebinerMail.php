@@ -28,7 +28,7 @@ class WebinerMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Webiner Registation Successfull',
+            subject: 'Webinar Enrollment Confirmation',
         );
     }
 

@@ -4,17 +4,17 @@
 <section class="hero">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-6 text-center text-lg-start align-self-center">
-                <h1 class="display-5">{!! $heroInformations->title !!}</h1>
-                <p class="mt-3 lead">{{ $heroInformations->description }}</p>
-                <div class="btns mt-4 d-flex justify-content-center justify-content-md-start">
+            <div class="col-12 col-lg-6 align-self-center">
+                <h1 class="display-5 font-heding">{!! $heroInformations->title !!}</h1>
+                <p class="mt-3 lead font-paragraph">{{ $heroInformations->description }}</p>
+                <div class="btns mt-4 d-flex justify-content-start">
                     <a href="{{ route('about') }}">
                         <i class="fa-solid fa-users"></i>
                         About Us
                     </a>
                     <a href="{{ route('course') }}" class="ms-3">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        Browse Course
+                        Our Course
                     </a>
                 </div>
             </div>
@@ -56,9 +56,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center section-head">
-                <h2 class="text-uppercase fs-1 mb-0">Success Stories</h2>
+                <h2 class="text-uppercase fs-1 mb-0 font-heding">সফলতার গল্প</h2>
                 <span></span>
-                <p class="mt-1 lead">আমাদের কোর্সের শিক্ষার্থীরা কোর্স শেষ করে সফলতার সাথে বিভিন্ন জায়গায় কাজ করছেন। তাদের এই সফলতা আমাদেরকে অনুপ্রানিত করে।</p>
+                <p class="mt-1 lead font-paragraph">আমাদের কোর্সের শিক্ষার্থীরা কোর্স শেষ করে সফলতার সাথে বিভিন্ন জায়গায় কাজ করছেন। তাদের এই সফলতা আমাদেরকে অনুপ্রানিত করে।</p>
             </div>
         </div>
         <div class="row">
@@ -91,7 +91,7 @@
     </div>
 </section>
 <!-- success_story-end -->
-<section class="Course py-3 py-lg-5">
+<section class="Course py-4 py-lg-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center section-head">
@@ -101,24 +101,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 mt-4">
+            <div class="col-12 mt-2">
                 <ul class="nav d-flex justify-content-center align-items-center courseDepartment">
                     @forelse ($departments as $item)
-                        <li class="nav-item d-flex justify-content-center" role="presentation" width="294">
-                            <button class="nav-link" type="button">{{ $item->departmentName }}</button>
+                        <li class="nav-item d-flex justify-content-center mt-4" role="presentation">
+                            <button class="nav-link px-0 fw-bold" type="button">{{ $item->departmentName }}</button>
                         </li>
                     @empty
                         <div class="col">
                             <p class="text-danger">No Department Found</p>
                         </div>
                     @endforelse
-
                 </ul>
                 <div class="course_items CoursesUnderDepartment">
                     @forelse ($departments as $data)
                         <div class="row">
                             <div class="course_category_slider">
-                                @foreach ($course->where('department_id',$data->id) as $item)
+                                @foreach ($courses->where('department_id',$data->id) as $item)
                                     <div class="col mt-4 mx-2">
                                         <div class="card">
                                             <a href="{{ route('singleCourse',$item->slug) }}" class="img">
@@ -152,11 +151,11 @@
     </div>
 </section>
 <!-- end-course -->
-<section class="Reviews py-3 py-lg-5">
+<section class="Reviews py-4 py-lg-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center section-head">
-                <h2 class="text-uppercase fs-1 mb-0">What People Think About Us</h2>
+                <h2 class="text-uppercase fs-1 mb-0">What People Think <b class="text-brand-1">About Us?</b></h2>
                 <span></span>
                 <p class="mt-1 lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptas rerum veniam.</p>
             </div>
@@ -179,7 +178,7 @@
     </div>
 </section>
 <!-- Reviews-end -->
-<section class="mentors py-3 py-lg-5">
+<section class="mentors py-4 py-lg-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center section-head">
@@ -197,7 +196,10 @@
                             <img class="profile" src="{{ asset("storage/mentors/image/". $item->image) }}" alt="">
                         </div>
                         <h2 class="name">{{ $item->name }}</h2>
-                        <div class="title">{{ $item->designation }}</div>
+                        <div class="title mb-0">{{ $item->designation }}</div>
+                        <div class="department text-center mb-3">
+                            <span>{{ $item->department->departmentName }}</span>
+                        </div>
                     </div>
                 </div>
                 @empty
@@ -210,7 +212,17 @@
     </div>
 </section>
 <!-- mentors-end -->
-<section class="brands py-3 py-lg-5">
+<section>
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <img src="{{ asset('bteb.png') }}" alt="bteb" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="brands py-4 py-lg-5">
     <div class="container">
        <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center section-head">
@@ -240,13 +252,13 @@
     </div>
 </section>
 <!-- Brands-end -->
-<section class="faq py-3 py-5">
+<section class="faq py-4 py-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-8 col-lg-8 text-center section-head">
-                <h2 class="text-uppercase fs-1 mb-0">Frequently Asked Questions</h2>
+                <h2 class="text-uppercase fs-1 mb-0 font-heding">সচরাচর জিজ্ঞাসিত প্রশ্ন</h2>
                 <span></span>
-                <p class="mt-1 lead">If you have specific questions, feel free to ask. I'm here to help!</p>
+                <p class="mt-1 lead font-paragraph">আপনি যে বিষয়গুলো সম্পর্কে জানতে চান তা আমাদের সাথে শেয়ার করুন। আমরা আপনাদের সহযোগিতা করার জন্য সর্বদা প্রস্তুত</p>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -258,14 +270,14 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
+                                        <button class="font-paragraph btn btn-link collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#collapseOne{{ $item->id }}" aria-bs-expanded="false" aria-bs-controls="collapseOne">
                                             {{ $item->question }}
                                         </button>
                                     </h5>
                                 </div>
                                 <div id="collapseOne{{ $item->id }}" class="collapse" data-bs-parent="#accordionExample">
-                                    <div class="card-body">
+                                    <div class="card-body font-paragraph">
                                         {{ $item->answer }}
                                     </div>
                                 </div>

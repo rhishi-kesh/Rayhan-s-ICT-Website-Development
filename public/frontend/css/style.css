@@ -8,8 +8,22 @@
     --light-blue: #E4EEF7;
     --light-orange: #FFF1E4;
 }
+@font-face {
+    font-family: heading_bangla_font;
+    src: url('../fonts/LiNiladriRongtuliUnicode-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: paragraph_bangla_font;
+    src: url('../fonts/PotroSansBangla-Regular.ttf') format('truetype');
+}
+.font-heding{
+    font-family: heading_bangla_font;
+}
+.font-paragraph{
+    font-family: paragraph_bangla_font;
+}
 *{
-	font-family: "Noto Sans Bengali", sans-serif;
+	font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
 }
 p{
@@ -17,6 +31,7 @@ p{
 }
 .section-head h2{
     color: var(--blue);
+    font-weight: 600;
 }
 .section-head span{
     background: var(--orange);
@@ -108,7 +123,7 @@ nav .nav-bar .logo a{
     position: relative;
     font-size: 17px;
     font-weight: 400;
-    color: var(--dark);
+    color: var(--blue);
     text-decoration: none;
     padding: 10px;
     font-weight: 600;
@@ -199,11 +214,10 @@ nav .nav-bar .logo a{
 .hero h1{
     font-weight: 600;
     color: var(--blue);
-    font-family: "Noto Sans Bengali", sans-serif !important;
     font-optical-sizing: auto;
 }
-.hero p{
-    /* font-weight: 500; */
+.hero h1 span{
+    font-family: heading_bangla_font;
 }
 .hero .btns a{
     background: var(--blue);
@@ -350,6 +364,14 @@ nav .nav-bar .logo a{
 .Course .courseDepartment .nav-item button{
     color: var(--dark) !important;
     border-radius: 20px;
+}
+.course_detailes .accordion-body ul li{
+    list-style-image: url('../img/lines.png');
+    font-size: 18px;
+}
+.course_detailes .accordion-body{
+    border: 1px solid #E4EEF7;
+    border-top: none;
 }
 .Course .courseDepartment .slick-active button{
     color: var(--dark) !important;
@@ -579,6 +601,7 @@ nav .nav-bar .logo a{
     margin-top: 80px;
     font-size: 28px !important;
     text-align: center;
+    color: var(--blue);
 }
 .mentors .card .title {
   color: var(--dark);
@@ -586,6 +609,18 @@ nav .nav-bar .logo a{
   text-align: center;
   margin-top: -5px;
   margin-bottom: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.mentors .card .department span{
+    border: 1px solid var(--blue);
+    text-align: center;
+    width: auto;
+    padding: 2px 10px;
+    border-radius: 15px;
+    font-size: 13px;
+    display: inline;
+    background: var(--light-blue);
 }
 .mentors .owl-carousel .owl-nav.disabled {
   display: block;
@@ -843,7 +878,7 @@ nav .nav-bar .logo a{
     height: 80px;
     display: block;
     width: 100%;
-    color: rgba(30, 48, 86, 0.8);
+    color: rgba(0, 0, 0, 0.8);
     text-align: left;
     background: var(--white);
     -webkit-box-shadow: 0px -50px 140px 0px rgba(69, 81, 100, 0.1);
@@ -859,7 +894,7 @@ nav .nav-bar .logo a{
     width: 20px;
     height: 20px;
     background-color: transparent;
-    color: var(--blue);
+    color: var(--dark);
     text-align: center;
     border: 1px solid var(--blue);
     border-radius: 50%;
@@ -918,8 +953,9 @@ footer .top-footer a {
 }
 
 footer .top-footer a:active {
-  color: #666;
-  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px var(--white);
+  color: var(--white) !important;
+  /* box-shadow: inset 4px 4px 12px var(--blue), inset -4px -4px 12px var(--blue); */
+  background: var(--orange) !important;
 }
 
 footer .top-footer a:before {
@@ -999,7 +1035,12 @@ footer .top-footer .browse_course:hover:after {
   background-color: var(--orange);
   transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
-
+.owl-theme .owl-dots .owl-dot span {
+    background: var(--blue) !important;
+}
+.owl-theme .owl-dots .owl-dot.active span {
+    background: var(--orange) !important;
+}
 .footer-mid {
   position: relative;
   z-index: 2;
@@ -1030,7 +1071,7 @@ footer .top-footer .browse_course:hover:after {
   display: block;
   font-size: 20px;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin-bottom: 10px;
 }
 .footer-social-icon a {
@@ -1174,6 +1215,7 @@ footer .contact i{
 .courses .owl-carousel img{
     width: 60px;
     display: inline-block;
+    border-radius: 50%;
 }
 .courses .owl-carousel a{
     color: var(--dark);
@@ -1272,6 +1314,18 @@ footer .contact i{
 .workshop .wokspece_navs{
     margin-top: 13px;
 }
+.workshop .wokspece_img_item img{
+    border-radius: 25px;
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+.workshop .wokspece_navs img{
+    border-radius: 15px;
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+}
 .workshop .wokspece_navs_item{
     padding: 0px 3px;
 }
@@ -1298,12 +1352,14 @@ footer .contact i{
 .workspecePrevArrow.slick-arrow {
   position: absolute;
   top: 50%;
-  left: 1%;
+  left: -2%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   width: 40px;
   height: 40px;
   background: var(--white);
+  border: 2px solid var(--blue);
+  line-height: 2 !important;
   text-align: center;
   line-height: 40px;
   border-radius: 50%;
@@ -1315,15 +1371,27 @@ footer .contact i{
   cursor: pointer;
   z-index: 11;
 }
+.workspecePrevArrow.slick-arrow:hover {
+    background: var(--orange);
+    border: 2px solid var(--orange);
+    color: var(--white);
+}
+.workspecePrevArrow.slick-arrow:active {
+    background: var(--orange) !important;
+    border: 2px solid var(--orange) !important;
+    color: var(--white) !important;
+}
 .workspeceNextArrow.slick-arrow {
   position: absolute;
   top: 50%;
-  right: 1%;
+  right: -2%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   width: 40px;
   height: 40px;
   background: var(--white);
+  border: 2px solid var(--blue);
+  line-height: 2 !important;
   text-align: center;
   line-height: 40px;
   border-radius: 50%;
@@ -1333,6 +1401,16 @@ footer .contact i{
   -webkit-transition: all linear 0.3s;
   transition: all linear 0.3s;
   cursor: pointer;
+}
+.workspeceNextArrow.slick-arrow:hover {
+    background: var(--orange);
+    border: 2px solid var(--orange);
+    color: var(--white);
+}
+.workspeceNextArrow.slick-arrow:active {
+    background: var(--orange) !important;
+    border: 2px solid var(--orange) !important;
+    color: var(--white) !important;
 }
 .contact .socal-card img{
     width: 60px;
@@ -1369,7 +1447,7 @@ footer .contact i{
 .contact .card form button:hover{
     background-color: var(--orange) !important;
 }
-.contact .card form button:active{
+.contact .card form button:focus{
     background-color: var(--orange) !important;
 }
 .contact .mail a{
@@ -1394,17 +1472,36 @@ footer .contact i{
 }
 .contact form textarea{
     height: 110px !important;
+    border: 1px solid var(--blue);
+}
+.contact form input{
+    border: 1px solid var(--blue);
 }
 .contact form select{
     font-size: 1.1rem !important;
+    border: 1px solid var(--blue);
 }
-#admissionModal form textarea{
+#admissionForm input{
+    border: 1px solid var(--blue) !important;
+}
+#admissionForm textarea{
     height: 110px !important;
+    border: 1px solid var(--blue);
 }
-#admissionModal form select{
+#admissionForm select{
     font-size: 1.1rem !important;
+    border: 1px solid var(--blue);
 }
-.admissionForm button{
+#admissionForm input:focus{
+    border: 1px solid var(--orange) !important;
+}
+#admissionForm textarea:focus{
+    border: 1px solid var(--orange);
+}
+#admissionForm select:focus{
+    border: 1px solid var(--orange);
+}
+#admissionForm button{
     background: var(--blue);
     color: var(--white);
     text-decoration: none;
@@ -1418,7 +1515,13 @@ footer .contact i{
     position: relative;
     z-index: 1;
 }
-.DemoclassForm button{
+#admissionForm button:hover{
+    background: var(--orange);
+}
+#admissionForm button:focus{
+    background: var(--orange);
+}
+#DemoclassForm button{
     background: var(--blue);
     color: var(--white);
     text-decoration: none;
@@ -1431,6 +1534,45 @@ footer .contact i{
     overflow: hidden;
     position: relative;
     z-index: 1;
+}
+#DemoclassForm button:hover{
+    background: var(--orange);
+}
+#DemoclassForm input{
+    border: 1px solid var(--blue) !important;
+}
+#DemoclassForm select{
+    border: 1px solid var(--blue) !important;
+}
+#DemoclassForm textarea{
+    border: 1px solid var(--blue) !important;
+}
+#DemoclassForm input:focus{
+    border: 1px solid var(--orange) !important;
+}
+#DemoclassForm select:focus{
+    border: 1px solid var(--orange) !important;
+}
+#DemoclassForm textarea:focus{
+    border: 1px solid var(--orange) !important;
+}
+.demoClassTitle{
+    color: var(--blue);
+}
+.admissionTitle{
+    color: var(--blue);
+}
+#DemoclassForm button:focus{
+    background: var(--orange);
+}
+.SeminerForm input:focus{
+    border: 1px solid var(--orange) !important;
+}
+.SeminerForm select:focus{
+    border: 1px solid var(--orange) !important;
+}
+.SeminerForm textarea:focus{
+    border: 1px solid var(--orange) !important;
 }
 .SeminerForm button{
     background: var(--blue);
@@ -1445,6 +1587,14 @@ footer .contact i{
     overflow: hidden;
     position: relative;
     z-index: 1;
+}
+.SeminerForm button:hover{
+    background: var(--orange);
+    color: var(--white);
+}
+.SeminerForm button:focus{
+    background: var(--orange);
+    color: var(--white);
 }
 .single_course_header{
     padding: 80px 0;
@@ -1703,6 +1853,14 @@ footer .contact i{
     z-index: 1;
     display: inline-block;
 }
+.seminer .card .join-btn:hover{
+    color: var(--white);
+    background: var(--orange);
+}
+.seminer .card .join-btn:focus{
+    color: var(--white);
+    background: var(--orange);
+}
 .seminer .card .join-btn:hover::before{
     content: '';
     position: absolute;
@@ -1772,6 +1930,20 @@ footer .contact i{
     top: 5px;
     right: 5px;
 }
+.single-seminer img{
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.single-seminer .card{
+    border: none;
+    box-shadow: 0px 0px 10px #ddd;
+}
+.single-seminer .form-card{
+    padding-top: 35px !important;
+    padding-bottom: 35px !important;
+}
 @media (max-width: 991px) {
     nav .nav-bar .sidebarOpen{
         display: block;
@@ -1817,7 +1989,7 @@ footer .contact i{
 
     .nav-links li a{
         display: block;
-        margin-top: 20px;
+        margin-top: 10px;
     }
     nav .nav-bar{
 	    max-width: 100%;
@@ -1875,7 +2047,7 @@ footer .contact i{
         max-width: 50%;
     }
     .footer-widget-heading h3::before {
-      left: 50%;
+      left: 28px;
       transform: translate(-50%);
     }
     .workshop .wokspece_img{
@@ -1938,6 +2110,9 @@ footer .contact i{
     .Reviews .reviewSuccess{
         columns: 2;
     }
+    .workshop .wokspece_img_item img{
+        height: 250px;
+    }
 }
 @media screen and (max-width: 575px){
     .course_detailes .navtabs li a {
@@ -1973,10 +2148,16 @@ footer .contact i{
         height: 300px;
         overflow:auto;
     }
+    .footer-widget ul li a{
+        font-size: 12px;
+    }
 }
 @media screen and (max-width: 400px){
     .course_detailes .navtabs li a {
       font-size: 11px;
+    }
+    .hero .btns a {
+        padding: 12px 10px;
     }
 }
 @media screen and (max-width: 360px){

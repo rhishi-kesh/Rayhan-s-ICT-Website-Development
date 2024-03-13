@@ -21,8 +21,11 @@
       .ck-editor__editable_inline {
           min-height: 140px;
       }
+      .bg-light.active{
+        background: #5D87FF !important;
+      }
       </style>
-      
+
   </head>
   <body>
     <!--  Body Wrapper -->

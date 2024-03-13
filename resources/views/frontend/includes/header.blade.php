@@ -103,7 +103,8 @@
 <nav>
     <div class="container">
         <div class="nav-bar">
-          <i class='ti-menu  sidebarOpen' ></i>
+          {{-- <i class='ti-menu  sidebarOpen' ></i> --}}
+        <img src="{{ asset('frontend/img/hambarger.gif') }}" alt="menu" class="sidebarOpen" width="50">
           <span class="logo navLogo">
             <a href="{{ route('index') }}">
                 <img src="{{ asset('storage/companyInformation/'. $companyInformation->logo) }}" alt="img-not found">
@@ -126,7 +127,7 @@
                   <li><a href="http://apply.rayhansict.com/" target="_blank">Career</a></li>
                   <li><a href="{{ route('contact') }}" class="{{ Request::routeIs('contact') ? 'active' : '' }}">Contact</a></li>
                   <li>
-                    <a href="#admissionModal" data-bs-toggle="modal" class="admit_btn">
+                    <a href="{{ route('admission') }}" class="admit_btn">
                         <i class="ti-crown fw-bold"></i>
                         Admission
                     </a>

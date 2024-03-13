@@ -43,13 +43,13 @@
                 <span>{{$item->designation}}</span>
             </td>
             <td   class="text-center">
-                <span>{{$item->description}}</span>
+                <span>{{Str::limit($item->description, '30', '...')}}</span>
             </td>
             <td class="text-center">
                 <img src="{{asset('storage/mentors/image/')}}/{{ $item->image}}" alt="" width="60" height="60">
             </td>
             <td class="text-center">
-                <img src="{{asset('storage/mentors/thumbnail/')}}/{{ $item->thumbnail}}" alt="" width="60" height="60">
+                <img src="{{asset('storage/mentors/thumbnail/')}}/{{ $item->thumbnail}}" alt="" width="100" height="60">
             </td>
             <td class="text-end">
                 <div class="dropdown dropstart">
@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="note-title mt-3">
                                       <label for="description"> Description </label>
-                                      <input type="text" id="description"  value="{{$item->description}}"  class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Enter Description">
+                                      <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Enter Description">{{$item->description}}</textarea>
                                       @error('description', 'update')
                                           <div class="alert alert-danger">{{ $message }}</div>
                                       @enderror
@@ -135,6 +135,18 @@
                                     }
                                     </script>
                                     </div>
+                                    <div class="note-title mt-3">
+                                        <label for="department_id">Select Department</label>
+                                        <select name="department_id" id="department_id" class="form-control @error('department_id') is-invalid @enderror">
+                                            <option value="">Select Department</option>
+                                            @foreach ($departments as $item_dep)
+                                                <option value="{{ $item_dep->id }}" @if($item_dep->id == $item->department_id) selected @endif>{{ $item_dep->departmentName }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('department_id','update')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
                               </div>
                           </div>
@@ -155,6 +167,7 @@
         @endforelse
       </tbody>
     </table>
+    {{ $MeetOurMentors->links() }}
     <div class="modal" id="addData">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content border-0">
@@ -185,7 +198,7 @@
                                     </div>
                                     <div class="note-title mt-3">
                                         <label for="description"> Description </label>
-                                        <input type="text" id="description" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Enter Description">
+                                        <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Enter Description"></textarea>
                                         @error('description', 'insert')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -206,7 +219,18 @@
                                       @enderror
                                       <img src="#" id="thumbnail_p" width="60" height="60" alt="Image Preview">
                                     </div>
-
+                                    <div class="note-title mt-3">
+                                        <label for="department">Select Department</label>
+                                        <select name="department_id" id="department_id" class="form-control @error('department_id') is-invalid @enderror">
+                                            <option value="">Select Department</option>
+                                            @foreach ($departments as $item_dep)
+                                                <option value="{{ $item_dep->id }}">{{ $item_dep->departmentName }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('department_id','insert')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                         </div>

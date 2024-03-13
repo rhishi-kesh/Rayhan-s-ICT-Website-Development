@@ -21,20 +21,27 @@
                                     style='border-collapse:collapse;border-spacing:0px;background-color:#EFEFEF;border-radius:20px 20px 0 0;width:600px'>
                                     <tr>
                                         <td align='left'
-                                            style='padding:0;Margin:0;padding-top:20px;padding-left:40px;padding-right:40px'>
+                                            style='padding:0;Margin:0;'>
                                             <table cellpadding='0' cellspacing='0' width='100%'>
                                                 <tr>
                                                     <td align='center' valign='top'
                                                         style='padding:0;Margin:0;width:520px'>
-                                                        <table cellpadding='0' cellspacing='0' width='100%'
-                                                            bgcolor='#fafafa'>
+                                                        <img src='http://interiorbangladesh.com/congress.gif' style='width: 100%;'>
+                                                        <table cellpadding='0' cellspacing='0' width='100%'>
                                                             <tr>
                                                                 <td align='left' style='padding:20px;Margin:0'>
                                                                     <h3 style='Margin:0;line-height:34px;font-family:Imprima, Arial, sans-serif;font-size:28px;font-style:normal;font-weight:bold;color:#2D3142'>
-                                                                        Congratulations!&nbsp;Edgar,
-                                                                    </h3>
+                                                                        Dear {{ $details['name'] }},
+                                                                    </h3> <br>
                                                                     <p style='Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;font-family:Imprima, Arial, sans-serif;line-height:27px;color:#2D3142;font-size:18px'>
-                                                                        Content
+                                                                        <b>Congratulations!</b> We are delighted to inform you that your enrollment in the {{ $details['subject'] }} has been successfully processed. <br> <br>
+                                                                        To access your course details and track your progress, please log in using the auto-generated ID and password provided below: <br><br>
+                                                                        ID: {{ $details['user_id'] }} <br>
+                                                                        Password: {{ $details['password'] }} <br><br>
+                                                                        Should you encounter any difficulties or have any questions, please do not hesitate to reach out to us. We are here to assist you every step of the way. <br> <br>
+                                                                        Best regards, <br>
+                                                                        Rayhan’s ICT Ltd. <br>
+                                                                        01998333824
                                                                     </p>
                                                                 </td>
                                                             </tr>
@@ -66,7 +73,7 @@
                             <tr>
                                 <td align='center' class='es-m-txt-c' style='padding:0;Margin:0;padding-bottom:20px;font-size:0px'>
                                     <a href='https://rayhansict.com/'>
-                                        <img src='{{ asset('logo.png') }}' alt='Logo' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px' title='Logo' height='60'>
+                                        <img src='https://rayhansict.com/wp-content/uploads/2020/08/logo.png' alt='Logo' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px' title='Logo' height='60'>
                                     </a>
                                 </td>
                             </tr>
@@ -78,7 +85,7 @@
                                         <tr>
                                             <td align='center' valign='top'
                                                 style='padding:0;Margin:0;padding-right:5px'>
-                                                <a target='_blank' href='https://www.facebook.com/Rayhansict' style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
+                                                <a target='_blank' href='https://www.facebook.com/RayhansICTInstitute' style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
                                                     <img src='https://ebyhigd.stripocdn.email/content/assets/img/social-icons/logo-black/facebook-logo-black.png' alt='Fb' title='Facebook' height='24' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic'>
                                                 </a>
                                             </td>
@@ -100,7 +107,7 @@
                             <tr>
                                 <td align='center' style='padding:0;Margin:0;padding-top:20px'>
                                     <p style='Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;font-family:Imprima, Arial, sans-serif;line-height:21px;color:#2D3142;font-size:14px'>
-                                        Copyright © 2016-2024
+                                        Copyright © 2016-{{ date('Y') }}
                                         <a href='https://rayhansict.com/' target='_blank'
                                             style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
                                             Rayhan's ICT Limited

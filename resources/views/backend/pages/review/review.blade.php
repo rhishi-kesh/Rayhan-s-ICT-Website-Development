@@ -3,7 +3,7 @@
 <div class="table-responsive rounded-2 mb-4">
     <a href="#addData" data-bs-toggle="modal" class="btn btn-secondary btn-lg mb-3">
         <i class="fs-4 ti ti-plus"></i>
-        Add new Mentors
+        Add new Review
     </a>
     <table class="table border text-nowrap customize-table mb-0 align-middle">
         @if(Session::has('success'))
@@ -96,6 +96,7 @@
         @endforelse
       </tbody>
     </table>
+    {{ $review->links() }}
     <div class="modal" id="addData">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content border-0">

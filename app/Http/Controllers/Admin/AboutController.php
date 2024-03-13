@@ -21,13 +21,13 @@ class AboutController extends Controller
             'chooseUs' => 'required',
             'chooseUsImage' => [
                 'image',
-                'mimes:jpg,png,jpeg',
+                'mimes:jpg,png,jpeg,gif',
                 'max:2048'
             ],
             'missionVision' => 'required',
             'missionVisionImage' => [
                 'image',
-                'mimes:jpg,png,jpeg',
+                'mimes:jpg,png,jpeg,gif',
                 'max:2048'
             ],
             'successfullStudent' => 'required',
@@ -69,7 +69,7 @@ class AboutController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        return back()->with('success','Website Information Updated Successfull');
+        return back()->with('success','About Us Updated Successfull');
     }
     public function companyInformation(){
         $companyInformation = CompanyInformation::first();
@@ -83,6 +83,7 @@ class AboutController extends Controller
                 'max:2048'
             ],
             'number' => 'required',
+            'fontdesk' => 'required',
             'email' => 'required',
             'facebook' => 'required',
             'instragram' => 'required',
@@ -112,6 +113,7 @@ class AboutController extends Controller
 
         CompanyInformation::where('id',$id)->update([
             'number' => $request->number,
+            'fontdesk' => $request->fontdesk,
             'gmail' => $request->email,
             'logo' => $filename,
             'facebook' => $request->facebook,

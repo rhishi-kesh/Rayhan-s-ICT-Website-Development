@@ -184,6 +184,24 @@ class CourseController extends Controller
             'status' => "OK",
         ]);
     }
+    public function is_footer(Request $request){
+        $id = $request->id;
+        $courses = Course::where('id',$id)->first();
+        if($courses->is_footer == 0){
+            Course::where('id',$id)->update([
+                'is_footer' => '1',
+                'updated_at' => Carbon::now()
+            ]);
+        }else{
+            Course::where('id',$id)->update([
+                'is_footer' => '0',
+                'updated_at' => Carbon::now()
+            ]);
+        }
+        return response()->json([
+            'status' => "OK",
+        ]);
+    }
     public function courseDetailes($id){
         $courseDetails = CourseDetails::where('course_id',$id)->with(['course:id,name'])->first();
         $mentors = MeetOurMentors::select('name','id')->get();
@@ -226,7 +244,6 @@ class CourseController extends Controller
         return back()->with('success', 'CourseDetails Update Successfully');
     }
     // Course Learning
-
     public function CourseLearnings($id){
         $courseDetails = CourseLearnings::where('course_id',$id)->with(['course:id,name'])->paginate();
         $courseid = $id;
@@ -255,7 +272,7 @@ class CourseController extends Controller
                 'created_at' => Carbon::now()
             ]);
         }
-        return back()->with('success','Learning Add Successfull');
+        return back()->with('success','Course Learning Add Successfull');
     }
     public function CourseLearningsEdit(Request $request){
         $request->validateWithBag('update',[
@@ -295,9 +312,7 @@ class CourseController extends Controller
 
         return back()->with('error','Course Learning Deleted Successfull');
     }
-
     // Course For Those
-
     public function courseForThose($id){
         $courseForThose = CourseForThose::where('course_id',$id)->with(['course:id,name'])->paginate();
         $courseid = $id;
@@ -367,7 +382,6 @@ class CourseController extends Controller
         return back()->with('error','CourseForThose Deleted Successfull');
     }
     // Benefits Of Course
-
      public function benefitsOfCourse($id){
         $benefitsOfCourse = BenefitsOfCourse::where('course_id',$id)->with(['course:id,name'])->paginate(7);
         $courseid = $id;
@@ -437,7 +451,6 @@ class CourseController extends Controller
         return back()->with('error','BenefitsOfCourse Deleted Successfull');
     }
     //  Creative Products
-
     public function creativeProject($id){
         $creativeProject = CreativeProject::where('course_id',$id)->with(['course:id,name'])->paginate(7);
         $courseid = $id;
@@ -503,7 +516,6 @@ class CourseController extends Controller
         return back()->with('error','CreativeProject Deleted Successfull');
     }
     // Course Module
-
     public function courseModule($id){
         $courseModule = CourseModule::where('course_id',$id)->with(['course:id,name'])->paginate(7);
         $courseid = $id;
@@ -544,7 +556,6 @@ class CourseController extends Controller
         return back()->with('error', 'course Module Delete successfully');
     }
     // Course FAQ
-
     public function courseFAQ($id){
         $CourseFAQ = CourseFAQ::where('course_id',$id)->with(['course:id,name'])->paginate(7);
         $courseid = $id;

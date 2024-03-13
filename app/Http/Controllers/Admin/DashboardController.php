@@ -6,32 +6,31 @@ use App\Http\Controllers\Controller;
 use App\Models\Admission;
 use App\Models\ApplyForDemoClass;
 use App\Models\ContactUs;
+use App\Models\Seminar;
+use App\Models\SeminerRegister;
+use App\Models\Webinar;
+use App\Models\WebinarRegister;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-//    Admission part
     public function dashboard(){
-        $admission = Admission::paginate(30);
+        $admission = Admission::paginate(50);
         return view('backend/pages/main', compact('admission'));
     }
-
     public function admissionDelete($id){
         Admission::findOrFail($id)->delete();
-        return back()->with('error', 'Admission Delete Successfully');
+        return back()->with('error', 'Student Delete Successfully');
     }
-
     public function AdmisionSearch(Request $request){
         $data = $request->input('searchA');
-        $demoClass = Admission::where('name', 'like', '%'.$data.'%')->orwhere('email', 'like', '%'.$data.'%')->orwhere('number', 'like', '%'.$data.'%')->orwhere('subject', 'like', '%'.$data.'%')->get();
+        $demoClass = Admission::where('name', 'like', '%'.$data.'%')->orwhere('email', 'like', '%'.$data.'%')->orwhere('number', 'like', '%'.$data.'%')->paginate(50);
         return view('backend.pages.demoClasss.demoClass', compact('demoClass'));
     }
-    // Admission part end    //
 
-     // Apply Demo Class
-
-     public function applyDemoClass(){
-        $demoClass = ApplyForDemoClass::paginate(10); 
+    // Apply Demo Class
+    public function applyDemoClass(){
+        $demoClass = ApplyForDemoClass::paginate(50);
         return view('backend.pages.demoClasss.demoClass', compact('demoClass'));
     }
     public function demoClassDelete($id){
@@ -40,13 +39,12 @@ class DashboardController extends Controller
     }
     public function DemoClsSearch(Request $request){
         $data = $request->input('searchD');
-        $demoClass = ApplyForDemoClass::where('name', 'like', '%'.$data.'%')->orwhere('email', 'like', '%'.$data.'%')->orwhere('number', 'like', '%'.$data.'%')->orwhere('subject', 'like', '%'.$data.'%')->get();
+        $demoClass = ApplyForDemoClass::where('name', 'like', '%'.$data.'%')->orwhere('email', 'like', '%'.$data.'%')->orwhere('number', 'like', '%'.$data.'%')->paginate(50);
         return view('backend.pages.demoClasss.demoClass', compact('demoClass'));
     }
-    // Contact Us 
-
+    // Contact Us
     public function ContactUs(){
-        $contactUs = ContactUs::paginate(20);
+        $contactUs = ContactUs::paginate(50);
         return view('backend.pages.contactUs.contactUs', compact('contactUs'));
     }
     public function ContactUsDelete($id){
@@ -55,8 +53,26 @@ class DashboardController extends Controller
     }
     public function ContactSearch(Request $request){
         $data = $request->input('search');
-        $contactUs = ContactUs::where('name', 'like', '%'.$data.'%')->orwhere('email', 'like', '%'.$data.'%')->orwhere('number', 'like', '%'.$data.'%')->orwhere('subject', 'like', '%'.$data.'%')->get();
+        $contactUs = ContactUs::where('name', 'like', '%'.$data.'%')->orwhere('email', 'like', '%'.$data.'%')->orwhere('number', 'like', '%'.$data.'%')->paginate(50);
         return view('backend.pages.contactUs.contactUs', compact('contactUs'));
+    }
+    public function seminerData(){
+        $seminer = Seminar::get();
+        $seminerRegister = SeminerRegister::paginate(50);
+        return view('backend.pages.seminars.seminerShow', compact('seminer','seminerRegister'));
+    }
+    public function seminarDataDelete($id){
+        SeminerRegister::findOrFail($id)->delete();
+        return back()->with('error', 'Data Deleted Successfully');
+    }
+    public function webinarData(){
+        $webinar = Webinar::get();
+        $WebinarRegister = WebinarRegister::paginate(50);
+        return view('backend.pages.webinar.webinarShow', compact('webinar','WebinarRegister'));
+    }
+    public function webinarDataDelete($id){
+        WebinarRegister::findOrFail($id)->delete();
+        return back()->with('error', 'Data Deleted Successfully');
     }
 
 }

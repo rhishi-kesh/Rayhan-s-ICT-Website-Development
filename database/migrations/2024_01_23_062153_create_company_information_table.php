@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('company_information', function (Blueprint $table) {
             $table->id();
             $table->string('number');
+            $table->string('fontdesk');
             $table->string('gmail');
             $table->string('logo');
             $table->string('facebook');

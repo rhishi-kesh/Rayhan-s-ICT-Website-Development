@@ -25,15 +25,15 @@ class FrontendController extends Controller
         $departments = Department::get();
         $successStorys = SuccessStory::take('6')->get();
         $reviews = Review::get();
-        $mentor = MeetOurMentors::get();
+        $mentor = MeetOurMentors::with('department')->get();
         $auth_logo = Authorised::get();
         $faq = FAQ::get();
         $course = [];
-        $course = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
+        $courses = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
         ->where('is_active', '0')
         ->get();
         $popup = PopUp::where('is_active','0')->first();
-        return view('frontend.pages.main', compact('heroInformations','departments','successStorys','reviews','mentor','auth_logo','faq','course','popup'));
+        return view('frontend.pages.main', compact('heroInformations','departments','successStorys','reviews','mentor','auth_logo','faq','courses','popup'));
     }
     public function about(){
         $about = About::first();
@@ -43,16 +43,12 @@ class FrontendController extends Controller
         return view('frontend.pages.about.about', compact('about','mentor','departments','workSpaceImage'));
     }
     public function course(){
-        // $departments = Department::get();
-        $courses = Course::with(['department','courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
+        $courses = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
         ->where('is_active', '0')
-        ->get()
-        ->groupBy('department_id');
-
-        // return $courses;
+        ->get();
 
         $reviews = Review::get();
-        return view('frontend.pages.course.course', compact('courses','reviews'));
+        return view('frontend.pages.course.course', compact('reviews','courses'));
     }
     public function success(){
         $successStorys = SuccessStory::get();
@@ -89,5 +85,21 @@ class FrontendController extends Controller
     }
     public function privacyPolicy(){
         return view('frontend.pages.privacyPolicy.privacyPolicy');
+    }
+    public function admission(){
+        return view('frontend.pages.admisionform.admision');
+    }
+    public function demoClass(){
+        return view('frontend.pages.democlassform.demoClass');
+    }
+    public function singleSeminer($slug){
+        $seminer = Seminar::where('slug', $slug)->first();
+        $title = $seminer->title;
+        return view('frontend.pages.singleSeminr.singleSeminer', compact('seminer', 'title'));
+    }
+    public function singleWebiner($slug){
+        $webinar = Webinar::where('slug', $slug)->first();
+        $title = $webinar->title;
+        return view('frontend.pages.singleWebiner.singleWebinger', compact('webinar','title'));
     }
 }

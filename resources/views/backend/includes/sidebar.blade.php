@@ -41,18 +41,34 @@
         <li class="sidebar-item">
           <a href="{{ route('applyDemoClass') }}" class="sidebar-link">
             <div class="round-16 d-flex align-items-center justify-content-center">
-              <i class="fa fa-film" aria-hidden="true"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg>
             </div>
-            <span class="hide-menu">Demo Class</span>
+            <span class="hide-menu">Demo Class Data</span>
           </a>
         </li>
         <li class="sidebar-item">
           <a href="{{ route('ContactUs') }}" class="sidebar-link">
             <div class="round-16 d-flex align-items-center justify-content-center">
-              <i class="fa fa-address-book" aria-hidden="true"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg>
             </div>
-            <span class="hide-menu">Contact Us</span>
+            <span class="hide-menu">Contact Us Data</span>
           </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="{{ route('seminerData') }}" class="sidebar-link">
+              <div class="round-16 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg>
+              </div>
+              <span class="hide-menu">Seminar Data</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="{{ route('webinarData') }}" class="sidebar-link">
+              <div class="round-16 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg>
+              </div>
+              <span class="hide-menu">Webinar Data</span>
+            </a>
         </li>
         <!-- ============================= -->
         <!-- Apps -->
@@ -166,14 +182,26 @@
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="{{route('seminar')}}" aria-expanded="false">
-            <span class="fas fa-comment-dots"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-needle-thread" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21c-.667 -.667 3.262 -6.236 11.785 -16.709a3.5 3.5 0 1 1 5.078 4.791c-10.575 8.612 -16.196 12.585 -16.863 11.918z" /><path d="M17.5 6.5l-1 1" /><path d="M17 7c-2.333 -2.667 -3.5 -4 -5 -4s-2 1 -2 2c0 4 8.161 8.406 6 11c-1.056 1.268 -3.363 1.285 -5.75 .808" /><path d="M5.739 15.425c-1.393 -.565 -3.739 -1.925 -3.739 -3.425" /><path d="M19.5 9.5l1.5 1.5" /></svg>
             <span class="hide-menu"> Seminar </span>
           </a>
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="{{route('webinar')}}" aria-expanded="false">
-            <span class="fas fa-comment-dots"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-needle-thread" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21c-.667 -.667 3.262 -6.236 11.785 -16.709a3.5 3.5 0 1 1 5.078 4.791c-10.575 8.612 -16.196 12.585 -16.863 11.918z" /><path d="M17.5 6.5l-1 1" /><path d="M17 7c-2.333 -2.667 -3.5 -4 -5 -4s-2 1 -2 2c0 4 8.161 8.406 6 11c-1.056 1.268 -3.363 1.285 -5.75 .808" /><path d="M5.739 15.425c-1.393 -.565 -3.739 -1.925 -3.739 -3.425" /><path d="M19.5 9.5l1.5 1.5" /></svg>
             <span class="hide-menu"> Webinar </span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{route('popUp')}}" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ad-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 4h-14a3 3 0 0 0 -3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3 -3v-10a3 3 0 0 0 -3 -3zm-10 4a3 3 0 0 1 2.995 2.824l.005 .176v4a1 1 0 0 1 -1.993 .117l-.007 -.117v-1h-2v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-4a3 3 0 0 1 3 -3zm0 2a1 1 0 0 0 -.993 .883l-.007 .117v1h2v-1a1 1 0 0 0 -1 -1zm8 -2a1 1 0 0 1 .993 .883l.007 .117v6a1 1 0 0 1 -.883 .993l-.117 .007h-1.5a2.5 2.5 0 1 1 .326 -4.979l.174 .029v-2.05a1 1 0 0 1 .883 -.993l.117 -.007zm-1.41 5.008l-.09 -.008a.5 .5 0 0 0 -.09 .992l.09 .008h.5v-.5l-.008 -.09a.5 .5 0 0 0 -.318 -.379l-.084 -.023z" stroke-width="0" fill="currentColor" /></svg>
+            <span class="hide-menu"> Pop-up </span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{route('topAdvertising')}}" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ad-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 4h-14a3 3 0 0 0 -3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3 -3v-10a3 3 0 0 0 -3 -3zm-10 4a3 3 0 0 1 2.995 2.824l.005 .176v4a1 1 0 0 1 -1.993 .117l-.007 -.117v-1h-2v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-4a3 3 0 0 1 3 -3zm0 2a1 1 0 0 0 -.993 .883l-.007 .117v1h2v-1a1 1 0 0 0 -1 -1zm8 -2a1 1 0 0 1 .993 .883l.007 .117v6a1 1 0 0 1 -.883 .993l-.117 .007h-1.5a2.5 2.5 0 1 1 .326 -4.979l.174 .029v-2.05a1 1 0 0 1 .883 -.993l.117 -.007zm-1.41 5.008l-.09 -.008a.5 .5 0 0 0 -.09 .992l.09 .008h.5v-.5l-.008 -.09a.5 .5 0 0 0 -.318 -.379l-.084 -.023z" stroke-width="0" fill="currentColor" /></svg>
+            <span class="hide-menu"> Top Advertising </span>
           </a>
         </li>
         @if (auth()->user()->role == 0)
@@ -184,18 +212,6 @@
             </a>
         </li>
         @endif
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="{{route('popUp')}}" aria-expanded="false">
-            <span class="fas fa-comment-dots"></span>
-            <span class="hide-menu"> Pop-up </span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="{{route('topAdvertising')}}" aria-expanded="false">
-            <span class="fas fa-comment-dots"></span>
-            <span class="hide-menu"> Top Advertising </span>
-          </a>
-        </li>
       </ul>
     </nav>
     <!-- End Sidebar navigation -->

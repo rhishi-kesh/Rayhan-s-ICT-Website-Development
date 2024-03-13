@@ -28,7 +28,7 @@ class applyForDemoClassMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Apply Successfull For Demo Class',
+            subject: 'Confirmation: Demo Class Request Received',
         );
     }
 
