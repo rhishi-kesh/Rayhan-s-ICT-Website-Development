@@ -91,7 +91,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::get('/hero',[AboutController::class, 'hero'])->name('hero');
     Route::post('/hero-post',[AboutController::class, 'heroPost'])->name('heroPost');
 
-    // Company-Information
+    // Company-Information 
     Route::get('/company-information',[AboutController::class, 'companyInformation'])->name('companyInformation');
     Route::post('/company-information-post',[AboutController::class, 'companyInformationPost'])->name('companyInformationPost');
 

@@ -23,9 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // view()->share('companyInformation', CompanyInformation::first());
-        // view()->share('course', Course::where('is_active', '0')->where('is_footer','0')->get());
-        // view()->share('topbanner', TopAdvertising::where('is_active', '0')->first());
+        view()->share('companyInformation', CompanyInformation::first());
+        view()->share('course', Course::where('is_active', '0')->where('is_footer','0')->get());
+        view()->share('topbanner', TopAdvertising::where('is_active', '0')->first());
         Paginator::useBootstrap();
     }
 }

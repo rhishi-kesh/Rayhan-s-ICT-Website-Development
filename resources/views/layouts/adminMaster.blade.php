@@ -67,5 +67,6 @@
     <script src=" {{ asset('backend/js/ckeditor (1).js') }}"></script>
 
     @yield('jss')
+    @stack('jss')
   </body>
 </html>
