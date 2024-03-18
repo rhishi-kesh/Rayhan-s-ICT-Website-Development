@@ -1,7 +1,7 @@
 @extends('layouts.frontendMaster')
 @section('title','Success')
 @section('content')
-    <section class="success_story py-5">
+    {{-- <section class="success_story py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 text-center section-head">
@@ -25,7 +25,7 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- success_story-end -->
     <section class="Reviews py-3 py-lg-5">
         <div class="container">
