@@ -542,6 +542,12 @@ nav .nav-bar .logo a{
     z-index: 99;
     color: var(--white);
 }
+.best-selling .nextarrow{
+    right: 9px;
+}
+.best-selling .prevarrow{
+    left: 10px;
+}
 .courseDepartment .nextarrow{
     top: 50%;
 }

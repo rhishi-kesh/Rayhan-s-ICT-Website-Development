@@ -212,16 +212,57 @@
     </div>
 </section>
 <!-- mentors-end -->
-<section>
+<section class="certifiedBy">
     <div class="container">
-
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
+            <div class="col-12 col-md-10">
                 <img src="{{ asset('bteb.png') }}" alt="bteb" class="img-fluid">
             </div>
         </div>
     </div>
 </section>
+<!-- certifiedBy-end -->
+<section class="best-selling Course py-4 py-lg-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 text-center section-head">
+                <h2 class="text-uppercase fs-1 mb-0">Our Best Selling Course</h2>
+                <span></span>
+                <p class="mt-1 lead">Our Bestselling Course for Achieving Your Goals and Realizing Your Potential!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-2">
+                <div class="course_items">
+                    <div class="course_category_slider">
+                        @foreach ($bestSelling as $item)
+                            <div class="col mt-4 mx-1">
+                                <div class="card">
+                                    <a href="{{ route('singleCourse',$item->slug) }}" class="img">
+                                        <img src="{{ asset('storage/CourseDetails/'. $item->courseDetails->thumbnail) }}" alt="">
+                                    </a>
+                                    <div class="card-body pb-2">
+                                        <h5>
+                                            <a href="{{ route('singleCourse',$item->slug) }}">{{ $item->name }}</a>
+                                        </h5>
+                                        <p class="mt-2">By: <span class="mentor">{{ $item->courseDetails->mentor->name }}</span></p>
+                                        <div class="d-flex justify-content-between mt-5 align-items-center">
+                                            <p>
+                                                <a href="{{ route('singleCourse',$item->slug) }}" class="buy-btn">Learn More</a>
+                                            </p>
+                                            <p><b>৳{{ $item->courseDetails->price }}</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Best-selling-course -->
 <section class="brands py-4 py-lg-5">
     <div class="container">
        <div class="row justify-content-center">

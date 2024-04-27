@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('is_footer')->default('1')->comment("1 = deactive, 0 = active");
+            $table->foreignId('is_bestSelling')->default('1')->comment("1 = deactive, 0 = active");
             $table->foreignId('department_id');
             $table->string('name');
             $table->string('slug')->unique();

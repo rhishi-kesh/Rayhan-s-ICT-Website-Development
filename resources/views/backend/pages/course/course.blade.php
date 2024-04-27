@@ -22,9 +22,10 @@
         <tr>
           <th><h6 class="fs-4 fw-semibold mb-0">SL</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-center">Name</h6></th>
-          <th><h6 class="fs-4 fw-semibold mb-0 text-center">Status</h6></th>
+          <th><h6 class="fs-4 fw-semibold mb-0 text-center">Show in Site</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-center">Department</h6></th>
-          <th><h6 class="fs-4 fw-semibold mb-0 text-center">Is Footer</h6></th>
+          <th><h6 class="fs-4 fw-semibold mb-0 text-center">Show in Footer</h6></th>
+          <th><h6 class="fs-4 fw-semibold mb-0 text-center">Show Best Selling</h6></th>
           <th><h6 class="fs-4 fw-semibold mb-0 text-end pe-3">Action</h6></th>
         </tr>
       </thead>
@@ -48,6 +49,11 @@
             <td class="switch-sm text-center">
                 <div class="form-check form-switch d-flex justify-content-center">
                     <input class="form-check-input" type="checkbox" onclick="is_footer({{ $item->id }})" id="flexSwitchCheckChecked" @if($item->is_footer == 0) checked @endif>
+                </div>
+            </td>
+            <td class="switch-sm text-center">
+                <div class="form-check form-switch d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox" onclick="is_bestSelling({{ $item->id }})" id="flexSwitchCheckChecked" @if($item->is_bestSelling == 0) checked @endif>
                 </div>
             </td>
             <td class="text-end">
@@ -318,12 +324,30 @@
             }
         </script>
         <script>
-            thumbnail.onchange = evt => {
-            const [file] = thumbnail.files
-            if (file) {
-                thumbnail_preview.src = URL.createObjectURL(file)
+            function is_bestSelling(id){
+                var id = id;
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type:'POST',
+                    url:'/admin/is-bestselling',
+                    data: {id:id},
+                    success:function(res) {
+                        console.log(res.status);
+                    }
+                });
             }
-        }
+        </script>
+        <script>
+            thumbnail.onchange = evt => {
+                const [file] = thumbnail.files
+                if (file) {
+                    thumbnail_preview.src = URL.createObjectURL(file)
+                }
+            }
         </script>
     @endsection
     <script type="text/javascript">

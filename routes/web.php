@@ -150,6 +150,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::get('/course-delete/{id}', [CourseController::class, 'courseDelete'])->name('courseDelete');
     Route::post('/staus', [CourseController::class, 'staus'])->name('staus');
     Route::post('/is-footer', [CourseController::class, 'is_footer'])->name('is_footer');
+    Route::post('/is-bestselling', [CourseController::class, 'is_bestSelling'])->name('is_bestSelling');
 
     //Course-Detailes
     Route::get('/course-detailes/{id}', [CourseController::class, 'courseDetailes'])->name('courseDetailes');

@@ -32,8 +32,12 @@ class FrontendController extends Controller
         $courses = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
         ->where('is_active', '0')
         ->get();
+        $bestSelling = Course::with(['courseDetails:id,course_id,price,thumbnail,mentor_id','courseDetails.mentor:name,id'])
+        ->where('is_active', '0')
+        ->where('is_bestSelling', '0')
+        ->get();
         $popup = PopUp::where('is_active','0')->first();
-        return view('frontend.pages.main', compact('heroInformations','departments','successStorys','reviews','mentor','auth_logo','faq','courses','popup'));
+        return view('frontend.pages.main', compact('heroInformations','departments','successStorys','reviews','mentor','auth_logo','faq','courses','popup','bestSelling'));
     }
     public function about(){
         $about = About::first();
