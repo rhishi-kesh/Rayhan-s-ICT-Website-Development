@@ -531,7 +531,7 @@ class CourseController extends Controller
         return back()->with('error','CreativeProject Deleted Successfull');
     }
     public function courseModule($id){
-        $courseModule = CourseModule::where('course_id',$id)->with(['course:id,name'])->paginate(7);
+        $courseModule = CourseModule::where('course_id',$id)->with(['course:id,name'])->paginate(15);
         $courseid = $id;
         return view('backend.pages.course.courseModule', compact('courseModule', 'courseid') );
     }

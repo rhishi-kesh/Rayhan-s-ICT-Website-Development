@@ -114,6 +114,7 @@
                 </div>
             </td>
         </tr>
+        {{-- Edit course data --}}
         <div class="modal" id="editData{{ $item->id }}">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content border-0">
@@ -169,6 +170,7 @@
       </tbody>
     </table>
     {{ $courses->links() }}
+    {{-- Add course --}}
     <div class="modal" id="addData">
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
           <div class="modal-content border-0">

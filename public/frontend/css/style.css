@@ -1161,7 +1161,7 @@ footer .top-footer .browse_course:hover:after {
 }
 .footer-widget ul li a {
   color: var(--dark);
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   text-decoration: none;
   font-size: 14px;
 }
@@ -2169,5 +2169,13 @@ footer .contact i{
 @media screen and (max-width: 360px){
     .course_detailes .navtabs li a {
       font-size: 9px;
+    }
+}
+#seminar{
+    width: 50%;
+}
+@media screen and (max-width:767px) {
+    #seminar{
+        width: 100%;
     }
 }

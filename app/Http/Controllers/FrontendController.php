@@ -83,6 +83,7 @@ class FrontendController extends Controller
         $courses = Course::with(['department','courseDetails','courseDetails.mentor','courseLearnings','courseForThoose','courseBenifits','coursestudentprojects','courseModuls','courseFaq'])
         ->where('slug',$slug)
         ->where('is_active', '0')
+        ->latest('created_at')
         ->first();
         $title = $courses->name;
         return view('frontend.pages.singleCourse.singleCourse', compact('courses','title'));

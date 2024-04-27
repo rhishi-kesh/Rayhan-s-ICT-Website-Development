@@ -41,7 +41,7 @@
                 <span>{{ $item->class_no}}</span>
             </td>
             <td   class="text-center">
-                <span>{{$item->class_topics }}</span>
+                <span>{{ Str::limit($item->class_topics, 50) }}</span>
             </td>
             <td class="text-end">
                 <div class="dropdown dropstart">
@@ -66,6 +66,7 @@
                   <h6 class="modal-title text-white">Edit Course Module</h6>
                   <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                
                 <form action="{{ route('courseModuleEdit')}}" method="post" id="addnotesmodalTitle" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="id" value="{{$item->id}}">
@@ -82,9 +83,10 @@
                                         @enderror
                                     </div>
                                     <div class="note-title mt-3">
-                                        <label for="class_topics"> Class Topics </label>
-                                        <textarea class="form-control @error('class_topics') is-invalid @enderror" name="class_topics" id="class_topics" placeholder="Enter class_topics">
-                                        {{$item->class_topics }} </textarea>
+                                        <label for="class_topics{{$item->id }}"> Class Topics </label>
+                                        <textarea class="form-control @error('class_topics') is-invalid @enderror" name="class_topics" id="class_topics{{$item->id }}" placeholder="Enter class_topics">
+                                            {{$item->class_topics }}
+                                         </textarea>
                                         @error('class_topics', 'insert')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -102,6 +104,15 @@
             </div>
           </div>
         </div>
+        @push('jss') 
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#class_topics{{$item->id }}' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+    @endpush
         @empty
         <tr>
             <td class="text-center text-danger" colspan="20">NO Data Found</td>
@@ -152,14 +163,13 @@
         </div>
       </div>
   </div>
+
+    <script type="text/javascript">
+        window.setTimeout("document.getElementById('successMessage').style.display='none';", 2000);
+        window.setTimeout("document.getElementById('errorMessage').style.display='none';", 2000);
+    </script>
     @section('jss')
     <script>
-        ClassicEditor
-            .create( document.querySelector( '#class_topics' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-
         ClassicEditor
             .create( document.querySelector( '#class_topics_add' ) )
             .catch( error => {
@@ -167,8 +177,4 @@
             } );
     </script>
     @endsection
-    <script type="text/javascript">
-        window.setTimeout("document.getElementById('successMessage').style.display='none';", 2000);
-        window.setTimeout("document.getElementById('errorMessage').style.display='none';", 2000);
-    </script>
 @endsection

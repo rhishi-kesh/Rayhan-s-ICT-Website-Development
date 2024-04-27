@@ -52,7 +52,7 @@
     </div>
 </section>
 <!-- hero-end -->
-<section class="success_story py-5">
+{{-- <section class="success_story py-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center section-head">
@@ -89,7 +89,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- success_story-end -->
 <section class="Course py-4 py-lg-5">
     <div class="container">
@@ -97,7 +97,7 @@
             <div class="col-12 col-md-8 text-center section-head">
                 <h2 class="text-uppercase fs-1 mb-0">Populer Course</h2>
                 <span></span>
-                <p class="mt-1 lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptas rerum veniam.</p>
+                <p class="mt-1 lead">We've tailored our courses to teach crucial professional skills. The insights and proficiency gained will secure your preferred role in the global job market. You can enroll in any of our courses, whenever it suits you.</p>
             </div>
         </div>
         <div class="row">
@@ -157,7 +157,7 @@
             <div class="col-12 col-md-8 text-center section-head">
                 <h2 class="text-uppercase fs-1 mb-0">What People Think <b class="text-brand-1">About Us?</b></h2>
                 <span></span>
-                <p class="mt-1 lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptas rerum veniam.</p>
+                <p class="mt-1 lead">Our reputation is positively perceived by others, as they regard us with favor and appreciation for our straightforward and professional approach.</p>
             </div>
         </div>
         <div class="row review">

@@ -19,6 +19,7 @@
                     <hr class="mb-0">
                 </div>
             </div>
+            {{-- seminar  --}}
             <div class="row">
                 @forelse ($seminer as $item)
                     <div class="col-12 col-md-6 col-lg-4 mt-4">
@@ -40,12 +41,13 @@
                         </div>
                     </div>
                 @empty
-                    <div class="col">
-                        <p class="text-danger">Seminers Not Available</p>
+                    <div id="seminar" class="card mt-3 text-center p-3 bg-light">
+                        <p class="mb-0 text-danger">Seminar unavailable at this time.</p>
                     </div>
                 @endforelse
             </div>
             <!-- Seminers end -->
+            {{--  --}}
             <div class="row mt-5">
                 <div class="col-12">
                     <h3 class="d-inline"><i class="fa-solid fa-gift fa-lg" style="color: #ff6127;"></i> <span class="ms-2">Upcoming Webinars</span></h3>
@@ -73,8 +75,8 @@
                         </div>
                     </div>
                 @empty
-                    <div class="col">
-                        <p class="text-danger">Webinars Not Available</p>
+                    <div id="seminar" class="card mt-3 text-center p-3 bg-light">
+                        <p class="mb-0 text-danger">Webinar unavailable at this time.</p>
                     </div>
                 @endforelse
             </div>
