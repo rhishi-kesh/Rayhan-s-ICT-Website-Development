@@ -61,68 +61,68 @@
                     <table cellpadding='0' cellspacing='0' class='es-footer' align='center'>
                         <tr>
                             <td align='center' style='padding:0;Margin:0'>
-<table bgcolor='#bcb8b1' class='es-footer-body' align='center' cellpadding='0' cellspacing='0'
-    style='border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px'>
-    <tr>
-        <td align='left' style='Margin:0;padding-left:20px;padding-right:20px;padding-bottom:30px;padding-top:40px'>
-            <table cellpadding='0' cellspacing='0' width='100%' style='border-collapse:collapse;border-spacing:0px'>
-                <tr>
-                    <td align='left' style='padding:0;Margin:0;width:560px'>
-                        <table cellpadding='0' cellspacing='0' width='100%'
-                            style='border-collapse:collapse;border-spacing:0px'>
-                            <tr>
-                                <td align='center' class='es-m-txt-c' style='padding:0;Margin:0;padding-bottom:20px;font-size:0px'>
-                                    <a href='https://rayhansict.com/'>
-                                        <img src='https://rayhansict.com/wp-content/uploads/2020/08/logo.png' alt='Logo' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px' title='Logo' height='60'>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align='center' class='es-m-txt-c'
-                                    style='padding:0;Margin:0;padding-top:10px;padding-bottom:20px;font-size:0'>
-                                    <table cellpadding='0' cellspacing='0' class='es-table-not-adapt es-social'
-                                        style='border-collapse:collapse;border-spacing:0px'>
-                                        <tr>
-                                            <td align='center' valign='top'
-                                                style='padding:0;Margin:0;padding-right:5px'>
-                                                <a target='_blank' href='https://www.facebook.com/RayhansICTInstitute' style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
-                                                    <img src='https://ebyhigd.stripocdn.email/content/assets/img/social-icons/logo-black/facebook-logo-black.png' alt='Fb' title='Facebook' height='24' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic'>
-                                                </a>
-                                            </td>
-                                            <td align='center' valign='top'
-                                                style='padding:0;Margin:0;padding-right:5px'>
-                                                <a target='_blank' href='https://www.instagram.com/rayhansict/' style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
-                                                    <img src='https://freepngimg.com/save/58409-amstel-computer-instagram-gold-icons-race-logo/560x560' alt='Ins' title='Instragram' height='24' style='display:block;border:0;outline:none;text-decoration:none; -ms-interpolation-mode:bicubic'>
-                                                </a>
-                                            </td>
-                                            <td align='center' valign='top' style='padding:0;Margin:0'>
-                                                <a target='_blank' href='https://bd.linkedin.com/company/rayhansict' style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
-                                                    <img src='https://ebyhigd.stripocdn.email/content/assets/img/social-icons/logo-black/linkedin-logo-black.png' alt='In' title='Linkedin' height='24' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic'>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align='center' style='padding:0;Margin:0;padding-top:20px'>
-                                    <p style='Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;font-family:Imprima, Arial, sans-serif;line-height:21px;color:#2D3142;font-size:14px'>
-                                        Copyright © 2016-{{ date('Y') }}
-                                        <a href='https://rayhansict.com/' target='_blank'
-                                            style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
-                                            Rayhan's ICT Limited
-                                        </a>
-                                        <br type='_moz'>
-                                    </p>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+                                <table bgcolor='#bcb8b1' class='es-footer-body' align='center' cellpadding='0' cellspacing='0'
+                                    style='border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px'>
+                                    <tr>
+                                        <td align='left' style='Margin:0;padding-left:20px;padding-right:20px;padding-bottom:30px;padding-top:40px'>
+                                            <table cellpadding='0' cellspacing='0' width='100%' style='border-collapse:collapse;border-spacing:0px'>
+                                                <tr>
+                                                    <td align='left' style='padding:0;Margin:0;width:560px'>
+                                                        <table cellpadding='0' cellspacing='0' width='100%'
+                                                            style='border-collapse:collapse;border-spacing:0px'>
+                                                            <tr>
+                                                                <td align='center' class='es-m-txt-c' style='padding:0;Margin:0;padding-bottom:20px;font-size:0px'>
+                                                                    <a href='https://rayhansict.com/'>
+                                                                        <img src='https://rayhansict.com/wp-content/uploads/2020/08/logo.png' alt='Logo' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px' title='Logo' height='60'>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align='center' class='es-m-txt-c'
+                                                                    style='padding:0;Margin:0;padding-top:10px;padding-bottom:20px;font-size:0'>
+                                                                    <table cellpadding='0' cellspacing='0' class='es-table-not-adapt es-social'
+                                                                        style='border-collapse:collapse;border-spacing:0px'>
+                                                                        <tr>
+                                                                            <td align='center' valign='top'
+                                                                                style='padding:0;Margin:0;padding-right:5px'>
+                                                                                <a target='_blank' href='https://www.facebook.com/RayhansICTInstitute' style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
+                                                                                    <img src='https://ebyhigd.stripocdn.email/content/assets/img/social-icons/logo-black/facebook-logo-black.png' alt='Fb' title='Facebook' height='24' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic'>
+                                                                                </a>
+                                                                            </td>
+                                                                            <td align='center' valign='top'
+                                                                                style='padding:0;Margin:0;padding-right:5px'>
+                                                                                <a target='_blank' href='https://www.instagram.com/rayhansict/' style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
+                                                                                    <img src='https://freepngimg.com/save/58409-amstel-computer-instagram-gold-icons-race-logo/560x560' alt='Ins' title='Instragram' height='24' style='display:block;border:0;outline:none;text-decoration:none; -ms-interpolation-mode:bicubic'>
+                                                                                </a>
+                                                                            </td>
+                                                                            <td align='center' valign='top' style='padding:0;Margin:0'>
+                                                                                <a target='_blank' href='https://bd.linkedin.com/company/rayhansict' style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
+                                                                                    <img src='https://ebyhigd.stripocdn.email/content/assets/img/social-icons/logo-black/linkedin-logo-black.png' alt='In' title='Linkedin' height='24' style='display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic'>
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align='center' style='padding:0;Margin:0;padding-top:20px'>
+                                                                    <p style='Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;font-family:Imprima, Arial, sans-serif;line-height:21px;color:#2D3142;font-size:14px'>
+                                                                        Copyright © 2016-{{ date('Y') }}
+                                                                        <a href='https://rayhansict.com/' target='_blank'
+                                                                            style='-webkit-text-size-adjust:none;-ms-text-size-adjust:none;text-decoration:underline;color:#2D3142;font-size:14px'>
+                                                                            Rayhan's ICT Limited
+                                                                        </a>
+                                                                        <br type='_moz'>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                     </table>
