@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <!-- meta tags -->
-    <meta name="description" content="Develop your professional &amp; personal skills through Rayhans ICT Institute. We provide Graphic Design, Web Design & Development,Office course, Digital Marketing, Automation Training etc affordable price. Phone + 880 1534-545945">
+    <meta name="description" content="Best institute of Mirpur. Develop your professional &amp; personal skills through Rayhans ICT Institute. We provide Graphic Design, Web Design & Development, Office course, Digital Marketing, Automation Training etc affordable price. Phone + 880 1534-545945">
     <meta property="og:image" content="https://rayhansict.com/wp-content/uploads/2021/09/rayhasnsict.jpg">
 
     <!-- links -->
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/venobox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    @stack('css')
 </head>
 <body>
     @include('frontend/includes/header')

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ApiController extends Controller
 {
     public function courseData(){
-        $data = Course::get();
+        $data = Course::where('is_active', 0)->select('id','name','slug')->get();
         return response($data);
     }
 }

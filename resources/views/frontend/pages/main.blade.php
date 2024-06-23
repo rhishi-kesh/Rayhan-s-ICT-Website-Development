@@ -21,13 +21,15 @@
             <div class="col-12 col-lg-6 text-center text-lg-start mt-4 mt-lg-0 align-self-center">
                 <div class="banner">
                     <img src="{{ asset('storage/heroInformation/'. $heroInformations->thumbnail) }}" alt="" class="img-fluid">
-                    <a href="{{ $heroInformations->video }}" data-autoplay="true" data-vbtype="video" class="RICT_Videos">
+                    @if($heroInformations->video)
+                    <a href="{{ $heroInformations->video }}" data-autoplay="true" data-overlay="rgba(44, 52, 126,0.9)" data-vbtype="video" class="RICT_Videos">
                         <svg width="100" height="100" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="32.5" cy="32.5" r="32.5" fill="white" fill-opacity="0.5"/>
                             <ellipse cx="32.4991" cy="32.5011" rx="20.546" ry="20.546" fill="white"/>
                             <path d="M41.0035 32.128C41.2901 32.2935 41.2901 32.7072 41.0035 32.8727L28.5673 40.0527C28.2807 40.2182 27.9223 40.0114 27.9223 39.6803L27.9223 25.3203C27.9223 24.9893 28.2807 24.7824 28.5673 24.9479L41.0035 32.128Z" fill="#E16127"/>
                         </svg>
                     </a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -104,7 +106,7 @@
             <div class="col-12 mt-2">
                 <ul class="nav d-flex justify-content-center align-items-center courseDepartment">
                     @forelse ($departments as $item)
-                        <li class="nav-item d-flex justify-content-center mt-4" role="presentation">
+                        <li class="nav-item d-flex justify-content-center mt-3" role="presentation">
                             <button class="nav-link px-0 fw-bold" type="button">{{ $item->departmentName }}</button>
                         </li>
                     @empty
@@ -127,12 +129,28 @@
                                                 <h5>
                                                     <a href="{{ route('singleCourse',$item->slug) }}">{{ $item->name }}</a>
                                                 </h5>
-                                                <p class="mt-2">By: <span class="mentor">{{ $item->courseDetails->mentor->name }}</span></p>
-                                                <div class="d-flex justify-content-between mt-5 align-items-center">
-                                                    <p>
-                                                        <a href="{{ route('singleCourse',$item->slug) }}" class="buy-btn">Learn More</a>
+                                                <p><b>৳{{ $item->courseDetails->price }}</b></p>
+
+                                                <div class="row text-start other_detailes ps-2">
+                                                    <div class="col-12 col-md-4 p-0">
+                                                        <p class="text-start text-md-center"><i class="ti-time me-2 mt-1"></i> <span class="font-paragraph">সময়কাল:</span> <span>{{ $item->courseDetails->duration }}</span> <span class="font-paragraph">মাস</span></p>
+                                                    </div>
+                                                    <div class="col-12 col-md-4 p-0">
+                                                        <p class="text-start text-md-center"><i class="ti-book me-2 mt-1"></i> <span class="font-paragraph">ক্লাস:</span> {{ $item->courseDetails->lecture }}</p>
+                                                    </div>
+                                                    @if(!empty($item->courseDetails->project))
+                                                        <div class="col-12 col-md-4 p-0">
+                                                            <p class="text-start"><i class="ti-target me-2 mt-1"></i> <span class="font-paragraph">প্রজেক্ট:</span> {{ $item->courseDetails->project }}+</p>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <div class="d-block d-md-flex justify-content-between align-items-center text-center">
+                                                    <p class="mb-1">
+                                                        <a href="{{ route('demoClass') }}" class="buy-btn">Apply For Demo Class</a>
                                                     </p>
-                                                    <p><b>৳{{ $item->courseDetails->price }}</b></p>
+                                                    <p class="mb-1">
+                                                        <a href="{{ route('singleCourse',$item->slug) }}" class="buy-btn">Details</a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +252,7 @@
         <div class="row">
             <div class="col-12 mt-2">
                 <div class="course_items">
-                    <div class="course_category_slider">
+                    <div class="bestSelling">
                         @foreach ($bestSelling as $item)
                             <div class="col mt-4 mx-1">
                                 <div class="card">
@@ -242,17 +260,33 @@
                                         <img src="{{ asset('storage/CourseDetails/'. $item->courseDetails->thumbnail) }}" alt="">
                                     </a>
                                     <div class="card-body pb-2">
-                                        <h5>
-                                            <a href="{{ route('singleCourse',$item->slug) }}">{{ $item->name }}</a>
-                                        </h5>
-                                        <p class="mt-2">By: <span class="mentor">{{ $item->courseDetails->mentor->name }}</span></p>
-                                        <div class="d-flex justify-content-between mt-5 align-items-center">
-                                            <p>
-                                                <a href="{{ route('singleCourse',$item->slug) }}" class="buy-btn">Learn More</a>
-                                            </p>
-                                            <p><b>৳{{ $item->courseDetails->price }}</b></p>
-                                        </div>
-                                    </div>
+                                                <h5>
+                                                    <a href="{{ route('singleCourse',$item->slug) }}">{{ $item->name }}</a>
+                                                </h5>
+                                                <p><b>৳{{ $item->courseDetails->price }}</b></p>
+
+                                                <div class="row text-start other_detailes ps-2">
+                                                    <div class="col-12 col-md-4 p-0">
+                                                        <p class="text-start text-md-center"><i class="ti-time me-2 mt-1"></i> <span class="font-paragraph">সময়কাল:</span> {{ $item->courseDetails->duration }} <span class="font-paragraph">মাস</span></p>
+                                                    </div>
+                                                    <div class="col-12 col-md-4 p-0">
+                                                        <p class="text-start text-md-center"><i class="ti-book me-2 mt-1"></i> <span class="font-paragraph">ক্লাস:</span> {{ $item->courseDetails->lecture }}</p>
+                                                    </div>
+                                                    @if(!empty($item->courseDetails->project))
+                                                        <div class="col-12 col-md-4 p-0">
+                                                            <p class="text-start"><i class="ti-target me-2 mt-1"></i> <span class="font-paragraph">প্রজেক্ট:</span> {{ $item->courseDetails->project }}+</p>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <div class="d-block d-md-flex justify-content-between align-items-center text-center">
+                                                    <p class="mb-1">
+                                                        <a href="{{ route('demoClass') }}" class="buy-btn">Apply For Demo Class</a>
+                                                    </p>
+                                                    <p class="mb-1">
+                                                        <a href="{{ route('singleCourse',$item->slug) }}" class="buy-btn">Details</a>
+                                                    </p>
+                                                </div>
+                                            </div>
                                 </div>
                             </div>
                         @endforeach
@@ -263,20 +297,18 @@
     </div>
 </section>
 <!-- Best-selling-course -->
-<section class="brands py-4 py-lg-5">
+<section class="brands py-5 py-lg-5">
     <div class="container">
        <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center section-head">
-                <h2 class="text-uppercase fs-1 mb-0">we are authorised by</h2>
-                <span></span>
-                <p class="mt-1 lead">We are officially authorized, signifying our commitment to professionalism and adherence to recognized standards.</p>
+                <h2 class="text-uppercase fs-1 mb-4">we are authorised by</h2>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-12 col-md-4">
                 <div class="row justify-content-center">
                     @forelse ($auth_logo as $item)
-                        <div class="col-6 col-md-4 align-self-center text-center mt-4 mt-md-0">
+                        <div class="col-4 text-center mt-2 mt-md-0">
                             <img src="{{ asset("storage/authorisedby/". $item->image) }}" alt="" class="img-fluid">
                         </div>
                     @empty

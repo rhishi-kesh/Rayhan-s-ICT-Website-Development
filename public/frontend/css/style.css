@@ -456,6 +456,7 @@ nav .nav-bar .logo a{
     position: relative;
     z-index: 1;
     display: block;
+    font-size: 14px;
 }
 .Course .course_items .card .buy-btn:hover{
     background-color: var(--orange);
@@ -494,7 +495,7 @@ nav .nav-bar .logo a{
     text-align: center;
     line-height: 36px;
     position: absolute;
-    left: 14px;
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
@@ -524,7 +525,7 @@ nav .nav-bar .logo a{
     text-align: center;
     line-height: 36px;
     position: absolute;
-    right: 14px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
@@ -543,10 +544,22 @@ nav .nav-bar .logo a{
     color: var(--white);
 }
 .best-selling .nextarrow{
-    right: 9px;
+    right: -67px;
 }
 .best-selling .prevarrow{
-    left: 10px;
+    left: -67px;
+}
+.slick-dots {
+  bottom: -46px;
+}
+.slick-dots li {
+    width: 10px;
+  height: 10px;
+  background: var(--blue);
+  border-radius: 50%;
+}
+.slick-dots .slick-active {
+  background: var(--orange) !important;
 }
 .courseDepartment .nextarrow{
     top: 50%;
@@ -1925,8 +1938,8 @@ footer .contact i{
 @keyframes floating{0%,to{transform:translate(0,0)}65%{transform:translate(0,15px)}}
 #popupadvirtise .btn-close{
     position: absolute;
-    top: -25px;
-    right: -25px;
+    top: 6px;
+    right: 10px;
 }
 .top_advirtised{
     position: relative;
@@ -2050,7 +2063,7 @@ footer .contact i{
       padding-top: 50px;
     }
     .brands img{
-        max-width: 50%;
+        max-width: 90%;
     }
     .footer-widget-heading h3::before {
       left: 28px;
@@ -2156,6 +2169,9 @@ footer .contact i{
     }
     .footer-widget ul li a{
         font-size: 12px;
+    }
+    .hero h1{
+        font-weight: 500;
     }
 }
 @media screen and (max-width: 400px){

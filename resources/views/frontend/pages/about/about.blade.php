@@ -54,35 +54,35 @@
             </div>
         </div>
     </section>
-    {{-- missionVision-section-end --}}
-    <section class="courses py-5 pb-md-0 pt-md-3">
+    <!--missionVision-section-end -->
+       <section class="brands py-5 py-lg-5">
         <div class="container">
-            <div class="row justify-content-center">
+           <div class="row justify-content-center">
                 <div class="col-12 col-md-8 text-center section-head">
-                    <h2 class="text-uppercase fs-1 mb-0">Our Departments</h2>
+                    <h2 class="text-uppercase fs-1 mb-4">we are authorised by</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="owl-carousel owl-theme courses courses-department mt-4 mb-0">
-                    @forelse ($departments as $item)
-                    <a href="{{ route('singleDepartment', $item->slug) }}">
-                        <div class="col">
-                            <div class="d-flex justify-content-center align-item-center">
-                                <img src="{{ asset('storage/department/'. $item->image) }}" alt="" class="d-block">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-4">
+                    <div class="row justify-content-center">
+                        @forelse ($auth_logo as $item)
+                            <div class="col-4 text-center mt-2 mt-md-0">
+                                <img src="{{ asset("storage/authorisedby/". $item->image) }}" alt="" class="img-fluid">
                             </div>
-                            <h6>{{ $item->departmentName }}</h6>
+                        @empty
+                        <div class="col-12 col-md-6 col-lg-4 mt-4">
+                            <div class="card text-center p-3 bg-light">
+                                <p class="mb-0 text-danger">No Data Found</p>
+                            </div>
                         </div>
-                    </a>
-                    @empty
-                    <div class="col">
-                        <p class="text-danger">No Department Found</p>
+                        @endforelse
+
                     </div>
-                    @endforelse
                 </div>
             </div>
         </div>
     </section>
-    <!-- courses-section-end -->
+    <!-- Brands-end -->
     <section class="workshop py-3 py-lg-5 pt-0 pt-lg-5">
         <div class="container">
             <div class="row justify-content-center">

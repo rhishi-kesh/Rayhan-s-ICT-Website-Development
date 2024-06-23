@@ -9,6 +9,7 @@
                     <h3 class="fs-2 mb-3">{{ $courses->name }}</h3>
                     <div class="banner d-block d-md-none">
                         <img src="{{ asset('storage/CourseDetails/'. $courses->CourseDetails->thumbnail) }}" alt="" class="img-fluid">
+                        @if($courses->courseDetails->video)
                         <a href="{{ $courses->courseDetails->video }}" data-autoplay="true" data-vbtype="video" class="RICT_Videos">
                             <svg width="100" height="100" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="32.5" cy="32.5" r="32.5" fill="white" fill-opacity="0.5"/>
@@ -16,6 +17,7 @@
                                 <path d="M41.0035 32.128C41.2901 32.2935 41.2901 32.7072 41.0035 32.8727L28.5673 40.0527C28.2807 40.2182 27.9223 40.0114 27.9223 39.6803L27.9223 25.3203C27.9223 24.9893 28.2807 24.7824 28.5673 24.9479L41.0035 32.128Z" fill="#E16127"/>
                             </svg>
                         </a>
+                        @endif
                     </div>
                     <div class="d-flex justify-content-between my-3 pe-0 pe-md-4 pe-lg-5 fee">
                         <h5 class="fw-bold d-none d-md-block fee-text font-paragraph">কোর্স ফিঃ</h5>
@@ -63,13 +65,15 @@
                 <div class="col-12 col-lg-6 align-self-center mt-4 mt-lg-0">
                     <div class="banner d-none d-md-block">
                         <img src="{{ asset('storage/CourseDetails/'. $courses->CourseDetails->thumbnail) }}" alt="" class="img-fluid">
-                        <a href="{{ $courses->courseDetails->video }}" data-autoplay="true" data-vbtype="video" class="RICT_Videos">
-                            <svg width="100" height="100" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="32.5" cy="32.5" r="32.5" fill="white" fill-opacity="0.5"/>
-                                <ellipse cx="32.4991" cy="32.5011" rx="20.546" ry="20.546" fill="white"/>
-                                <path d="M41.0035 32.128C41.2901 32.2935 41.2901 32.7072 41.0035 32.8727L28.5673 40.0527C28.2807 40.2182 27.9223 40.0114 27.9223 39.6803L27.9223 25.3203C27.9223 24.9893 28.2807 24.7824 28.5673 24.9479L41.0035 32.128Z" fill="#E16127"/>
-                            </svg>
-                        </a>
+                        @if($courses->courseDetails->video)
+                            <a href="{{ $courses->courseDetails->video }}" data-autoplay="true" data-vbtype="video" class="RICT_Videos">
+                                <svg width="100" height="100" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="32.5" cy="32.5" r="32.5" fill="white" fill-opacity="0.5"/>
+                                    <ellipse cx="32.4991" cy="32.5011" rx="20.546" ry="20.546" fill="white"/>
+                                    <path d="M41.0035 32.128C41.2901 32.2935 41.2901 32.7072 41.0035 32.8727L28.5673 40.0527C28.2807 40.2182 27.9223 40.0114 27.9223 39.6803L27.9223 25.3203C27.9223 24.9893 28.2807 24.7824 28.5673 24.9479L41.0035 32.128Z" fill="#E16127"/>
+                                </svg>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -109,7 +113,7 @@
                                 <ul class="ps-0 mb-0 learning">
                                     @forelse ($courses->courseLearnings as $item)
                                         <li class="d-flex justify-content-start align-items-start">
-                                            <img src="{{ asset('storage/Learnings/'. $item->image) }}" alt="" style="width: 30px; object-fit: cover;">
+                                            <img src="{{ asset('storage/Learnings/'. $item->image) }}" alt="" style="width: 40px; object-fit: cover;">
                                             <p class="ms-3">{{ $item->content }}</p>
                                         </li>
                                     @empty
@@ -124,7 +128,7 @@
                                 <ul class="ps-0 mb-0">
                                     @forelse ($courses->courseForThoose as $item)
                                         <li class="d-flex justify-content-start align-items-start">
-                                            <img src="{{ asset('storage/courseThose/'. $item->image) }}" alt="" style="width: 30px; object-fit: cover;">
+                                            <img src="{{ asset('storage/courseThose/'. $item->image) }}" alt="" style="width: 40px; object-fit: cover;">
                                             <p class="ms-3 font-paragraph">{{ $item->content }}</p>
                                         </li>
                                     @empty
@@ -139,7 +143,7 @@
                                 <ul class="ps-0 mb-0">
                                     @forelse ($courses->courseBenifits as $item)
                                         <li class="d-flex justify-content-start align-items-start">
-                                            <img src="{{ asset('storage/benefitsOfCourse/'. $item->image) }}" alt="" style="width: 30px; object-fit: cover;">
+                                            <img src="{{ asset('storage/benefitsOfCourse/'. $item->image) }}" alt="" style="width: 40px; object-fit: cover;">
                                             <p class="ms-3 font-paragraph">{{ $item->content }}</p>
                                         </li>
                                     @empty

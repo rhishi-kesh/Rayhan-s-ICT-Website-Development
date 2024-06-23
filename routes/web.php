@@ -19,6 +19,12 @@ use App\Http\Controllers\Mail\MailController;
 use App\Models\Seminar;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/rrr', function () {
+    Artisan::call('optimize:clear');
+    return "Done";
+});
 
 
 //frontend
@@ -36,6 +42,7 @@ Route::get('/admission',[FrontendController::class, 'admission'])->name('admissi
 Route::get('/demo-class',[FrontendController::class, 'demoClass'])->name('demoClass');
 Route::get('/seminar/{slug}',[FrontendController::class, 'singleSeminer'])->name('singleSeminer');
 Route::get('/webinar/{slug}',[FrontendController::class, 'singleWebiner'])->name('singleWebiner');
+Route::get('/certificate/{id}',[FrontendController::class, 'certificate'])->name('certificate');
 
 //send mail
 Route::post('/admission-post',[MailController::class, 'admissionPost'])->name('admissionPost');
@@ -91,7 +98,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'], function () {
     Route::get('/hero',[AboutController::class, 'hero'])->name('hero');
     Route::post('/hero-post',[AboutController::class, 'heroPost'])->name('heroPost');
 
-    // Company-Information 
+    // Company-Information
     Route::get('/company-information',[AboutController::class, 'companyInformation'])->name('companyInformation');
     Route::post('/company-information-post',[AboutController::class, 'companyInformationPost'])->name('companyInformationPost');
 

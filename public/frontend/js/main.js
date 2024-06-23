@@ -151,7 +151,8 @@ $(".wokspece_img").slick({
   asNavFor:".wokspece_navs"
 })
 $(".wokspece_navs").slick({
-  autoplay:false,
+  autoplay:true,
+  autoplaySpeed: 1000,
   slidesToShow:9,
   slidesToScroll:1,
   // fade:true,
@@ -214,7 +215,7 @@ $('.demo-carosel').owlCarousel({
     autoplayTimeout: 2000,
     autoplayHoverPause: true,
 });
-// Slick Slider Workshop image section
+// Slick Slider Course Section
 $(".CoursesUnderDepartment").slick({
     centerMode:false,
     centerPadding:"0",
@@ -282,12 +283,12 @@ $(".CoursesUnderDepartment").slick({
   });
   $(".course_category_slider").slick({
     centerMode: false,
-    autoplay:false,
+    autoplay:true,
     focusOnSelect:true,
     slidesToShow: 3,
     slidesToScroll: 1,
     dots:false,
-    arrows:true,
+    arrows:false,
     prevArrow:'<i class="fa fa-angle-left prevarrow"></i>',
     nextArrow:'<i class="fa fa-angle-right nextarrow"></i>',
     responsive: [
@@ -302,6 +303,7 @@ $(".CoursesUnderDepartment").slick({
         breakpoint: 767,
         settings: {
           arrows: true,
+          dots:false,
           slidesToShow: 2
         }
       },
@@ -310,6 +312,46 @@ $(".CoursesUnderDepartment").slick({
         breakpoint: 576,
         settings: {
           arrows: true,
+          dots:false,
+          slidesToShow: 1
+        }
+      },
+    ]
+  });
+
+  //bestSelling Start
+  $(".bestSelling").slick({
+    centerMode: false,
+    autoplay:true,
+    focusOnSelect:true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots:false,
+    arrows:false,
+    prevArrow:'<i class="fa fa-angle-left prevarrow"></i>',
+    nextArrow:'<i class="fa fa-angle-right nextarrow"></i>',
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: true,
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          arrows: false,
+          dots:true,
+          slidesToShow: 2
+        }
+      },
+
+      {
+        breakpoint: 576,
+        settings: {
+          arrows: false,
+          dots:true,
           slidesToShow: 1
         }
       },
@@ -421,6 +463,4 @@ $(function() {
 var myModal = new bootstrap.Modal(document.getElementById("popupadvirtise"));
 window.setTimeout(function(){
     myModal.show()
-}, 5000);
-
-
+}, 4000);
