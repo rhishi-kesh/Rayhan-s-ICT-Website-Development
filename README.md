@@ -21,6 +21,10 @@ git clone git@github.com:Rayhans-ICT/Rayhan-s-ICT-Website.git
 ```
 
 ```sh
+cd Rayhan-s-ICT-Website-Development
+```
+
+```sh
 composer install
 ```
 
@@ -49,5 +53,11 @@ Open `app/Providers/AppServiceProvider.php` file and uncomment the following tex
 </p>
 
 ```sh
+php artisan optimize
+```
+
+```sh
 php artisan serve
 ```
+For Admin Login `http://127.0.0.1:8000/admin` <br>
+Admin gmail = `admin@gmail.com` & password = `admin`
